@@ -1,0 +1,17 @@
+# --- Configuration Shopify ---
+
+# Fichiers de configuration spécifiques à l'instance
+# On ignore souvent les réglages de données pour éviter d'écraser la prod avec la dev
+# (À retirer si tu veux absolument versionner tes réglages du Customizer)
+# config/settings_data.json
+
+# Fichiers de log et temporaires
+*.log
+.DS_Store
+thumbs.db
+
+# --- Shopify CLI & Tooling ---
+.shopify/
+.theme-check.json
+
+commandes.txt
