@@ -1,0 +1,353 @@
+/* Fix overflow horizontal - empêcher la barre blanche à droite */
+html {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Forcer tous les conteneurs à ne pas dépasser */
+.shopify-section,
+.page-width,
+main,
+#MainContent,
+#shopify-section-template--*,
+[class*="shopify-section"] {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Bloquer le scroll quand le burger menu est ouvert */
+body:has(details[open].menu-drawer-container),
+body:has(.menu-drawer[open]),
+body.overflow-hidden-mobile {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  width: 100%;
+}
+
+/* Corriger les éléments 100vw qui causent le débordement */
+.solo-hero,
+.book-section,
+.finitions-carousel__track-container,
+.finitions-carousel__track,
+.finitions-slide {
+  max-width: 100vw;
+}
+
+@media screen and (max-width: 900px) {
+  .finitions-carousel__track-container,
+  .finitions-carousel__track,
+  .finitions-slide {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Header full width */
+header.header.container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: clamp(1.5rem, 3vw, 5rem);
+  padding-right: clamp(1.5rem, 3vw, 5rem);
+}
+
+.header-wrapper {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  box-sizing: border-box !important;
+}
+
+sticky-header {
+  width: 100vw !important;
+  max-width: 100vw !important;
+}
+
+/* Image banner (hero) full width */
+.image-banner-section,
+.image-banner {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  box-sizing: border-box !important;
+}
+
+/* Book section full width */
+.book-section {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  box-sizing: border-box !important;
+}
+
+/* Footer full width */
+.footer {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  box-sizing: border-box !important;
+}
+
+.footer__content-top,
+.footer__content-middle,
+.footer__content-bottom {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Menu burger visible uniquement en dessous de 1100px */
+@media screen and (min-width: 1100px) {
+  .header__inline-menu {
+    display: block !important;
+  }
+  
+  header-drawer {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1099px) {
+  .header__inline-menu {
+    display: none !important;
+  }
+  
+  header-drawer {
+    display: flex !important;
+  }
+}
+
+/* Centrer "Créer un compte" dans le burger menu */
+.menu-drawer__account-register {
+  text-align: center !important;
+  width: 100%;
+}
+
+/* Couleur du texte "Pas encore de compte ?" */
+.menu-drawer__account-register span {
+  color: rgb(33, 28, 28) !important;
+}
+
+/* ============================================
+   SOUS-MENU MOBILE "LES OEUVRES"
+   ============================================ */
+
+/* Conteneur du sous-menu - positionné par rapport au menu-drawer */
+.oeuvres-submenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 99999;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  visibility: hidden;
+}
+
+/* Sous-menu ouvert */
+.oeuvres-submenu--open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* Header du sous-menu */
+.oeuvres-submenu__header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+}
+
+/* Bouton retour */
+.oeuvres-submenu__back {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  color: #1D1D1B;
+}
+
+.oeuvres-submenu__back .icon {
+  transform: rotate(180deg);
+  width: 14px;
+  height: 10px;
+}
+
+.oeuvres-submenu__back:hover {
+  opacity: 0.7;
+}
+
+/* Titre du sous-menu */
+.oeuvres-submenu__title {
+  font-family: var(--font-header-menu-family);
+  font-weight: var(--font-header-menu-weight);
+  text-transform: var(--font-header-menu-text-transform);
+  font-size: 1.4rem;
+  color: #1D1D1B;
+}
+
+/* Liste des liens */
+.oeuvres-submenu__list {
+  padding: 1rem 0;
+  list-style: none;
+  margin: 0;
+}
+
+.oeuvres-submenu__list li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.oeuvres-submenu__link {
+  padding: 1.8rem 2rem;
+  display: block;
+  color: #1D1D1B !important;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-family: var(--font-header-menu-family);
+  font-weight: var(--font-header-menu-weight);
+  text-transform: var(--font-header-menu-text-transform);
+}
+
+.oeuvres-submenu__link:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Icône chevron sur le trigger */
+.oeuvres-submenu-trigger {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+  font-weight: 700 !important;
+}
+
+.oeuvres-submenu-trigger .icon-caret {
+  transition: transform 0.2s ease;
+  transform: rotate(-90deg);
+}
+
+.oeuvres-submenu-trigger[aria-expanded="true"] .icon-caret {
+  transform: rotate(90deg);
+}
+
+/* Police LEMON MILK */
+@font-face {
+  font-family: 'LEMON MILK';
+  src: url('LEMONMILK-Regular.otf') format('opentype'),
+       url('LEMONMILK-Regular.woff') format('woff'),
+       url('LEMONMILK-Regular.woff2') format('woff2'),
+       url('LEMONMILK-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LEMON MILK';
+  src: url('LEMONMILK-Bold.otf') format('opentype'),
+       url('LEMONMILK-Bold.woff') format('woff'),
+       url('LEMONMILK-Bold.woff2') format('woff2'),
+       url('LEMONMILK-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Style pour le titre de la bannière image */
+.image-banner__title {
+  font-family: 'LEMON MILK', sans-serif !important;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: left !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 1rem;
+  line-height: 1.2;
+  width: 100%;
+}
+
+.image-banner__title-line {
+  display: block;
+  color: #FFFFFF;
+  text-align: left !important;
+  width: 100%;
+}
+
+.image-banner__title * {
+  color: inherit;
+}
+
+/* Style spécifique pour le mot "unique" */
+.image-banner__title span[style*="#DFBE71"] {
+  color: #DFBE71 !important;
+}
+
+/* =============================================
+   STYLES NAVBAR - LIENS DU MENU
+   ============================================= */
+.header__menu-item,
+.header__inline-menu .header__menu-item,
+.header__menu-item span,
+.header .list-menu__item {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   ARTICLE CARD - TITRE SUR PC
+   ============================================= */
+@media screen and (min-width: 750px) {
+  .article-card__title,
+  .article-card__title a {
+    font-size: 22px !important;
+  }
+}
+
+/* =============================================
+   HOW IT WORKS - TEXTE PLEINE LARGEUR
+   ============================================= */
+.how-it-works__column-description {
+  width: 100% !important;
+  max-width: 100% !important;
+  align-self: stretch !important;
+}
+
+.how-it-works__column-description p {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+

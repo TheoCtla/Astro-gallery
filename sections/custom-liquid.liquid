@@ -1,0 +1,35 @@
+{{ 'section-custom-liquid.css' | asset_url | stylesheet_tag }}
+
+<div class="custom-liquid-section">
+  <div class="custom-liquid__container">
+    <div class="custom-liquid__decoration custom-liquid__decoration--left">
+      <img src="{{ 'gauche.png' | asset_url }}" alt="" class="custom-liquid__decoration-image">
+    </div>
+    <div class="custom-liquid__content">
+      <p class="custom-liquid__text">Une création unique pour chaque personne,<br>qui transforme un instant de naissance en oeuvre d'art intemporelle.</p>
+    </div>
+    <div class="custom-liquid__decoration custom-liquid__decoration--right">
+      <img src="{{ 'droite.png' | asset_url }}" alt="" class="custom-liquid__decoration-image">
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.custom-liquid.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.custom-liquid.presets.name"
+    }
+  ]
+}
+{% endschema %}

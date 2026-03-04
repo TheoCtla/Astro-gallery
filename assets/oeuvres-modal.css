@@ -1,0 +1,427 @@
+/* Modal overlay - grise le reste du site */
+/* L'overlay doit apparaître instantanément, sans animation ni transition */
+.oeuvres-modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99998;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* Aucune transition ni animation pour l'overlay - doit apparaître instantanément */
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* L'overlay est maintenant en dehors du modal - il s'active avec sa propre classe */
+.oeuvres-modal__overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: pointer;
+  /* Aucune transition ni animation pour l'overlay - doit apparaître instantanément */
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Animation pour l'ouverture de la modal */
+@keyframes modalSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal container */
+/* Le container est invisible et ne sert qu'à positionner le contenu */
+.oeuvres-modal {
+  position: fixed !important;
+  top: 98px !important;
+  left: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  z-index: 99999 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: visible !important;
+  box-sizing: border-box;
+  background: none !important;
+  border: none !important;
+  /* Pas de transform sur le container pour éviter d'affecter l'overlay */
+  transform: none;
+  /* Transition uniquement pour l'opacity et visibility */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.oeuvres-modal.active {
+  opacity: 1;
+  visibility: visible;
+  /* Le container reste pointer-events: none pour laisser passer les clics vers l'overlay */
+  pointer-events: none;
+  /* Pas de transform sur le container - l'animation est uniquement sur le contenu */
+  transform: none;
+}
+
+/* Seul le contenu de la modal est cliquable */
+.oeuvres-modal.active .oeuvres-modal__content {
+  pointer-events: auto;
+}
+
+/* Modal content */
+/* L'animation est appliquée uniquement sur le contenu de la modal */
+.oeuvres-modal__content {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid #DFBE71;
+  border-radius: 0;
+  padding: 1.8rem 1.2rem 1.6rem;
+  max-width: 800px;
+  width: 80%;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  transform: translateY(-100%) scale(0.9);
+  opacity: 0;
+  z-index: 10000;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* Animation uniquement sur le contenu */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media screen and (max-width: 750px) {
+  .oeuvres-modal__content {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .oeuvres-modal__content {
+    margin-top: 0;
+  }
+}
+
+.oeuvres-modal.active .oeuvres-modal__content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  /* Animation uniquement sur le contenu */
+  animation: modalSlideDown 0.5s ease-out forwards;
+}
+
+/* Close button */
+.oeuvres-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+  z-index: 10001;
+}
+
+.oeuvres-modal__close:hover {
+  opacity: 0.7;
+}
+
+.oeuvres-modal__close svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Modal body */
+.oeuvres-modal__body {
+  color: #000000;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.oeuvres-modal__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #000000;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+/* Collections grid */
+.oeuvres-modal__collections {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  gap: 1.2rem;
+  padding: 0;
+}
+
+.oeuvres-modal__collection-item {
+  flex: 1;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #DFBE71;
+  padding: 1.2rem 0.8rem;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 100%;
+  cursor: default;
+}
+
+.oeuvres-modal__collection-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.oeuvres-modal__collection-frame {
+  border: none;
+  padding: 0.5rem;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.oeuvres-modal__collection-image {
+  width: 100%;
+  max-width: 230px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  margin-bottom: 5rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.oeuvres-modal__collection-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+  max-width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .oeuvres-modal__collection-item:hover {
+    cursor: pointer;
+  }
+  
+  .oeuvres-modal__collection-item:hover .oeuvres-modal__collection-image {
+    transform: scale(1.03);
+  }
+  
+  .oeuvres-modal__collection-link:hover {
+    text-decoration: none;
+  }
+}
+
+/* Image duo avec même hauteur que les autres pour cohérence */
+.oeuvres-modal__collection-item:nth-child(2) .oeuvres-modal__collection-image {
+  max-width: 280px;
+  height: 171px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.oeuvres-modal__collection-item:nth-child(2) .oeuvres-modal__collection-image img {
+  width: auto;
+  height: 171px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Images solo et offrir : même hauteur que duo */
+.oeuvres-modal__collection-item:nth-child(1) .oeuvres-modal__collection-image,
+.oeuvres-modal__collection-item:nth-child(3) .oeuvres-modal__collection-image {
+  max-width: 230px;
+  height: 171px;
+  margin: 0 auto;
+}
+
+.oeuvres-modal__collection-item:nth-child(1) .oeuvres-modal__collection-image img,
+.oeuvres-modal__collection-item:nth-child(3) .oeuvres-modal__collection-image img {
+  width: auto;
+  height: 171px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.oeuvres-modal__collection-title {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  padding-top: 2.5rem;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: center;
+}
+
+/* Style pour le bouton trigger - doit ressembler à un lien normal */
+.oeuvres-modal-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 1330px) {
+  .oeuvres-modal-trigger {
+    padding: 1.5rem;
+  }
+}
+
+/* Réduire la taille de la flèche et la positionner avec espacement */
+.oeuvres-modal-trigger .oeuvres-caret {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.6rem;
+  position: static !important;
+  right: auto !important;
+  left: auto !important;
+}
+
+.oeuvres-modal-trigger .oeuvres-caret svg {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.oeuvres-modal-trigger:hover {
+  opacity: 1;
+}
+
+/* S'assurer que le bouton a le même style que les autres liens du menu */
+.oeuvres-modal-trigger .header__active-menu-item {
+  color: #FFFFFF;
+}
+
+/* Aligner le bouton avec les autres éléments du menu */
+.header__inline-menu .oeuvres-modal-trigger {
+  align-items: center;
+}
+
+/* Animation hover pour le bouton trigger comme les autres liens */
+.oeuvres-modal-trigger span:not(.header__active-menu-item) > span {
+  position: relative;
+  display: inline-block;
+}
+
+.oeuvres-modal-trigger span:not(.header__active-menu-item) > span:after {
+  content: '';
+  position: absolute;
+  bottom: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: #DFBE71;
+  transition: width 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .oeuvres-modal-trigger:hover span:not(.header__active-menu-item) > span:after {
+    width: calc(100% + 0.8rem);
+  }
+}
+
+/* Bloquer le scroll quand la modal est active */
+body.oeuvres-modal-open {
+  overflow: hidden !important;
+}
+
+html.oeuvres-modal-open {
+  overflow: hidden !important;
+}
+
+/* Désactiver les interactions sur le contenu quand la modal est ouverte */
+/* L'overlay avec son background semi-transparent grise visuellement toute la page */
+body.oeuvres-modal-open .header-wrapper,
+body.oeuvres-modal-open main,
+body.oeuvres-modal-open footer {
+  pointer-events: none;
+}
+
+/* S'assurer que l'overlay reste cliquable */
+body.oeuvres-modal-open .oeuvres-modal__overlay {
+  pointer-events: auto;
+}
+
+/* Le contenu de la modal reste cliquable */
+body.oeuvres-modal-open .oeuvres-modal__content {
+  pointer-events: auto;
+}
+
+/* S'assurer qu'aucun parent ne coupe la modal */
+body.oeuvres-modal-open,
+body.oeuvres-modal-open .header-wrapper,
+body.oeuvres-modal-open main,
+body.oeuvres-modal-open .header {
+  overflow: visible !important;
+}
+
+/* Forcer la modal à être au-dessus de tout */
+#oeuvres-modal {
+  position: fixed !important;
+  z-index: 99999 !important;
+}
+
+/* Forcer l'overlay à couvrir tout l'écran, y compris le header */
+#oeuvres-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+  /* Cacher l'overlay sur la page blog uniquement */
+body.template-blog .oeuvres-modal-overlay,
+body.template-blog .oeuvres-modal__overlay,
+body.template-blog #oeuvres-modal-overlay {
+  display: none !important;
+}

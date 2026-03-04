@@ -1,0 +1,443 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_x9hiPN": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "title": "<h2>Votre thème astral est unique. </h2><h4>Nous le transformons en œuvre d’art.</h4>",
+        "sub_title": "",
+        "text_information": "",
+        "text_order": "colum",
+        "text_align": "left",
+        "show_view_all": false,
+        "button_label": "En savoir plus",
+        "button_style": "inverse",
+        "button_link": "shopify://products/solo",
+        "image": "shopify://shop_images/c11fec43d680226e2f370835aac81a22adee9cd0.jpg",
+        "image_position": "overlay",
+        "image_ratio": "adapt",
+        "image_link": "",
+        "round_stamp_enable": true,
+        "round_stamp_text": "",
+        "round_stamp_width": 140,
+        "round_stamp_size": 50,
+        "round_stamp_letter_spacing": 8,
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "video": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "video_fit": "contain",
+        "aspect_ratio": "21/9",
+        "heading": "Votre thème astral est unique. Nous le transformons en œuvre d’art.",
+        "sub_title": "",
+        "cover_image": "shopify://shop_images/Tableau_astrogallery_-_header.png",
+        "video_url": "",
+        "description": "New Art Collection Video",
+        "video_autoplay": false,
+        "video_loop": false,
+        "video_muted": false,
+        "video_controls": false,
+        "round_stamp_enable": false,
+        "round_stamp_text": "Stockholm ~ Stockholm ~",
+        "round_stamp_width": 140,
+        "round_stamp_size": 50,
+        "round_stamp_letter_spacing": 8,
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "1643119147249c160b": {
+      "type": "categories-list",
+      "blocks": {
+        "1643119147f8ac2ec8-0": {
+          "type": "categories",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1643119147f8ac2ec8-1": {
+          "type": "categories",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1643119147f8ac2ec8-2": {
+          "type": "categories",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1643119147f8ac2ec8-3": {
+          "type": "categories",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "1643119147f8ac2ec8-0",
+        "1643119147f8ac2ec8-1",
+        "1643119147f8ac2ec8-2",
+        "1643119147f8ac2ec8-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "sub_title": "Categories",
+        "color_scheme": "background-1",
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "rich_text_fHUQzJ": {
+      "type": "rich-text",
+      "blocks": {
+        "text_TCdHpR": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>ASTROGALLERY révèle la beauté singulière de votre thème natal à travers des créations personnalisées, porteuses de sens, certifiées originales et uniques.</strong></p><p><strong>Un espace où l’art rencontre l’astrologie,  où le savoir ancestral, l’intuition et le regard moderne dialoguent en harmonie.</strong></p>"
+          }
+        },
+        "button_ih6a8x": {
+          "type": "button",
+          "settings": {
+            "button_label": "Découvrir les œuvres",
+            "button_link": "shopify://collections",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "text_TCdHpR",
+        "button_ih6a8x"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    },
+    "collapsible_content_gBGENa": {
+      "type": "collapsible-content",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "VOS INFORMATIONS DE NAISSANCE",
+            "description": "<p>partagez vos informations de naissance : prénom, Nom, lieu, date et heure de naissance..<br/>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "ANALYSE & INTERPRÉTATION",
+            "description": "<p>à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence.\\u003cbr\\u003eCette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "CRÉATION & LIVRAISON",
+            "description": "<p>votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "name": "t:sections.collapsible-content.name",
+      "settings": {
+        "heading": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE",
+        "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
+        "button_label_1": "CRÉER MON ŒUVRE SOLO",
+        "button_link_1": "/products/solo",
+        "button_label_2": "CRÉER MON ŒUVRE DUO",
+        "button_link_2": "/products/oeuvre-astrale-duo"
+      }
+    },
+    "custom_liquid_4VFpNt": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "Une création unique pour chaque personne, qui transforme un instant de naissance en oeuvre d'art intemporelle."
+      }
+    },
+    "rich_text_gJyQFN": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MGLHnW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Deux façons de célébrer votre ciel natal.",
+            "heading_size": "medium"
+          }
+        },
+        "text_kRCBtC": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Solo ou Duo, chaque œuvre est un miroir céleste : un objet d’art et de sens, à contempler ou à offrir.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MGLHnW",
+        "text_kRCBtC"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    },
+    "gallery_with_text_g6djTM": {
+      "type": "gallery-with-text",
+      "blocks": {
+        "featured_gallery_PiaGEF": {
+          "type": "featured_gallery",
+          "settings": {
+            "image": "shopify://shop_images/19715e868b2f00f3b16eb616a027dfacfec0868d_18696d47-57bc-40e4-b040-bdc4e91b55f3.jpg",
+            "tab_description": "Collection SOLO",
+            "title": "L’Œuvre Astrale SOLO",
+            "text": "<p><strong> L'Œuvre Astrale Solo met en lumière votre thème<br>natal : une création unique, personnelle<br>et introspective. Chaque pièce est accompagnée<br> d'un livret détaillé de 110 pages, révélant vos<br>planètes, vos mantras et<br>votre essence profonde. </strong></p>",
+            "link": "/pages/solo",
+            "button_label": "Découvrir l'œuvre SOLO",
+            "card_active": false
+          }
+        },
+        "featured_gallery_ayXrkB": {
+          "type": "featured_gallery",
+          "settings": {
+            "image": "shopify://shop_images/header.jpg",
+            "tab_description": "Collection duo",
+            "title": "L’Œuvre Astrale DUO",
+            "text": "<p><strong>L'Œuvre Astrale Duo explore la relation entre deux<br>êtres: couple, amis, enfants, associés…<br>Deux cartes du ciel fusionnent dans une<br>composition harmonieuse, révélant les points de<br>rencontre, les complémentarités et les forces du<br>lien. </strong></p>",
+            "link": "/pages/duo",
+            "button_label": "Découvrir l'œuvre DUO",
+            "card_active": false
+          }
+        },
+        "featured_gallery_YywtRx": {
+          "type": "featured_gallery",
+          "settings": {
+            "image": "shopify://shop_images/header.jpg",
+            "tab_description": "Collection Offrir",
+            "title": "Offrez une œuvre unique",
+            "text": "\u003cp\u003e\u003cstrong\u003eUn cadeau intemporel pour des occasions\u003cbr\u003e exceptionnelles : Mariage, Anniversaire,\u003cbr\u003eBaptême, Naissance, ...\u003c/strong\u003e\u003c/p\u003e",
+            "link": "/pages/offrir",
+            "button_label": "Offrir une œuvre astrale",
+            "card_active": false
+          }
+        }
+      },
+      "block_order": [
+        "featured_gallery_PiaGEF",
+        "featured_gallery_ayXrkB",
+        "featured_gallery_YywtRx"
+      ],
+      "name": "t:sections.gallery-with-text.presets.name",
+      "settings": {
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "book_section_new": {
+      "type": "book",
+      "name": "Book Section",
+      "settings": {}
+    },
+    "caro_section": {
+      "type": "caro",
+      "name": "Caro Section",
+      "settings": {}
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "110 pages pour explorer votre univers.",
+            "sub_title": ""
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Chaque œuvre ASTROGALLERY est accompagnée d’un livret exclusif de 110 pages, conçu comme une passerelle entre l’art et la compréhension de soi. Les 40 premières pages sont entièrement personnalisées : elles dévoilent vos planètes, vos aspects et vos mantras personnels. Les 70 pages suivantes offrent une initiation douce à l’astrologie, un guide clair et esthétique pour comprendre vos symboles, vos archétypes et les liens entre eux. Un véritable compagnon de lecture, à la fois pédagogique et poétique</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/6d551dea600afeaebf17fee81168f1774ca767bb.jpg",
+        "height": "adapt",
+        "layout": "image_last",
+        "mobile_layout": "bottom",
+        "round_stamp_enable": true,
+        "round_stamp_text": "- ASTROGALLERY - ASTROGALLERY",
+        "round_stamp_width": 140,
+        "round_stamp_size": 40,
+        "round_stamp_letter_spacing": 8,
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "image_with_text_EMhxVk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_kVhARk": {
+          "type": "heading",
+          "settings": {
+            "heading": "Une passionnée d’astrologie et d’esthétique.",
+            "sub_title": ""
+          }
+        },
+        "text_6Rh6A7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ASTROGALLERY est née de la vision de Caroline Robin, astrologue passionnéeet créatrice dans l’âme.   Après des années d’accompagnement en astrologie sidérale, elle constate qu’il manque souvent un support concret pour prolonger la lecture du thème astral. C’est ainsi qu’elle imagine ASTROGALLERY : un projet qui fait dialoguer l’art et l’astrologie, pour donner forme et beauté à ce savoir millénaire.  À travers ses œuvres, Caroline souhaite rendre l’astrologie accessible, esthétique et émotionnelle, et offrir une expérience où chacun peut contempler son ciel intérieur.</p>"
+          }
+        },
+        "button_VEBkJt": {
+          "type": "button",
+          "settings": {
+            "button_label": "À propos",
+            "button_type": "primary",
+            "button_link": "shopify://pages/a-propos"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kVhARk",
+        "text_6Rh6A7",
+        "button_VEBkJt"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/a61c34f66fa7a6ab35f1a63b1235271423f11e58.jpg",
+        "height": "small",
+        "layout": "text_last",
+        "mobile_layout": "bottom",
+        "round_stamp_enable": true,
+        "round_stamp_text": "",
+        "round_stamp_width": 140,
+        "round_stamp_size": 50,
+        "round_stamp_letter_spacing": 8,
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "featured_blog_EdU7mF": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "heading": "Derniers articles",
+        "border_top": false,
+        "border_bottom": false,
+        "blog": "infos",
+        "post_limit": 4,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true
+      }
+    },
+    "1643189486a59c259f": {
+      "type": "testimonials",
+      "blocks": {
+        "5786b7a7-f1e4-4f77-817a-239a058d1d45": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Un grand merci à Caroline pour les deux magnifiques thèmes astrologiques",
+            "slide_text": "“Nos neveux et nièces ont été enchantés par leur cadeau: ils se sont vraiment reconnus dans les descriptions, ce qui a rendu l'expérience très personnelle. Le livret personnalisé est clair et très bien fait, il les a beaucoup aidés à comprendre et lire leur thème.\n\nLa qualité du travail est remarquable, soignée et esthétique, au point que les oeuvres peuvent être exposées. Nous recommandations chaleureusement Caroline pour la finesse et le sérieux de son travail. Merci encore!\"",
+            "slide_name": "Mylène et Eric G.",
+            "slide_country": ""
+          }
+        },
+        "testimonials_slide_mYefmp": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Un achat mémorable pour nos 30 ans de vie commune",
+            "slide_text": "“J’ai offert ce tableau ASTROGALLERY à mon épouse pour nos 30 ans de vie commune et nous en sommes ravis. Le rendu est superbe, les finitions sont impeccables, et l’effet visuel dépasse nos attentes. C’est une pièce qui attire tous les regards et qui a une réelle valeur émotionnelle. Un achat que je recommande vivement !”",
+            "slide_name": "Fréderic R.",
+            "slide_country": ""
+          }
+        },
+        "8aa32965-4dd6-464a-bc1f-3df323268ff4": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Nous avons été pleinement séduits par l’expérience.",
+            "slide_text": "“Le thème astral de couple que nous avons reçu est vraiment superbe : le modèle que nous avions choisi est moderne, élégant et d’une très belle qualité. \nLe livret qui l’accompagne a été un vrai plus. Les mantras, les explications et les pistes de réflexion nous ont permis d’engager des discussions profondes, en lien direct avec ce que nous vivons au quotidien. Il nous aide à mieux comprendre ce qui nous unit, à valoriser nos forces, et à aborder avec plus de douceur certaines zones plus délicates de notre thème. Ce qui aurait pu être une faiblesse devient, grâce à ce guide, un espace pour grandir ensemble.\nNous sommes vraiment très satisfaits, autant par la qualité du cadre que par tout ce que cette expérience nous apporte. Nous le recommandons chaleureusement.”",
+            "slide_name": "Amelie V. et Vincent L.",
+            "slide_country": ""
+          }
+        },
+        "f53ffaaa-beb4-40cd-9410-7616f6526e53": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Une œuvre qui reflète profondément ma destinée",
+            "slide_text": "“J'ai reçu mon thème avec mes mantras et je remercie ASTROGALLERY d'avoir réussi à faire une œuvre de notre destinée qui nous rappelle à chaque instant l'importance de notre incarnation. Merci encore”",
+            "slide_name": "Corinne R.",
+            "slide_country": "Paris"
+          }
+        },
+        "a44d90e5-5a72-43a5-8bf3-61045aacc310": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Un immense merci pour ce magnifique travail Caro ! ",
+            "slide_text": "\"L’analyse du thème astral de mes enfants, Noam et Nelia, mêle à la fois la compréhension de leur personnalité et la mise en valeur de leur univers.\n\nJ’adore rentrer dans leur espace et ressentir immédiatement que c’est chez eux, à leur image, ce tableau reflétant à la fois leur caractère et leur énergie. \n\nC’est un véritable cadeau pour toute notre famille, qui nous permet d’avoir un regard différent, plus éclairé et bienveillant, sur leur chemin de vie. Mieux les comprendre, c’est aussi les aider à grandir en harmonie ! \n\nTon approche allie sérieux, sensibilité et passion – je ne peux que recommander ton accompagnement !”",
+            "slide_name": "Virginie H.",
+            "slide_country": ""
+          }
+        }
+      },
+      "block_order": [
+        "5786b7a7-f1e4-4f77-817a-239a058d1d45",
+        "testimonials_slide_mYefmp",
+        "8aa32965-4dd6-464a-bc1f-3df323268ff4",
+        "f53ffaaa-beb4-40cd-9410-7616f6526e53",
+        "a44d90e5-5a72-43a5-8bf3-61045aacc310"
+      ],
+      "settings": {
+        "border_top": false,
+        "border_bottom": false
+      }
+    }
+  },
+  "order": [
+    "image_banner_x9hiPN",
+    "video",
+    "1643119147249c160b",
+    "rich_text_fHUQzJ",
+    "collapsible_content_gBGENa",
+    "custom_liquid_4VFpNt",
+    "rich_text_gJyQFN",
+    "gallery_with_text_g6djTM",
+    "book_section_new",
+    "caro_section",
+    "image_text",
+    "image_with_text_EMhxVk",
+    "featured_blog_EdU7mF",
+    "1643189486a59c259f"
+  ]
+}

@@ -1,0 +1,32 @@
+{{ 'section-caro.css' | asset_url | stylesheet_tag }}
+
+<div class="caro-section">
+  <div class="caro-section__wrapper">
+    <div class="caro-section__image">
+      <img src="{{ 'caro.jpg' | asset_url }}" alt="Caroline" class="caro-section__img">
+    </div>
+    <div class="caro-section__content">
+      <h2 class="caro-section__title">UNE PASSIONNÉE D'ASTROLOGIE ET DE DESIGN</h2>
+      <p class="caro-section__intro">ASTROGALLERY est née de la vision de Caroline, véritable passionnée d'astrologie et amoureuse des belles choses.</p>
+      <div class="caro-section__text">
+        <p>Après des années de formations et de pratique de l'astrologie sidérale et tropicale, elle constate qu'il manque souvent un support concret pour prolonger la lecture d'un thème astral.
+C'est ainsi qu'elle imagine ASTROGALLERY : un projet qui fait dialoguer l'art et l'astrologie pour donner forme et beauté à ce savoir millénaire.</p>
+        <p>A travers ses œuvres, Caroline souhaite rendre l'astrologie accessible, design et émotionnelle pour offrir à chacun une expérience unique pour contempler son ciel intérieur.
+</p>
+      </div>
+      <a href="/pages/a-propos" class="caro-section__button button--oeuvres">
+        <span class="button__text">EN SAVOIR PLUS</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Caro Section",
+  "tag": "section",
+  "class": "caro-section spaced-section",
+  "settings": []
+}
+{% endschema %}
+

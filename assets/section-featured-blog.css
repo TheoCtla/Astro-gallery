@@ -1,0 +1,86 @@
+.blog__posts {
+  display: grid;
+  grid-gap: 2.4rem;
+  padding: 0;
+  margin: 0;
+}
+
+.blog__posts.blog__posts--3-items,
+.blog__posts.blog__posts--4-items {
+  grid-template-columns: 1fr;
+}
+
+.blog__posts.blog__posts--2-items {
+  grid-template-columns: 1fr;
+}
+
+.blog__posts.blog__posts--1-items {
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 750px) {
+  .blog__posts.blog__posts--3-items {
+    grid-template-columns: 1fr 1fr;
+  }
+  .blog__posts.blog__posts--3-items .article:first-child {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .blog__posts.blog__posts--3-items {
+    grid-template-columns: 1.8fr 1fr 1fr; /* 3 colonnes */
+    grid-template-rows: auto;
+  }
+  .blog__posts.blog__posts--3-items .article:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .blog__posts.blog__posts--3-items .article:not(:first-child) {
+    height: auto;
+  }
+  /* Ensure the image in the first article covers properly */
+  .blog__posts.blog__posts--3-items .article:first-child .article-card,
+  .blog__posts.blog__posts--3-items .article:first-child .article-content,
+  .blog__posts.blog__posts--3-items .article:first-child .article-card__image-wrapper {
+    height: 100%;
+  }
+  
+  .blog__posts.blog__posts--3-items .article:first-child .article-card__image,
+  .blog__posts.blog__posts--3-items .article:first-child .article-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding-bottom: 0;
+  }
+}
+.blog__button {
+  margin-top: 4rem;
+}
+
+/* Police Baskerville italic pour les textes des articles */
+.blog .article-card__title,
+.blog .article-card__title a {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+}
+
+.blog .caption-with-letter-spacing {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+}
+
+/* Bouton "Voir tous les articles de blog" */
+.blog__view-all-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+/* Les styles du bouton sont maintenant gérés par .button--oeuvres */
+
+.border-wrapper {
+     max-width: 75vw;
+     margin: 0 auto;
+}

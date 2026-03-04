@@ -1,0 +1,90 @@
+{% comment %}
+  Template pour la page Journal Astral avec tous les articles du blog
+{% endcomment %}
+
+{{ 'page-journal-astral.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+{%- if settings.pagination_type == 'load_more' or settings.pagination_type == 'infinite_scroll' -%}
+  {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'load-more.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<div class="journal-astral-page">
+  <!-- Breadcrumb -->
+  <nav class="journal-breadcrumb">
+    <a href="/" class="journal-breadcrumb__link">Home</a>
+    <span class="journal-breadcrumb__separator">›</span>
+    <span class="journal-breadcrumb__current">Journal astral</span>
+  </nav>
+
+  <!-- Header -->
+  <header class="journal-header">
+    <h1 class="journal-header__title">JOURNAL ASTRAL</h1>
+    <p class="journal-header__subtitle">Un espace pour apprendre, comprendre et s'émerveiller.</p>
+  </header>
+
+  <!-- Section intro avec image -->
+  <section class="journal-intro">
+    <div class="journal-intro__container">
+      <div class="journal-intro__image">
+        <img src="{{ 'astral.png' | asset_url }}" alt="Astral" loading="lazy">
+      </div>
+      <div class="journal-intro__content">
+        <h2 class="journal-intro__heading">LE JOURNAL ASTRAL EST LE LIEU OÙ ASTROGALLERY PARTAGE SA VISION,SES DÉCOUVERTES ET SES INSPIRATIONS.</h2>
+        <p class="journal-intro__text">Vous y trouverez des articles clairs, esthétiques et accessibles à tous qu'il s'agisse de comprendre les bases de l'astrologie, de découvrir la différence entre l'astrologie sidérale et tropicale, ou d'explorer le sens caché de votre thème astral.</p>
+        <p class="journal-intro__text">Un contenu à la fois pédagogique et poétique, pensé pour éveiller la curiosité et nourrir la réflexion intérieure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Tous les Articles avec pagination -->
+  {% assign blog = blogs['infos'] %}
+  {% if blog != blank %}
+    {%- paginate blog.articles by 7 -%}
+      <section class="journal-articles">
+        <h2 class="journal-articles__title">Tous nos articles</h2>
+        
+        <div class="blog-articles load-more-grid">
+          {%- for article in blog.articles -%}
+            <div class="blog-articles__article article">
+              {%- render 'article-card', article: article, show_image: true, show_date: true, show_author: false -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          {%- if settings.pagination_type == "load_more" -%}
+            {% render 'load-more', next_url: paginate.next.url, count_pages: paginate.pages, current_page: paginate.current_page %}
+            <div class="js-hidden">
+              {%- render 'pagination', paginate: paginate -%}
+            </div>
+          {%- elsif settings.pagination_type == 'infinite_scroll' -%}
+            {% render 'infinite-scroll',
+              next_url: paginate.next.url,
+              count_pages: paginate.pages,
+              current_page: paginate.current_page
+            %}
+            <div class="js-hidden">
+              {%- render 'pagination', paginate: paginate -%}
+            </div>
+          {% else %}
+            {%- render 'pagination', paginate: paginate -%}
+          {%- endif -%}
+        {%- endif -%}
+      </section>
+    {%- endpaginate -%}
+  {% else %}
+    <section class="journal-articles">
+      <p class="journal-articles__empty">Aucun article pour le moment.</p>
+    </section>
+  {% endif %}
+
+  <!-- Contenu de la page (si besoin) -->
+  {% if page.content != blank %}
+    <div class="journal-content">
+      {{ page.content }}
+    </div>
+  {% endif %}
+</div>

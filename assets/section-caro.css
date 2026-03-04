@@ -1,0 +1,143 @@
+/* Section Caro */
+
+/* Supprimer tous les margin et padding top et bottom */
+.caro-section.spaced-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.caro-section {
+    background-color: #FFFFFF;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .caro-section__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    max-width: 75vw;
+    margin: 112px auto 0 auto;
+    padding: 0 2rem;
+    gap: 4rem;
+  }
+  
+  .caro-section__image {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .caro-section__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .caro-section__content {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #1D1D1B;
+    padding-left: 2rem;
+  }
+  
+  .caro-section__title {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    color: #1D1D1B;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    text-transform: uppercase;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+  
+  .caro-section__intro {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 150%;
+    color: #1D1D1B;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    text-transform: none;
+  }
+  
+  .caro-section__text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 160%;
+    color: #1D1D1B;
+    margin: 0 0 3rem 0;
+  }
+  
+  .caro-section__text p {
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .caro-section__text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .caro-section__button {
+    align-self: flex-start;
+  }
+  
+  @media screen and (max-width: 990px) {
+    .caro-section__wrapper {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  
+    .caro-section__image {
+      max-width: 100%;
+    }
+  
+    .caro-section__content {
+      max-width: 100%;
+    }
+  
+    .caro-section__title {
+      font-size: 42px;
+      max-width: 100%;
+    }
+  
+    .caro-section__intro {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-width: 750px) {
+    .caro-section {
+      padding: 0;
+    }
+  
+    .caro-section__wrapper {
+      padding: 0 1.5rem;
+      gap: 2rem;
+    }
+  
+    .caro-section__title {
+      font-size: 25px;
+      max-width: 100%;
+    }
+  
+    .caro-section__intro {
+      font-size: 15px;
+    }
+  
+    .caro-section__text {
+      font-size: 14px;
+    }
+  }
+  
+  

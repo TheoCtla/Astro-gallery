@@ -1,0 +1,20 @@
+# robots.txt.liquid personnalisé pour Astro Gallery
+# Ce fichier remplace le contenu par défaut de Shopify
+
+{% for group in robots.default_groups %}
+  {{ group.user_agent }}
+
+  {% for rule in group.rules %}
+    {{ rule }}
+  {% endfor %}
+
+  {%- if group.user_agent.value == '*' -%}
+    {{ 'Disallow: /collections/*+*' }}
+    {{ 'Disallow: /collections/*%2B*' }}
+    {{ 'Disallow: /collections/*%2b*' }}
+  {%- endif -%}
+
+  # REMPLACEMENT DU SITEMAP PAR LE FICHIER MANUEL
+  Sitemap: https://www.astro-gallery.com/sitemap-manuel.xml
+
+{% endfor %}

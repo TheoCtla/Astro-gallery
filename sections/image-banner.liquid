@@ -1,0 +1,450 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-round-stamp.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  /* Retour à la ligne mobile uniquement (< 500px) */
+  .mobile-break {
+    display: none;
+  }
+  @media screen and (max-width: 499px) {
+    .mobile-break {
+      display: block;
+    }
+  }
+
+  /* Styles pour le premier texte (titre principal) */
+  .image-banner__title-main {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: normal !important;
+    font-size: clamp(28px, 4vw, 60px) !important;
+    white-space: normal !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .image-banner__title-line1,
+  .image-banner__title-line2 {
+    display: inline-block;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+  
+  /* Supprimer les soulignements de title--decorate */
+  .title--decorate .image-banner__title-line1,
+  .title--decorate .image-banner__title-line2,
+  .title--decorate .image-banner__title-line1 span,
+  .title--decorate .image-banner__title-line2 span {
+    text-decoration: none !important;
+    text-underline-offset: 0 !important;
+  }
+  
+  /* Style pour le mot "UNIQUE" en couleur dorée */
+  .image-banner__title-unique {
+    color: #DFBE71 !important;
+    text-decoration: none !important;
+  }
+  
+  /* Styles pour le deuxième texte (sous-titre) */
+  .image-banner__title-subtitle {
+    margin: 0 !important;
+    margin-top: clamp(-0.5rem, -0.3vw, -0.3rem) !important;
+    padding: 0 !important;
+    font-family: 'Libre Baskerville', serif !important;
+    font-style: italic !important;
+    font-size: clamp(16px, 2.5vw, 32px) !important;
+    line-height: 150% !important;
+    white-space: nowrap !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-transform: none !important;
+  }
+  
+  .image-banner__text,
+  .libre-baskerville-text,
+  .image-banner__information .image-banner__text,
+  .image-banner__information p,
+  .image-banner__information p.image-banner__text {
+    font-family: 'Libre Baskerville', serif !important;
+    font-style: italic !important;
+    font-size: clamp(20px, 3.5vw, 32px) !important;
+    line-height: 150% !important;
+  }
+  
+  /* Styles mobile pour réduire les tailles de texte */
+  @media screen and (max-width: 768px) {
+    .image-banner__title-main {
+      font-size: 26px !important;
+      line-height: 1.2 !important;
+    }
+    .image-banner__title-subtitle {
+      font-size: 18px !important;
+      margin-top: 0.5rem !important;
+      white-space: normal !important;
+      overflow: visible !important;
+    }
+    .image-banner__text,
+    .libre-baskerville-text,
+    .image-banner__information .image-banner__text,
+    .image-banner__information p,
+    .image-banner__information p.image-banner__text {
+      font-size: clamp(0.9rem, 3.2vw, 1.4rem) !important;
+      line-height: 1.35 !important;
+    }
+  }
+{% endstyle %}
+
+{%- liquid
+	assign image_ratio = section.settings.image_ratio
+-%}
+
+{%- if image_ratio == 'adapt' and section.settings.image != blank -%}
+	{%- style -%}
+		#Banner-{{ section.id }}.image--overlay::before, #Banner-{{ section.id }} .banner__media::before {
+		     padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+		     content: '';
+		     display: block;
+		   }
+	{%- endstyle -%}
+{%- elsif image_ratio == 'adapt' and section.settings.image == blank -%}
+	{%- style -%}
+		#Banner-{{ section.id }}.image--overlay::before, #Banner-{{ section.id }} .banner__media::before {
+					padding-bottom: 25%;
+					content: '';
+					display: block;
+				}
+	{%- endstyle -%}
+{%- endif -%}
+
+{%- if section.settings.image_position == 'top' -%}
+	{%- style -%}
+		.image--{{ section.settings.image_position }} .round-stamp {
+			  bottom: {{ section.settings.round_stamp_width | divided_by: 2 | times: -1 }}px !important;
+		   }
+	{%- endstyle -%}
+{%- endif -%}
+
+{%- style -%}
+	.image-banner-section .image-banner.container {
+		max-width: 100% !important;
+		width: 100% !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+{%- endstyle -%}
+
+<div class='image-banner' style='max-width: 100% !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; margin-left: 0 !important; margin-right: 0 !important;'>
+	<div class='border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}'>
+		<div
+			id='Banner-{{ section.id }}'
+			class='banner banner--{{ section.settings.image_ratio }} image--{{ section.settings.image_position }} {% if section.settings.image_position == 'overlay' %}color-inverse{% endif %} {%- if section.settings.image_link != blank -%} image-banner-link-wrapper{%- endif -%}'
+		>
+			{%- if section.settings.image_link != blank -%}
+				<a
+				href='{{ section.settings.image_link }}'
+				class='link image-banner-link'
+			> 
+			{%- endif -%}
+				{%- if section.settings.image != blank -%}
+					<div class='banner__media media img-scale'>
+						<div class="image-link-overflow">
+							<img
+								srcset='
+									{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+									{%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+									{%- if section.settings.image.width >= 1296 -%}{{ section.settings.image | img_url: '1296x' }} 1296w,{%- endif -%}
+									{%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+									{%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+									{%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+									{%- if section.settings.image.width >= 2800 -%}{{ section.settings.image | img_url: '2800x' }} 2800w{%- endif -%}
+								'
+								src='{{ section.settings.image | img_url: '1296x' }}'
+								loading='lazy'
+								alt='{{ section.settings.image.alt | escape }}'
+								width='{{ section.settings.image.width }}'
+								height='{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}'
+								style='object-position: {{ section.settings.image.presentation.focal_point }}'
+							>
+						</div>
+						{%- if section.settings.round_stamp_enable -%}
+							{% render 'round-stamp' %}
+						{%- endif -%}
+					</div>
+				{%- else -%}
+				<div class='banner__media media placeholder'>
+					<div class="image-link-overflow">
+						{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+					</div>
+					{%- if section.settings.round_stamp_enable -%}
+						{% render 'round-stamp' %}
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+			{%- if section.settings.image_link != blank -%}
+			 </a> 
+ 			{%- endif -%}
+			<div class='image-banner__wrapper {% if section.settings.text_align != 'left' %}image-banner__column--center{% endif %}'>
+				{%- if section.settings.sub_title != blank -%}
+					<div class='subtitle'>
+						{{ section.settings.sub_title }}
+					</div>
+				{%- endif -%}
+				<div class='image-banner__column {% if section.settings.text_order != 'row' %}image-banner__column--column{% endif %}'>
+					<div class='image-banner__title title--section title--decorate title--section-mt-none'>
+						<p class='image-banner__title-main'>
+							<span class='image-banner__title-line1'>VOTRE THÈME</span><br>
+							<span class='image-banner__title-line2'>ASTRAL EST<br class='mobile-break'> <span class='image-banner__title-unique'>UNIQUE</span></span>
+						</p>
+						<p class='image-banner__title-subtitle'>Nous le transformons<br class='mobile-break'> en œuvre d'art.</p>
+					</div>
+
+					{%- if section.settings.text_information != blank
+						or section.settings.show_view_all
+					-%}
+						<div class='image-banner__information'>
+					{%- if section.settings.text_information != blank -%}
+						<p class='image-banner__text libre-baskerville-text'>
+							{{ section.settings.text_information }}
+						</p>
+					{%- endif -%}
+
+							{%- if section.settings.show_view_all -%}
+								<a
+									{% if section.settings.button_link != blank %}
+										href='{{ section.settings.button_link }}'
+									{% endif %}
+									class='button image-banner__button button--oeuvres button--{{ section.settings.button_style }}'
+									{% if section.settings.button_link == blank %}
+										aria-disabled='true'
+									{% endif %}
+								>
+									<span class='button__text'>{{ section.settings.button_label | escape }}</span>
+								</a>
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.image-banner.name",
+	"tag": "section",
+	"class": "image-banner-section spaced-section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "richtext",
+			"id": "title",
+			"default": "t:sections.image-banner.settings.title.default",
+			"label": "t:sections.image-banner.settings.title.label"
+		},
+		{
+			"type": "text",
+			"id": "sub_title",
+			"default": "t:sections.image-banner.settings.sub_title.default",
+			"label": "t:sections.image-banner.settings.sub_title.label"
+		},
+		{
+			"type": "text",
+			"id": "text_information",
+			"default": "t:sections.image-banner.settings.text_information.default",
+			"label": "t:sections.image-banner.settings.text_information.label"
+		},
+		{
+			"type": "select",
+			"id": "text_order",
+			"options": [
+				{
+					"value": "row",
+					"label": "t:sections.image-banner.settings.text_order.options__1.label"
+				},
+				{
+					"value": "colum",
+					"label": "t:sections.image-banner.settings.text_order.options__2.label"
+				}
+			],
+			"default": "row",
+			"label": "t:sections.image-banner.settings.text_order.label"
+		},
+		{
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:sections.image-banner.settings.text_align.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.image-banner.settings.text_align.options__2.label"
+				}
+			],
+			"default": "left",
+			"label": "t:sections.image-banner.settings.text_align.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header__1.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_view_all",
+			"default": true,
+			"label": "t:sections.image-banner.settings.show_view_all.label"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "t:sections.image-banner.settings.button_label.default",
+			"label": "t:sections.image-banner.settings.button_label.label"
+		},
+		{
+			"type": "select",
+			"id": "button_style",
+			"options": [
+				{
+					"value": "primary",
+					"label": "t:sections.image-banner.settings.button_style.options__1.label"
+				},
+				{
+					"value": "secondary",
+					"label": "t:sections.image-banner.settings.button_style.options__2.label"
+				},
+				{
+					"value": "inverse",
+					"label": "t:sections.image-banner.settings.button_style.options__3.label"
+				}
+			],
+			"default": "primary",
+			"label": "t:sections.image-banner.settings.button_style.label",
+			"info": "t:sections.image-banner.settings.button_style.info"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:sections.image-banner.settings.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header__2.content"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:sections.image-banner.settings.image.label"
+		},
+		{
+			"type": "select",
+			"id": "image_position",
+			"options": [
+				{
+					"value": "top",
+					"label": "t:sections.image-banner.settings.image_position.options__1.label"
+				},
+				{
+					"value": "overlay",
+					"label": "t:sections.image-banner.settings.image_position.options__2.label"
+				}
+			],
+			"default": "overlay",
+			"label": "t:sections.image-banner.settings.image_position.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.image-banner.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "landscape",
+					"label": "t:sections.image-banner.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.image-banner.settings.image_ratio.options__3.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.image-banner.settings.image_ratio.options__4.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:sections.image-banner.settings.image_ratio.label"
+		},
+		{
+			"type": "url",
+			"id": "image_link",
+			"label": "t:sections.image-banner.settings.image_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header__3.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "round_stamp_enable",
+			"default": true,
+			"label": "t:sections.image-banner.settings.round_stamp_enable.label"
+		},
+		{
+			"type": "text",
+			"id": "round_stamp_text",
+			"default": "stockholm ~ stockholm ~",
+			"label": "t:sections.image-banner.settings.round_stamp_text.label"
+		},
+		{
+			"type": "number",
+			"id": "round_stamp_width",
+			"default": 140,
+			"label": "t:sections.image-banner.settings.round_stamp_width.label",
+			"info": "t:sections.image-banner.settings.round_stamp_width.info"
+		},
+		{
+			"type": "number",
+			"id": "round_stamp_size",
+			"default": 50,
+			"label": "t:sections.image-banner.settings.round_stamp_size.label",
+			"info": "t:sections.image-banner.settings.round_stamp_size.info"
+		},
+		{
+			"type": "number",
+			"id": "round_stamp_letter_spacing",
+			"default": 8,
+			"label": "t:sections.image-banner.settings.round_stamp_letter_spacing.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header__4.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.image-banner.settings.border_top.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_bottom",
+			"default": false,
+			"label": "t:sections.image-banner.settings.border_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-banner.presets.name"
+		}
+	]
+}
+{% endschema %}

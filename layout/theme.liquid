@@ -1,0 +1,450 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TQD274BT');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/lemon-milk" rel="stylesheet">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', '600'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+      assign heading_font_regular = settings.type_header_font | font_modify: 'weight', '400'
+    %}
+
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ heading_font_regular | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font_card | font_face: font_display: 'swap' }}
+      {{ settings.type_button_font | font_face: font_display: 'swap' }}
+      {{ settings.type_header_menu_font | font_face: font_display: 'swap' }}
+      {{ settings.type_popups_heading_font | font_face: font_display: 'swap' }}
+      {{ settings.type_popups_text_font | font_face: font_display: 'swap' }}
+
+      :root {
+      --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      --font-body-style: {{ settings.type_body_font.style }};
+      --font-body-weight: {{ settings.type_body_font.weight }};
+
+      --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+      --font-heading-style: {{ settings.type_header_font.style }};
+      --font-heading-weight: {{ settings.type_header_font.weight }};
+      --font-heading-letter-spacing: {{ settings.type_header_letter_spacing }}em;
+
+      --font-heading-card-family: {{ settings.type_header_font_card.family }}, {{ settings.type_header_font_card.fallback_families }};
+      --font-heading-card-style: {{ settings.type_header_font_card.style }};
+      --font-heading-card-weight: {{ settings.type_header_font_card.weight }};
+      --font-heading-card-text-transform: {{ settings.heading_text_transform_card }};
+      --font-heading-card-letter-spacing: {{ settings.type_header_card_letter_spacing }}em;
+
+      --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+      --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+      --font-heading-card-scale: {{ settings.heading_scale_card | times: 1.0 | divided_by: settings.body_scale }};
+
+      --font-button-family: {{ settings.type_button_font.family }}, {{ settings.type_button_font.fallback_families }};
+      --font-button-style: {{ settings.type_button_font.style }};
+      --font-button-weight: {{ settings.type_button_font.weight }};
+      --font-button-text-transform: {{ settings.button_text_transform }};
+
+      --font-button-family: {{ settings.type_button_font.family }}, {{ settings.type_button_font.fallback_families }};
+      --font-button-style: {{ settings.type_button_font.style }};
+      --font-button-weight: {{ settings.type_button_font.weight }};
+      --font-button-text-transform: {{ settings.button_text_transform }};
+
+      --font-header-menu-family: {{ settings.type_header_menu_font.family }}, {{ settings.type_header_menu_font.fallback_families }};
+      --font-header-menu-style: {{ settings.type_header_menu_font.style }};
+      --font-header-menu-weight: {{ settings.type_header_menu_font.weight }};
+      --font-header-menu-text-transform: {{ settings.header_menu_text_transform }};
+
+      --font-popups-heading-family: {{ settings.type_popups_heading_font.family }}, {{ settings.type_popups_heading_font.fallback_families }};
+      --font-popups-heading-style: {{ settings.type_popups_heading_font.style }};
+      --font-popups-heading-weight: {{ settings.type_popups_heading_font.weight }};
+      --font-popups-text-family: {{ settings.type_popups_text_font.family }}, {{ settings.type_popups_text_font.fallback_families }};
+      --font-popups-text-style: {{ settings.type_popups_text_font.style }};
+      --font-popups-text-weight: {{ settings.type_popups_text_font.weight }};
+      --font-popups-scale: {{ settings.popups_scale | divided_by: 100.0 }};
+
+      --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+      --color-title-text: {{ settings.colors_text_title.red }}, {{ settings.colors_text_title.green }}, {{ settings.colors_text_title.blue }};
+      --color-secondary-text: {{ settings.colors_text_secondary.red }}, {{ settings.colors_text_secondary.green }}, {{ settings.colors_text_secondary.blue }};
+      --color-base-background-1: {{ settings.colors_background_1.red }}, {{ settings.colors_background_1.green }}, {{ settings.colors_background_1.blue }};
+      --color-base-background-2: {{ settings.colors_background_2.red }}, {{ settings.colors_background_2.green }}, {{ settings.colors_background_2.blue }};
+
+      --color-secondary-element-background: {{ settings.colors_secondary_element_background.red }}, {{ settings.colors_secondary_element_background.green }}, {{ settings.colors_secondary_element_background.blue }};
+
+      --color-announcement-bar-background: {{ settings.colors_background_announcement_bar.red }}, {{ settings.colors_background_announcement_bar.green }}, {{ settings.colors_background_announcement_bar.blue }};
+
+      --color-section-border: {{ settings.colors_background_border_section.red }}, {{ settings.colors_background_border_section.green }}, {{ settings.colors_background_border_section.blue }};
+      --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{ settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
+      --color-base-outline-button-labels: {{ settings.colors_outline_button_labels.red }}, {{ settings.colors_outline_button_labels.green }}, {{ settings.colors_outline_button_labels.blue }};
+      --color-base-button-background: {{ settings.colors_solid_button_background.red }}, {{ settings.colors_solid_button_background.green }}, {{ settings.colors_solid_button_background.blue }};
+      --payment-terms-background-color: {{ settings.colors_background_1 }};
+
+      }
+
+      *,
+      *::before,
+      *::after {
+      box-sizing: inherit;
+      }
+
+      html {
+      box-sizing: border-box;
+      font-size: 10px;
+      height: 100%;
+
+      }
+
+      body {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 100%;
+      margin: 0;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      font-family: var(--font-body-family);
+      font-style: var(--font-body-style);
+      font-weight: var(--font-body-weight);
+      font-weight: var(--font-body-weight);
+      overflow: visible !important;
+      overflow-x: clip !important;
+      height: auto !important;
+      }
+      html {
+        overflow: visible !important;
+        overflow-x: clip !important;
+        height: auto !important;
+      }
+      .content-for-layout {
+      flex: 1;
+      }
+
+      @media screen and (min-width: 750px) {
+      body {
+      font-size: 1.4rem;
+      }
+      }
+
+      .spaced-section {
+      margin-top: 5rem;
+      }
+
+      @media screen and (min-width: 990px) {
+      .spaced-section {
+      margin-top: {{ settings.indent_section }}px;
+      }
+      }
+    {% endstyle %}
+    {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
+    {{ 'quickview.css' | asset_url | stylesheet_tag }}
+    {{ 'bootstrap-grid.css' | asset_url | stylesheet_tag }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {%- if settings.predictive_search_enabled -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'component-predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
+    {%- endif -%}
+
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+    <meta name="google-site-verification" content="wOk-p7uQj7RG7LWs6CRX7TzLn3vDuj5gre6JNvgGMlo">
+    <meta name="google-site-verification" content="nWgzoHag9-NksE6Km3gFbG5X40Z7-4ByZaRggRkbuOI" />
+  </head>
+
+  <body class="template-{{ template.name }} template-{{ template | replace: '.', '-' }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TQD274BT"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {% sections 'header-group' %}
+    {% sections 'overlay-group' %}
+    {% if settings.show_breadcrumbs %}
+      {% render 'breadcrumbs' %}
+    {% endif %}
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {% if settings.show_back_to_top %}
+      {% render 'scroll-top' %}
+    {% endif %}
+
+    {%- if request.page_type != 'cart' and settings.show_cart == true -%}
+      {%- render 'cart-drawer' -%}
+    {%- endif -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    {{ 'jquery-3.6.0.js' | asset_url | script_tag }}
+    {{ 'jquery.fancybox.js' | asset_url | script_tag }}
+    {{ 'slick.js' | asset_url | script_tag }}
+    {{ 'quickview.js' | asset_url | script_tag }}
+    {{ 'popup.js' | asset_url | script_tag }}
+    {% if settings.show_back_to_top %}
+      <script src="{{ 'scroll-top.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+    {% if settings.type_color_swatch == 'custom' %}
+      <script src="{{ 'product-card.js' | asset_url }}" defer="defer"></script>
+      {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+    <script>
+      {% capture content %}{% include 'quickview' %}{% endcapture %}
+      var content = {{ content | json }};
+    </script>
+
+    <script>
+			window.routes = {
+				cart_add_url: '{{ routes.cart_add_url }}',
+				cart_change_url: '{{ routes.cart_change_url }}',
+				cart_update_url: '{{ routes.cart_update_url }}',
+				predictive_search_url: '{{ routes.predictive_search_url }}'
+			};
+
+			window.cartStrings = {
+				error: `{{ 'sections.cart.cart_error' | t }}`,
+				quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`,
+				empty: `{{ 'general.cart.empty_cart' | t }}`
+			}
+
+			window.variantStrings = {
+				addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+				soldOut: `{{ 'products.product.sold_out' | t }}`,
+				unavailable: `{{ 'products.product.unavailable' | t }}`,
+				unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`
+			}
+
+			window.theme = {
+				moneyFormat: {{ shop.money_format | json }},
+				quickviewText: `{{ settings.quickview }}`,
+				quickviewMore: `{{ 'general.card.view__more' | t }}`
+			}
+    </script>
+
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+      <script
+        src="{{ 'predictive-search.js' | asset_url }}"
+        defer="defer"
+      ></script>
+    {%- endif -%}
+    <script>
+      if (window.Shopify && window.Shopify.theme && navigator && navigator.sendBeacon && window.Shopify.designMode) {
+        const themeKey = `dataSent_{{ theme.name }}`;
+        if (!localStorage.getItem(themeKey)) {
+          navigator.sendBeacon(
+            'https://cdn.ashstonestudios.com/shopify-beacon/sent/',
+            new URLSearchParams({
+              shop: window.Shopify.shop,
+              role: window.Shopify.theme.role,
+              route: window.location.pathname,
+              themeId: window.Shopify.theme.id,
+              themeStoreId: window.Shopify.theme.theme_store_id || 0,
+              isThemeEditor: !!window.Shopify.designMode,
+              themeName: '{{ theme.name }}',
+              shopName: '{{ shop.name }}',
+              shopEmail: '{{ shop.email }}',
+            })
+          );
+          localStorage.setItem(themeKey, 'true');
+        }
+      }
+    </script>
+
+    <script>
+      (function () {
+        // 1. Sauvegarde de la méthode fetch native
+        const originalFetch = window.fetch;
+
+        // 2. Surcharge de fetch
+        window.fetch = function () {
+          return originalFetch.apply(this, arguments).then(async (response) => {
+            // 3. Vérification de l'URL cible (ajout au panier)
+            if (response.url && response.url.includes('/cart/add')) {
+              try {
+                // Clonage de la réponse pour ne pas consommer le flux de données du thème
+                const clone = response.clone();
+                const data = await clone.json();
+
+                // 4. Construction de l'objet pour GTM
+                const itemData = data.items ? data.items[0] : data; // Gestion ajout simple ou multiple
+
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                  event: 'add_to_cart',
+                  ecommerce: {
+                    currency: window.Shopify.currency.active,
+                    value: itemData.final_price / 100,
+                    items: [
+                      {
+                        item_id: itemData.variant_id.toString(),
+                        item_name: itemData.product_title,
+                        item_variant: itemData.variant_title,
+                        price: itemData.final_price / 100,
+                        quantity: itemData.quantity,
+                        item_brand: itemData.vendor,
+                      },
+                    ],
+                  },
+                });
+              } catch (e) {
+                console.error('GTM AddToCart Error:', e);
+              }
+            }
+            return response;
+          });
+        };
+      })();
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // CONFIGURATION DES CHAMPS À SURVEILLER
+        // On mappe vos IDs de formulaire pour les sauvegarder
+        const fields = {
+          'ContactForm-email': 'email',
+          'ContactForm-phone': 'phone',
+          'ContactForm-nom': 'nom',
+          'ContactForm-prenom': 'prenom',
+        };
+
+        // 1. SAUVEGARDE EN TEMPS RÉEL (Pendant que l'utilisateur tape)
+        Object.keys(fields).forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.addEventListener('change', function () {
+              // On stocke la valeur dans la mémoire de session du navigateur
+              sessionStorage.setItem('ag_lead_' + fields[id], this.value);
+            });
+          }
+        });
+
+        // 2. DÉTECTION DU SUCCÈS (Après le rechargement de page)
+        // Shopify ajoute toujours "?contact_posted=true" dans l'URL après un envoi réussi
+        if (window.location.search.includes('contact_posted=true')) {
+          // Fonctions de nettoyage (Standard Meta/Google)
+          function clean(val) {
+            return val ? val.trim().toLowerCase() : undefined;
+          }
+          function cleanPhone(val) {
+            return val ? val.replace(/\D/g, '') : undefined;
+          }
+
+          // Récupération des données sauvegardées juste avant l'envoi
+          var email = sessionStorage.getItem('ag_lead_email');
+          var phone = sessionStorage.getItem('ag_lead_phone');
+          var nom = sessionStorage.getItem('ag_lead_nom');
+          var prenom = sessionStorage.getItem('ag_lead_prenom');
+
+          // Envoi du DataLayer (C'est ici que le tracking se fait réellement)
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'generate_lead',
+            form_id: 'ContactForm',
+            user_data: {
+              email: clean(email),
+              phone_number: cleanPhone(phone),
+              last_name: clean(nom),
+              first_name: clean(prenom),
+            },
+          });
+
+          console.log('✅ Lead détecté et envoyé avec succès (Méthode Persistante)');
+
+          // Nettoyage de la mémoire pour ne pas re-tracker plus tard
+          Object.keys(fields).forEach(function (id) {
+            sessionStorage.removeItem('ag_lead_' + fields[id]);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

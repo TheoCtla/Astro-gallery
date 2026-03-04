@@ -1,0 +1,268 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="rich-text{% if section.settings.full_width %} rich-text--full-width{% endif %} color-{{ section.settings.color_scheme }}">
+  <div class="rich-text__blocks">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          {%- comment -%} Texte en dur pour "Deux façons de célébrer votre ciel natal." {%- endcomment -%}
+          {%- if block.settings.heading == 'Deux façons de célébrer votre ciel natal.'
+            or block.settings.heading contains 'Deux façons de célébrer'
+          -%}
+            <h2 class="rich-text__heading-custom" id="deux-facons" {{ block.shopify_attributes }}>
+              Deux façons de célébrer votre ciel natal.
+            </h2>
+          {%- else -%}
+            <h2
+              class="title--section {% if block.settings.heading_size == 'small' %}h2{% else %}h1{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.heading | escape }}
+            </h2>
+          {%- endif -%}
+        {%- when 'text' -%}
+          {%- comment -%} Texte en dur avec Libre Baskerville - affiché uniquement si le bloc suivant est un bouton {%- endcomment -%}
+          {%- assign next_block = section.blocks[forloop.index] -%}
+          {%- if next_block.type == 'button' -%}
+            <div class="rich-text__description rich-text__description--side-by-side" {{ block.shopify_attributes }}>
+              <div class="rich-text__description-image">
+                <img
+                  src="{{ '3cb7c2dff3ff7dc701f30375ee2ef4cc752ee9f9.png' | asset_url }}"
+                  alt="ASTROGALLERY"
+                  loading="lazy"
+                  class="rich-text__description-image-content"
+                >
+              </div>
+              <div class="rich-text__description-texts">
+                <p class="rich-text__description-text">
+                  ASTROGALLERY révèle la beauté singulière de votre thème natal à travers des créations personnalisées,
+                  porteuses de sens, certifiées originales et uniques.
+                </p>
+                <span class="rich-text__description-separator">•</span>
+                <p class="rich-text__description-text">
+                  Un espace où l'art rencontre l'astrologie, où le savoir ancestral, l'intuition et le regard moderne
+                  dialoguent en harmonie.
+                </p>
+              </div>
+            </div>
+          {%- elsif block.settings.text contains 'Solo ou Duo' or block.settings.text contains 'miroir céleste' -%}
+            {%- comment -%} Texte en dur pour "Solo ou Duo, chaque œuvre est un miroir céleste..." {%- endcomment -%}
+            <div class="rich-text__text-custom" {{ block.shopify_attributes }}>
+              <p class="rich-text__text-custom-content">
+                SOLO ou DUO, chaque oeuvre est un miroir céleste unique : Un objet d'art et de sens, pour soi ou pour offrir.
+              </p>
+            </div>
+          {%- else -%}
+            <div
+              class="rich-text__text rte{% if settings.rte_type == 'custom' %} rte__container{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.text }}
+            </div>
+          {%- endif -%}
+        {%- when 'description' -%}
+          <div class="rich-text__description" {{ block.shopify_attributes }}>
+            <p class="rich-text__description-text">{{ block.settings.text_paragraph_1 }}</p>
+            <div class="rich-text__description-image">
+              <img
+                src="{{ 'image_2000x.jpg.png' | asset_url }}"
+                alt="ASTROGALLERY"
+                loading="lazy"
+                class="rich-text__description-image-content"
+              >
+            </div>
+            <p class="rich-text__description-text">{{ block.settings.text_paragraph_2 }}</p>
+          </div>
+        {%- when 'button' -%}
+          {%- if block.settings.button_label == 'Découvrir les œuvres' or block.settings.button_label == 'Découvrir les oeuvres' -%}
+            <a
+              href="#deux-facons"
+              class="button button--primary button--oeuvres js-smooth-scroll"
+              {{ block.shopify_attributes }}
+            >
+              <span class="button__text">{{ block.settings.button_label | escape }}</span>
+            </a>
+          {%- else -%}
+            <a
+              {% if block.settings.button_link == blank %}
+                aria-disabled="true"
+              {% else %}
+                href="{{ block.settings.button_link }}"
+              {% endif %}
+              class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <span class="button__text">{{ block.settings.button_label | escape }}</span>
+            </a>
+          {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.rich-text.name",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width rich-text-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "t:sections.rich-text.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.rich-text.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.rich-text.settings.color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.rich-text.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "t:sections.rich-text.blocks.heading.settings.heading.default",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__1.label"
+            },
+            {
+              "value": "medium",
+              "label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__2.label"
+            }
+          ],
+          "default": "medium",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.rich-text.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "t:sections.rich-text.blocks.text.settings.text.default",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_paragraph_1",
+          "default": "ASTROGALLERY révèle la beauté singulière de votre thème natal à travers des créations personnalisées, porteuses de sens, certifiées originales et uniques.",
+          "label": "Premier paragraphe"
+        },
+        {
+          "type": "text",
+          "id": "text_paragraph_2",
+          "default": "Un espace où l'art rencontre l'astrologie, où le savoir ancestral, l'intuition et le regard moderne dialoguent en harmonie.",
+          "label": "Deuxième paragraphe"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.rich-text.blocks.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "t:sections.rich-text.blocks.button.settings.button_label.default",
+          "label": "t:sections.rich-text.blocks.button.settings.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.rich-text.blocks.button.settings.button_link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "t:sections.rich-text.blocks.button.settings.button_style_secondary.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rich-text.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const smoothScrollLinks = document.querySelectorAll('.js-smooth-scroll');
+    
+    smoothScrollLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerOffset = 100;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>

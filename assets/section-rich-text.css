@@ -1,0 +1,446 @@
+
+.rich-text {
+  margin: auto;
+  max-width: clamp(20rem, 82vw, 100vw);
+  text-align: center;
+  /* 1.5rem margin on left & right */
+  width: calc(100% - clamp(1.5rem, 3vw, 3rem));
+}
+
+.rich-text.rich-text--full-width {
+  max-width: clamp(20rem, 82vw, 100vw);
+  width: calc(100% - clamp(1.5rem, 3vw, 3rem));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rich-text__blocks {
+  margin: auto;
+  /* 2.5rem margin on left & right */
+  width: calc(100% - clamp(2.5rem, 5vw, 5rem));
+  text-align: center;
+}
+
+.rich-text__blocks * {
+  overflow-wrap: break-word;
+}
+
+.rich-text--full-width .rich-text__blocks {
+  /* 4rem (1.5rem + 2.5rem) margin on left & right */
+  width: calc(100% - clamp(4rem, 8vw, 8rem));
+  max-width: clamp(20rem, 82vw, 100vw);
+}
+
+.rich-text:not(.rich-text--full-width),
+.rich-text--full-width.color-background-1 {
+  margin-top: 0;
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+.rich-text:not(.color-background-1) {
+  padding-top: 0;
+  padding-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+@media screen and (min-width: 750px) {
+  .rich-text {
+    /* 5rem margin on left & right */
+    width: calc(100% - clamp(5rem, 10vw, 10rem));
+  }
+  .rich-text__blocks {
+    max-width: clamp(30rem, 50vw, 50rem);
+  }
+  .rich-text.rich-text--full-width {
+    max-width: clamp(20rem, 82vw, 100vw);
+    width: calc(100% - clamp(5rem, 10vw, 10rem));
+  }
+  .rich-text--full-width .rich-text__blocks {
+    /* 7.5rem (5rem + 2.5rem) margin on left & right */
+    width: calc(100% - clamp(7.5rem, 15vw, 15rem));
+    max-width: clamp(20rem, 82vw, 100vw);
+  }
+}
+@media screen and (max-width: 749px) {
+  .rich-text,
+  .rich-text.rich-text--full-width,
+  .rich-text--full-width .rich-text__blocks,
+  .rich-text__image {
+    max-width: clamp(16rem, 90vw, 100vw);
+  }
+}
+@media screen and (min-width: 990px) {
+  .rich-text.rich-text--full-width {
+    max-width: clamp(20rem, 82vw, 100vw);
+  }
+  .rich-text--full-width .rich-text__blocks {
+    max-width: clamp(20rem, 82vw, 100vw);
+  }
+  /* Annuler le margin-top de spaced-section pour cette section */
+  .spaced-section.rich-text-section {
+    margin-top: clamp(0.5rem, 1vw, 1rem) !important;
+  }
+}
+/* Blocks */
+.rich-text__blocks > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.rich-text__blocks > * + * {
+  margin-top: clamp(1rem, 2.5vw, 2rem);
+}
+
+.rich-text__blocks > * + a {
+  margin-top: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+/* Description avec Libre Baskerville */
+.rich-text__description {
+  text-align: center;
+  margin: clamp(1rem, 2.5vw, 2rem) 0;
+}
+
+/* Layout côte à côte : image à gauche, textes à droite */
+.rich-text__description--side-by-side {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  text-align: left;
+  max-width: 1200px;
+  margin: clamp(2rem, 5vw, 80px) auto !important;
+}
+
+.rich-text__description--side-by-side .rich-text__description-image {
+  flex: 1;
+  width: 50%;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.rich-text__description--side-by-side .rich-text__description-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rich-text__description--side-by-side .rich-text__description-texts {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: center;
+}
+
+.rich-text__description--side-by-side .rich-text__description-text {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  font-size: clamp(14px, 1.8vw, 22px) !important;
+  line-height: 1.7;
+}
+
+.rich-text__description--side-by-side .rich-text__description-separator {
+  display: block;
+  text-align: center;
+  margin: clamp(1rem, 2vw, 1.5rem) 0;
+  font-size: 24px;
+  color: #1d1d1c;
+  width: 100%;
+}
+
+/* Responsive : empiler sur mobile */
+@media screen and (max-width: 768px) {
+  .rich-text__description--side-by-side {
+    flex-direction: column;
+    text-align: center;
+    max-width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .rich-text__description--side-by-side .rich-text__description-image {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .rich-text__description--side-by-side .rich-text__description-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .rich-text__description--side-by-side .rich-text__description-texts {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .rich-text__description--side-by-side .rich-text__description-text {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.rich-text__description-text {
+  font-family: 'Libre Baskerville', serif !important;
+  font-style: italic !important;
+  font-size: clamp(16px, 2.5vw, 22px);
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  padding: clamp(1rem, 2.5vw, 2rem) 0;
+}
+
+.rich-text__description-separator {
+  display: block;
+  text-align: center;
+  margin: clamp(0.5rem, 1.5vw, 1rem) 0;
+  font-size: clamp(10px, 1.5vw, 12px);
+  color: inherit;
+}
+
+/* Image entre les deux textes de description */
+.rich-text__description-image {
+  text-align: center;
+  margin: clamp(1rem, 2vw, 1.5rem) 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rich-text__description-image-content {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Image sous le bouton */
+.rich-text__image {
+  text-align: center;
+  margin-top: clamp(1.5rem, 3.5vw, 3rem);
+  width: 100%;
+  max-width: clamp(20rem, 82vw, 100vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rich-text__image-content {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styles pour le titre "Deux façons de célébrer votre ciel natal." */
+.rich-text__heading-custom {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3.5vw, 35px);
+  letter-spacing: clamp(-0.8px, -0.5vw, -0.5px);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  color: #1D1D1B;
+}
+
+/* Styles pour le texte "Solo ou Duo, chaque œuvre est un miroir céleste..." */
+.rich-text__text-custom {
+  text-align: center;
+  margin: clamp(1rem, 2.5vw, 2rem) 0;
+}
+
+.rich-text__text-custom-content {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(16px, 2.5vw, 22px);
+  letter-spacing: clamp(-0.8px, -0.5vw, -0.5px);
+  color: #1D1D1B;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Bouton "Découvrir les œuvres" avec effet hover - Style basé sur button--arrow */
+.button--oeuvres {
+  position: relative;
+  background-color: #DFBE71 !important;
+  color: #1D1D1B !important;
+  border: none !important;
+  padding: clamp(1rem, 1.2vw, 1.2rem) clamp(2rem, 3vw, 3rem);
+  text-decoration: none;
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 200;
+  font-size: clamp(10px, 1.5vw, 12px);
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 1.5vw, 1.5px);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: auto;
+  min-height: auto;
+  --color-button: #DFBE71 !important;
+  --color-button-text: #1D1D1B !important;
+  --alpha-button-background: 1 !important;
+  --alpha-button-border: 0 !important;
+}
+
+.button--oeuvres .button__text {
+  transform: translateX(0);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(0.5rem, 0.8vw, 0.8rem);
+}
+
+/* Point noir à gauche du texte (::before) - même espacement que la flèche */
+.button--oeuvres::before {
+  content: '';
+  position: absolute;
+  left: clamp(1rem, 1.2vw, 1.2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(4px, 0.5vw, 5px);
+  height: clamp(4px, 0.5vw, 5px);
+  background-color: #1D1D1B;
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Point à droite qui se transforme en flèche (::after) - même espacement que le point gauche */
+.button--oeuvres::after {
+  content: '';
+  position: absolute;
+  right: clamp(1rem, 1.2vw, 1.2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(4px, 0.5vw, 5px);
+  height: clamp(4px, 0.5vw, 5px);
+  background-color: #1D1D1B;
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Effet hover - Exactement comme button--arrow */
+@media (hover: hover) and (pointer: fine) {
+  .button--oeuvres:hover {
+    padding-left: clamp(2rem, 3vw, 3rem);
+    padding-right: clamp(2.5rem, 3.5vw, 3.5rem);
+    background-color: #DFBE71 !important;
+    border: none !important;
+    color: #1D1D1B !important;
+    --color-button: #DFBE71 !important;
+    --alpha-button-background: 1 !important;
+    --alpha-button-border: 0 !important;
+  }
+
+  /* Le texte reste centré */
+  .button--oeuvres:hover .button__text {
+    transform: translateX(0);
+  }
+
+  /* Le point à gauche reste visible et ne bouge pas */
+  .button--oeuvres:hover::before {
+    transform: translateY(-50%);
+    left: clamp(1rem, 1.2vw, 1.2rem);
+  }
+
+  /* Le point à droite se transforme en flèche */
+  .button--oeuvres:hover::after {
+    content: '→';
+    width: auto;
+    height: auto;
+    min-width: auto;
+    min-height: auto;
+    background: none;
+    border-radius: 0;
+    font-size: clamp(12px, 1.82vw, 14px);
+    line-height: 1;
+    color: #1D1D1B;
+    opacity: 1;
+    right: clamp(1rem, 1.2vw, 1.2rem);
+    /* Animation pour transition fluide du point vers la flèche */
+    animation: pointToArrow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  @keyframes pointToArrow {
+    0% {
+      opacity: 1;
+      border-radius: 50%;
+      width: clamp(4px, 0.5vw, 5px);
+      height: clamp(4px, 0.5vw, 5px);
+      background-color: #1D1D1B;
+      transform: translateY(-50%);
+    }
+    50% {
+      opacity: 0;
+      border-radius: 50%;
+      width: clamp(4px, 0.5vw, 5px);
+      height: clamp(4px, 0.5vw, 5px);
+      background-color: transparent;
+      transform: translateY(-50%);
+    }
+    51% {
+      opacity: 0;
+      border-radius: 0;
+      width: auto;
+      height: auto;
+      min-width: auto;
+      min-height: auto;
+      background: none;
+      transform: translateY(-50%);
+      line-height: 1;
+    }
+    100% {
+      opacity: 1;
+      border-radius: 0;
+      width: auto;
+      height: auto;
+      min-width: auto;
+      min-height: auto;
+      background: none;
+      transform: translateY(-50%);
+      line-height: 1;
+    }
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 750px) {
+  .button--oeuvres {
+    padding: clamp(0.8rem, 1vw, 1rem) clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(10px, 1.5vw, 12px);
+    letter-spacing: clamp(0.8px, 1vw, 1px);
+  }
+
+  .button--oeuvres::before {
+    left: clamp(1rem, 1.2vw, 1.2rem);
+    width: clamp(4px, 0.5vw, 5px);
+    height: clamp(4px, 0.5vw, 5px);
+  }
+
+  .button--oeuvres::after {
+    right: clamp(1rem, 1.2vw, 1.2rem);
+    font-size: clamp(12px, 1.82vw, 14px);
+  }
+}

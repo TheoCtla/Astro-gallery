@@ -1,0 +1,371 @@
+/* =============================================
+   Page Journal Astral
+   ============================================= */
+
+/* Cacher le breadcrumb Shopify par défaut */
+.breadcrumbs,
+.breadcrumb,
+nav.breadcrumb,
+.page-header__breadcrumbs,
+.shopify-section--breadcrumbs {
+  display: none !important;
+}
+
+.journal-astral-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2rem) clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Breadcrumb */
+.journal-breadcrumb {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: clamp(2rem, 4vw, 4rem);
+}
+
+.journal-breadcrumb__link {
+  color: #666;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.journal-breadcrumb__link:hover {
+  color: #DFBE71;
+}
+
+.journal-breadcrumb__separator {
+  margin: 0 0.5rem;
+  color: #999;
+}
+
+.journal-breadcrumb__current {
+  font-weight: 600;
+  color: #1D1D1B;
+}
+
+/* Header */
+.journal-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.journal-header__title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3.5vw, 36px);
+  letter-spacing: 0.15em;
+  color: #1D1D1B;
+  margin: 0 0 0.8rem 0;
+}
+
+.journal-header__subtitle {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: clamp(13px, 1.3vw, 16px);
+  color: #666;
+  margin: 0;
+}
+
+/* Ligne séparatrice */
+.journal-separator {
+  width: 100%;
+  height: 1px;
+  background-color: #DFBE71;
+}
+
+/* Section intro */
+.journal-intro {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.journal-intro__container {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 851px) and (max-width: 1200px) {
+  .journal-intro__container {
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 850px) {
+  .journal-intro__container {
+    align-items: center;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+  }
+  
+  .journal-intro__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .journal-intro__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .journal-intro__image {
+    justify-self: center;
+  }
+}
+
+.journal-intro__image {
+  width: clamp(100px, 15vw, 150px);
+  height: auto;
+}
+
+.journal-intro__image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.journal-intro__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.journal-intro__heading {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(13px, 1.2vw, 15px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1D1D1B;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.journal-intro__text {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1vw, 14px);
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Contenu de la page */
+.journal-content {
+  padding-top: clamp(2rem, 3vw, 3rem);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: #1D1D1B;
+  line-height: 1.8;
+}
+
+.journal-content h2 {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.5vw, 28px);
+  letter-spacing: 0.05em;
+  margin: 2rem 0 1rem;
+}
+
+.journal-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, 1.5vw, 20px);
+  margin: 1.5rem 0 0.75rem;
+}
+
+.journal-content p {
+  margin-bottom: 1rem;
+}
+
+.journal-content a {
+  color: #DFBE71;
+  text-decoration: underline;
+}
+
+.journal-content a:hover {
+  color: #c9a85f;
+}
+
+/* =============================================
+   Section Derniers Articles
+   ============================================= */
+
+.journal-articles {
+  padding-top: clamp(2rem, 3vw, 3rem);
+}
+
+.journal-articles__title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.5vw, 21px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1D1D1B;
+  margin: 0 0 clamp(1.5rem, 2vw, 2rem) 0;
+  text-align: left;
+}
+
+.journal-articles .blog__posts {
+  display: grid;
+  grid-gap: 2.4rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  grid-template-columns: 1.5fr;
+}
+
+@media screen and (min-width: 750px) {
+  .journal-articles .blog__posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .journal-articles .blog__posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Styles des cartes d'articles */
+.journal-articles .article-card__title,
+.journal-articles .article-card__title a {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+}
+
+.journal-articles .caption-with-letter-spacing {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+}
+
+/* Bouton Voir tous les articles */
+.journal-articles__view-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: clamp(2rem, 3vw, 4rem);
+}
+
+.journal-articles__empty {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #666;
+  font-style: italic;
+}
+
+/* 4 articles supplémentaires - PC uniquement */
+.journal-articles__extra {
+  display: none;
+}
+
+ul.blog__posts.journal-articles__extra {
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 990px) {
+  .journal-articles__extra {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2.4rem;
+  }
+}
+
+/* Premier article - Baskerville */
+.journal-articles .blog__posts--3-items .blog__post:first-child .article-card__title,
+.journal-articles .blog__posts--3-items .blog__post:first-child .article-card__title a {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.journal-articles .blog__posts--3-items .blog__post:first-child .caption-with-letter-spacing {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Autres articles - Poppins */
+.journal-articles .blog__post:not(:first-child) .article-card__title,
+.journal-articles .blog__post:not(:first-child) .article-card__title a,
+.journal-articles__extra .blog__post .article-card__title,
+.journal-articles__extra .blog__post .article-card__title a {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: clamp(12px, 1.2vw, 16px);
+}
+
+.journal-articles .blog__post:not(:first-child) .caption-with-letter-spacing,
+.journal-articles__extra .blog__post .caption-with-letter-spacing {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+}
+
+/* Mobile/Tablette - Tous les articles comme le premier */
+@media screen and (max-width: 989px) {
+  /* Tous les articles avec texte sur l'image */
+  .journal-articles .blog__post .article-card {
+    height: auto;
+  }
+  
+  .journal-articles .blog__post .article-content {
+    justify-content: flex-end;
+    color: rgb(var(--color-base-background-1));
+  }
+  
+  .journal-articles .blog__post .article-card__image-wrapper {
+    height: 100%;
+    min-height: 300px;
+  }
+  
+  .journal-articles .blog__post .article-card__image-wrapper:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(33, 28, 28, 0.6) 0%, rgba(33, 28, 28, 0) 70%);
+  }
+  
+  .journal-articles .blog__post .article-card__info {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    margin-top: 0;
+    bottom: 0;
+  }
+  
+  /* Tous les articles en Baskerville */
+  .journal-articles .blog__post .article-card__title,
+  .journal-articles .blog__post .article-card__title a,
+  .journal-articles .blog__post:not(:first-child) .article-card__title,
+  .journal-articles .blog__post:not(:first-child) .article-card__title a {
+    font-family: "Libre Baskerville", serif !important;
+    font-size: clamp(20px, 4vw, 28px) !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    line-height: 150% !important;
+    color: #fff !important;
+  }
+  
+  .journal-articles .blog__post .caption-with-letter-spacing,
+  .journal-articles .blog__post:not(:first-child) .caption-with-letter-spacing {
+    font-family: "Libre Baskerville", serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+}

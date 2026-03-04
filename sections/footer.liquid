@@ -1,0 +1,117 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="footer color-{{ section.settings.color_scheme }}">
+  <div class="footer__content-top container">
+    <div class="footer__custom-wrapper">
+      <!-- Colonne 1 : Logo + Tagline -->
+      <div class="footer__column footer__column--left">
+        <div class="footer__custom-logo">
+          <img src="{{ 'logoFooterComplet.png' | asset_url }}" alt="ASTROGALLERY" class="footer__logo-img">
+        </div>
+        <p class="footer__tagline">
+          <span class="footer__tagline-line1">De votre ciel de naissance</span>
+          <span class="footer__tagline-line2">à votre œuvre astrale.</span>
+        </p>
+      </div>
+
+      <!-- Colonne 2 : Liens -->
+      <div class="footer__column footer__column--right">
+        <!-- Sections -->
+        <div class="footer__links-column">
+          <h3 class="footer__section-title">SECTIONS</h3>
+          <ul class="footer__section-links list-unstyled">
+            <li><a href="/pages/solo" class="footer__link">COLLECTION SOLO</a></li>
+            <li><a href="/pages/duo" class="footer__link">COLLECTION DUO</a></li>
+            <li><a href="/pages/offrir" class="footer__link">COLLECTION OFFRIR</a></li>
+            <li><a href="/pages/journal-astral" class="footer__link">JOURNAL ASTRAL</a></li>
+            <li><a href="/pages/contact" class="footer__link">CONTACT</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer__links-column">
+          <h3 class="footer__section-title">SOCIAL MEDIA</h3>
+          <ul class="footer__social-links list-unstyled">
+            <li>
+              <a
+                href="{% if settings.social_instagram_link != blank %}{{ settings.social_instagram_link }}{% else %}#{% endif %}"
+                class="footer__link"
+                {% if settings.new_tab %}
+                  target="_blank"
+                {% endif %}
+                >INSTAGRAM</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% if settings.social_facebook_link != blank %}{{ settings.social_facebook_link }}{% else %}#{% endif %}"
+                class="footer__link"
+                {% if settings.new_tab %}
+                  target="_blank"
+                {% endif %}
+                >FACEBOOK</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer__links-column">
+          <h3 class="footer__section-title">POLITIQUES</h3>
+          <ul class="footer__section-links list-unstyled">
+            {%- for link in linklists.footer.links -%}
+              <li>
+                <a href="{{ link.url }}" class="footer__link">
+                  {{ link.title | upcase }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Paiement -->
+  <div class="footer__content-middle">
+    <div class="container">
+      <div class="footer__payment-section">
+        <h3 class="footer__payment-title">MOYENS DE PAIEMENT</h3>
+        <div class="footer__payment-icons">
+          <img src="{{ 'item1.svg' | asset_url }}" alt="Payment method 1" class="footer__payment-icon">
+          <img src="{{ 'item2.svg' | asset_url }}" alt="Payment method 2" class="footer__payment-icon">
+          <img src="{{ 'item3.svg' | asset_url }}" alt="Payment method 3" class="footer__payment-icon">
+          <img src="{{ 'item5.svg' | asset_url }}" alt="Payment method 5" class="footer__payment-icon">
+          <img src="{{ 'item6.svg' | asset_url }}" alt="Payment method 6" class="footer__payment-icon">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "t:sections.footer.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.footer.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.footer.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "inverse",
+      "label": "t:sections.footer.settings.color_scheme.label"
+    }
+  ]
+}
+{% endschema %}

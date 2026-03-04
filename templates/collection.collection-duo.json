@@ -1,0 +1,535 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "products_to_show_row": 4,
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_sku": false,
+        "show_desc": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "image_filter_ratio": "3/2",
+        "image_filter_fit": "cover",
+        "image_filter_columns": 2,
+        "columns_mobile": "1"
+      }
+    },
+    "image_collage_gLVRNx": {
+      "type": "image-collage",
+      "blocks": {
+        "image_collage_image_8U3C6E": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_3RkQM9": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_GnqfXJ": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_PjdxXF": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_AKxiQ9": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_TmPk8F": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_Hxk7ax": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        },
+        "image_collage_image_DtLAaB": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        }
+      },
+      "block_order": [
+        "image_collage_image_8U3C6E",
+        "image_collage_image_3RkQM9",
+        "image_collage_image_GnqfXJ",
+        "image_collage_image_PjdxXF",
+        "image_collage_image_AKxiQ9",
+        "image_collage_image_TmPk8F",
+        "image_collage_image_Hxk7ax",
+        "image_collage_image_DtLAaB"
+      ],
+      "name": "t:sections.image-collage.presets.name",
+      "settings": {
+        "sub_title": "",
+        "title": "L’Œuvre Astrale Duo",
+        "image_width_title": 100,
+        "text": "<p>Deux ciels qui se rencontrent.</p><p>Une création unique qui capture l’alchimie entre deux êtres, leurs forces et leurs complémentarités.</p>",
+        "button_label_1": "Créer notre œuvre",
+        "button_link_1": "shopify://products/oeuvre-astrale-duo",
+        "button_label_2": "",
+        "button_link_2": "",
+        "image_width_center": 100,
+        "layout": "left",
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "multicolumn_CtwqC3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_aGVPeV": {
+          "type": "column",
+          "settings": {
+            "title": "Unique",
+            "text": "<p>Chaque création naît de la combinaison de deux thèmes natals.<br/><br/></p>"
+          }
+        },
+        "column_ghJqaC": {
+          "type": "column",
+          "settings": {
+            "title": "Symbolique",
+            "text": "<p>Elle met en lumière les forces et les complémentarités.<br/><br/></p>"
+          }
+        },
+        "column_3hR3Wn": {
+          "type": "column",
+          "settings": {
+            "title": "Émotionnelle",
+            "text": "<p>Une œuvre relationnelle, à contempler et à transmettre.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_aGVPeV",
+        "column_ghJqaC",
+        "column_3hR3Wn"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Une œuvre pour célébrer le lien.",
+        "border_top": true,
+        "border_bottom": true,
+        "multicolumn_to_show_row": 4,
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "button_label": "Créer notre œuvre",
+        "button_link": "shopify://products/oeuvre-astrale-duo",
+        "swipe_on_mobile": false
+      }
+    },
+    "image_with_text_VFpejB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_hzyRXH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le livret qui révèle la force du Duo",
+            "sub_title": ""
+          }
+        },
+        "text_iRcNNA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Chaque Œuvre Astrale Duo s’accompagne d’un livret de <strong>110 pages</strong>, dont <strong>40 personnalisées</strong> aux deux thèmes.</p><p>On y découvre les dynamiques de la relation, les mantras du lien et la phrase centrale : <em>le Cœur de votre Ciel commun.</em></p><ul><li>Lecture claire des deux cartes du ciel</li><li>Mantras personnalisés issus des aspects partagés</li><li>Phrase clé centrale : la qualité qui unit le Duo</li></ul>"
+          }
+        },
+        "button_eCKDc3": {
+          "type": "button",
+          "settings": {
+            "button_label": "Créer notre œuvre",
+            "button_type": "primary",
+            "button_link": "shopify://products/oeuvre-astrale-duo"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hzyRXH",
+        "text_iRcNNA",
+        "button_eCKDc3"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/6d551dea600afeaebf17fee81168f1774ca767bb.jpg",
+        "height": "adapt",
+        "layout": "image_last",
+        "mobile_layout": "bottom",
+        "round_stamp_enable": true,
+        "round_stamp_text": "ASTROGALLERY ~ ASTROGALLERY ~",
+        "round_stamp_width": 140,
+        "round_stamp_size": 42,
+        "round_stamp_letter_spacing": 8,
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "slideshow_4FCtwi": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_gxUxVY": {
+          "type": "slide",
+          "settings": {
+            "subheading": "ASTROGALLERY",
+            "heading": "Finitions galerie, fabrication française",
+            "description": "Rendu matière, profondeur, exigence : chaque Œuvre Astrale Duo respecte les standards des galeries d’art.\nCréée à partir de matériaux nobles, elle allie savoir-faire artisanal et impression de précision.",
+            "show_button": true,
+            "button_style": "primary",
+            "button_label": "Créer notre œuvre",
+            "button_link": "shopify://products/oeuvre-astrale-duo",
+            "overlay_opacity": 0.5
+          }
+        }
+      },
+      "block_order": [
+        "slide_gxUxVY"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "color_scheme": "inverse",
+        "full_width": false,
+        "height": "16/9",
+        "enable_autoplay": false,
+        "slide_duration": 5
+      }
+    },
+    "collapsible_content_m6dnyn": {
+      "type": "collapsible-content",
+      "blocks": {
+        "accordion_4kX8V6": {
+          "type": "accordion",
+          "settings": {
+            "question": "Vos informations de naissance",
+            "answer": "<p>Pour chaque personne : nom, date, heure et lieu.<br/><br/></p>"
+          }
+        },
+        "accordion_kVTQ3U": {
+          "type": "accordion",
+          "settings": {
+            "question": "Analyse & interprétation",
+            "answer": "<p>Lecture sidérale des deux thèmes, étude des aspects partagés et des points d’équilibre.4<br/><br/></p>"
+          }
+        },
+        "accordion_nw9LHi": {
+          "type": "accordion",
+          "settings": {
+            "question": "Création & livraison",
+            "answer": "<p>Sélection du format et des finitions, fabrication en France, livraison sous 3 à 4 semaines.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_4kX8V6",
+        "accordion_kVTQ3U",
+        "accordion_nw9LHi"
+      ],
+      "name": "t:sections.collapsible-content.name",
+      "settings": {
+        "heading": "De deux ciels à une œuvre commune"
+      }
+    },
+    "custom_liquid_HgGati": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "Une œuvre née d’une rencontre, reflet de l’équilibre entre deux univers."
+      }
+    },
+    "image_with_text_N68rPY": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_idYMEp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pour célébrer les liens essentiels",
+            "sub_title": ""
+          }
+        },
+        "text_YpHiij": {
+          "type": "text",
+          "settings": {
+            "text": "<p>L’Œuvre Duo s’adresse à ceux qui souhaitent honorer une relation : amour, amitié, famille ou partenariat.</p><p>C’est une création symbolique et durable, qui cristallise la beauté d’un lien unique.</p><p><strong>Exemples :</strong></p><ul><li>Couple amoureux</li><li>Parent et enfant</li><li>Amis proches</li><li>Associés ou partenaires de vie</li></ul>"
+          }
+        },
+        "button_MULPRz": {
+          "type": "button",
+          "settings": {
+            "button_label": "Créer notre œuvre",
+            "button_type": "primary",
+            "button_link": "shopify://products/oeuvre-astrale-duo"
+          }
+        }
+      },
+      "block_order": [
+        "heading_idYMEp",
+        "text_YpHiij",
+        "button_MULPRz"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "layout": "image_last",
+        "mobile_layout": "bottom",
+        "round_stamp_enable": true,
+        "round_stamp_text": "ASTROGALLERY ~ ASTROGALLERY ~",
+        "round_stamp_width": 140,
+        "round_stamp_size": 42,
+        "round_stamp_letter_spacing": 8,
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "testimonials_AnANY7": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonials_slide_anRWXL": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "“J'ai reçu mon thème astral personnalisé et je suis émerveillée ! C'est une œuvre d'art unique qui capture mon essence. Le livret inclus est une mine d'informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !”",
+            "slide_name": "Fabienne D.",
+            "slide_country": "Marseille"
+          }
+        },
+        "testimonials_slide_W3enfJ": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "“Je viens de recevoir mon thème astral personnalisé et je suis impressionné ! L'impression est magnifique et le livret est très bien fait. Je recommande vivement ASTROGALLERY à tous ceux qui s'intéressent à l'astrologie!”",
+            "slide_name": "Amélie S.",
+            "slide_country": "Lyon"
+          }
+        },
+        "testimonials_slide_zzcqiT": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "Une expérience magique ! Mon tableau de thème astral est sublime, les couleurs et les symboles résonnent parfaitement avec ma personnalité. On sent que chaque détail a été pensé avec soin. Merci ASTROGALLERY pour cette création pleine d’âme.",
+            "slide_name": "Anna S.",
+            "slide_country": "Paris"
+          }
+        },
+        "testimonials_slide_3baVLj": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "Le concept est génial : allier art et astrologie pour créer une œuvre qui me ressemble. Le service client est attentionné, la qualité exceptionnelle. Mon tableau trône fièrement dans mon salon — il attire tous les regards !",
+            "slide_name": "Max S.",
+            "slide_country": "Bordeaux"
+          }
+        },
+        "testimonials_slide_Bepa8x": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "“Display a glowing customer review here.”",
+            "slide_name": "Customer name",
+            "slide_country": "Customer country"
+          }
+        },
+        "testimonials_slide_Mp9gCy": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "“Display a glowing customer review here.”",
+            "slide_name": "Customer name",
+            "slide_country": "Customer country"
+          }
+        },
+        "testimonials_slide_X8U6PB": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_text": "“Display a glowing customer review here.”",
+            "slide_name": "Customer name",
+            "slide_country": "Customer country"
+          }
+        }
+      },
+      "block_order": [
+        "testimonials_slide_anRWXL",
+        "testimonials_slide_W3enfJ",
+        "testimonials_slide_zzcqiT",
+        "testimonials_slide_3baVLj",
+        "testimonials_slide_Bepa8x",
+        "testimonials_slide_Mp9gCy",
+        "testimonials_slide_X8U6PB"
+      ],
+      "name": "t:sections.testimonials.presets.name",
+      "settings": {
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "collapsible_content_pU4BNz": {
+      "type": "collapsible-content",
+      "blocks": {
+        "accordion_DngwHK": {
+          "type": "accordion",
+          "settings": {
+            "question": "Qu’est-ce qu’une Œuvre Astrale ?",
+            "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.</p><p>Chaque pièce est numérotée, nominative et accompagnée d’un livret de 110 pages pour comprendre les énergies qui vous composent.</p>"
+          }
+        },
+        "accordion_XRwXDC": {
+          "type": "accordion",
+          "settings": {
+            "question": "Quelle est la différence entre SOLO et DUO ?",
+            "answer": "<p><strong>SOLO</strong> : une œuvre introspective centrée sur votre propre ciel, vos forces et vos mantras.</p><p><strong>DUO</strong> : deux cartes fusionnées pour révéler les liens, les synergies et les contrastes entre deux personnes.</p>"
+          }
+        },
+        "accordion_bK77iX": {
+          "type": "accordion",
+          "settings": {
+            "question": "Quelles informations sont nécessaires ?",
+            "answer": "<p>Nom complet, date, heure et lieu de naissance.</p><p>Ces données permettent de calculer précisément votre thème sidéral ; elles restent strictement confidentielles.</p><h3></h3>"
+          }
+        },
+        "accordion_nmF8kr": {
+          "type": "accordion",
+          "settings": {
+            "question": "Que contient le livret ?",
+            "answer": "<p>Un ouvrage de <strong>110 pages</strong>, dont <strong>40 personnalisées</strong> à votre ciel : lecture planétaire, mantras, phrase centrale « Cœur de votre Ciel ».</p><p>Les pages générales offrent une introduction claire à l’astrologie.</p>"
+          }
+        },
+        "accordion_jQqXEw": {
+          "type": "accordion",
+          "settings": {
+            "question": "Quels formats et finitions sont proposés ?",
+            "answer": "<p>Formats rond, carré, vertical ou horizontal.</p><p>Supports : Aluminium, Plexi’Art brillant ou mat anti-reflet.</p><p>Encadrements : Slim,Caisse Américaine Noir,Caisse Américaine Alu Noir,Caisse Américaine Chêne Naturel.</p>"
+          }
+        },
+        "accordion_DfmxBx": {
+          "type": "accordion",
+          "settings": {
+            "question": "Quels sont les délais ?",
+            "answer": "<p>Création, impression et expédition : <strong>3 à 4 semaines</strong>.</p><p>Chaque œuvre est fabriquée à la commande dans nos ateliers français.</p>"
+          }
+        },
+        "accordion_RxXA4b": {
+          "type": "accordion",
+          "settings": {
+            "question": "Peut-on offrir une Œuvre Astrale ?",
+            "answer": "<p>Oui.</p><p>Vous pouvez offrir directement une œuvre (avec les données de naissance) ou une <strong>carte cadeau ASTROGALLERY</strong> pour laisser la personne créer la sienne.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_DngwHK",
+        "accordion_XRwXDC",
+        "accordion_bK77iX",
+        "accordion_nmF8kr",
+        "accordion_jQqXEw",
+        "accordion_DfmxBx",
+        "accordion_RxXA4b"
+      ],
+      "name": "t:sections.collapsible-content.name",
+      "settings": {
+        "heading": "FAQ"
+      }
+    },
+    "rich_text_nCQr4G": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UewzCJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Qualité, traçabilité et exigence",
+            "heading_size": "medium"
+          }
+        },
+        "text_Nn7BKL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Chaque œuvre est numérotée, authentifiée et livrée avec son certificat.</p><p>Fabrication française, finitions galerie, emballage soigné, livraison sécurisée.</p><p>-Œuvre numérotée & certificat d’authenticité</p><p>-Supports : Alu, Plexi’Art brillant, Plexi’Art mat anti-reflet</p><p>-Encadrements : Slim,Caisse Américaine Noir,Caisse Américaine Alu Noir,Caisse Américaine Chêne Naturel</p><p>-Livraison 3–4 semaines</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UewzCJ",
+        "text_Nn7BKL"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    },
+    "image_collage_UhHViz": {
+      "type": "image-collage",
+      "blocks": {
+        "image_collage_image_p76fpB": {
+          "type": "image-collage_image",
+          "settings": {
+            "image_width": 100
+          }
+        }
+      },
+      "block_order": [
+        "image_collage_image_p76fpB"
+      ],
+      "name": "t:sections.image-collage.presets.name",
+      "settings": {
+        "sub_title": "",
+        "title": "Prêts à révéler votre ciel commun ?",
+        "image_width_title": 100,
+        "text": "",
+        "button_label_1": "Créer notre œuvre",
+        "button_link_1": "shopify://products/oeuvre-astrale-duo",
+        "button_label_2": "Offrir cette œuvre",
+        "button_link_2": "shopify://collections/offrir-une-oeuvre-astrale",
+        "image_width_center": 100,
+        "layout": "center",
+        "border_top": false,
+        "border_bottom": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "image_collage_gLVRNx",
+    "multicolumn_CtwqC3",
+    "image_with_text_VFpejB",
+    "slideshow_4FCtwi",
+    "collapsible_content_m6dnyn",
+    "custom_liquid_HgGati",
+    "image_with_text_N68rPY",
+    "testimonials_AnANY7",
+    "collapsible_content_pU4BNz",
+    "rich_text_nCQr4G",
+    "image_collage_UhHViz"
+  ]
+}

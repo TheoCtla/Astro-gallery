@@ -1,0 +1,293 @@
+/* Section Testimonials - Design Screen2 Pixel Perfect */
+
+.testimonials {
+  overflow: hidden;
+  padding: 5rem 0;
+}
+
+/* Layout 2 colonnes : titre à gauche, slider à droite */
+@media only screen and (min-width: 990px) {
+  .testimonials {
+    display: grid;
+    grid-template-columns: 0.6fr 1.8fr;
+    gap: 5rem;
+    align-items: flex-start;
+  }
+}
+
+/* Bloc titre à gauche */
+.testimonials__text {
+  margin-bottom: 3rem;
+}
+
+.testimonials__subtitle {
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #1D1D1B;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.testimonials__title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #1D1D1B;
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+@media only screen and (max-width: 989px) {
+  .testimonials__title {
+    font-size: 32px;
+  }
+}
+
+.testimonials__description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 160%;
+  color: #1D1D1B;
+  margin: 0 0 3rem 0;
+}
+
+/* Boutons de navigation */
+.testimonials__buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.testimonials__button {
+  display: flex;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #DFBE71;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.testimonials__button:hover {
+  opacity: 0.7;
+}
+
+.testimonials__button .icon {
+  width: 20px;
+  height: 20px;
+  fill: #DFBE71;
+}
+
+.testimonials__counts {
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1D1D1B;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Wrapper du slider */
+.testimonials__slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.testimonials__slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+/* Slide individuel */
+.testimonials__slide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
+}
+
+@media only screen and (max-width: 989px) {
+  .testimonials__slide {
+    flex-direction: column;
+  }
+}
+
+/* Image à gauche (grand visuel) */
+.testimonials__slide-image {
+  display: none;
+}
+
+@media only screen and (max-width: 989px) {
+  .testimonials__slide-image {
+    display: none;
+  }
+}
+
+.testimonials__slide-image img {
+  display: none;
+}
+
+/* Bloc sombre à droite - Plus large, moins haut */
+.testimonials__slide-content {
+  width: 100%;
+  background-color: #1A1A1A;
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  min-height: 100%;
+}
+
+@media only screen and (max-width: 989px) {
+  .testimonials__slide-content {
+    width: 100%;
+    padding: 40px 30px;
+    min-height: auto;
+  }
+}
+
+/* Guillemets en haut */
+.testimonials__slide-quote {
+  position: relative;
+  margin-bottom: 1rem;
+  z-index: 1;
+}
+
+.testimonials__slide-quote svg path {
+  fill: #FFFFFF !important;
+  fill-opacity: 1 !important;
+}
+
+.testimonials__slide-quote img {
+  display: block;
+  width: 34px;
+  height: 27px;
+  object-fit: contain;
+}
+
+/* Titre en italique */
+.testimonials__slide-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 140%;
+  color: #FFFFFF;
+  margin: 0 0 1.5rem 0;
+  position: relative;
+  z-index: 2;
+  padding-top: 1rem;
+}
+
+@media only screen and (max-width: 989px) {
+  .testimonials__slide-title {
+    font-size: 22px;
+  }
+}
+
+/* Texte descriptif */
+.testimonials__slide-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 160%;
+  color: #FFFFFF;
+  margin: 0 0 2.5rem 0;
+  position: relative;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+@media only screen and (max-width: 989px) {
+  .testimonials__slide-text {
+    font-size: 14px;
+  }
+}
+
+/* Meta (avatar + nom + ville + étoiles) */
+.testimonials__slide-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+  padding-top: 1rem;
+}
+
+/* Avatar rond - Une seule fois */
+.testimonials__slide-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials__slide-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info client */
+.testimonials__slide-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.testimonials__slide-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.4;
+}
+
+.testimonials__slide-country {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+.testimonials__slide-country:before {
+  content: " - ";
+}
+
+/* Étoiles dorées - Petites, alignées */
+.testimonials__slide-stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.testimonials__slide-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: #D1A85D;
+  flex-shrink: 0;
+}

@@ -1,0 +1,2550 @@
+{% comment %}
+  Template personnalisé pour le produit Solo
+  Pour l'utiliser, allez dans l'admin Shopify > Produits > Œuvre Astrale Solo > Template > Sélectionnez "produit-solo"
+{% endcomment %}
+
+<link rel="stylesheet" href="{{ 'produit-solo.css' | asset_url }}">
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'copy.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'update-slider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'testimonials.js' | asset_url }}" defer="defer"></script>
+
+{%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+{%- if first_3d_model -%}
+  {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+  <link
+    id="ModelViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+    media="print"
+    onload="this.media='all'"
+  >
+  <link
+    id="ModelViewerOverride"
+    rel="stylesheet"
+    href="{{ 'component-model-viewer-ui.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+  >
+{%- endif -%}
+
+<section class="container product-solo-section">
+  <div class="product row gallery-left gallery-before">
+    <!-- Colonne Informations Produit -->
+    <div class="product__info-wrapper col-lg-6">
+      <div id="ProductInfo-solo" class="product__info-container product__info-container--sticky">
+        {%- assign product_form_id = 'product-form-solo' -%}
+
+        <!-- Vendor -->
+        <p class="product__text subtitle">
+          {{ product.vendor }}
+        </p>
+
+        <!-- Titre -->
+        <div
+          class="
+            product__title__wrapper
+            {%- if product.available == false %} price--sold-out {% endif -%}
+            {%- if product.compare_at_price > product.price %} price--on-sale {% endif -%}
+          "
+        >
+          <h1 class="product__title h2">
+            L'ŒUVRE<br>
+            ASTRALE <span class="gold">SOLO</span>
+          </h1>
+          <div class="badge-wrapper">
+            <span class="badge price__badge-sale color-background-2" aria-hidden="true">
+              {{ 'products.product.on_sale' | t }}
+            </span>
+            <span
+              class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}"
+              aria-hidden="true"
+            >
+              {{ 'products.product.sold_out' | t }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Sous-titre -->
+        <p class="product__subtitle">Une œuvre numérotée, nominative et singulière.</p>
+
+        <!-- Description -->
+        <div class="product__description rte">
+          <p>
+            À partir de votre thème natal, ASTROGALLERY réalise une œuvre astrale design qui réinvente la lecture
+            classique de la carte du ciel.<br>
+            Plus esthétique, plus intuitive, elle devient un objet d'art à contempler et à méditer, fidèle reflet de
+            votre identité profonde.
+          </p>
+          <p>
+            Chaque création est <strong>numérotée, nominative et accompagnée d'un livret de 110 pages</strong>, dont
+            <strong>40 personnalisées</strong> à votre ciel.<br>
+            <strong>Designée et fabriquée en France.</strong><br>
+            <strong>Création et livraison en 3 à 4 semaines.</strong>
+          </p>
+        </div>
+
+        <!-- Prix et Quantité -->
+        <div class="price-quantity-wrapper">
+          <div class="no-js-hidden price-wrapper" id="price-solo">
+            {%- render 'price',
+              product: product,
+              use_variant: true,
+              show_badges: true,
+              price_class: 'price--product'
+            -%}
+          </div>
+            
+        </div>
+        <div style="margin: 0">
+          {%- form 'product', product, id: 'product-form-installment-solo', class: 'installment caption-large' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {{ form | payment_terms }}
+          {%- endform -%}
+        </div>
+
+        <!-- Tags -->
+        {%- if product.tags != blank -%}
+          <ul class="product-tags">
+            {% for tag in product.tags %}
+              <li class="product-tags__tag">
+                {{ tag }}
+                {% render 'icon-checkmark' %}
+              </li>
+            {% endfor %}
+          </ul>
+        {%- endif -%}
+
+        <!-- Sélecteur de variantes désactivé - on utilise le formulaire personnalisé à la place -->
+        <!--
+          <div style="display: none;">
+            {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+          </div>
+        -->
+
+        <!-- Formulaire personnalisé -->
+        <div class="custom-product-form">
+          <!-- Format de l'œuvre -->
+          <div class="custom-form__row">
+            <div class="custom-form__field custom-form__field--full custom-form__field--with-help">
+              <label class="custom-form__label">Format de l'œuvre</label>
+              <div class="custom-form__select-wrapper">
+                <select class="custom-form__select" id="format-oeuvre-custom">
+                  <option value="" disabled selected>Choisir...</option>
+                  <option value="ronde-40x40">Ronde (40 cm de diamètre)</option>
+                  <option value="carree-40x40">Carrée (40 x 40 cm)</option>
+                  <option value="rectangle-vertical-35x50">Rectangle vertical (35 x 50 cm)</option>
+                  <option value="rectangle-horizontal-50x35">Rectangle horizontal (50 x 35 cm)</option>
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+              <a href="#faq-section" class="custom-form__help">Besoin d'aide pour choisir ?</a>
+            </div>
+          </div>
+
+          <!-- Matière du support -->
+          <div class="custom-form__row">
+            <div class="custom-form__field custom-form__field--full custom-form__field--with-help">
+              <label class="custom-form__label">Matière du support</label>
+              <div class="custom-form__select-wrapper">
+                <select class="custom-form__select" id="matiere-support-custom">
+                  <option value="" disabled selected>Choisir...</option>
+                  <option value="alu-dibond">Mat (Alu dibond)</option>
+                  <option value="plexi-brillant">Brillant (Plexi'Art)</option>
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+              <a href="#faq-section" class="custom-form__help">Besoin d'aide pour choisir ?</a>
+            </div>
+          </div>
+
+          <!-- Encadrement de l'œuvre -->
+          <div class="custom-form__row">
+            <div class="custom-form__field custom-form__field--full custom-form__field--with-help">
+              <label class="custom-form__label">Encadrement de l'œuvre</label>
+              <div class="custom-form__select-wrapper">
+                <select class="custom-form__select" id="encadrement-oeuvre-custom">
+                  <option value="" disabled selected>Choisir...</option>
+                  <option value="chassis">Chassis</option>
+                  <option value="box-blanc">Caisse Américaine Blanche</option>
+                  <option value="box-noir">Caisse Américaine Noire</option>
+                  <option value="box-alu-noir">Caisse Américaine Alu Noir</option>
+                  <option value="box-chene">Caisse Américaine Chêne Naturel</option>
+                </select>
+                {% render 'icon-caret' %}
+              </div>
+              <a href="#faq-section" class="custom-form__help">Besoin d'aide pour choisir ?</a>
+            </div>
+          </div>
+
+          <!-- Texte d'information -->
+          <div class="custom-form__row custom-form__row--no-border">
+            <p style="font-size: 1.3rem; color: #e1c37d; margin: 10px 0; font-style: italic; margin-bottom: 1.8rem; padding-bottom: 1.8rem; border-bottom: 1px solid #f0f0f0;">
+              Si vous ne connaissez pas encore certaines informations nécessaires, vous pouvez simplement indiquer « Je ne sais pas » et nous transmettre les éléments manquants ultérieurement.
+            </p>
+          </div>
+
+          <!-- Nom & Prénom + Date de naissance -->
+          <div class="custom-form__row custom-form__row--two-cols">
+            <div class="custom-form__field">
+              <label class="custom-form__label">Nom & Prénom<span class="required">*</span></label>
+              <input type="text" class="custom-form__input" id="nom-prenom" placeholder="–" required>
+            </div>
+            <div class="custom-form__field">
+              <label class="custom-form__label">Date de naissance (JJ-MM-AA)<span class="required">*</span></label>
+              <div class="custom-form__input-wrapper">
+                <input type="date" class="custom-form__input" id="date-naissance" required>
+                <span class="custom-form__input-icon">📅</span>
+              </div>
+              <label class="custom-form__checkbox custom-form__checkbox--unknown">
+                <input type="checkbox" id="unknown-date-naissance">
+                <span>Je ne sais pas</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Heure exacte + Lieu de naissance -->
+          <div class="custom-form__row custom-form__row--two-cols">
+            <div class="custom-form__field">
+              <label class="custom-form__label">Heure exacte de naissance<span class="required">*</span></label>
+              <div class="custom-form__input-wrapper">
+                <input type="time" class="custom-form__input" id="heure-naissance" required>
+                <span class="custom-form__input-icon">🕐</span>
+              </div>
+              <label class="custom-form__checkbox custom-form__checkbox--unknown">
+                <input type="checkbox" id="unknown-heure-naissance">
+                <span>Je ne sais pas</span>
+              </label>
+            </div>
+            <div class="custom-form__field">
+              <label class="custom-form__label">Lieu de naissance (ville+ pays)<span class="required">*</span></label>
+              <input type="text" class="custom-form__input" id="lieu-naissance" placeholder="–" required>
+              <label class="custom-form__checkbox custom-form__checkbox--unknown">
+                <input type="checkbox" id="unknown-lieu-naissance">
+                <span>Je ne sais pas</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Email + Téléphone -->
+          <div class="custom-form__row custom-form__row--two-cols">
+            <div class="custom-form__field">
+              <label class="custom-form__label">Email</label>
+              <input type="email" class="custom-form__input" id="email" placeholder="–">
+            </div>
+            <div class="custom-form__field">
+              <label class="custom-form__label">Téléphone</label>
+              <input type="tel" class="custom-form__input" id="telephone" placeholder="–">
+            </div>
+          </div>
+
+          <!-- Œuvre Astrale ou Tropicale -->
+          <div class="custom-form__row">
+            <div class="custom-form__field custom-form__field--full">
+              <label class="custom-form__label">Œuvre Sidérale ou Tropicale ?<span class="required">*</span></label>
+              <div class="custom-form__radio-row">
+                <div class="custom-form__radio-group">
+                  <label class="custom-form__radio">
+                    <input type="radio" name="type-oeuvre" value="siderale" checked>
+                    <span class="custom-form__radio-circle"></span>
+                    <span class="custom-form__radio-label">Œuvre Sidérale</span>
+                  </label>
+                  <label class="custom-form__radio">
+                    <input type="radio" name="type-oeuvre" value="tropicale">
+                    <span class="custom-form__radio-circle"></span>
+                    <span class="custom-form__radio-label">Œuvre Tropicale</span>
+                  </label>
+                  <label class="custom-form__radio">
+                    <input type="radio" name="type-oeuvre" value="je-ne-sais-pas">
+                    <span class="custom-form__radio-circle"></span>
+                    <span class="custom-form__radio-label">Je ne sais pas</span>
+                  </label>
+                </div>
+                <a href="#faq-section" class="custom-form__help">Besoin d'aide pour choisir ?</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demandes particulières -->
+          <div class="custom-form__row custom-form__row--no-border">
+            <div class="custom-form__field custom-form__field--full">
+              <label class="custom-form__label">Demandes particulières (optionnel)</label>
+              <textarea
+                class="custom-form__textarea"
+                id="demandes-particulieres"
+                placeholder="Vous pouvez ajouter ici toute précision ou souhait spécifique : affichage avec ou sans prénom, formulation personnalisée, intention particulière, ou toute autre demande."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons d'achat -->
+        <div>
+          <product-form class="product-form" data-hide-errors="false">
+            <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+              </svg>
+              <span class="product-form__error-message"></span>
+            </div>
+            {%- form 'product',
+              product,
+              id: product_form_id,
+              class: 'form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <input type="hidden" name="quantity" id="hidden-quantity-solo" value="1">
+
+              <!-- Propriétés personnalisées pour le panier -->
+              <input type="hidden" name="properties[Format de l'œuvre]" id="prop-format-oeuvre" value="">
+              <input type="hidden" name="properties[Matière du support]" id="prop-matiere-support" value="">
+              <input type="hidden" name="properties[Encadrement de l'œuvre]" id="prop-encadrement-oeuvre" value="">
+              <input type="hidden" name="properties[Nom & Prénom]" id="prop-nom-prenom" value="">
+              <input type="hidden" name="properties[Date de naissance]" id="prop-date-naissance" value="">
+              <input type="hidden" name="properties[Heure de naissance]" id="prop-heure-naissance" value="">
+              <input type="hidden" name="properties[Lieu de naissance]" id="prop-lieu-naissance" value="">
+              <input type="hidden" name="properties[Type d'œuvre]" id="prop-type-oeuvre" value="">
+              <input type="hidden" name="properties[Demandes particulières]" id="prop-demandes-particulieres" value="">
+
+              <div class="product-form__wrapper-with-price">
+                <div class="product-form__price-display" id="price-display-buttons">
+                  {%- render 'price',
+                    product: product,
+                    use_variant: true,
+                    show_badges: false,
+                    price_class: 'price--buttons'
+                  -%}
+                </div>
+                <div class="product-form__buttons product-form__buttons--custom">
+                  <button
+                    type="submit"
+                    name="add"
+                    class="product-form__submit button button--primary-size button--gold"
+                    {% if product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    • AJOUTER AU PANIER •
+                  </button>
+                  <a href="/products/carte-cadeau-astrogallery" class="button button--outline-gold">
+                    • OFFRIR UNE CARTE CADEAU •
+                  </a>
+                </div>
+              </div>
+            {%- endform -%}
+          </product-form>
+
+          <!-- Infos livraison -->
+          <div class="product-info-badges">
+            <div class="product-info-badge">
+              <img
+                class="product-info-badge__icon"
+                src="{{ 'Calque_1.svg' | asset_url }}"
+                alt="Livraison gratuite"
+                loading="lazy"
+              >
+              <span class="product-info-badge__text">Livraison gratuite</span>
+            </div>
+            <div class="product-info-badge">
+              <img
+                class="product-info-badge__icon"
+                src="{{ 'Calque_2.svg' | asset_url }}"
+                alt="Fabrication à la commande"
+                loading="lazy"
+              >
+              <span class="product-info-badge__text">Fabrication à la commande</span>
+            </div>
+            <div class="product-info-badge">
+              <img
+                class="product-info-badge__icon"
+                src="{{ 'Calque_3.svg' | asset_url }}"
+                alt="Certificat d'authenticité inclus"
+                loading="lazy"
+              >
+              <span class="product-info-badge__text">Certificat d'authenticité inclus</span>
+            </div>
+          </div>
+        </div>
+
+        {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+        {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+          | where: 'pick_up_enabled', true
+        -%}
+
+        <pickup-availability
+          class="product__pickup-availabilities no-js-hidden"
+          {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+            available
+          {% endif %}
+          data-base-url="{{ shop.url }}{{ routes.root_url }}"
+          data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          data-has-only-default-variant="{{ product.has_only_default_variant }}"
+        >
+          <template>
+            <pickup-availability-preview class="pickup-availability-preview">
+              {% render 'icon-unavailable' %}
+              <div class="pickup-availability-info">
+                <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                <button class="pickup-availability-button link link--text underlined-link">
+                  {{ 'products.product.pickup_availability.refresh' | t }}
+                </button>
+              </div>
+            </pickup-availability-preview>
+          </template>
+        </pickup-availability>
+
+        <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+      </div>
+    </div>
+
+    <!-- Colonne Galerie Média -->
+    <!-- Sentinel for Mobile Sticky Detection -->
+    <div id="mobile-sticky-sentinel"></div>
+    <div class="product__media-wrapper col-lg-6">
+      <div class="product__media-list-wrapper">
+        <!-- Miniatures (Carousel Vertical) -->
+        <div class="product__thumbnail-carousel-wrapper">
+          <button class="thumb-nav-btn thumb-nav-up" aria-label="Scroll Up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+
+          <div class="product__media-thumbnails" id="thumbnail-carousel-solo">
+            <!-- VIDEO -->
+            <button class="product__thumbnail active js-thumb-video" data-video-url="https://cdn.shopify.com/videos/c/o/v/0fa3ca7f61544fcc8ad634cef1ac2995.mp4">
+              <video src="https://cdn.shopify.com/videos/c/o/v/0fa3ca7f61544fcc8ad634cef1ac2995.mp4#t=0.1" muted preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+            </button>
+  
+            <!-- RONDE (2) -->
+            <button class="product__thumbnail" data-image-src="{{ '_solo-ronde-mat-chassis.webp' | asset_url }}"><img src="{{ '_solo-ronde-mat-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-ronde-brillant-chassis.webp' | asset_url }}"><img src="{{ '_solo-ronde-brillant-chassis.webp' | asset_url }}" loading="lazy"></button>
+  
+            <!-- CARRE (8) -->
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-mat-chassis.webp' | asset_url }}"><img src="{{ '_solo-carre-mat-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-mat-alu-noir.webp' | asset_url }}"><img src="{{ '_solo-carre-mat-alu-noir.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-mat-blanche.webp' | asset_url }}"><img src="{{ '_solo-carre-mat-blanche.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-mat-noire.webp' | asset_url }}"><img src="{{ '_solo-carre-mat-noire.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-mat-chene.webp' | asset_url }}"><img src="{{ '_solo-carre-mat-chene.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-brillant-chassis.webp' | asset_url }}"><img src="{{ '_solo-carre-brillant-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-brillant-alu-noir.webp' | asset_url }}"><img src="{{ '_solo-carre-brillant-alu-noir.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-brillant-blanche.webp' | asset_url }}"><img src="{{ '_solo-carre-brillant-blanche.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-brillant-noire.webp' | asset_url }}"><img src="{{ '_solo-carre-brillant-noire.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-carre-brillant-chene.webp' | asset_url }}"><img src="{{ '_solo-carre-brillant-chene.webp' | asset_url }}" loading="lazy"></button>
+  
+            <!-- VERTICAL (8) -->
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-mat-chassis.webp' | asset_url }}"><img src="{{ '_solo-vertical-mat-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-mat-alu-noir.webp' | asset_url }}"><img src="{{ '_solo-vertical-mat-alu-noir.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-mat-blanche.webp' | asset_url }}"><img src="{{ '_solo-vertical-mat-blanche.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-mat-noire.webp' | asset_url }}"><img src="{{ '_solo-vertical-mat-noire.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-mat-chene.webp' | asset_url }}"><img src="{{ '_solo-vertical-mat-chene.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-brillant-chassis.webp' | asset_url }}"><img src="{{ '_solo-vertical-brillant-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-brillant-alu-noir.webp' | asset_url }}"><img src="{{ '_solo-vertical-brillant-alu-noir.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-brillant-blanche.webp' | asset_url }}"><img src="{{ '_solo-vertical-brillant-blanche.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-brillant-noire.webp' | asset_url }}"><img src="{{ '_solo-vertical-brillant-noire.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-vertical-brillant-chene.webp' | asset_url }}"><img src="{{ '_solo-vertical-brillant-chene.webp' | asset_url }}" loading="lazy"></button>
+  
+            <!-- HORIZONTAL (8) -->
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-mat-chassis.webp' | asset_url }}"><img src="{{ '_solo-horizontal-mat-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-mat-alu-noir.webp' | asset_url }}"><img src="{{ '_solo-horizontal-mat-alu-noir.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-mat-blanche.webp' | asset_url }}"><img src="{{ '_solo-horizontal-mat-blanche.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-mat-noire.webp' | asset_url }}"><img src="{{ '_solo-horizontal-mat-noire.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-mat-chene.webp' | asset_url }}"><img src="{{ '_solo-horizontal-mat-chene.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-brillant-chassis.webp' | asset_url }}"><img src="{{ '_solo-horizontal-brillant-chassis.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-brillant-alu-noir.webp' | asset_url }}"><img src="{{ '_solo-horizontal-brillant-alu-noir.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-brillant-blanche.webp' | asset_url }}"><img src="{{ '_solo-horizontal-brillant-blanche.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-brillant-noire.webp' | asset_url }}"><img src="{{ '_solo-horizontal-brillant-noire.webp' | asset_url }}" loading="lazy"></button>
+            <button class="product__thumbnail" data-image-src="{{ '_solo-horizontal-brillant-chene.webp' | asset_url }}"><img src="{{ '_solo-horizontal-brillant-chene.webp' | asset_url }}" loading="lazy"></button>
+          </div>
+  
+          <button class="thumb-nav-btn thumb-nav-down" aria-label="Scroll Down">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+        <!-- Vidéo/Image principale -->
+        <div class="product__media-list list-unstyled" role="list">
+          <div class="product__media-item slider__slide">
+            <video 
+              id="main-product-video-solo"
+              src="https://cdn.shopify.com/videos/c/o/v/0fa3ca7f61544fcc8ad634cef1ac2995.mp4" 
+              autoplay 
+              loop 
+              muted 
+              playsinline
+              style="width: 100%; height: auto;"
+            ></video>
+          </div>
+        </div>
+      </div>
+      {%- if first_3d_model -%}
+        <button
+          class="button button--full-width product__xr-button"
+          type="button"
+          aria-label="{{ 'products.product.xr_button_label' | t }}"
+          data-shopify-xr
+          data-shopify-model3d-id="{{ first_3d_model.id }}"
+          data-shopify-title="{{ product.title | escape }}"
+          data-shopify-xr-hidden
+        >
+          {% render 'icon-3d-model' %}
+          {{ 'products.product.xr_button' | t }}
+        </button>
+      {%- endif -%}
+
+      <!-- Lightbox Modal pour zoom -->
+      <div id="image-lightbox-solo" class="image-lightbox" style="display: none;">
+        <div class="image-lightbox__overlay"></div>
+        <div class="image-lightbox__content">
+          <button class="image-lightbox__close" aria-label="Fermer">&times;</button>
+          <img src="" alt="Image agrandie" class="image-lightbox__image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="testimonials">
+      <div class="testimonials__text">
+        <h2 class="testimonials__title">ILS ONT FAIT DE LEUR CIEL UNE ŒUVRE D'ART</h2>
+        <p class="testimonials__description">Des créations vécues comme des révélations.</p>
+        <div class="testimonials__buttons">
+          <button class="testimonials__button testimonials__button--prev" aria-label="Prev">
+            {% render 'icon-caret-left' %}
+          </button>
+          <div class="testimonials__counts">1/5</div>
+          <button class="testimonials__button testimonials__button--next" aria-label="Next">
+            {% render 'icon-caret-right' %}
+          </button>
+        </div>
+      </div>
+      <div class="testimonials__slider-wrapper">
+        <div class="testimonials__slider" dir="ltr">
+          <!-- Slide 1 -->
+          <div class="testimonials__slide" data-slide-index="0">
+            <div class="testimonials__slide-image">
+              <img src="{{ 'imgAvis.png' | asset_url }}" alt="Témoignage" loading="lazy">
+            </div>
+            <div class="testimonials__slide-content">
+              <div class="testimonials__slide-quote">
+                <img src="{{ 'guillemets.svg' | asset_url }}" alt="Guillemets" width="34" height="27" loading="lazy">
+              </div>
+              <h3 class="testimonials__slide-title">
+                Un grand merci à Caroline pour les deux magnifiques thèmes astrologiques réalisés.
+              </h3>
+              <p class="testimonials__slide-text">
+                "Nos neveux et nièces ont été enchantés par leur cadeau: ils se sont vraiment reconnus dans les
+                descriptions, ce qui a rendu l'expérience très personnelle. Le livret personnalisé est clair et très
+                bien fait, il les a beaucoup aidés à comprendre et lire leur thème. La qualité du travail est
+                remarquable, soignée et esthétique, au point que les œuvres peuvent être exposées. Nous recommandons
+                chaleureusement Caroline pour la finesse et le sérieux de son travail. Merci encore !"
+              </p>
+              <div class="testimonials__slide-meta">
+                <div class="testimonials__slide-info">
+                  <div class="testimonials__slide-name">Mylène et Eric G.</div>
+                  <div class="testimonials__slide-stars">
+                    {% for i in (1..5) %}
+                      <svg
+                        viewBox="0 0 17 16"
+                        fill="none"
+                        role="presentation"
+                        class="icon icon-star"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+                      </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonials__slide" data-slide-index="1">
+            <div class="testimonials__slide-image">
+              <img src="{{ 'imgAvis.png' | asset_url }}" alt="Témoignage" loading="lazy">
+            </div>
+            <div class="testimonials__slide-content">
+              <div class="testimonials__slide-quote">
+                <img src="{{ 'guillemets.svg' | asset_url }}" alt="Guillemets" width="34" height="27" loading="lazy">
+              </div>
+              <h3 class="testimonials__slide-title">Une œuvre qui reflète profondément ma destinée</h3>
+              <p class="testimonials__slide-text">
+                "J'ai reçu mon thème avec mes mantras et je remercie ASTROGALLERY d'avoir réussi à faire une œuvre de
+                notre destinée qui nous rappelle à chaque instant l'importance de notre incarnation. Merci encore"
+              </p>
+              <div class="testimonials__slide-meta">
+                <div class="testimonials__slide-info">
+                  <div class="testimonials__slide-name">Corinne R.</div>
+                  <div class="testimonials__slide-stars">
+                    {% for i in (1..5) %}
+                      <svg
+                        viewBox="0 0 17 16"
+                        fill="none"
+                        role="presentation"
+                        class="icon icon-star"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+                      </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonials__slide" data-slide-index="2">
+            <div class="testimonials__slide-image">
+              <img src="{{ 'imgAvis.png' | asset_url }}" alt="Témoignage" loading="lazy">
+            </div>
+            <div class="testimonials__slide-content">
+              <div class="testimonials__slide-quote">
+                <img src="{{ 'guillemets.svg' | asset_url }}" alt="Guillemets" width="34" height="27" loading="lazy">
+              </div>
+              <h3 class="testimonials__slide-title">Un immense merci pour ce magnifique travail Caro !</h3>
+              <p class="testimonials__slide-text">
+                "L'analyse du thème astral de mes enfants, Noam et Nelia, mêle à la fois la compréhension de leur
+                personnalité et la mise en valeur de leur univers. J'adore rentrer dans leur espace et ressentir
+                immédiatement que c'est chez eux, à leur image, ce tableau reflétant à la fois leur caractère et leur
+                énergie. C'est un véritable cadeau pour toute notre famille, qui nous permet d'avoir un regard
+                différent, plus éclairé et bienveillant, sur leur chemin de vie. Mieux les comprendre, c'est aussi les
+                aider à grandir en harmonie ! Ton approche allie sérieux, sensibilité et passion – je ne peux que
+                recommander ton accompagnement !"
+              </p>
+              <div class="testimonials__slide-meta">
+                <div class="testimonials__slide-info">
+                  <div class="testimonials__slide-name">Virginie H.</div>
+                  <div class="testimonials__slide-stars">
+                    {% for i in (1..5) %}
+                      <svg
+                        viewBox="0 0 17 16"
+                        fill="none"
+                        role="presentation"
+                        class="icon icon-star"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+                      </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="testimonials__slide" data-slide-index="3">
+            <div class="testimonials__slide-image">
+              <img src="{{ 'imgAvis.png' | asset_url }}" alt="Témoignage" loading="lazy">
+            </div>
+            <div class="testimonials__slide-content">
+              <div class="testimonials__slide-quote">
+                <img src="{{ 'guillemets.svg' | asset_url }}" alt="Guillemets" width="34" height="27" loading="lazy">
+              </div>
+              <h3 class="testimonials__slide-title">Un achat mémorable pour nos 30 ans de vie commune</h3>
+              <p class="testimonials__slide-text">
+                "Un achat mémorable pour nos 30 ans de vie commune. Le rendu est superbe, les finitions sont
+                impeccables, et l'effet visuel dépasse nos attentes. C'est une pièce qui attire tous les regards et qui
+                a une réelle valeur émotionnelle. Un achat que je recommande vivement !"
+              </p>
+              <div class="testimonials__slide-meta">
+                <div class="testimonials__slide-info">
+                  <div class="testimonials__slide-name">Frédéric R.</div>
+                  <div class="testimonials__slide-stars">
+                    {% for i in (1..5) %}
+                      <svg
+                        viewBox="0 0 17 16"
+                        fill="none"
+                        role="presentation"
+                        class="icon icon-star"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+                      </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="testimonials__slide" data-slide-index="4">
+            <div class="testimonials__slide-image">
+              <img src="{{ 'imgAvis.png' | asset_url }}" alt="Témoignage" loading="lazy">
+            </div>
+            <div class="testimonials__slide-content">
+              <div class="testimonials__slide-quote">
+                <img src="{{ 'guillemets.svg' | asset_url }}" alt="Guillemets" width="34" height="27" loading="lazy">
+              </div>
+              <h3 class="testimonials__slide-title">Nous avons été pleinement séduits par l'expérience.</h3>
+              <p class="testimonials__slide-text">
+                "Le thème astral de couple que nous avons reçu est vraiment superbe : le modèle que nous avions choisi
+                est moderne, élégant et d'une très belle qualité. Le rendu a une vraie présence et prend naturellement
+                sa place chez nous. Le livret qui l'accompagne a été un vrai plus. Les mantras, les explications et les
+                pistes de réflexion nous ont permis d'engager des discussions profondes, en lien direct avec ce que nous
+                vivons au quotidien. Il nous aide à mieux comprendre ce qui nous unit, à valoriser nos forces, et à
+                aborder avec plus de douceur certaines zones plus délicates de notre thème. Ce qui aurait pu être une
+                faiblesse devient, grâce à ce guide, un espace pour grandir ensemble. Au final, c'est un support
+                sincère, beau et inspirant pour nourrir notre relation. Nous sommes vraiment très satisfaits, autant par
+                la qualité du cadre que par tout ce que cette expérience nous apporte. Nous le recommandons
+                chaleureusement."
+              </p>
+              <div class="testimonials__slide-meta">
+                <div class="testimonials__slide-info">
+                  <div class="testimonials__slide-name">Amélie V. et Vincent L.</div>
+                  <div class="testimonials__slide-stars">
+                    {% for i in (1..5) %}
+                      <svg
+                        viewBox="0 0 17 16"
+                        fill="none"
+                        role="presentation"
+                        class="icon icon-star"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+                      </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <div class="how-it-works__container" style="text-transform: none !important;">
+      <h2 class="how-it-works__heading">DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE</h2>
+      <p class="how-it-works__subtitle">Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.</p>
+
+      <div class="how-it-works__columns" style="text-transform: none !important;">
+        <div class="how-it-works__column" style="text-transform: none !important;">
+          <div class="how-it-works__column-number">01.</div>
+          <div class="how-it-works__column-icon">
+            <img src="{{ 'ciel1.svg' | asset_url }}" alt="" class="how-it-works__icon-image">
+          </div>
+          <h3 class="how-it-works__column-title">VOS INFORMATIONS DE NAISSANCE</h3>
+          <div class="how-it-works__column-description">
+            <p>
+              Partagez vos informations de naissance : Prénom, nom, date, heure et lieu. Ces données forment la carte de
+              votre ciel, base de toute création ASTROGALLERY.
+            </p>
+          </div>
+        </div>
+
+        <div class="how-it-works__column" style="text-transform: none !important;">
+          <div class="how-it-works__column-number">02.</div>
+          <div class="how-it-works__column-icon">
+            <img src="{{ 'ciel2.svg' | asset_url }}" alt="" class="how-it-works__icon-image">
+          </div>
+          <h3 class="how-it-works__column-title">ANALYSE & INTERPRÉTATION</h3>
+          <div class="how-it-works__column-description">
+            <p>
+              A partir de votre thème natal, ASTROGALLERY interprète votre empreinte céleste pour en révéler l'essence.
+              Nous transformons la lecture de votre thème en œuvre astrale accompagnée de son livret d'interprétation
+              complet.
+            </p>
+          </div>
+        </div>
+
+        <div class="how-it-works__column" style="text-transform: none !important;">
+          <div class="how-it-works__column-number">03.</div>
+          <div class="how-it-works__column-icon">
+            <img src="{{ 'ciel3.svg' | asset_url }}" alt="" class="how-it-works__icon-image">
+          </div>
+          <h3 class="how-it-works__column-title">CRÉATION & LIVRAISON</h3>
+          <div class="how-it-works__column-description">
+            <p>
+              Votre œuvre astrale et son livret sont ensuite produites en France selon plusieurs finitions haut de gamme
+              au choix. Elle est livrée chez vous sous 3 à 4 semaines maximum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-it-works__buttons">
+      <a href="/products/solo" class="button how-it-works__button button--oeuvres">
+        <span class="button__text">CRÉER MON ŒUVRE</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="faq-section" id="faq-section">
+  <div class="faq-section__container">
+    <h2 class="faq-section__title">QUELLES FINITIONS POUR SUBLIMER VOTRE ŒUVRE</h2>
+
+    <div class="faq-accordion">
+      <div class="faq-item faq-item--format">
+        <button class="faq-item__header" aria-expanded="false">
+          <span class="faq-item__question faq-item__question--gold">LE FORMAT QUI VOUS RESSEMBLE</span>
+          <span class="faq-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-item__content">
+          <div class="faq-item__answer faq-item__answer--format">
+            <!-- Introduction -->
+            <div class="format-intro">
+              <p class="format-intro__italic">Chaque format exprime une intention.</p>
+              <p class="format-intro__text">
+                Rond, carré, vertical ou horizontal : à vous de choisir la forme qui correspond à votre regard et à
+                l'énergie que vous souhaitez incarner.
+              </p>
+            </div>
+
+            <!-- Grille des 4 formats -->
+            <div class="format-grid">
+              <!-- Format ROND -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'format1.png' | asset_url }}" alt="Format Rond" loading="lazy">
+                </div>
+                <h4 class="format-card__title">ROND</h4>
+                <p class="format-card__subtitle">Harmonie et unité</p>
+                <div class="format-card__dimensions">
+                  <span class="format-card__dimensions-label">Dimensions</span>
+                  <span class="format-card__dimensions-value">∅ 40 cm</span>
+                </div>
+                <p class="format-card__description">
+                  Le symbole de l'équilibre parfait. Sans légende extérieure, il invite à la contemplation pure : la
+                  forme circulaire évoque la complétude, le mouvement des astres et l'harmonie intérieure.<br>
+                  <br>
+                  Idéal pour une lecture intime, centrée sur l'essence.
+                </p>
+              </div>
+
+              <!-- Format CARRÉ -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'format2.png' | asset_url }}" alt="Format Carré" loading="lazy">
+                </div>
+                <h4 class="format-card__title">CARRÉ</h4>
+                <p class="format-card__subtitle">Stabilité et ancrage</p>
+                <div class="format-card__dimensions">
+                  <span class="format-card__dimensions-label">Dimensions</span>
+                  <span class="format-card__dimensions-value">40 × 40 cm</span>
+                </div>
+                <p class="format-card__description">
+                  Symbole de structure et de clarté. Comme le rond, il ne comporte pas de légendes extérieures : tout
+                  est recentré sur le cœur du ciel. Parfait pour exprimer solidité, équilibre et ancrage dans sa vérité
+                  personnelle.
+                </p>
+              </div>
+
+              <!-- Format RECTANGULAIRE VERTICAL -->
+              <div class="format-card">
+                <div class="format-card__image format-card__image--vertical">
+                  <img src="{{ 'format3.png' | asset_url }}" alt="Format Rectangulaire Vertical" loading="lazy">
+                </div>
+                <h4 class="format-card__title">RECTANGULAIRE VERTICAL</h4>
+                <p class="format-card__subtitle">Introspection et élévation</p>
+                <div class="format-card__dimensions">
+                  <span class="format-card__dimensions-label">Dimensions</span>
+                  <span class="format-card__dimensions-value">35 × 50 cm</span> 
+                </div>
+                <p class="format-card__description">
+                  La lecture verticale évoque la montée, la quête intérieure, le lien entre le ciel et la terre. Les
+                  légendes extérieures apportent profondeur et guidance : chaque phrase éclaire un axe de vie.<br>
+                  <br>
+                  Idéal pour ceux qui traversent un moment de transformation ou de croissance.
+                </p>
+              </div>
+
+              <!-- Format RECTANGULAIRE HORIZONTAL -->
+              <div class="format-card">
+                <div class="format-card__image format-card__image--horizontal">
+                  <img src="{{ 'format4.png' | asset_url }}" alt="Format Rectangulaire Horizontal" loading="lazy">
+                </div>
+                <h4 class="format-card__title">RECTANGULAIRE HORIZONTAL</h4>
+                <p class="format-card__subtitle">Harmonie et ouverture</p>
+                <div class="format-card__dimensions">
+                  <span class="format-card__dimensions-label">Dimensions</span>
+                  <span class="format-card__dimensions-value">50 × 35 cm</span>
+                </div>
+                <p class="format-card__description">
+                  Une vision panoramique du lien et du mouvement. Les légendes extérieures viennent rythmer la lecture
+                  et raconter l'histoire du ciel. Format parfait pour représenter l'équilibre, la dualité et la
+                  continuité.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volet 2 - Matières -->
+      <div class="faq-item faq-item--format">
+        <button class="faq-item__header" aria-expanded="false">
+          <span class="faq-item__question faq-item__question--gold"
+            >CHOISISSEZ LA MATIÈRE ET LA LUMIÈRE QUI VOUS INSPIRENT</span
+          >
+          <span class="faq-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-item__content">
+          <div class="faq-item__answer faq-item__answer--format">
+            <!-- Introduction -->
+            <div class="format-intro">
+              <p class="format-intro__italic">
+                Chaque matière révèle une sensation différente: éclat, douceur, ou profondeur.
+              </p>
+              <p class="format-intro__text">
+                Le support donne vie à la lumière de votre ciel et participe à l'émotion qu'il dégage.
+              </p>
+            </div>
+
+            <!-- Grille des 2 matières -->
+            <div class="format-grid format-grid--2cols">
+              <!-- PLEXI'ART BRILLANT -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'matiere1.jpg' | asset_url }}" alt="Plexi'Art Brillant" loading="lazy">
+                </div>
+                <h4 class="format-card__title">BRILLANT (PLEXI'ART)</h4>
+                <p class="format-card__subtitle">Lumière et profondeur</p>
+                <p class="format-card__description">
+                  Surface lisse et éclatante, le Plexi'Art Brillant crée un effet miroir unique.<br>
+                  La lumière s'y reflète et donne une impression de profondeur cosmique.<br>
+                  Idéal pour sublimer les contrastes et faire rayonner les couleurs planétaires.
+                </p>
+              </div>
+
+              <!-- ALUMINIUM (ALU DIBOND) -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'matiere3.jpg' | asset_url }}" alt="Aluminium Alu Dibond" loading="lazy">
+                </div>
+                <h4 class="format-card__title">MAT (ALU DIBOND)</h4>
+                <p class="format-card__subtitle">Modernité et sobriété</p>
+                <p class="format-card__description">
+                  Mat et structuré, l'Alu Dibond offre un rendu sobre et durable.<br>
+                  Sa surface fine et rigide assure une stabilité parfaite et un style résolument moderne.<br>
+                  Le choix idéal pour les amateurs de minimalisme et de précision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volet 3 - Cadres -->
+      <div class="faq-item faq-item--format">
+        <button class="faq-item__header" aria-expanded="false">
+          <span class="faq-item__question faq-item__question--gold">CHOISISSEZ LE CADRE QUI SUBLIMERA VOTRE ŒUVRE</span>
+          <span class="faq-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-item__content">
+          <div class="faq-item__answer faq-item__answer--format">
+            <!-- Introduction -->
+            <div class="format-intro">
+              <p class="format-intro__italic">
+                Le cadre donne la dernière note, celle qui révèle la lumière et la profondeur de votre ciel.
+              </p>
+              <p class="format-intro__text">
+                Chaque finition crée une émotion différente, à vous de choisir la tonalité qui résonne le plus avec
+                votre univers.
+              </p>
+            </div>
+
+            <!-- Grille des 5 cadres -->
+            <div class="format-grid format-grid--5frames">
+
+
+              <!-- Caisse Américaine ALU NOIR -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'cadre2.jpg' | asset_url }}" alt="Caisse Américaine Alu Noir" loading="lazy">
+                </div>
+                <h4 class="format-card__title">CAISSE AMÉRICAINE ALU NOIR</h4>
+                <p class="format-card__subtitle">Modernité et précision</p>
+                <p class="format-card__description">
+                  Finition métallique aux reflets subtils, leCaisse Américaine Alu Noir marie sobriété et modernité. Son
+                  éclat satiné souligne les détails dorés de l'œuvre et renforce la netteté du visuel.<br>
+                  Un choix contemporain et intemporel.
+                </p>
+              </div>
+
+              <!-- Caisse Américaine NOIR -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'cadre3.jpg' | asset_url }}" alt="Caisse Américaine Noir" loading="lazy">
+                </div>
+                <h4 class="format-card__title">CAISSE AMÉRICAINE NOIR</h4>
+                <p class="format-card__subtitle">Intensité et profondeur</p>
+                <p class="format-card__description">
+                  La Caisse Américaine Noir crée un effet galerie : un contour plus large qui accentue le contraste et
+                  donne du relief à l'œuvre. Elle confère puissance, densité et présence à votre carte du ciel.<br>
+                  Parfaite pour un rendu fort, sculptural, immersif.
+                </p>
+              </div>
+
+              <!-- Caisse Américaine BLANC -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'cadre4.jpg' | asset_url }}" alt="Caisse Américaine Blanc" loading="lazy">
+                </div>
+                <h4 class="format-card__title">CAISSE AMÉRICAINE BLANC</h4>
+                <p class="format-card__subtitle">Douceur et luminosité</p>
+                <p class="format-card__description">
+                  La Caisse Américaine Blanc apporte légèreté et clarté à l'œuvre. Son cadre lumineux crée un contraste
+                  doux avec les teintes profondes du ciel astral.<br>
+                  Idéal pour les intérieurs clairs et les ambiances apaisantes.
+                </p>
+              </div>
+
+              <!-- Caisse Américaine CHÊNE NATUREL -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'cadre5.jpg' | asset_url }}" alt="Caisse Américaine Chêne Naturel" loading="lazy">
+                </div>
+                <h4 class="format-card__title">CAISSE AMÉRICAINE CHÊNE NATUREL</h4>
+                <p class="format-card__subtitle">Chaleur et authenticité</p>
+                <p class="format-card__description">
+                  La Caisse Américaine Chêne Naturel apporte une douceur organique à l'œuvre. Ses teintes boisées
+                  réchauffent la composition et révèlent un équilibre entre matière et lumière.<br>
+                  Idéal pour un rendu à la fois artistique et apaisant.
+                </p>
+              </div>
+
+              <!-- SANS CADRE -->
+              <div class="format-card">
+                <div class="format-card__image">
+                  <img src="{{ 'chloe.jpg' | asset_url }}" alt="Sans Cadre" loading="lazy">
+                </div>
+                <h4 class="format-card__title">SANS CADRE</h4>
+                <p class="format-card__subtitle">Pureté et liberté</p>
+                <p class="format-card__description">
+                  L'option Sans cadre met en avant la carte du ciel elle-même. Rien ne l'enferme : la forme, la matière
+                  et la lumière s'expriment pleinement.<br>
+                  Un choix audacieux pour ceux qui préfèrent la simplicité absolue.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section Astrologie Sidérale vs Tropicale -->
+<div class="astro-choice-section">
+  <div class="astro-choice__container">
+    <!-- Colonne gauche - Texte -->
+    <div class="astro-choice__intro">
+      <h2 class="astro-choice__title">
+        CHOISISSEZ VOTRE<br>
+        APPROCHE ASTROLOGIQUE :<br>
+        SIDÉRALE OU TROPICALE
+      </h2>
+      <div class="astro-choice__text">
+        <p>
+          Chez <strong>ASTROGALLERY</strong>, nous privilégions la <strong>méthode sidérale</strong>, car elle se base
+          sur la <strong>position réelle des constellations dans le ciel</strong>. C'est une approche fidèle,
+          astronomique et intemporelle.
+        </p>
+        <p>
+          Cependant, nous vous laissons le choix d'utiliser l'<strong><u>astrologie tropicale</u></strong
+          >, plus symbolique et psychologique, si c'est celle qui vous parle le plus.
+        </p>
+      </div>
+    </div>
+
+    <!-- Colonne droite - 2 cartes -->
+    <div class="astro-choice__cards">
+      <!-- Carte Sidérale -->
+      <div class="astro-choice__card">
+        <div class="astro-choice__card-image">
+          <img src="{{ 'oui1.png' | asset_url }}" alt="Astrologie Sidérale" loading="lazy">
+        </div>
+        <div class="astro-choice__card-content">
+          <h3 class="astro-choice__card-title">ASTROLOGIE SIDÉRALE</h3>
+          <p class="astro-choice__card-subtitle">La carte du ciel réelle</p>
+          <ul class="astro-choice__card-list">
+            <li>Basée sur les étoiles telles qu'elles apparaissent réellement dans le ciel.</li>
+            <li>Prend en compte le décalage de 25° entre les deux systèmes (précession des équinoxes).</li>
+            <li>
+              Approche astronomique, karmique et spirituelle, utilisée en Inde et dans les traditions les plus
+              anciennes.
+            </li>
+            <li>
+              Elle décrit la trajectoire concrète de l'âme, les expériences et les apprentissages qui jalonnent la vie.
+            </li>
+          </ul>
+          <p class="astro-choice__card-footer">
+            <strong><u>La carte du ciel réelle</u></strong
+            >, reflet de votre destinée et de votre parcours.
+          </p>
+        </div>
+      </div>
+
+      <!-- Carte Tropicale -->
+      <div class="astro-choice__card">
+        <div class="astro-choice__card-image">
+          <img src="{{ 'oui2.png' | asset_url }}" alt="Astrologie Tropicale" loading="lazy">
+        </div>
+        <div class="astro-choice__card-content">
+          <h3 class="astro-choice__card-title">ASTROLOGIE TROPICALE</h3>
+          <p class="astro-choice__card-subtitle">Le calendrier des saisons</p>
+          <ul class="astro-choice__card-list">
+            <li>Fondée sur les saisons terrestres : le 0° Bélier commence à l'équinoxe de printemps.</li>
+            <li>Approche symbolique et psychologique, dominante en Occident.</li>
+            <li>Elle traduit les énergies vécues intérieurement, la personnalité et le ressenti subjectif.</li>
+          </ul>
+          <p class="astro-choice__card-footer">
+            Un <strong><u>miroir intérieur</u></strong
+            >, lecture de votre monde émotionnel et psychique.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.faq-item__header');
+
+    faqItems.forEach(function (header) {
+      header.addEventListener('click', function () {
+        const item = this.closest('.faq-item');
+        const isOpen = item.classList.contains('faq-item--open');
+
+        if (isOpen) {
+          item.classList.remove('faq-item--open');
+          this.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('faq-item--open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+  document.querySelectorAll('.product__thumbnail[data-type="video"]').forEach((button) => {
+    button.addEventListener('click', function () {
+      const videoUrl = this.getAttribute('data-video-url');
+      const mainContainer = document.querySelector('.product__main-media'); // À adapter selon votre classe
+
+      mainContainer.innerHTML = `<video controls autoplay style="width:100%"><source src="${videoUrl}" type="video/mp4"></video>`;
+    });
+  });
+  
+  // Fonction pour gérer une checkbox "Je ne sais pas"
+  function setupUnknownCheckbox(checkboxId, fieldId) {
+    const checkbox = document.getElementById(checkboxId);
+    const field = document.getElementById(fieldId);
+    
+    if (checkbox && field) {
+      // Vérifier l'état initial au chargement
+      if (checkbox.checked) {
+        console.log(`${checkboxId} est cochée au chargement, désactivation du champ`);
+        field.removeAttribute('required');
+        field.disabled = true;
+        field.value = '';
+        field.setCustomValidity(''); // Effacer le message d'erreur du navigateur
+        field.classList.add('custom-form__input--disabled');
+      }
+      
+      // Écouter les changements
+      checkbox.addEventListener('change', function() {
+        console.log(`${checkboxId} changed to:`, this.checked);
+        if (this.checked) {
+          // Checkbox cochée : retirer required et désactiver le champ
+          field.removeAttribute('required');
+          field.disabled = true;
+          field.value = ''; // Vider le champ
+          field.setCustomValidity(''); // Effacer le message d'erreur du navigateur
+          field.classList.add('custom-form__input--disabled');
+          console.log(`${fieldId} désactivé et required retiré`);
+        } else {
+          // Checkbox décochée : remettre required et réactiver le champ
+          field.setAttribute('required', 'required');
+          field.disabled = false;
+          field.setCustomValidity(''); // Réinitialiser la validation
+          field.classList.remove('custom-form__input--disabled');
+          console.log(`${fieldId} réactivé et required ajouté`);
+        }
+      });
+    } else {
+      console.error(`Impossible de trouver checkbox ou field pour ${checkboxId}/${fieldId}`);
+    }
+  }
+  
+  // Initialiser les 3 checkboxes
+  setupUnknownCheckbox('unknown-date-naissance', 'date-naissance');
+  setupUnknownCheckbox('unknown-heure-naissance', 'heure-naissance');
+  setupUnknownCheckbox('unknown-lieu-naissance', 'lieu-naissance');
+});
+</script>
+
+<!-- Modal pour les images -->
+<product-modal id="ProductModal-solo" class="product-media-modal">
+  <div
+    class="product-media-modal__dialog"
+    role="dialog"
+    aria-label="{{ 'products.modal.label' | t }}"
+    aria-modal="true"
+    tabindex="-1"
+  >
+    <button
+      id="ModalClose-solo"
+      type="button"
+      class="product-media-modal__toggle"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {% render 'icon-close' %}
+    </button>
+
+    <div
+      class="product-media-modal__content"
+      role="document"
+      aria-label="{{ 'products.modal.label' | t }}"
+      tabindex="0"
+    >
+      {%- for media in product.media -%}
+        {%- if media.media_type == 'image' -%}
+          <img
+            srcset="
+              {%- if media.preview_image.width >= 550 -%}{{ media.preview_image | img_url: '550x' }} 550w,{%- endif -%}
+              {%- if media.preview_image.width >= 1100 -%}{{ media.preview_image | img_url: '1100x' }} 1100w,{%- endif -%}
+              {%- if media.preview_image.width >= 1680 -%}{{ media.preview_image | img_url: '1680x' }} 1680w,{%- endif -%}
+              {%- if media.preview_image.width >= 2048 -%}{{ media.preview_image | img_url: '2048x' }} 2048w,{%- endif -%}
+              {%- if media.preview_image.width >= 4096 -%}{{ media.preview_image | img_url: '4096x' }} 4096w{%- endif -%}
+            "
+            sizes="(min-width: 750px) calc(100vw - 12rem), 100vw"
+            src="{{ media.preview_image | img_url: '750x' }}"
+            alt="{{ media.alt | escape }}"
+            loading="lazy"
+            width="1100"
+            height="{{ 1100 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+            data-media-id="{{ media.id }}"
+          >
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</product-modal>
+
+<!-- Schema SEO -->
+{%- liquid
+  if product.selected_or_first_available_variant.featured_media
+    assign seo_media = product.selected_or_first_available_variant.featured_media
+  else
+    assign seo_media = product.featured_media
+  endif
+-%}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {% if seo_media -%}
+      "image": [
+        {{ seo_media | image_url: width: 1920 | prepend: "https:" | json }}
+      ],
+    {%- endif %}
+    "description": {{ product.description | strip_html | json }},
+    {% if product.selected_or_first_available_variant.sku != blank -%}
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- endif %}
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | json }}
+    },
+    "offers": [
+      {%- for variant in product.variants -%}
+        {
+          "@type" : "Offer",
+          {%- if variant.sku != blank -%}
+            "sku": {{ variant.sku | json }},
+          {%- endif -%}
+          {%- if variant.barcode.size == 12 -%}
+            "gtin12": {{ variant.barcode }},
+          {%- endif -%}
+          {%- if variant.barcode.size == 13 -%}
+            "gtin13": {{ variant.barcode }},
+          {%- endif -%}
+          {%- if variant.barcode.size == 14 -%}
+            "gtin14": {{ variant.barcode }},
+          {%- endif -%}
+          "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price" : {{ variant.price | divided_by: 100.00 | json }},
+          "priceCurrency" : {{ cart.currency.iso_code | json }},
+          "url" : {{ request.origin | append: variant.url | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+<!-- JavaScript pour le slider et la modal -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Gestion des miniatures cliquables
+    const thumbnails = document.querySelectorAll('.product-solo-section .product__thumbnail');
+    const mainImage = document.getElementById('main-product-image-solo');
+
+    thumbnails.forEach(function (thumbnail) {
+      thumbnail.addEventListener('click', function () {
+        // Retirer la classe active de toutes les miniatures
+        thumbnails.forEach(function (t) {
+          t.classList.remove('active');
+        });
+        // Ajouter la classe active à la miniature cliquée
+        this.classList.add('active');
+        // Changer l'image principale
+        const newSrc = this.getAttribute('data-image-src');
+        mainImage.src = newSrc;
+      });
+    });
+
+    // Slider principal (si nécessaire)
+    if (typeof $ !== 'undefined' && $.fn.slick) {
+      $('.product-solo-section .product__media-sublist').each(function () {
+        $(this).slick(getSubSliderProductSettings($(this).parent().find('.product__media-list')));
+      });
+    }
+
+    // Synchroniser la quantité visible avec l'input du snippet lié au formulaire
+    const quantityInputVisible = document.getElementById('Quantity-solo');
+    const hiddenQuantity = document.getElementById('hidden-quantity-solo');
+    // Trouver l'input du snippet par son attribut form
+    const snippetQuantityInput = document.querySelector('input[form="product-form-solo"][name="quantity"]');
+    const quantityWrapper = document.querySelector('.quantity-solo-wrapper quantity-input');
+
+    function syncQuantity() {
+      if (quantityInputVisible) {
+        const qty = parseInt(quantityInputVisible.value) || 1;
+        // Synchroniser avec l'input hidden
+        if (hiddenQuantity) {
+          hiddenQuantity.value = qty;
+        }
+        // Synchroniser avec l'input du snippet (celui lié au formulaire)
+        if (snippetQuantityInput) {
+          snippetQuantityInput.value = qty;
+          // Déclencher un événement change pour que Shopify le détecte
+          snippetQuantityInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    }
+
+    if (quantityInputVisible) {
+      // Synchroniser à chaque changement
+      quantityInputVisible.addEventListener('change', syncQuantity);
+      quantityInputVisible.addEventListener('input', syncQuantity);
+
+      // Écouter les clics sur les boutons +/-
+      if (quantityWrapper) {
+        const buttons = quantityWrapper.querySelectorAll('button');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            setTimeout(syncQuantity, 100);
+          });
+        });
+      }
+
+      // Synchroniser en continu pour être sûr
+      setInterval(syncQuantity, 200);
+    }
+  });
+
+</script>
+
+{%- if first_3d_model -%}
+  <script type="application/json" id="ProductJSON-{{ product.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+  <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+<script>
+  // S'assurer que le formulaire fonctionne correctement
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('product-form-solo');
+    const variantInput = form ? form.querySelector('input[name="id"]') : null;
+    const submitButton = form ? form.querySelector('[type="submit"]') : null;
+    const productFormElement = document.querySelector('product-form');
+
+    // S'assurer que l'input n'est pas disabled et a une valeur
+    if (variantInput) {
+      variantInput.disabled = false;
+      if (!variantInput.value) {
+        variantInput.value = '{{ product.selected_or_first_available_variant.id }}';
+      }
+    }
+
+    // S'assurer que le bouton n'est pas disabled
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.removeAttribute('disabled');
+      submitButton.removeAttribute('aria-disabled');
+    }
+
+    // Écouter la soumission du formulaire
+    if (form) {
+      form.addEventListener('submit', function (e) {
+      });
+    }
+
+    // Forcer la soumission quand on clique sur le bouton ou ses enfants
+    document.addEventListener(
+      'click',
+      function (e) {
+        const button = e.target.closest('.product-form__submit');
+        if (button) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // Récupérer le formulaire
+          const form = document.getElementById('product-form-solo');
+          const variantId = form ? form.querySelector('input[name="id"]').value : null;
+          const quantity = form ? form.querySelector('input[name="quantity"]')?.value || 1 : 1;
+
+          if (!variantId) {
+            return;
+          }
+
+          // ===== VALIDATION DES CHAMPS OBLIGATOIRES =====
+          const requiredFields = [
+            { id: 'format-oeuvre-custom', label: 'Format de l\'œuvre' },
+            { id: 'matiere-support-custom', label: 'Matière du support' },
+            { id: 'encadrement-oeuvre-custom', label: 'Encadrement de l\'œuvre' },
+            { id: 'nom-prenom', label: 'Nom & Prénom' },
+            { id: 'date-naissance', label: 'Date de naissance' },
+            { id: 'heure-naissance', label: 'Heure exacte de naissance' },
+            { id: 'lieu-naissance', label: 'Lieu de naissance' },
+          ];
+
+          let isValid = true;
+          let firstInvalidField = null;
+
+          // Retirer les erreurs précédentes
+          requiredFields.forEach(function (field) {
+            const input = document.getElementById(field.id);
+            if (input) {
+              input.classList.remove('custom-form__input--error');
+              // Chercher le message d'erreur dans le container parent
+              const fieldContainer = input.closest('.custom-form__field');
+              const errorMsg = fieldContainer
+                ? fieldContainer.querySelector('.custom-form__error-message')
+                : input.parentElement.querySelector('.custom-form__error-message');
+              if (errorMsg) errorMsg.remove();
+            }
+          });
+
+          // Vérifier chaque champ
+          requiredFields.forEach(function (field) {
+            const input = document.getElementById(field.id);
+            // ✅ Ignorer les champs désactivés (checkbox "Je ne sais pas" cochée)
+            // Pour les select, vérifier si value est vide ou si c'est l'option disabled
+            const isEmpty = input && !input.disabled && (
+              (input.tagName === 'SELECT' && (!input.value || input.value === '')) ||
+              (input.tagName !== 'SELECT' && !input.value.trim())
+            );
+            
+            if (isEmpty) {
+              isValid = false;
+              input.classList.add('custom-form__input--error');
+
+              // Ajouter un message d'erreur - trouver le bon parent (custom-form__field)
+              const errorMsg = document.createElement('span');
+              errorMsg.className = 'custom-form__error-message';
+              errorMsg.textContent = 'Ce champ est obligatoire';
+              errorMsg.style.cssText = 'color: #e74c3c; font-size: 12px; display: block; margin-top: 4px;';
+
+              // Trouver le container .custom-form__field pour ajouter l'erreur après le champ/wrapper
+              const fieldContainer = input.closest('.custom-form__field');
+              if (fieldContainer) {
+                fieldContainer.appendChild(errorMsg);
+              } else {
+                input.parentElement.appendChild(errorMsg);
+              }
+
+              if (!firstInvalidField) firstInvalidField = input;
+            }
+          });
+
+          if (!isValid) {
+            // Scroll vers le premier champ invalide
+            if (firstInvalidField) {
+              firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              firstInvalidField.focus();
+            }
+            return;
+          }
+          // ===== FIN VALIDATION =====
+
+          // Ajouter la classe loading
+          button.classList.add('loading');
+          button.setAttribute('aria-disabled', 'true');
+
+          // Collecter les propriétés personnalisées du formulaire
+          const formatSelect = document.getElementById('format-oeuvre-custom');
+          const matiereSelect = document.getElementById('matiere-support-custom');
+          const encadrementSelect = document.getElementById('encadrement-oeuvre-custom');
+          const nomInput = document.getElementById('nom-prenom');
+          const dateInput = document.getElementById('date-naissance');
+          const heureInput = document.getElementById('heure-naissance');
+          const lieuInput = document.getElementById('lieu-naissance');
+          const emailInput = document.getElementById('email');
+          const telephoneInput = document.getElementById('telephone');
+          const typeRadio = document.querySelector('input[name="type-oeuvre"]:checked');
+          const demandesTextarea = document.getElementById('demandes-particulieres');
+
+          const properties = {};
+          if (formatSelect) properties["Format de l'œuvre"] = formatSelect.options[formatSelect.selectedIndex].text;
+          if (matiereSelect) properties['Matière du support'] = matiereSelect.options[matiereSelect.selectedIndex].text;
+          if (encadrementSelect)
+            properties["Encadrement de l'œuvre"] = encadrementSelect.options[encadrementSelect.selectedIndex].text;
+          if (nomInput && nomInput.value) properties['Nom & Prénom'] = nomInput.value;
+          
+          // ✅ Vérifier les checkboxes "Je ne sais pas" pour les champs de naissance
+          const unknownDateCheckbox = document.getElementById('unknown-date-naissance');
+          const unknownHeureCheckbox = document.getElementById('unknown-heure-naissance');
+          const unknownLieuCheckbox = document.getElementById('unknown-lieu-naissance');
+          
+          // Date de naissance
+          if (unknownDateCheckbox && unknownDateCheckbox.checked) {
+            properties['Date de naissance'] = 'Je ne sais pas';
+          } else if (dateInput && dateInput.value) {
+            properties['Date de naissance'] = dateInput.value;
+          }
+          
+          // Heure de naissance
+          if (unknownHeureCheckbox && unknownHeureCheckbox.checked) {
+            properties['Heure de naissance'] = 'Je ne sais pas';
+          } else if (heureInput && heureInput.value) {
+            properties['Heure de naissance'] = heureInput.value;
+          }
+          
+          // Lieu de naissance
+          if (unknownLieuCheckbox && unknownLieuCheckbox.checked) {
+            properties['Lieu de naissance'] = 'Je ne sais pas';
+          } else if (lieuInput && lieuInput.value) {
+            properties['Lieu de naissance'] = lieuInput.value;
+          }
+          if (typeRadio) {
+            if (typeRadio.value === 'siderale') {
+              properties["Type d'œuvre"] = 'Œuvre Sidérale';
+            } else if (typeRadio.value === 'tropicale') {
+              properties["Type d'œuvre"] = 'Œuvre Tropicale';
+            } else if (typeRadio.value === 'je-ne-sais-pas') {
+              properties["Type d'œuvre"] = 'Je ne sais pas';
+            }
+          }
+          if (demandesTextarea && demandesTextarea.value) properties['Demandes particulières'] = demandesTextarea.value;
+
+          // Envoyer la requête pour ajouter au panier
+          const formData = {
+            items: [
+              {
+                id: parseInt(variantId),
+                quantity: parseInt(quantity),
+                properties: properties,
+              },
+            ],
+          };
+
+          // ===== ENVOI VERS GOOGLE SHEETS =====
+          const GOOGLE_SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxeyFuzzUs4jVK6CZoq_AL3UPInDUI728DW6RTHM2kgJ9FkdLD-3qyZXPfhKGnm7w/exec';
+          
+          // Récupérer le prix dynamique de la variante sélectionnée
+          const currentPriceElement = document.querySelector('#price-solo .price-item--regular') || document.querySelector('#price-solo .price-item');
+          const currentPrice = currentPriceElement ? currentPriceElement.textContent.trim().replace(/[^\d,\.]/g, '') : '{{ product.price | money_without_currency }}';
+          
+          const googleSheetsData = {
+            soloDuo: 'Solo',
+            prix: currentPrice,
+            sideralTropical: properties["Type d'œuvre"] || '',
+            nomPrenom1: nomInput ? nomInput.value : '',
+            email: emailInput ? emailInput.value : '',
+            telephone: telephoneInput ? telephoneInput.value : '',
+            dateNaissance1: (unknownDateCheckbox && unknownDateCheckbox.checked) ? 'Je ne sais pas' : (dateInput ? dateInput.value : ''),
+            heureNaissance1: (unknownHeureCheckbox && unknownHeureCheckbox.checked) ? 'Je ne sais pas' : (heureInput ? heureInput.value : ''),
+            lieuNaissance1: (unknownLieuCheckbox && unknownLieuCheckbox.checked) ? 'Je ne sais pas' : (lieuInput ? lieuInput.value : ''),
+            demandeParticuliere: demandesTextarea ? demandesTextarea.value : '',
+            formatOeuvre: formatSelect ? formatSelect.options[formatSelect.selectedIndex].text : '',
+            matiereSupport: matiereSelect ? matiereSelect.options[matiereSelect.selectedIndex].text : '',
+            encadrement: encadrementSelect ? encadrementSelect.options[encadrementSelect.selectedIndex].text : ''
+          };
+
+          // 🐛 DEBUG: Afficher les données envoyées au Google Sheet
+          console.log('📊 Données envoyées au Google Sheet:', googleSheetsData);
+
+          // Envoyer vers Google Sheets en premier (mode no-cors, non bloquant)
+          fetch(GOOGLE_SHEETS_WEBHOOK, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(googleSheetsData)
+          })
+          .then(function() {
+            console.log('Données Solo envoyées vers Google Sheets');
+          })
+          .catch(function(error) {
+            console.error('Erreur envoi Google Sheets:', error);
+          });
+          // ===== FIN ENVOI GOOGLE SHEETS =====
+
+          // Envoyer la requête pour ajouter au panier
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Ajouté au panier:', data);
+
+              // Ouvrir le cart drawer
+              const cartDrawer = document.querySelector('cart-drawer');
+              if (cartDrawer) {
+                // Rafraîchir le drawer et l'ouvrir
+                fetch('/?sections=cart-drawer,cart-icon-bubble')
+                  .then((res) => res.json())
+                  .then((sections) => {
+                    // Mettre à jour le contenu du drawer
+                    const drawerHTML = sections['cart-drawer'];
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(drawerHTML, 'text/html');
+                    const newDrawerInner = doc.querySelector('.drawer__inner');
+                    const currentDrawerInner = cartDrawer.querySelector('.drawer__inner');
+                    if (newDrawerInner && currentDrawerInner) {
+                      currentDrawerInner.innerHTML = newDrawerInner.innerHTML;
+                    }
+
+                    // Mettre à jour l'icône du panier
+                    const iconHTML = sections['cart-icon-bubble'];
+                    const iconDoc = parser.parseFromString(iconHTML, 'text/html');
+                    const newIcon = iconDoc.querySelector('.shopify-section');
+                    const currentIcon = document.getElementById('cart-icon-bubble');
+                    if (newIcon && currentIcon) {
+                      currentIcon.innerHTML = newIcon.innerHTML;
+                    }
+
+                    // Retirer la classe is-empty si besoin
+                    cartDrawer.classList.remove('is-empty');
+
+                    // Ouvrir le drawer avec la méthode native
+                    if (typeof cartDrawer.open === 'function') {
+                      cartDrawer.open();
+                    } else {
+                      // Fallback si la méthode n'existe pas
+                      cartDrawer.classList.add('animate', 'active');
+                      document.body.classList.add('overflow-hidden');
+                    }
+                  });
+              } else {
+                // Rediriger vers le panier si pas de drawer
+                window.location.href = '/cart';
+              }
+            })
+            .catch((error) => {
+              console.error('Erreur ajout panier:', error);
+              alert("Erreur lors de l'ajout au panier. Veuillez réessayer.");
+            })
+            .finally(() => {
+              button.classList.remove('loading');
+              button.removeAttribute('aria-disabled');
+            });
+        }
+      },
+      true
+    ); // capture phase pour intercepter avant l'app tierce
+  });
+</script>
+
+<!-- Script de connexion des variantes -->
+<script type="application/json" id="product-variants-json">
+  {{ product.variants | json }}
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // ===== CONNEXION DES VARIANTES =====
+    // Ce script détecte les sélections de l'utilisateur et met à jour le variant ID et le prix
+
+    const variantsData = JSON.parse(document.getElementById('product-variants-json').textContent);
+    const formatSelect = document.getElementById('format-oeuvre-custom');
+    const matiereSelect = document.getElementById('matiere-support-custom');
+    const encadrementSelect = document.getElementById('encadrement-oeuvre-custom');
+    const variantInput = document.querySelector('#product-form-solo input[name="id"]');
+    const priceElement = document.querySelector('#price-solo .price-item--regular');
+
+    // Mapping des valeurs du formulaire vers les noms Shopify
+    const formatMapping = {
+      'ronde-40x40': 'Ronde (40 x 40)',
+      'ronde-50x50': 'Ronde (50 x 50)',
+      'carree-40x40': 'Carré (40 x 40)',
+      'carree-50x50': 'Carré (50 x 50)',
+      'rectangle-vertical-35x50': 'Rectangulaire vertical (35 x 50)',
+      'rectangle-vertical-50x70': 'Rectangulaire vertical (50 x 70)',
+      'rectangle-horizontal-50x35': 'Rectangulaire horizontal (50 x 35)',
+      'rectangle-horizontal-70x50': 'Rectangulaire horizontal (70 x 50)',
+    };
+
+    const matiereMapping = {
+      'alu-dibond': 'Alu dibond',
+      'plexi-brillant': "Plexi'art",
+      'plexi-mat': "PlexiI'art mat anti-reflet", // Note: double I dans Shopify (typo dans les données)
+    };
+
+    const encadrementMapping = {
+      'attache-metal': 'Attache métal',
+      chassis: 'Chassis',
+      slim: 'Slim',
+      'box-noir': 'Caisse Américaine Noir',
+      'box-alu-noir': 'Caisse Américaine Alu Noir',
+      'box-blanc': 'Caisse Américaine Blanche',
+      'box-chene': 'Caisse Américaine Chêne Naturel',
+    };
+
+    function findMatchingVariant() {
+      if (!formatSelect || !matiereSelect || !encadrementSelect) {
+        console.log('Selects non trouvés');
+        return null;
+      }
+
+      const formatValue = formatMapping[formatSelect.value];
+      const matiereValue = matiereMapping[matiereSelect.value];
+      const encadrementValue = encadrementMapping[encadrementSelect.value];
+
+      if (!formatValue || !matiereValue || !encadrementValue) {
+        return null;
+      }
+      
+      console.log('🔍 Recherche variante pour:', { formatValue, matiereValue, encadrementValue });
+
+      let targetEncadrement = encadrementValue;
+
+      // CORRECTION SPECIFIQUE: Pour le format Rond, "Chassis" dans l'UI correspond à "Attache métal" dans les variantes Shopify
+      if (formatValue.toLowerCase().includes('ronde') && encadrementValue.toLowerCase() === 'chassis') {
+          console.log('🔄 Remapping Chassis -> Attache métal pour le format Rond');
+          targetEncadrement = 'Attache métal';
+      }
+
+      // DEBUG: Afficher toutes les variantes pour voir les options disponibles
+      console.log('📋 Liste complète des variantes disponibles:', variantsData.map(v => ({
+          title: v.title,
+          options: v.options,
+          price: v.price
+      })));
+
+      // Chercher la variante correspondante
+      const matchingVariant = variantsData.find(function (variant) {
+        // 1. Essai de correspondance EXACTE sur les options (sensible à la casse)
+        const exactMatchStrict =
+          (variant.option1 === formatValue ||
+            variant.option1 === matiereValue ||
+            variant.option1 === targetEncadrement) &&
+          (variant.option2 === formatValue ||
+            variant.option2 === matiereValue ||
+            variant.option2 === targetEncadrement) &&
+          (variant.option3 === formatValue || variant.option3 === matiereValue || variant.option3 === targetEncadrement);
+          
+        if (exactMatchStrict) return true;
+
+        // 2. Essai de correspondance EXACTE sur les options (INSENSIBLE à la casse)
+        const formatLower = formatValue.toLowerCase();
+        const matiereLower = matiereValue.toLowerCase();
+        const encadrementLower = targetEncadrement.toLowerCase();
+        
+        const opts = variant.options.map(o => o.toLowerCase());
+        const exactMatchLoose = opts.includes(formatLower) && opts.includes(matiereLower) && opts.includes(encadrementLower);
+        
+        if (exactMatchLoose) return true;
+        
+        // 3. Fallback : Correspondance partielle (dangereux mais parfois nécessaire si les noms diffèrent légèrement)
+        // On vérifie que TOUS les termes recherchés sont présents dans les options ou le titre
+        const allTermsPresent = 
+            (variant.title.toLowerCase().includes(formatLower) || variant.options.some(o => o.toLowerCase().includes(formatLower))) &&
+            (variant.title.toLowerCase().includes(matiereLower) || variant.options.some(o => o.toLowerCase().includes(matiereLower))) &&
+            (variant.title.toLowerCase().includes(encadrementLower) || variant.options.some(o => o.toLowerCase().includes(encadrementLower)));
+            
+        return allTermsPresent;
+      });
+
+      if (matchingVariant) {
+          console.log('✅ Variante trouvée:', matchingVariant.title, 'ID:', matchingVariant.id, 'Prix:', matchingVariant.price);
+      } else {
+          console.warn('❌ Aucune variante trouvée pour:', { formatValue, matiereValue, encadrementValue });
+      }
+      return matchingVariant;
+    }
+
+    function updateVariant() {
+      const variant = findMatchingVariant();
+
+      if (variant) {
+        // Mettre à jour l'input variant ID
+        if (variantInput) {
+          variantInput.value = variant.id;
+          console.log('Variant ID mis à jour:', variant.id);
+        }
+
+        // Mettre à jour le prix affiché
+        if (priceElement) {
+          const formattedPrice = (variant.price / 100).toLocaleString('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+          });
+          priceElement.textContent = formattedPrice;
+          console.log('Prix mis à jour:', formattedPrice);
+        }
+
+        // Mettre à jour aussi via le data attribute si utilisé
+        const priceWrapper = document.querySelector('#price-solo');
+        if (priceWrapper) {
+          const allPrices = priceWrapper.querySelectorAll('.price-item');
+          allPrices.forEach(function (el) {
+            const formattedPrice = (variant.price / 100).toLocaleString('fr-FR', {
+              style: 'currency',
+              currency: 'EUR',
+            });
+            el.textContent = formattedPrice;
+          });
+        }
+
+        // Mettre à jour le prix à côté du bouton "Ajouter au panier"
+        const priceButtonsWrapper = document.querySelector('#price-display-buttons');
+        if (priceButtonsWrapper) {
+          const buttonPrices = priceButtonsWrapper.querySelectorAll('.price-item');
+          buttonPrices.forEach(function (el) {
+            const formattedPrice = (variant.price / 100).toLocaleString('fr-FR', {
+              style: 'currency',
+              currency: 'EUR',
+            });
+            el.textContent = formattedPrice;
+          });
+        }
+      } else {
+      }
+    }
+
+    // Écouter les changements sur tous les selects
+    if (formatSelect) {
+      formatSelect.addEventListener('change', updateVariant);
+      formatSelect.addEventListener('input', updateVariant);
+    }
+    if (matiereSelect) {
+      matiereSelect.addEventListener('change', updateVariant);
+      matiereSelect.addEventListener('input', updateVariant);
+    }
+    if (encadrementSelect) {
+      encadrementSelect.addEventListener('change', updateVariant);
+      encadrementSelect.addEventListener('input', updateVariant);
+    }
+
+    // Mise à jour initiale
+    updateVariant();
+
+    // ===== FILTRAGE DYNAMIQUE DES ENCADREMENTS =====
+    // Règles :
+    // 1. Format Ronde : seulement Attache métal et Chassis
+    // 2. Chassis : désactivé si Alu Dibond
+    // 3. Slim : désactivé si Plexi'Art ou Plexi'Art Mat
+
+    // Encadrements disponibles par format
+    const encadrementsForRonde = ['chassis'];
+    const encadrementsForCarre = [
+      'attache-metal',
+      'chassis',
+      'slim',
+      'box-noir',
+      'box-alu-noir',
+      'box-blanc',
+      'box-chene',
+    ];
+
+    function filterEncadrements() {
+      if (!formatSelect || !matiereSelect || !encadrementSelect) return;
+
+      const format = formatSelect.value;
+      const matiere = matiereSelect.value;
+      const currentEncadrement = encadrementSelect.value;
+
+      // Déterminer si c'est un format rond
+      // Note: 'ronde-40x40' starts with 'ronde'
+      const isRonde = format.startsWith('ronde');
+      
+      // Déterminer les encadrements disponibles selon le format
+      const availableEncadrements = isRonde ? encadrementsForRonde : encadrementsForCarre;
+
+      // Parcourir toutes les options d'encadrement
+      const options = encadrementSelect.querySelectorAll('option');
+      let firstAvailable = null;
+      let currentIsAvailable = false;
+
+      options.forEach(function (option) {
+        const value = option.value;
+        let isAvailable = false;
+        
+        // Toujours autoriser le placeholder vide mais le désactiver
+        if (value === "") {
+            option.disabled = true;
+            option.style.display = '';
+            if (value === currentEncadrement) {
+                currentIsAvailable = true;
+            }
+            return;
+        } else {
+            isAvailable = availableEncadrements.includes(value);
+
+            // Appliquer les règles supplémentaires basées sur la matière
+            if (isAvailable) {
+               // Règle : Slim désactivé si Plexi'Art ou Plexi'Art Mat
+               if (value === 'slim' && (matiere === 'plexi-brillant' || matiere === 'plexi-mat')) {
+                 isAvailable = false;
+               }
+            }
+        }
+
+        // Appliquer la disponibilité
+        option.disabled = !isAvailable;
+        option.style.display = isAvailable ? '' : 'none';
+
+        if (isAvailable && value !== "" && !firstAvailable) {
+          firstAvailable = value;
+        }
+        if (value === currentEncadrement && isAvailable) {
+          currentIsAvailable = true;
+        }
+      });
+
+      // Si l'encadrement actuel n'est plus disponible, sélectionner le premier disponible
+      if (!currentIsAvailable && firstAvailable && currentEncadrement !== "") {
+        encadrementSelect.value = firstAvailable;
+        // Trigger generic change event to update other listeners
+        encadrementSelect.dispatchEvent(new Event('change'));
+      }
+      
+      // Mettre à jour la variante après le filtrage
+      updateVariant();
+    }
+
+    // Écouter les changements pour le filtrage
+    if (formatSelect) {
+      formatSelect.addEventListener('change', filterEncadrements);
+    }
+    if (matiereSelect) {
+      matiereSelect.addEventListener('change', filterEncadrements);
+    }
+
+    // Filtrage initial au chargement
+    filterEncadrements();
+  });
+</script>
+
+<!-- Lightbox CSS et JS pour zoom image -->
+<style>
+  /* ===== STYLES POUR LES CHECKBOXES "JE NE SAIS PAS" ===== */
+  .custom-form__checkbox--unknown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    user-select: none;
+  }
+  
+  .custom-form__checkbox--unknown input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #dfbe71;
+  }
+  
+  .custom-form__checkbox--unknown span {
+    font-style: italic;
+  }
+  
+  .custom-form__checkbox--unknown:hover {
+    color: #000;
+  }
+  
+  /* Style pour les champs désactivés */
+  .custom-form__input--disabled,
+  .custom-form__input:disabled {
+    background-color: #f5f5f5 !important;
+    color: #999 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+  }
+  
+  .custom-form__input-wrapper:has(.custom-form__input--disabled) {
+    opacity: 0.6;
+  }
+
+  /* Styles pour le carrousel vertical de miniatures */
+  .product__media-list-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  .product__thumbnail-carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px; /* Largeur fixe pour la colonne de miniatures */
+  }
+
+  .product__media-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 450px; /* Hauteur visible ajustée */
+    overflow-y: hidden; /* Scroll caché, contrôlé par JS */
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 5px 0;
+  }
+  
+  /* Cacher la scrollbar */
+  .product__media-thumbnails::-webkit-scrollbar {
+    display: none;
+  }
+  .product__media-thumbnails {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .thumb-nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30px;
+    z-index: 2;
+    color: currentColor;
+    transition: background-color 0.2s;
+  }
+
+  .thumb-nav-btn:hover {
+    background-color: #dfbe71;
+    border-radius: 4px;
+  }
+
+  .thumb-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Base Styles for Thumbnails (Desktop & Global) */
+  /* Base Styles for Thumbnails (Desktop & Global) */
+  .product__thumbnail {
+    width: 100%;
+    height: auto; /* Hauteur auto (proportionnelle) comme sur Duo */
+    padding: 0;
+    border: 1px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: none;
+    transition: all 0.2s;
+  }
+
+  .product__thumbnail img, 
+  .product__thumbnail video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px; /* Arrondi comme sur Duo */
+    display: block;
+  }
+
+  .product__thumbnail.active {
+    border-color: #dfbe71; /* Bordure dorée active comme sur Duo */
+  }
+
+  /* Responsive : Carrousel horizontal sur mobile/tablette */
+  @media screen and (max-width: 989px) {
+    .product__media-list-wrapper {
+      flex-direction: column; /* Image au dessus, miniatures en dessous */
+      gap: 10px;
+    }
+
+    .product__thumbnail-carousel-wrapper {
+        width: 100%; /* Pleine largeur */
+        flex-direction: row; /* Flèche G - Liste - Flèche D */
+        order: 2; /* Force l'affichage APRES l'image principale */
+        justify-content: center;
+    }
+
+    .product__media-thumbnails {
+        flex-direction: row; /* Horizontal */
+        justify-content: flex-start; /* Force align start to show video */
+        max-height: none;
+        max-width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto; /* Permet le scroll au doigt */
+        -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
+        scroll-behavior: smooth;
+        height: 80px; /* Hauteur fixe pour les miniatures */
+        width: calc(100% - 70px); /* Place pour les flèches */
+        padding: 0 5px;
+    }
+
+    .product__thumbnail {
+        height: 100%;
+        width: auto; /* Largeur auto selon le ratio */
+    }
+
+    .product__thumbnail img, .product__thumbnail video {
+        width: auto;
+        height: 100%;
+    }
+
+    .thumb-nav-btn {
+        width: 35px;
+        height: 80px !important; /* Force height to match carousel */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    /* Rotation des flèches pour indiquer gauche/droite */
+    .thumb-nav-up svg {
+        transform: rotate(-90deg); /* Haut devient Gauche */
+    }
+    .thumb-nav-down svg {
+        transform: rotate(-90deg); /* Bas devient Droite */
+    }
+    
+    .product__media-list.list-unstyled {
+      width: 100%;
+      order: 1; /* Image principale en premier */
+    }
+  }
+
+  /* Lightbox CSS (existant) */
+  .image-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevent scrolling inside lightbox */
+  }
+
+  /* Prevent body scroll when lightbox is open */
+  body.lightbox-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-lightbox__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    touch-action: none; /* Prevent touch scrolling */
+  }
+
+  .image-lightbox__content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 1;
+  }
+
+  .image-lightbox__image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+
+  .image-lightbox__close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: opacity 0.2s;
+  }
+
+  .image-lightbox__close:hover {
+    opacity: 0.7;
+  }
+
+  .product__image-lightbox-trigger {
+    display: block;
+  }
+
+  /* Curseur zoom uniquement sur les images */
+  .product__main-image,
+  .product__media-item .product__main-image,
+  .product__image-lightbox-trigger .product__main-image {
+    cursor: zoom-in !important;
+  }
+</style>
+
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const thumbs = document.querySelectorAll('.product__thumbnail');
+  const mainDisplay = document.querySelector('.product__media-item');
+  const lightbox = document.getElementById('image-lightbox-solo');
+  const lightboxImage = lightbox ? lightbox.querySelector('.image-lightbox__image') : null;
+
+  // Sélecteurs
+  const formatSelect = document.getElementById('format-oeuvre-custom');
+  const matiereSelect = document.getElementById('matiere-support-custom');
+  const encadrementSelect = document.getElementById('encadrement-oeuvre-custom');
+
+  // Déplacer la lightbox dans le body pour éviter les problèmes de z-index/transform
+  if (lightbox && lightbox.parentNode !== document.body) {
+    document.body.appendChild(lightbox);
+  }
+
+  // Fonction pour ouvrir la lightbox
+  function openLightbox(imageSrc) {
+    if (lightbox && lightboxImage) {
+      lightboxImage.src = imageSrc;
+      lightbox.style.display = 'flex';
+      document.body.classList.add('lightbox-open');
+    }
+  }
+
+  // Fonction pour fermer la lightbox
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.style.display = 'none';
+      document.body.classList.remove('lightbox-open');
+    }
+  }
+
+  // Attacher les handlers de fermeture de la lightbox
+  if (lightbox) {
+    const closeBtn = lightbox.querySelector('.image-lightbox__close');
+    const overlay = lightbox.querySelector('.image-lightbox__overlay');
+
+    // Fermer avec le bouton X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeLightbox);
+    }
+
+    // Fermer en cliquant sur l'overlay
+    if (overlay) {
+      overlay.addEventListener('click', closeLightbox);
+    }
+
+    // Fermer avec Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+        closeLightbox();
+      }
+    });
+  }
+
+  // Attacher le clic sur l'image principale pour le zoom
+  function attachImageClickHandler() {
+    const mainImage = mainDisplay.querySelector('.product__main-image');
+    if (mainImage) {
+      // Nettoyage des anciens listeners pour éviter doublons (optionnel si reset innerHTML)
+      mainImage.onclick = function(e) {
+        e.preventDefault();
+        openLightbox(this.src);
+      };
+    }
+  }
+
+  // Attacher au chargement initial
+  attachImageClickHandler();
+
+  // Gestion du clic sur les miniatures
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      thumbs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      if (this.classList.contains('js-thumb-video')) {
+        const videoUrl = this.getAttribute('data-video-url');
+        mainDisplay.innerHTML = `
+          <video id="main-product-video-solo" autoplay loop muted playsinline style="width: 100%; height: auto;">
+            <source src="${videoUrl}" type="video/mp4">
+          </video>`;
+      } else {
+        const imgSrc = this.getAttribute('data-image-src');
+        mainDisplay.innerHTML = `<img src="${imgSrc}" class="product__main-image" id="main-product-image-solo" style="width: 100%; height: auto; cursor: zoom-in;">`;
+        attachImageClickHandler();
+      }
+    });
+  });
+
+  // --- LOGIQUE COMBINATOIRE (Copie adaptée de DUO) ---
+  function updateSoloImage() {
+    const format = formatSelect ? formatSelect.value : "";
+    const matiere = matiereSelect ? matiereSelect.value : "";
+    const encadrement = encadrementSelect ? encadrementSelect.value : "";
+    
+    console.log('Update Solo Image - Format:', format, 'Matiere:', matiere, 'Encadrement:', encadrement);
+
+    let targetImage = '';
+
+    // CAS 1 : Tout vide -> Rien
+    if (format === "" && matiere === "" && encadrement === "") {
+        return; 
+    }
+
+    // PRIORITY 1 : Combinaison complète
+    if (format !== "" && matiere !== "" && encadrement !== "") {
+        
+        // --- ROND ---
+        if (format === 'ronde-40x40') {
+             if (matiere === 'alu-dibond') {
+                 if (encadrement === 'chassis') targetImage = "{{ '_solo-ronde-mat-chassis.webp' | asset_url }}";
+                 // Pas d'autres cadres pour Alu Rund
+             } else if (matiere === 'plexi-brillant') {
+                 if (encadrement === 'chassis') targetImage = "{{ '_solo-ronde-brillant-chassis.webp' | asset_url }}";
+                 // Pas d'autres cadres pour Plexi Rund
+             }
+        }
+        
+        // --- CARRE ---
+        else if (format === 'carree-40x40') {
+            if (matiere === 'alu-dibond') {
+                if (encadrement === 'chassis') targetImage = "{{ '_solo-carre-mat-chassis.webp' | asset_url }}";
+                else if (encadrement === 'box-alu-noir') targetImage = "{{ '_solo-carre-mat-alu-noir.webp' | asset_url }}";
+                else if (encadrement === 'box-blanc') targetImage = "{{ '_solo-carre-mat-blanche.webp' | asset_url }}";
+                else if (encadrement === 'box-noir') targetImage = "{{ '_solo-carre-mat-noire.webp' | asset_url }}";
+                else if (encadrement === 'box-chene') targetImage = "{{ '_solo-carre-mat-chene.webp' | asset_url }}";
+            } else if (matiere === 'plexi-brillant') {
+                if (encadrement === 'chassis') targetImage = "{{ '_solo-carre-brillant-chassis.webp' | asset_url }}";
+                else if (encadrement === 'box-alu-noir') targetImage = "{{ '_solo-carre-brillant-alu-noir.webp' | asset_url }}";
+                else if (encadrement === 'box-blanc') targetImage = "{{ '_solo-carre-brillant-blanche.webp' | asset_url }}";
+                else if (encadrement === 'box-noir') targetImage = "{{ '_solo-carre-brillant-noire.webp' | asset_url }}";
+                else if (encadrement === 'box-chene') targetImage = "{{ '_solo-carre-brillant-chene.webp' | asset_url }}";
+            }
+        }
+
+        // --- RECTANGLE VERTICAL ---
+        else if (format === 'rectangle-vertical-35x50') {
+             if (matiere === 'alu-dibond') {
+                if (encadrement === 'chassis') targetImage = "{{ '_solo-vertical-mat-chassis.webp' | asset_url }}";
+                else if (encadrement === 'box-alu-noir') targetImage = "{{ '_solo-vertical-mat-alu-noir.webp' | asset_url }}";
+                else if (encadrement === 'box-blanc') targetImage = "{{ '_solo-vertical-mat-blanche.webp' | asset_url }}";
+                else if (encadrement === 'box-noir') targetImage = "{{ '_solo-vertical-mat-noire.webp' | asset_url }}";
+                else if (encadrement === 'box-chene') targetImage = "{{ '_solo-vertical-mat-chene.webp' | asset_url }}";
+            } else if (matiere === 'plexi-brillant') {
+                if (encadrement === 'chassis') targetImage = "{{ '_solo-vertical-brillant-chassis.webp' | asset_url }}";
+                else if (encadrement === 'box-alu-noir') targetImage = "{{ '_solo-vertical-brillant-alu-noir.webp' | asset_url }}";
+                else if (encadrement === 'box-blanc') targetImage = "{{ '_solo-vertical-brillant-blanche.webp' | asset_url }}";
+                else if (encadrement === 'box-noir') targetImage = "{{ '_solo-vertical-brillant-noire.webp' | asset_url }}";
+                else if (encadrement === 'box-chene') targetImage = "{{ '_solo-vertical-brillant-chene.webp' | asset_url }}";
+            }
+        }
+        
+        // --- RECTANGLE HORIZONTAL ---
+        else if (format === 'rectangle-horizontal-50x35') {
+             if (matiere === 'alu-dibond') {
+                if (encadrement === 'chassis') targetImage = "{{ '_solo-horizontal-mat-chassis.webp' | asset_url }}";
+                else if (encadrement === 'box-alu-noir') targetImage = "{{ '_solo-horizontal-mat-alu-noir.webp' | asset_url }}";
+                else if (encadrement === 'box-blanc') targetImage = "{{ '_solo-horizontal-mat-blanche.webp' | asset_url }}";
+                else if (encadrement === 'box-noir') targetImage = "{{ '_solo-horizontal-mat-noire.webp' | asset_url }}";
+                else if (encadrement === 'box-chene') targetImage = "{{ '_solo-horizontal-mat-chene.webp' | asset_url }}";
+            } else if (matiere === 'plexi-brillant') {
+                if (encadrement === 'chassis') targetImage = "{{ '_solo-horizontal-brillant-chassis.webp' | asset_url }}";
+                else if (encadrement === 'box-alu-noir') targetImage = "{{ '_solo-horizontal-brillant-alu-noir.webp' | asset_url }}";
+                else if (encadrement === 'box-blanc') targetImage = "{{ '_solo-horizontal-brillant-blanche.webp' | asset_url }}";
+                else if (encadrement === 'box-noir') targetImage = "{{ '_solo-horizontal-brillant-noire.webp' | asset_url }}";
+                else if (encadrement === 'box-chene') targetImage = "{{ '_solo-horizontal-brillant-chene.webp' | asset_url }}";
+            }
+        }
+    }
+
+    // PRIORITY 2 : Format + Matière (Encadrement vide)
+    else if (format !== "" && matiere !== "" && encadrement === "") {
+         if (format === 'ronde-40x40') {
+             if (matiere === 'alu-dibond') targetImage = "{{ '_solo-ronde-mat-chassis.webp' | asset_url }}";
+             else if (matiere === 'plexi-brillant') targetImage = "{{ '_solo-ronde-brillant-chassis.webp' | asset_url }}";
+         }
+         else if (format === 'carree-40x40') {
+             if (matiere === 'alu-dibond') targetImage = "{{ '_solo-carre-mat-chassis.webp' | asset_url }}";
+             else if (matiere === 'plexi-brillant') targetImage = "{{ '_solo-carre-brillant-chassis.webp' | asset_url }}";
+         }
+         else if (format === 'rectangle-vertical-35x50') {
+             if (matiere === 'alu-dibond') targetImage = "{{ '_solo-vertical-mat-chassis.webp' | asset_url }}";
+             else if (matiere === 'plexi-brillant') targetImage = "{{ '_solo-vertical-brillant-chassis.webp' | asset_url }}";
+         }
+         else if (format === 'rectangle-horizontal-50x35') {
+             if (matiere === 'alu-dibond') targetImage = "{{ '_solo-horizontal-mat-chassis.webp' | asset_url }}";
+             else if (matiere === 'plexi-brillant') targetImage = "{{ '_solo-horizontal-brillant-chassis.webp' | asset_url }}";
+         }
+    }
+
+    // PRIORITY 3 : Format uniquement
+    else if (format !== "") {
+        switch(format) {
+            case 'ronde-40x40':
+                 targetImage = "{{ '_solo-ronde-mat-chassis.webp' | asset_url }}"; 
+                 break;
+            case 'carree-40x40':
+                 targetImage = "{{ '_solo-carre-mat-chassis.webp' | asset_url }}";
+                 break;
+            case 'rectangle-vertical-35x50':
+                 targetImage = "{{ '_solo-vertical-mat-chassis.webp' | asset_url }}";
+                 break;
+             case 'rectangle-horizontal-50x35':
+                 targetImage = "{{ '_solo-horizontal-mat-chassis.webp' | asset_url }}";
+                 break;
+        }
+    }
+
+    // Application de l'image si trouvée
+    if (targetImage) {
+        console.log('Setting target image Solo:', targetImage);
+        if (mainDisplay) {
+            mainDisplay.innerHTML = `<img src="${targetImage}" class="product__main-image" id="main-product-image-solo" style="width: 100%; height: auto; cursor: zoom-in;">`;
+            attachImageClickHandler();
+            
+            // Highlight thumbnail
+            thumbs.forEach(t => t.classList.remove('active'));
+            const matchingThumb = Array.from(thumbs).find(t => {
+                const thumbSrc = t.getAttribute('data-image-src');
+                return thumbSrc && (thumbSrc.includes(targetImage) || targetImage.includes(thumbSrc));
+            });
+            if (matchingThumb) matchingThumb.classList.add('active');
+        }
+    }
+  }
+
+  // Listeners
+  if (formatSelect) formatSelect.addEventListener('change', updateSoloImage);
+  if (matiereSelect) matiereSelect.addEventListener('change', updateSoloImage);
+  if (encadrementSelect) encadrementSelect.addEventListener('change', updateSoloImage);
+});
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.getElementById('thumbnail-carousel-solo');
+  const upBtn = document.querySelector('.thumb-nav-up');
+  const downBtn = document.querySelector('.thumb-nav-down');
+  
+  if (carousel && upBtn && downBtn) {
+    const scrollAmount = 150; 
+
+    // Garde le scroll fluide pour les boutons (très bien pour les clics)
+    upBtn.addEventListener('click', function() {
+      if (window.innerWidth < 990) {
+          carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+          carousel.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+      }
+    });
+
+    downBtn.addEventListener('click', function() {
+      if (window.innerWidth < 990) {
+          carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      } else {
+          carousel.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+      }
+    });
+
+
+  }
+});
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Logic specifically for mobile/tablet devices
+    if (window.innerWidth < 990) {
+      const sentinel = document.getElementById('mobile-sticky-sentinel');
+      const stickyHeader = document.querySelector('.product__media-wrapper');
+      
+      if (sentinel && stickyHeader) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            // When sentinel scrolls out of view (top < 0), we are stuck
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+              stickyHeader.classList.add('is-stuck');
+            } else {
+              stickyHeader.classList.remove('is-stuck');
+            }
+          });
+        }, { threshold: 0 });
+        
+        observer.observe(sentinel);
+      }
+
+      // Hide carousel on scroll (mobile only)
+      if (stickyHeader) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 20) { // Threshold de 20px pour éviter les micros-mouvements
+            stickyHeader.classList.add('hide-carousel');
+          } else {
+            stickyHeader.classList.remove('hide-carousel');
+          }
+        }, { passive: true });
+      }
+    }
+  });
+</script>

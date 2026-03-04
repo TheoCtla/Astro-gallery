@@ -1,0 +1,1176 @@
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'country-flag.css' | asset_url }}" media="all">
+
+<noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'country-flag.css' | asset_url | stylesheet_tag }}</noscript>
+<link rel="stylesheet" href="{{ 'oeuvres-modal.css' | asset_url }}" media="all">
+
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<style>
+	header-drawer {
+		justify-self: start;
+		margin-left: -1.2rem;
+	}
+
+	/*@media screen and (min-width: 990px) {*/
+	@media screen and (min-width: 1100px) {
+		header-drawer {
+			display: none;
+		}
+	}
+
+	.menu-drawer-container {
+		display: flex;
+	}
+
+	.list-menu {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.list-menu--inline {
+		display: inline-flex;
+		flex-wrap: wrap;
+	}
+
+	summary.list-menu__item {
+		padding-right: 2.7rem;
+	}
+
+	.list-menu__item {
+		display: flex;
+		align-items: center;
+		line-height: 1.3;
+	}
+
+	.list-menu__item--link {
+		text-decoration: none;
+		padding-bottom: 1rem;
+		padding-top: 1rem;
+	}
+
+	@media screen and (min-width: 750px) {
+		.list-menu__item--link {
+			padding-bottom: 1rem;
+			padding-top: 1rem;
+		}
+	}
+
+	/* Texte en noir pour les liens du burger menu */
+	.menu-drawer__menu-item,
+	.menu-drawer__menu-item span {
+		color: #000000 !important;
+	}
+
+	.menu-drawer__menu-item:hover,
+	.menu-drawer__menu-item:focus,
+	.menu-drawer__menu-item--active {
+		color: #000000 !important;
+	}
+
+	/* Appliquer exactement le même style que les autres liens du burger menu à "LES OEUVRES" */
+	.menu-drawer__menu-item.oeuvres-modal-trigger {
+		color: #000000 !important;
+		font-family: var(--font-header-menu-family);
+		font-style: var(--font-header-menu-style);
+		font-weight: var(--font-header-menu-weight);
+		text-transform: var(--font-header-menu-text-transform);
+		padding: 2.2rem 0;
+		text-decoration: none;
+		width: 100%;
+		text-align: left;
+		border: none;
+		border-bottom: 0.1rem solid rgba(var(--color-foreground-secondary), 0.75);
+		background: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+
+	.menu-drawer__menu-item.oeuvres-modal-trigger:hover,
+	.menu-drawer__menu-item.oeuvres-modal-trigger:focus {
+		color: #000000 !important;
+		background-color: transparent;
+	}
+
+	/* Centrer "créer un compte" */
+	.menu-drawer__account-register {
+		text-align: center;
+	}
+
+    /* Styles pour le menu de droite */
+    @media screen and (min-width: 990px) {
+        .header__inline-menu--right {
+            grid-area: auto !important;
+            margin-left: 0 !important;
+            margin-right: 2rem;
+            display: block;
+        }
+    }
+</style>
+
+<script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'oeuvres-modal.js' | asset_url }}" defer="defer"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+	<symbol id="icon-search" viewBox="0 0 17 17" fill="none">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M10.618 3.789C12.5048 5.67032 12.511 8.72394 10.633 10.6129L10.6228 10.6231C8.73942 12.5065 5.68579 12.5092 3.79898 10.6279C1.91046 8.74492 1.90599 5.68748 3.789 3.79897C5.67202 1.91045 8.72945 1.90599 10.618 3.789ZM11.091 12.0538C8.65622 14.0098 5.0878 13.8613 2.82483 11.6049C0.396738 9.1839 0.390999 5.25292 2.81201 2.82483C5.23304 0.396738 9.16402 0.390999 11.5921 2.81201C13.855 5.0684 14.014 8.63637 12.0652 11.0769L16 15.0002L15.0258 15.9772L11.091 12.0538Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/>
+	</symbol>
+
+	<symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 11 11">
+		<path d="M9.00568 0.823302L5.33333 4.4989L1.66099 0.823302L1.48421 0.646368L1.30736 0.823223L0.823223 1.30736L0.646368 1.48421L0.823302 1.66099L4.4989 5.33333L0.823302 9.00568L0.646368 9.18246L0.823223 9.35931L1.30736 9.84344L1.48421 10.0203L1.66099 9.84337L5.33333 6.16777L9.00568 9.84337L9.18246 10.0203L9.35931 9.84344L9.84344 9.35931L10.0203 9.18246L9.84337 9.00568L6.16777 5.33333L9.84337 1.66099L10.0203 1.48421L9.84344 1.30736L9.35931 0.823223L9.18246 0.646368L9.00568 0.823302Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/>
+	</symbol>
+
+	<symbol id="icon-close-small" class="icon icon-close-small" viewBox="0 0 12 13">
+		<path d="M8.48627 9.32917L2.82849 3.67098" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M2.88539 9.38504L8.42932 3.61524" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+	</symbol>
+</svg>
+
+
+<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+	<header class="header header--top-center container header--has-menu">
+		{%- if section.settings.menu != blank -%}
+			<header-drawer data-breakpoint="tablet">
+				<details class="menu-drawer-container">
+					<summary class="header__icon header__icon--menu header__icon--summary link link--text focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
+            <span>
+              {% render 'icon-hamburger' %}
+							{% render 'icon-close' %}
+            </span>
+					</summary>
+					<div id="menu-drawer" class="menu-drawer motion-reduce" tabindex="-1">
+						<div class="menu-drawer__inner-container">
+							<div class="menu-drawer__navigation-container">
+								<nav class="menu-drawer__navigation">
+									<ul class="menu-drawer__menu list-menu" role="list">
+<!-- LES OEUVRES - Bouton pour ouvrir le sous-menu mobile -->
+										<li>
+											<button type="button" class="menu-drawer__menu-item list-menu__item link link--text focus-inset oeuvres-submenu-trigger" aria-expanded="false" aria-controls="oeuvres-submenu">
+												<span title="LES OEUVRES">LES ŒUVRES</span>
+												<svg class="icon icon-caret" viewBox="0 0 10 6" role="presentation" aria-hidden="true" focusable="false" width="10" height="6">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"/>
+												</svg>
+											</button>
+										</li>
+
+                                        <!-- JOURNAL ASTRAL -->
+                                        <li>
+                                            <a href="/pages/journal-astral" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                                                <span title="JOURNAL ASTRAL">JOURNAL ASTRAL</span>
+                                            </a>
+                                        </li>
+
+                                        <!-- À PROPOS -->
+                                        <li>
+                                            <a href="/pages/a-propos" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                                                <span title="À PROPOS">À PROPOS</span>
+                                            </a>
+                                        </li>
+										
+                                        <!-- FAQ -->
+                                        <li>
+                                            <a href="/pages/faq" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
+                                                <span title="FAQ">FAQ</span>
+                                            </a>
+                                        </li>
+
+										<!-- CONTACT -->
+										<li>
+											<a
+												href="/pages/contact"
+												class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if page.handle == 'contact' %} menu-drawer__menu-item--active{% endif %}"
+												{% if page.handle == 'contact' %}
+													aria-current="page"
+												{% endif %}
+											>
+												<span title="CONTACT">CONTACT</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+								<div class="menu-drawer__utility-links">
+									{%- if shop.customer_accounts_enabled -%}
+										{%- if customer -%}
+											<div class="menu-drawer__utility-account">
+												<div class="menu-drawer__utility-account-header">
+													<span class="menu-drawer__utility-name">{{ customer.name }}</span>
+													<a class="menu-drawer__utility-logout" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
+												</div>
+												<ul class="menu-drawer__utility-account-body">
+													<li class="menu-drawer__utility-account-cart">
+														<a href="{{ routes.cart_url }}">{{ 'customer.account.shopping_cart' | t }}</a>
+														{%- if cart != empty -%}
+															<div class="cart-count-bubble">
+																{%- if cart.item_count < 100 -%}
+																	<span aria-hidden="true">{{ cart.item_count }}</span>
+																{%- endif -%}
+																<span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+															</div>
+														{%- endif -%}
+													</li>
+													<li class="menu-drawer__utility-account-link">
+														<a href="{{ routes.account_url }}">{{ 'customer.account.title' | t }}</a>
+													</li>
+													<li class="menu-drawer__utility-account-address">
+														<a href="{{ routes.account_addresses_url }}">{{ 'customer.addresses.book' | t }}</a>
+													</li>
+												</ul>
+											</div>
+
+										{%- else -%}
+											<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="button  menu-drawer__account link focus-inset">
+												{% render 'icon-account' %}
+												{%- liquid
+													if customer
+													echo 'customer.account_fallback' | t
+													else
+													echo 'customer.log_in' | t
+													endif -%}
+											</a>
+											<div class="menu-drawer__account-register">
+												<span>{{ 'customer.activate_account.no_account_yet' | t }}</span>
+												<a href="{{ routes.account_register_url }}">{{ 'customer.login_page.create_account' | t }}</a>
+											</div>
+										{%- endif -%}
+									{%- endif -%}
+
+									<ul class="list list-social list-unstyled" role="list">
+										{%- if settings.social_twitter_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_twitter_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-twitter' -%}
+													<span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_facebook_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_facebook_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-facebook' -%}
+													<span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_pinterest_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_pinterest_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-pinterest' -%}
+													<span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_instagram_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_instagram_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-instagram' -%}
+													<span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_tiktok_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_tiktok_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-tiktok' -%}
+													<span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_tumblr_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_tumblr_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-tumblr' -%}
+													<span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_snapchat_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_snapchat_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-snapchat' -%}
+													<span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_youtube_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_youtube_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-youtube' -%}
+													<span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+										{%- if settings.social_vimeo_link != blank -%}
+											<li class="list-social__item">
+												<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_vimeo_link }}" class="link link--text list-social__link" >
+													{%- render 'icon-vimeo' -%}
+													<span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+												</a>
+											</li>
+										{%- endif -%}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</details>
+			</header-drawer>
+		{%- endif -%}
+
+		{%- if request.page_type == 'index' -%}
+		<h1 class="header__heading">
+			{%- endif -%}
+			<a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+				{%- if section.settings.logo != blank -%}
+					{%- assign image_size = section.settings.logo_width | append: 'x' -%}
+					<img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+							 src="{{ section.settings.logo | img_url: image_size }}"
+							 class="header__heading-logo"
+							 width="{{ section.settings.logo_width }}"
+							 height="{{ section.settings.logo.height }}"
+							 alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+					>
+				{%- else -%}
+					<span class="h4">{{ shop.name }}</span>
+				{%- endif -%}
+			</a>
+			{%- if request.page_type == 'index' -%}
+		</h1>
+		{%- endif -%}
+
+		<nav class="header__inline-menu">
+			<ul class="list-menu list-menu--inline" role="list">
+				<!-- LES OEUVRES - Bouton pour ouvrir la modal -->
+				<li>
+					<button type="button" class="header__menu-item list-menu__item focus-inset oeuvres-modal-trigger" data-modal-trigger="oeuvres-modal">
+						<span>
+							<span title="LES OEUVRES">LES ŒUVRES</span>
+						</span>
+						<span class="oeuvres-caret">{% render 'icon-caret' %}</span>
+					</button>
+				</li>
+				
+                <!-- JOURNAL ASTRAL -->
+                <li>
+                    <a href="/pages/journal-astral" class="header__menu-item list-menu__item link focus-inset">
+                        <span title="JOURNAL ASTRAL">JOURNAL ASTRAL</span>
+                    </a>
+                </li>
+
+                <!-- À PROPOS -->
+                <li>
+                    <a href="/pages/a-propos" class="header__menu-item list-menu__item link focus-inset">
+                        <span title="À PROPOS">À PROPOS</span>
+                    </a>
+                </li>
+			</ul>
+		</nav>
+
+		<div class="header__column">
+            <!-- Right Menu: FAQ, CONTACT -->
+            <nav class="header__inline-menu header__inline-menu--right small-hide medium-hide">
+                <ul class="list-menu list-menu--inline" role="list">
+                    <!-- FAQ -->
+                    <li>
+                        <a href="/pages/faq" class="header__menu-item list-menu__item link focus-inset">
+                            <span title="FAQ">FAQ</span>
+                        </a>
+                    </li>
+                    <!-- CONTACT -->
+                    <li>
+                        <a href="/pages/contact" class="header__menu-item list-menu__item link focus-inset">
+                            <span title="CONTACT">CONTACT</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+			{%- if section.settings.show_social != blank -%}
+				<ul class="header__social list list-social list-unstyled" role="list">
+					{%- if settings.social_twitter_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_twitter_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-twitter' -%}
+								<span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_facebook_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_facebook_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-facebook' -%}
+								<span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_pinterest_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_pinterest_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-pinterest' -%}
+								<span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_instagram_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_instagram_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-instagram' -%}
+								<span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_tiktok_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_tiktok_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-tiktok' -%}
+								<span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_tumblr_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_tumblr_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-tumblr' -%}
+								<span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_snapchat_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_snapchat_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-snapchat' -%}
+								<span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_youtube_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_youtube_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-youtube' -%}
+								<span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+					{%- if settings.social_vimeo_link != blank -%}
+						<li class="list-social__item">
+							<a                           {% if settings.new_tab %}
+                            target="_blank"
+                          {% endif %} href="{{ settings.social_vimeo_link }}" class="link link--text list-social__link" >
+								{%- render 'icon-vimeo' -%}
+								<span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+							</a>
+						</li>
+					{%- endif -%}
+				</ul>
+			{%- endif -%}
+
+			<div class="header__icons">
+				{%- if section.settings.enable_search -%}
+					{% comment %} Search removed as per user request {% endcomment %}
+				{%- endif -%}
+
+				{%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+					<div class="header__localization">
+						<noscript>
+							{%- form 'localization', id: 'HeaderCountryFormNoScript', class: 'localization-form' -%}
+								<div class="localization-form__select">
+									<select class="localization-selector link" name="country_code" aria-labelledby="FooterCountryLabelNoScript">
+										{%- for country in localization.available_countries -%}
+											<option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+												{{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+											</option>
+										{%- endfor -%}
+									</select>
+									{% render 'icon-caret' %}
+								</div>
+								<button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
+							{%- endform -%}
+						</noscript>
+						<localization-form>
+							{%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
+								<div class="no-js-hidden">
+									<div class="disclosure">
+										<button type="button" class="header__localization-button disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="HeaderCountryList" aria-describedby="HeaderCountryLabel" aria-label="Localization">
+											<span class="currency-flag" data-value="{{ localization.country.iso_code }}" aria-hidden="true"></span>
+											{% render 'icon-caret' %}
+										</button>
+										<ul id="HeaderCountryList" role="list" class="disclosure__list  color-inverse list-unstyled" hidden>
+											{%- for country in localization.available_countries -%}
+												<li class="disclosure__item" tabindex="-1">
+													<a class="link link--text disclosure__link disclosure__link--flag caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}" data-flag="{{ country.currency.iso_code }}">
+														{{ country.name }}
+														<span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									</div>
+									<input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+								</div>
+							{%- endform -%}
+						</localization-form>
+					</div>
+				{%- endif -%}
+
+				{%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+					<div class="header__localization header__localization--language">
+						<noscript>
+							{%- form 'localization',
+								id: 'HeaderLanguageFormNoScript',
+								class: 'localization-form'
+							-%}
+								<div class="localization-form__select">
+									<h2
+										class="visually-hidden"
+										id="HeaderLanguageLabelNoScript"
+									>
+										{{ 'localization.language_label' | t }}
+									</h2>
+									<select
+										class="localization-selector link"
+										name="locale_code"
+										aria-labelledby="HeaderLanguageLabelNoScript"
+									>
+										{%- for language in localization.available_languages -%}
+											<option
+												value="{{ language.iso_code }}"
+												lang="{{ language.iso_code }}"
+												{%- if language.iso_code
+														== localization.language.iso_code
+												%}
+													selected
+												{% endif %}
+											>
+												{{ language.endonym_name | capitalize }}
+											</option>
+										{%- endfor -%}
+									</select>
+									{% render 'icon-caret' %}
+								</div>
+								<button class="button button--primary">
+									{{ 'localization.update_language' | t }}
+								</button>
+							{%- endform -%}
+						</noscript>
+						<localization-form>
+							{%- form 'localization',
+								id: 'HeaderLanguageForm',
+								class: 'localization-form'
+							-%}
+								<div class="no-js-hidden">
+									<div class="disclosure">
+										<button
+											type="button"
+											class="disclosure__button localization-form__select localization-selector link link--text header__icon"
+											aria-expanded="false"
+											aria-controls="HeaderLanguageList"
+											aria-describedby="HeaderLanguageLabel"
+										>
+											<span class="header__icon-name">
+												<span class="value" title="{{ localization.language.iso_code | upcase }}">
+													{{ localization.language.iso_code | upcase }}
+												</span>
+											</span>
+											{% render 'icon-caret' -%}
+										</button>
+										<ul
+											id="HeaderLanguageList"
+											role="list"
+											class="disclosure__list list-unstyled color-inverse"
+											hidden
+										>
+											{%- for language in localization.available_languages -%}
+												<li class="disclosure__item" tabindex="-1">
+													<a
+														class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset"
+														href="#"
+														hreflang="{{ language.iso_code }}"
+														lang="{{ language.iso_code }}"
+														{% if language.iso_code
+																== localization.language.iso_code
+														%}
+															aria-current="true"
+														{% endif %}
+														data-value="{{ language.iso_code }}"
+													>
+														<span>
+															{{ language.endonym_name | capitalize }}
+														</span>
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									</div>
+									<input
+										type="hidden"
+										name="locale_code"
+										value="{{ localization.language.iso_code }}"
+									>
+								</div>
+							{%- endform -%}
+						</localization-form>
+					</div>
+				{%- endif -%}
+
+				{%- if shop.customer_accounts_enabled -%}
+
+					<details-disclosure class="header__account">
+						<details>
+							<summary class="header__icon header__icon--account link--text  header__icon--summary focus-inset modal__toggle" aria-haspopup="dialog" role="button">
+								{% render 'icon-account' %}
+							</summary>
+							<div class="header__account-modal modal__toggle" role="dialog" aria-modal="true">
+								{%- if customer -%}
+									<div class="header__account__account">
+										<div class="header__account__name">{{ customer.name }}</div>
+										<ul class="header__account__body">
+											<li class="header__account__link">
+												<a href="{{ routes.account_url }}">{{ 'customer.account.title' | t }}</a>
+											</li>
+											<li class="header__account__address">
+												<a href="{{ routes.account_addresses_url }}">{{ 'customer.addresses.book' | t }}</a>
+											</li>
+										</ul>
+										<a class="header__account__logout button " href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
+									</div>
+
+								{%- else -%}
+									<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="button  header__account__login link  focus-inset">
+										{% render 'icon-account' %}
+										{%- liquid
+											if customer
+											echo 'customer.account_fallback' | t
+											else
+											echo 'customer.log_in' | t
+											endif -%}
+									</a>
+
+									<a class="header__account__register link " href="{{ routes.account_register_url }}">{{ 'customer.login_page.create_account' | t }}</a>
+								{%- endif -%}
+							</div>
+						</details>
+
+					</details-disclosure>
+
+				{%- endif -%}
+
+				{% if settings.show_cart == true %}
+					<a href="{{ routes.cart_url }}" class=" {% if request.page_type != 'cart' %}header__cart{% endif %} header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble">
+						{%- liquid
+							render 'icon-cart' -%}
+						<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+						{%- if cart != empty -%}
+							<div class="cart-count-bubble">
+								{%- if cart.item_count < 100 -%}
+									<span aria-hidden="true">{{ cart.item_count }}</span>
+								{%- endif -%}
+								<span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+							</div>
+						{%- endif -%}
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+</{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
+
+{%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+{% endif %}
+
+{% javascript %}
+class StickyHeader extends HTMLElement {
+	constructor() {
+		super();
+	}
+
+	connectedCallback() {
+		this.header = document.querySelector('.shopify-section-header');
+		this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always';
+		this.headerBounds = { top: 0, bottom: 100 };
+		this.currentScrollTop = 0;
+		this.preventReveal = false;
+
+		if (this.headerIsAlwaysSticky) {
+			this.header.classList.add('shopify-section-header-sticky');
+		}
+
+		this.onScrollHandler = this.onScroll.bind(this);
+		window.addEventListener('scroll', this.onScrollHandler, false);
+
+		this.createObserver();
+	}
+
+	disconnectedCallback() {
+		window.removeEventListener('scroll', this.onScrollHandler);
+	}
+
+	createObserver() {
+		let observer = new IntersectionObserver((entries, observer) => {
+			this.headerBounds = entries[0].intersectionRect;
+			observer.disconnect();
+		});
+
+		observer.observe(this.header);
+	}
+
+	onScroll() {
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		const headerHeight = this.headerBounds.bottom || 100;
+
+		// Scroll vers le bas - cacher le header
+		if (scrollTop > this.currentScrollTop && scrollTop > headerHeight) {
+			requestAnimationFrame(this.hide.bind(this));
+		} 
+		// Scroll vers le haut - montrer le header
+		else if (scrollTop < this.currentScrollTop && scrollTop > headerHeight) {
+			requestAnimationFrame(this.reveal.bind(this));
+		} 
+		// En haut de la page - reset
+		else if (scrollTop <= headerHeight) {
+			requestAnimationFrame(this.reset.bind(this));
+		}
+
+		this.currentScrollTop = scrollTop;
+	}
+
+	hide() {
+		if (this.headerIsAlwaysSticky) return;
+		this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+		this.closeMenuDisclosure();
+	}
+
+	reveal() {
+		if (this.headerIsAlwaysSticky) return;
+		this.header.classList.add('shopify-section-header-sticky', 'animate');
+		this.header.classList.remove('shopify-section-header-hidden');
+	}
+
+	reset() {
+		if (this.headerIsAlwaysSticky) return;
+		this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+	}
+
+	closeMenuDisclosure() {
+		try {
+			this.disclosures = this.disclosures || this.header.querySelectorAll('details-disclosure');
+			if (this.disclosures) {
+				this.disclosures.forEach(disclosure => {
+					if (disclosure && disclosure.close) disclosure.close();
+				});
+			}
+		} catch(e) {}
+	}
+}
+
+customElements.define('sticky-header', StickyHeader);
+
+const searchDetails = document.querySelector('.header__search details');
+document.addEventListener('keyup', (e) => {
+	if (e.key === 'Escape' && searchDetails) {
+		searchDetails.removeAttribute('open');
+	}
+});
+{% endjavascript %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+	{% assign image_size = section.settings.logo.width | append: 'x' %}
+      "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+<!-- Overlay pour la modal LES OEUVRES (en dehors du modal pour couvrir tout l'écran) -->
+<div id="oeuvres-modal-overlay" class="oeuvres-modal__overlay"></div>
+
+<!-- Modal pour LES OEUVRES -->
+<div id="oeuvres-modal" class="oeuvres-modal" role="dialog" aria-modal="true" aria-labelledby="oeuvres-modal-title">
+	<div class="oeuvres-modal__content">
+		<div class="oeuvres-modal__body">
+			<div class="oeuvres-modal__collections">
+				<!-- Collection Solo -->
+				<div class="oeuvres-modal__collection-item">
+					<a href="/pages/solo" class="oeuvres-modal__collection-link">
+						<div class="oeuvres-modal__collection-frame">
+							<div class="oeuvres-modal__collection-image">
+								<img
+									src="{{ 'solo.jpg' | asset_url }}"
+									alt="Collection Solo"
+									loading="lazy"
+								>
+							</div>
+							<h3 class="oeuvres-modal__collection-title">COLLECTION SOLO</h3>
+						</div>
+					</a>
+				</div>
+				
+				<!-- Collection Duo -->
+				<div class="oeuvres-modal__collection-item">
+					<a href="/pages/duo" class="oeuvres-modal__collection-link">
+						<div class="oeuvres-modal__collection-frame">
+							<div class="oeuvres-modal__collection-image">
+								<img
+									src="{{ 'duo.jpg' | asset_url }}"
+									alt="Collection Duo"
+									loading="lazy"
+								>
+							</div>
+							<h3 class="oeuvres-modal__collection-title">COLLECTION DUO</h3>
+						</div>
+					</a>
+				</div>
+				
+				<!-- Collection Offrir -->
+				<div class="oeuvres-modal__collection-item">
+					<a href="/pages/offrir" class="oeuvres-modal__collection-link">
+						<div class="oeuvres-modal__collection-frame">
+							<div class="oeuvres-modal__collection-image">
+								<img
+									src="{{ 'offrir.png' | asset_url }}"
+									alt="Collection Offrir"
+									loading="lazy"
+								>
+							</div>
+							<h3 class="oeuvres-modal__collection-title">COLLECTION OFFRIR</h3>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{%- if request.page_type == 'index' -%}
+	{% assign potential_action_target = shop.url | append: routes.search_url | append: "?q={search_term_string}" %}
+	<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+	</script>
+{%- endif -%}
+
+<!-- Sous-menu mobile LES OEUVRES (placé en dehors du menu-drawer pour le positionnement fixed) -->
+<div id="oeuvres-submenu" class="oeuvres-submenu">
+	<div class="oeuvres-submenu__header">
+		<button type="button" class="oeuvres-submenu__back">
+			<svg class="icon icon-arrow" viewBox="0 0 14 10" role="presentation" aria-hidden="true" focusable="false" width="14" height="10">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+			</svg>
+			<span>Retour</span>
+		</button>
+		<span class="oeuvres-submenu__title">LES ŒUVRES</span>
+	</div>
+	<ul class="oeuvres-submenu__list">
+		<li>
+			<a href="/pages/solo" class="oeuvres-submenu__link">
+				<span>L'Œuvre Solo</span>
+			</a>
+		</li>
+		<li>
+			<a href="/pages/duo" class="oeuvres-submenu__link">
+				<span>L'Œuvre Duo</span>
+			</a>
+		</li>
+		<li>
+			<a href="/pages/offrir" class="oeuvres-submenu__link">
+				<span>Offrir une Œuvre</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.header.name",
+	"class": "shopify-section-header",
+	"max_blocks": 12,
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "logo",
+			"label": "t:sections.header.settings.logo.label"
+		},
+		{
+			"type": "range",
+			"id": "logo_width",
+			"min": 50,
+			"max": 500,
+			"step": 5,
+			"default": 100,
+			"unit": "t:sections.header.settings.logo_width.unit",
+			"label": "t:sections.header.settings.logo_width.label"
+		},
+		{
+			"type": "select",
+			"id": "logo_position",
+			"options": [
+				{
+					"value": "middle-left",
+					"label": "t:sections.header.settings.logo_position.options__1.label"
+				},
+				{
+					"value": "top-left",
+					"label": "t:sections.header.settings.logo_position.options__2.label"
+				},
+				{
+					"value": "top-center",
+					"label": "t:sections.header.settings.logo_position.options__3.label"
+				}
+			],
+			"default": "top-center",
+			"label": "t:sections.header.settings.logo_position.label"
+		},
+		{
+			"type": "link_list",
+			"id": "menu",
+			"default": "main-menu",
+			"label": "t:sections.header.settings.menu.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_line_separator",
+			"default": true,
+			"label": "t:sections.header.settings.show_line_separator.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_social",
+			"default": false,
+			"label": "t:sections.header.settings.show_social.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_country_selector",
+			"default": true,
+			"label": "t:sections.header.settings.enable_country_selector.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_language_selector",
+			"default": false,
+			"label": "t:sections.header.settings.enable_language_selector.label"
+		},
+		{
+			"type": "select",
+			"id": "sticky_header_type",
+			"options": [
+				{
+					"value": "none",
+					"label": "t:sections.header.settings.sticky_header_type.options__1.label"
+				},
+				{
+					"value": "on-scroll-up",
+					"label": "t:sections.header.settings.sticky_header_type.options__2.label"
+				},
+				{
+					"value": "always",
+					"label": "t:sections.header.settings.sticky_header_type.options__3.label"
+				}
+			],
+			"default": "on-scroll-up",
+			"label": "t:sections.header.settings.sticky_header_type.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_search",
+			"default": true,
+			"label": "t:sections.header.settings.enable_search.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.settings.header.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_collection_card",
+			"default": false,
+			"label": "t:sections.header.settings.show_collection_card.label",
+			"info": "t:sections.header.settings.show_collection_card.info"
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"default": "Time to Dress Up Your Home",
+			"label": "t:sections.header.settings.title.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.header.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.header.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.header.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "portrait",
+			"label": "t:sections.header.settings.image_ratio.label",
+			"info": "t:sections.header.settings.image_ratio.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "image_padding",
+			"default": false,
+			"label": "t:sections.header.settings.image_padding.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "swipe_on_mobile",
+			"default": false,
+			"label": "t:sections.header.settings.swipe_on_mobile.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "featured_collection",
+			"name": "t:sections.header.blocks.featured_collection.name",
+			"limit": 6,
+			"settings": [
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "t:sections.header.blocks.featured_collection.settings.collection.label"
+				}
+			]
+		},
+		{
+			"type": "mega_menu",
+			"name": "t:sections.header.blocks.mega_menu.name",
+			"settings": [
+				{
+					"type": "text",
+					"id": "mega_menu_trigger",
+					"label": "t:sections.header.blocks.mega_menu.settings.mega_menu_trigger.label",
+					"info": "t:sections.header.blocks.mega_menu.settings.mega_menu_trigger.info"
+				},
+				{
+					"type": "text",
+					"id": "mega_menu_header",
+					"default": "Shop All",
+					"label": "t:sections.header.blocks.mega_menu.settings.mega_menu_header.label"
+				},
+				{
+					"type": "select",
+					"id": "list_columns",
+					"options": [
+							{
+								"value": "1",
+								"label": "t:sections.header.blocks.mega_menu.settings.list_columns.options__1.label"
+							},
+							{
+								"value": "2",
+								"label": "t:sections.header.blocks.mega_menu.settings.list_columns.options__2.label"
+							}
+						],
+					"default": "2",
+					"label": "t:sections.header.blocks.mega_menu.settings.list_columns.label"
+				},
+				{
+					"type": "collection_list",
+					"id": "select_collections",
+					"limit": 2,
+					"label": "t:sections.header.blocks.mega_menu.settings.select_collections.label"
+				},
+				{
+					"type": "select",
+					"id": "image",
+					"options": [
+						{
+							"value": "collection",
+							"label": "t:sections.header.blocks.mega_menu.settings.image.options__1.label"
+						},
+						{
+							"value": "product",
+							"label": "t:sections.header.blocks.mega_menu.settings.image.options__2.label"
+						},
+						{
+							"value": "product_hover",
+							"label": "t:sections.header.blocks.mega_menu.settings.image.options__3.label"
+						}
+					],
+					"default": "collection",
+					"label": "t:sections.header.blocks.mega_menu.settings.image.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

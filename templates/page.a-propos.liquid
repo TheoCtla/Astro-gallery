@@ -1,0 +1,82 @@
+{% comment %}
+  Template pour la page À propos
+{% endcomment %}
+
+{{ 'apropos.css' | asset_url | stylesheet_tag }}
+
+<div class="apropos-page">
+  <!-- Breadcrumb -->
+  <nav class="apropos-breadcrumb">
+    <a href="/" class="apropos-breadcrumb__link">Home</a>
+    <span class="apropos-breadcrumb__separator">›</span>
+    <span class="apropos-breadcrumb__current">À propos</span>
+  </nav>
+
+  <!-- Section Hero -->
+  <section class="apropos-hero">
+    
+    <p class="apropos-hero__subtitle">ASTROGALLERY EST NÉ D'UN DÉSIR PROFOND DE RÉUNIR DEUX UNIVERS QUI PARLENT À L'ÂME, L'ART ET L'ASTROLOGIE.</p>
+    
+    <p class="apropos-hero__italic">Chaque être possède une carte du ciel unique.<br>Porteuse de sens et de symboles.</p>
+    
+    <p class="apropos-hero__text">Notre mission est de transformer cette signature céleste en une œuvre que l'on peut contempler, comprendre et ressentir.<br>Ici, les étoiles deviennent langage, inspiration et révélation.</p>
+  </section>
+
+  <!-- Section Fondatrice -->
+  <section class="apropos-founder">
+    <div class="apropos-founder__container">
+      <div class="apropos-founder__image">
+        <img src="{{ 'caro.jpg' | asset_url }}" alt="Caroline Robin, fondatrice d'ASTROGALLERY" loading="lazy">
+      </div>
+      <div class="apropos-founder__content">
+        <h2 class="apropos-founder__title">À L'ORIGINE D'ASTROGALLERY</h2>
+        
+        <p class="apropos-founder__text">ASTROGALLERY est né de ma volonté de révéler la beauté intérieure de chacun à travers les étoiles. Je crois profondément que chaque personne porte en elle une esthétique unique que sa carte du ciel dessine comme une signature intime.</p>
+        
+        <p class="apropos-founder__text">Mon rôle est de traduire cette histoire céleste en une création qui touche, qui inspire et qui éclaire.<br>Je mêle intuition, lecture astrologique et sens artistique pour donner vie à des œuvres qui parlent à la fois au cœur et à l'esprit.</p>
+        
+        <p class="apropos-founder__text">ASTROGALLERY est pour moi une invitation à explorer son identité autrement, avec douceur, profondeur et poésie.</p>
+        
+        <p class="apropos-founder__signature">Caroline Robin, fondatrice d'ASTROGALLERY</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Démarche -->
+  <section class="apropos-demarche">
+    <h2 class="apropos-demarche__title">MA DÉMARCHE ASTROLOGIQUE ET ARTISTIQUE</h2>
+    
+    <div class="apropos-demarche__container">
+      <div class="apropos-demarche__content">
+        <p class="apropos-demarche__text">Je crois que l'astrologie peut devenir une expérience esthétique, intuitive et profonde. Mon approche s'appuie sur l'astrologie <a href="/blogs/infos/siderale-ou-tropicale-quelle-approche-vous-parle-le-plus"><strong>sidérale</strong></a>, une lecture qui révèle souvent des facettes insoupçonnées de la personnalité. Elle apporte une compréhension plus authentique de soi et éclaire des nuances que l'astrologie tropicale ne montre pas toujours.</p>
+        
+        <p class="apropos-demarche__text">Lorsque je crée une œuvre, je commence par une analyse attentive de votre carte du ciel. J'en extrais des messages, des mantras et des symboles qui traduisent votre essence. Je transforme ensuite cette lecture en une composition visuelle unique, pensée pour guider, inspirer et accompagner chacun sur son chemin intérieur.</p>
+      </div>
+      <div class="apropos-demarche__image">
+        <img src="{{ 'apropos.png' | asset_url }}" alt="Démarche astrologique" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section CTA -->
+  <section class="apropos-cta">
+    <div class="apropos-cta__container">
+      <div class="apropos-cta__left">
+        <h2 class="apropos-cta__title">DÉCOUVREZ LES ŒUVRES ASTRALES CRÉÉES SUR MESURE À PARTIR DE VOTRE THÈME SIDÉRAL.</h2>
+      </div>
+      <div class="apropos-cta__right">
+        <p class="apropos-cta__text">Chaque création est une pièce unique qui reflète votre essence et illumine votre intérieur.</p>
+        <div class="apropos-cta__buttons">
+          <a href="/pages/solo" class="button--oeuvres"><span class="button__text">DÉCOUVRIR L'ŒUVRE SOLO</span></a>
+          <a href="/pages/duo" class="button--oeuvres button--oeuvres-white"><span class="button__text">DÉCOUVRIR L'ŒUVRE DUO</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenu de la page -->
+  <div class="apropos-content">
+    {{ page.content }}
+  </div>
+</div>
+

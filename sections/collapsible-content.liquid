@@ -1,0 +1,178 @@
+{{ 'section-collapsible-content.css' | asset_url | stylesheet_tag }}
+
+<div class="how-it-works">
+	<div class="how-it-works__container" style="text-transform: none !important;">
+		{%- if section.settings.heading != blank -%}
+			<h2 class="how-it-works__heading">
+				{{ section.settings.heading }}
+			</h2>
+		{%- endif -%}
+
+		{%- if section.settings.subtitle != blank -%}
+			<p class="how-it-works__subtitle">
+				{{ section.settings.subtitle }}
+			</p>
+		{%- endif -%}
+
+		<div class="how-it-works__columns" style="text-transform: none !important;">
+			{%- for block in section.blocks -%}
+				<div class="how-it-works__column" style="text-transform: none !important;">
+					<div class="how-it-works__column-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}.</div>
+				<div class="how-it-works__column-icon">
+					{%- assign icon_index = forloop.index -%}
+					<img src="{{ 'ciel' | append: icon_index | append: '.svg' | asset_url }}" alt="" class="how-it-works__icon-image">
+				</div>
+					{%- if block.settings.title != blank -%}
+						<h3 class="how-it-works__column-title">{{ block.settings.title | escape }}</h3>
+					{%- endif -%}
+					<div class="how-it-works__column-description" style="text-transform: none !important;">
+						{%- if forloop.index == 1 -%}
+							<p style="text-transform: none !important;">partagez vos informations de naissance : Prénom, nom, date, heure et lieu.<br>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>
+						{%- elsif forloop.index == 2 -%}
+							<p style="text-transform: none !important;">à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence.<br>Cette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>
+						{%- elsif forloop.index == 3 -%}
+							<p style="text-transform: none !important;">votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>
+						{%- endif -%}
+					</div>
+				</div>
+			{%- endfor -%}
+		</div>
+
+		<div class="how-it-works__buttons">
+			{%- if section.settings.button_link_1 != blank -%}
+				<a href="{{ section.settings.button_link_1 }}" class="button how-it-works__button how-it-works__button--left button--oeuvres">
+					<span class="button__text">{{ section.settings.button_label_1 | escape }}</span>
+				</a>
+			{%- else -%}
+				<a href="#" class="button how-it-works__button how-it-works__button--left button--oeuvres" aria-disabled="true">
+					<span class="button__text">{{ section.settings.button_label_1 | escape }}</span>
+				</a>
+			{%- endif -%}
+			{%- if section.settings.button_link_2 != blank -%}
+				<a href="{{ section.settings.button_link_2 }}" class="button how-it-works__button how-it-works__button--right how-it-works__button--beige button--oeuvres">
+					<span class="button__text">{{ section.settings.button_label_2 | escape }}</span>
+				</a>
+			{%- else -%}
+				<a href="#" class="button how-it-works__button how-it-works__button--right how-it-works__button--beige button--oeuvres" aria-disabled="true">
+					<span class="button__text">{{ section.settings.button_label_2 | escape }}</span>
+				</a>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.collapsible-content.name",
+	"tag": "section",
+	"class": "collapsible-content-section spaced-section",
+	"enabled_on": {
+		"templates": [
+			"*"
+		]
+	},
+	"blocks": [
+		{
+			"type": "step",
+			"name": "Étape",
+			"limit": 3,
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Titre",
+					"default": "Titre de l'étape"
+				},
+				{
+					"type": "richtext",
+					"id": "description",
+					"label": "Description",
+					"default": "<p>Description de l'étape</p>"
+				}
+			]
+		},
+		{
+			"type": "accordion",
+			"name": "Accordion",
+			"settings": [
+				{
+					"type": "text",
+					"id": "question",
+					"label": "Question",
+					"default": "Question"
+				},
+				{
+					"type": "richtext",
+					"id": "answer",
+					"label": "Réponse",
+					"default": "<p>Réponse</p>"
+				}
+			]
+		}
+	],
+	"settings": [
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE",
+			"label": "Titre de la section"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"default": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
+			"label": "Sous-titre"
+		},
+		{
+			"type": "text",
+			"id": "button_label_1",
+			"default": "CRÉER MON ŒUVRE",
+			"label": "Label du bouton 1"
+		},
+		{
+			"type": "url",
+			"id": "button_link_1",
+			"label": "Lien du bouton 1"
+		},
+		{
+			"type": "text",
+			"id": "button_label_2",
+			"default": "CRÉER MON ŒUVRE",
+			"label": "Label du bouton 2"
+		},
+		{
+			"type": "url",
+			"id": "button_link_2",
+			"label": "Lien du bouton 2"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.collapsible-content.name",
+			"blocks": [
+				{
+					"type": "step",
+					"settings": {
+						"title": "VOS INFORMATIONS DE NAISSANCE",
+						"description": "<p>partagez vos informations de naissance : Prénom, nom, date, heure et lieu.<br>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
+					}
+				},
+				{
+					"type": "step",
+					"settings": {
+						"title": "ANALYSE & INTERPRÉTATION",
+						"description": "<p>à partir de votre thème astral, nos experts interprètent votre empreinte céleste pour en révéler l'essence.<br>cette lecture devient une œuvre visuelle accompagnée d'un livret d'interprétation de 110 pages.</p>"
+					}
+				},
+				{
+					"type": "step",
+					"settings": {
+						"title": "CRÉATION & LIVRAISON",
+						"description": "<p>votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>"
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}

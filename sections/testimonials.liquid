@@ -1,0 +1,182 @@
+{{ 'testimonials.css' | asset_url | stylesheet_tag }}
+
+<script src='{{ 'testimonials.js' | asset_url }}' defer='defer'></script>
+
+<div class='container'>
+	<div class='border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}'>
+		<div class='testimonials'>
+			<div class='testimonials__text'>
+				<h2 class='testimonials__title'>ILS ONT DÉCOUVERT LEUR THÈME ASTRAL</h2>
+				<p class='testimonials__description'>Des créations vécues comme des révélations.</p>
+				<div class='testimonials__buttons'>
+					<button
+						class='testimonials__button testimonials__button--prev'
+						aria-label='Prev'
+					>
+						{% render 'icon-caret-left' %}
+					</button>
+					<div class='testimonials__counts'>1/{{ section.blocks.size }}</div>
+					<button
+						class='testimonials__button testimonials__button--next'
+						aria-label='Next'
+					>
+						{% render 'icon-caret-right' %}
+					</button>
+				</div>
+			</div>
+			<div class='testimonials__slider-wrapper'>
+				<div class='testimonials__slider' dir='ltr'>
+					{%- for block in section.blocks -%}
+						<div
+							class='testimonials__slide'
+							data-slide-index='{{ forloop.index0 }}'
+							{{ block.shopify_attributes }}
+						>
+							<div class='testimonials__slide-image'>
+								{%- if block.settings.slide_image != blank -%}
+									<img 
+										src='{{ block.settings.slide_image | img_url: '1200x800' }}'
+										alt='{{ block.settings.slide_image.alt | escape }}'
+										loading='lazy'
+									>
+								{%- else -%}
+									<img 
+										src='{{ 'imgAvis.png' | asset_url }}'
+										alt='Testimonial image'
+										loading='lazy'
+									>
+								{%- endif -%}
+							</div>
+							<div class='testimonials__slide-content'>
+                <div class='testimonials__slide-quote'>
+                  <img src="{{ 'guillemets.svg' | asset_url }}" alt="Guillemets" width="34" height="27" loading="lazy">
+                </div>
+								{%- if block.settings.slide_title != blank -%}
+									<h3 class='testimonials__slide-title'>{{ block.settings.slide_title | escape }}</h3>
+								{%- endif -%}
+								{%- if block.settings.slide_text != blank -%}
+									<p class='testimonials__slide-text'>{{ block.settings.slide_text | escape }}</p>
+								{%- endif -%}
+								<div class='testimonials__slide-meta'>
+									<div class='testimonials__slide-info'>
+										<div class='testimonials__slide-name'>
+											{{- block.settings.slide_name | escape -}}
+										</div>
+										{%- if block.settings.slide_country != blank -%}
+											<div class='testimonials__slide-country'>
+												{{- block.settings.slide_country | escape -}}
+											</div>
+										{%- endif -%}
+										<div class='testimonials__slide-stars'>
+											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
+												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+											</svg>
+											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
+												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+											</svg>
+											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
+												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+											</svg>
+											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
+												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+											</svg>
+											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
+												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.testimonials.name",
+	"tag": "section",
+	"class": "testimonials-section spaced-section",
+	"enabled_on": {
+		"templates": ["*"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.testimonials.settings.border_top.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_bottom",
+			"default": false,
+			"label": "t:sections.testimonials.settings.border_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "testimonials_slide",
+			"name": "t:sections.testimonials.blocks.testimonials_slide.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "slide_image",
+					"label": "Image du salon"
+				},
+				{
+					"type": "text",
+					"id": "slide_title",
+					"label": "Titre du témoignage (en italique)",
+					"default": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !"
+				},
+				{
+					"type": "textarea",
+					"id": "slide_text",
+					"label": "Texte descriptif",
+					"default": "C'est une œuvre d'art unique qui capture mon essence. Le livret inclus est une mine d'informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !"
+				},
+				{
+					"type": "image_picker",
+					"id": "slide_avatar",
+					"label": "Photo du client"
+				},
+				{
+					"type": "text",
+					"id": "slide_name",
+					"label": "Nom du client",
+					"default": "Fabienne D."
+				},
+				{
+					"type": "text",
+					"id": "slide_country",
+					"label": "Ville",
+					"default": "Marseille"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.testimonials.presets.name",
+			"blocks": [
+				{
+					"type": "testimonials_slide"
+				},
+				{
+					"type": "testimonials_slide"
+				},
+				{
+					"type": "testimonials_slide"
+				},
+				{
+					"type": "testimonials_slide"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

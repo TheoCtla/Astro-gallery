@@ -1,0 +1,51 @@
+{{ 'section-book.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .book-section::before {
+    background-image: url('{{ "bgBook.png" | asset_url }}');
+  }
+{% endstyle %}
+
+<div class="book-section">
+  <div class="book-section__container">
+    <div class="book-section__wrapper">
+      <div class="book-section__content">
+      <div class="book-section__logo">
+        <svg class="book-section__logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <path id="book-circle-path" d="M 100, 100 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" fill="none"/>
+          </defs>
+          <text class="book-section__logo-text" fill="#DFBE71" font-family="Arial, sans-serif" font-weight="400">
+            <textPath xlink:href="#book-circle-path" startOffset="0%">
+              ASTROGALLERY • ASTROGALLERY • ASTROGALLERY •
+            </textPath>
+          </text>
+        </svg>
+      </div>
+      <h2 class="book-section__title">
+        <span class="book-section__title-line1">UN LIVRET PERSONNALISÉ POUR EXPLORER VOTRE UNIVERS</span>
+      </h2>
+      <div class="book-section__text">
+        <p>Chaque œuvre ASTROGALLERY est accompagnée de son livret personnel de 110 pages.
+Les 40 premières pages sont entièrement dédiées à votre interprétation : elles dévoilent le placement de vos planètes, vos aspects et vos mantras personnels.
+Les 70 pages suivantes offre une initiation douce à l'astrologie. Un guide clair et ludique pour comprendre les symboles, les archétypes et les liens de cet univers.
+Un véritable compagnon de lecture à la fois pédagogique et poétique.
+</p>
+      </div>
+      </div>
+      <div class="book-section__image">
+        <img src="{{ 'bookIMG.png' | asset_url }}" alt="Livre ASTROGALLERY" class="book-section__book-img">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Book Section",
+  "tag": "section",
+  "class": "book-section spaced-section",
+  "settings": []
+}
+{% endschema %}
+

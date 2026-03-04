@@ -1,0 +1,26 @@
+{{ 'section-header-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="header-banner-section">
+  <div class="header-banner__container">
+    <img src="{{ 'header.png' | asset_url }}" alt="ASTROGALLERY" class="header-banner__image">
+    <div class="header-banner__content">
+      <div class="header-banner__text-wrapper">
+        <h1 class="header-banner__title">
+          <span class="header-banner__title-line1">VOTRE THÈME ASTRAL</span>
+          <span class="header-banner__title-line2">EST <span class="header-banner__title-unique">UNIQUE</span></span>
+        </h1>
+        <p class="header-banner__subtitle">Nous le transformons en œuvre d'art.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header Banner",
+  "tag": "section",
+  "class": "spaced-section header-banner-section",
+  "settings": []
+}
+{% endschema %}
+

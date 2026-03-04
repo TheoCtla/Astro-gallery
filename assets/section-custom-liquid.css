@@ -1,0 +1,79 @@
+.custom-liquid-section {
+  padding: 2rem 0 4rem 0;
+  text-align: center;
+}
+
+.custom-liquid__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.custom-liquid__content {
+  flex: 0 1 auto;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-liquid__text {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: #1D1D1B;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: block;
+}
+
+.custom-liquid__decoration {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-liquid__decoration-image {
+  height: auto;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Réduire le margin-top de la section spaced-section */
+.spaced-section:has(.custom-liquid-section) {
+  margin-top: 5.5rem !important;
+  margin-bottom: 3.5rem !important;
+}
+
+@media screen and (min-width: 990px) {
+  .spaced-section:has(.custom-liquid-section) {
+    margin-top: 5.5rem !important;
+  margin-bottom: 3.5rem !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .custom-liquid__container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .custom-liquid__decoration {
+    transform: rotate(90deg);
+    display: none;
+  }
+  
+  .custom-liquid__text {
+    font-size: 1.4rem;
+  }
+}

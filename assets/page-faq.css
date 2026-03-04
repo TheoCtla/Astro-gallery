@@ -1,0 +1,241 @@
+/* =============================================
+   Cacher le breadcrumb Shopify par défaut
+   ============================================= */
+
+.faq-page ~ .breadcrumb,
+.faq-page + .breadcrumb,
+nav.breadcrumb:not(.faq-breadcrumb),
+.breadcrumb:not(.faq-breadcrumb),
+.template-page-faq .breadcrumb,
+.template-page-faq nav.breadcrumb,
+.template-page-faq .breadcrumbs,
+body[class*="template-page-faq"] .breadcrumb,
+body[class*="template-page-faq"] nav.breadcrumb,
+body[class*="page-faq"] .breadcrumb:not(.faq-breadcrumb),
+body[class*="page-faq"] nav.breadcrumb:not(.faq-breadcrumb) {
+  display: none !important;
+}
+
+/* =============================================
+   Breadcrumb personnalisé
+   ============================================= */
+
+.faq-page {
+  width: 100%;
+}
+
+.faq-breadcrumb {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 2rem clamp(1rem, 2vw, 1.5rem);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  text-align: left;
+}
+
+.faq-breadcrumb__link {
+  color: #1D1D1B;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.faq-breadcrumb__link:hover {
+  color: #DFBE71;
+}
+
+.faq-breadcrumb__separator {
+  margin: 0 0.5rem;
+  color: #1D1D1B;
+}
+
+.faq-breadcrumb__current {
+  color: #1D1D1B;
+  font-weight: 500;
+}
+
+/* =============================================
+   Section FAQ - Questions Fréquentes
+   ============================================= */
+
+.faq-section {
+  background-color: #fff;
+  padding: clamp(1rem, 2vw, 2rem) 0 clamp(4rem, 6vw, 6rem) 0;
+  width: 100%;
+}
+
+.faq-section__header {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto clamp(3rem, 5vw, 5rem) auto;
+  padding: 0 2rem;
+}
+
+.faq-section__title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: #1D1D1B;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.faq-section__subtitle {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: #1D1D1B;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.faq-section__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Item FAQ */
+.faq-item {
+  border-left: 3px solid #DFBE71;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+/* Header de la question (bouton cliquable) */
+.faq-item__header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: clamp(1.2rem, 2vw, 1.8rem) clamp(1rem, 2vw, 1.5rem);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
+  transition: all 0.3s ease;
+}
+
+.faq-item__header:hover {
+  background-color: rgba(223, 190, 113, 0.05);
+}
+
+/* Numéro en italique doré */
+.faq-item__number {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: clamp(18px, 1.8vw, 22px);
+  color: #DFBE71;
+  min-width: 35px;
+  flex-shrink: 0;
+}
+
+/* Question */
+.faq-item__question {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 500;
+  color: #1D1D1B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
+  line-height: 1.5;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icône flèche */
+.faq-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #DFBE71;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Contenu de la réponse (caché par défaut) */
+.faq-item__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item__answer {
+  padding: 0 clamp(1rem, 2vw, 1.5rem) clamp(1.2rem, 2vw, 1.8rem);
+  padding-left: calc(35px + clamp(1rem, 2vw, 1.5rem) + clamp(0.8rem, 1.5vw, 1.2rem));
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, 
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.faq-item__answer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 400;
+  color: #1D1D1B;
+  line-height: 1.7;
+  margin: 0 0 0.6rem 0;
+}
+
+.faq-item__answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* État ouvert */
+.faq-item--open .faq-item__question {
+  color: #DFBE71;
+}
+
+.faq-item--open .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+.faq-item--open .faq-item__content {
+  max-height: 500px;
+}
+
+.faq-item--open .faq-item__answer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .faq-section__container {
+    padding: 0 1rem;
+  }
+  
+  .faq-item__header {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  
+  .faq-item__number {
+    min-width: 30px;
+  }
+  
+  .faq-item__answer {
+    padding-left: calc(30px + 1rem + 0.8rem);
+    padding-right: 1rem;
+  }
+}
+
