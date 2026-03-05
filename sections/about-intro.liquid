@@ -1,0 +1,360 @@
+<style>
+  .about-intro {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+  }
+
+  .about-intro__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Media column */
+  .about-intro__media {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about-intro__image-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-intro__image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .about-intro__placeholder {
+    width: 100%;
+    height: 400px;
+    background: #f5f5f5;
+  }
+
+  .about-intro__play-btn {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+
+  .about-intro__play-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .about-intro__play-btn svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Content column */
+  .about-intro__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-intro__heading {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .about-intro__italic {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #DFBE71;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .about-intro__text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #4A4A4A;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .about-intro__text p {
+    margin: 0;
+  }
+
+  .about-intro__origin-title {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    margin: 0.5rem 0 0;
+  }
+
+  .about-intro__block-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #4A4A4A;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .about-intro__block-text p {
+    margin: 0;
+  }
+
+  .about-intro__signature {
+    margin: 0.5rem 0 0;
+  }
+
+  .about-intro__signature-name {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #DFBE71;
+  }
+
+  .about-intro__signature-role {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #DFBE71;
+  }
+
+  /* Tablet */
+  @media (min-width: 750px) {
+    .about-intro {
+      padding: 0 2rem 2.5rem;
+    }
+
+    .about-intro__grid {
+      flex-direction: row;
+      gap: 2.5rem;
+    }
+
+    .about-intro__media {
+      flex: 0 0 38%;
+      max-width: 38%;
+      margin: 0;
+    }
+
+    .about-intro__content {
+      flex: 1;
+      gap: 1rem;
+    }
+
+    .about-intro__heading {
+      font-size: 14px;
+    }
+
+    .about-intro__italic {
+      font-size: 15px;
+    }
+
+    .about-intro__text,
+    .about-intro__block-text {
+      font-size: 13px;
+    }
+
+    .about-intro__origin-title {
+      font-size: 16px;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 990px) {
+    .about-intro {
+      padding: 0 3rem 3rem;
+    }
+
+    .about-intro__grid {
+      gap: 3.5rem;
+    }
+
+    .about-intro__media {
+      flex: 0 0 35%;
+      max-width: 35%;
+    }
+
+    .about-intro__heading {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .about-intro__italic {
+      font-size: 16px;
+    }
+
+    .about-intro__text,
+    .about-intro__block-text {
+      font-size: 14px;
+    }
+
+    .about-intro__origin-title {
+      font-size: 18px;
+    }
+
+    .about-intro__signature-name,
+    .about-intro__signature-role {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="about-intro">
+  <div class="about-intro__grid">
+    <!-- Left: Image / Video -->
+    <div class="about-intro__media">
+      <div class="about-intro__image-wrapper">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 800 | image_tag:
+            class: 'about-intro__image',
+            loading: 'lazy',
+            alt: section.settings.image_alt
+          }}
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'about-intro__placeholder' }}
+        {% endif %}
+
+        {% if section.settings.video_url != blank %}
+          <a href="{{ section.settings.video_url }}" class="about-intro__play-btn" target="_blank" rel="noopener" aria-label="Voir la vidéo">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="24" stroke="white" stroke-width="2"/>
+              <polygon points="20,15 35,25 20,35" fill="white"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Right: Content -->
+    <div class="about-intro__content">
+      {% if section.settings.heading != blank %}
+        <p class="about-intro__heading">{{ section.settings.heading }}</p>
+      {% endif %}
+
+      {% if section.settings.italic_text != blank %}
+        <p class="about-intro__italic">{{ section.settings.italic_text }}</p>
+      {% endif %}
+
+      {% if section.settings.intro_text != blank %}
+        <div class="about-intro__text">{{ section.settings.intro_text }}</div>
+      {% endif %}
+
+      {% if section.settings.origin_title != blank %}
+        <h2 class="about-intro__origin-title">{{ section.settings.origin_title }}</h2>
+      {% endif %}
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'paragraph' %}
+            <div class="about-intro__block-text" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+      {% if section.settings.signature_name != blank %}
+        <p class="about-intro__signature">
+          <span class="about-intro__signature-name">{{ section.settings.signature_name }}</span>
+          {% if section.settings.signature_role != blank %}
+            <br><span class="about-intro__signature-role">{{ section.settings.signature_role }}</span>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "A propos - Intro",
+  "tag": "section",
+  "class": "about-intro-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo fondatrice"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Texte alternatif image",
+      "default": "Caroline Robin, fondatrice d'ASTROGALLERY"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "URL de la vidéo (optionnel)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre bold",
+      "default": "ASTROGALLERY EST NÉ D'UN DÉSIR PROFOND DE RÉUNIR DEUX UNIVERS QUI PARLENT À L'ÂME L'ART ET L'ASTROLOGIE."
+    },
+    {
+      "type": "text",
+      "id": "italic_text",
+      "label": "Sous-titre italique doré",
+      "default": "Chaque être possède une carte du ciel unique, porteuse de sens et de symboles."
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Texte d'introduction",
+      "default": "<p>Notre mission est de transformer cette signature céleste en une œuvre que l'on peut contempler, comprendre et ressentir.<br>Ici, les étoiles deviennent langage, inspiration et révélation.</p>"
+    },
+    {
+      "type": "text",
+      "id": "origin_title",
+      "label": "Titre section origine",
+      "default": "À L'ORIGINE D'ASTROGALLERY"
+    },
+    {
+      "type": "text",
+      "id": "signature_name",
+      "label": "Nom signature",
+      "default": "Caroline Robin"
+    },
+    {
+      "type": "text",
+      "id": "signature_role",
+      "label": "Rôle signature",
+      "default": "Fondatrice d'AstroGallery"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "name": "Paragraphe",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texte"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

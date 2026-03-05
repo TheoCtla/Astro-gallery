@@ -1,0 +1,106 @@
+<style>
+  .about-hero-title {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 0;
+  }
+
+  .about-hero-title__breadcrumb {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .about-hero-title__breadcrumb-link {
+    color: #666;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .about-hero-title__breadcrumb-link:hover {
+    color: #DFBE71;
+  }
+
+  .about-hero-title__breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: #999;
+  }
+
+  .about-hero-title__breadcrumb-current {
+    font-weight: 600;
+    color: #1D1D1B;
+  }
+
+  .about-hero-title__heading {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    color: #1D1D1B;
+    text-align: center;
+    margin: 0 0 2rem;
+  }
+
+  @media (min-width: 750px) {
+    .about-hero-title {
+      padding: 1.5rem 2rem 0;
+    }
+
+    .about-hero-title__heading {
+      font-size: 32px;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-hero-title__breadcrumb {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (min-width: 990px) {
+    .about-hero-title {
+      padding: 2rem 3rem 0;
+    }
+
+    .about-hero-title__heading {
+      font-size: 40px;
+      margin-bottom: 3rem;
+    }
+
+    .about-hero-title__breadcrumb {
+      margin-bottom: 3rem;
+    }
+  }
+</style>
+
+<div class="about-hero-title">
+  <nav class="about-hero-title__breadcrumb">
+    <a href="/" class="about-hero-title__breadcrumb-link">Home</a>
+    <span class="about-hero-title__breadcrumb-separator">›</span>
+    <span class="about-hero-title__breadcrumb-current">{{ section.settings.breadcrumb_label }}</span>
+  </nav>
+
+  <h1 class="about-hero-title__heading">{{ section.settings.page_title }}</h1>
+</div>
+
+{% schema %}
+{
+  "name": "A propos - Titre",
+  "tag": "section",
+  "class": "about-hero-title-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "label": "Breadcrumb label",
+      "default": "À propos"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Titre de la page",
+      "default": "À PROPOS D'ASTROGALLERY"
+    }
+  ]
+}
+{% endschema %}

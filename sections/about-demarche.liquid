@@ -1,0 +1,197 @@
+<style>
+  .about-demarche {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid #DFBE71;
+  }
+
+  .about-demarche__title {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    margin: 0 0 1.5rem;
+  }
+
+  .about-demarche__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-demarche__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-demarche__text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #4A4A4A;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .about-demarche__text p {
+    margin: 0;
+  }
+
+  .about-demarche__image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .about-demarche__image-wrapper {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .about-demarche__image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .about-demarche__placeholder {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    background: #f5f5f5;
+  }
+
+  /* Tablet */
+  @media (min-width: 750px) {
+    .about-demarche {
+      padding: 2.5rem 2rem;
+    }
+
+    .about-demarche__grid {
+      flex-direction: row;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .about-demarche__content {
+      flex: 1.5;
+    }
+
+    .about-demarche__image {
+      flex: 1;
+    }
+
+    .about-demarche__title {
+      font-size: 16px;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-demarche__text {
+      font-size: 13px;
+    }
+
+    .about-demarche__image-wrapper {
+      max-width: 250px;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 990px) {
+    .about-demarche {
+      padding: 3rem 3rem 3.5rem;
+    }
+
+    .about-demarche__grid {
+      gap: 4rem;
+    }
+
+    .about-demarche__title {
+      font-size: 18px;
+      margin-bottom: 2rem;
+    }
+
+    .about-demarche__text {
+      font-size: 14px;
+    }
+
+    .about-demarche__image-wrapper {
+      max-width: 280px;
+    }
+  }
+</style>
+
+<div class="about-demarche">
+  {% if section.settings.title != blank %}
+    <h2 class="about-demarche__title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="about-demarche__grid">
+    <div class="about-demarche__content">
+      {% if section.settings.text_1 != blank %}
+        <div class="about-demarche__text">{{ section.settings.text_1 }}</div>
+      {% endif %}
+
+      {% if section.settings.text_2 != blank %}
+        <div class="about-demarche__text">{{ section.settings.text_2 }}</div>
+      {% endif %}
+    </div>
+
+    <div class="about-demarche__image">
+      <div class="about-demarche__image-wrapper">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 600 | image_tag:
+            class: 'about-demarche__img',
+            loading: 'lazy',
+            alt: section.settings.image_alt
+          }}
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'about-demarche__placeholder' }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "A propos - Demarche",
+  "tag": "section",
+  "class": "about-demarche-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "MA DÉMARCHE ASTROLOGIQUE ET ARTISTIQUE"
+    },
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "Premier paragraphe",
+      "default": "<p>Je crois que l'astrologie peut devenir une expérience esthétique, intuitive et profonde. Mon approche s'appuie sur l'astrologie sidérale, une lecture qui révèle souvent des facettes insoupçonnées de la personnalité. Elle apporte une compréhension plus authentique de soi et éclaire des nuances que l'astrologie tropicale ne montre pas toujours.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "Deuxième paragraphe",
+      "default": "<p>Lorsque je crée une œuvre, je commence par une analyse attentive de votre carte du ciel. J'en extrais des messages, des mantras qui traduisent votre essence. Je transforme ensuite cette lecture en une composition visuelle unique, pensée pour guider, inspirer et accompagner chacun sur son chemin intérieur.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image décorative"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Texte alternatif image",
+      "default": "Démarche astrologique et artistique"
+    }
+  ]
+}
+{% endschema %}
