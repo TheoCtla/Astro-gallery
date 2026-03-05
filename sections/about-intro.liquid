@@ -34,19 +34,26 @@
   }
 
   .about-intro__cover {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
     z-index: 2;
-    cursor: pointer;
+    pointer-events: none;
   }
 
   .about-intro__cover-img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
     object-fit: cover;
+    pointer-events: none;
+    filter: brightness(0.55);
+  }
+
+  .about-intro__video {
+    display: none;
+  }
+
+  .about-intro__image-wrapper.is-playing .about-intro__video {
     display: block;
   }
 
@@ -59,6 +66,7 @@
     bottom: 2.5rem;
     left: 2.5rem;
     z-index: 3;
+    pointer-events: auto;
     width: 68px;
     height: 68px;
     border: 1px solid #DFBE71;
@@ -70,7 +78,6 @@
     cursor: pointer;
     transition: transform 0.2s ease;
     padding: 0;
-    pointer-events: none;
   }
 
   .about-intro__play-btn:hover {
@@ -203,7 +210,20 @@
       height: 100%;
     }
 
-    .about-intro__video {
+    .about-intro__cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .about-intro__cover-img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-intro__image-wrapper.is-playing .about-intro__video {
       position: absolute;
       top: 0;
       left: 0;
@@ -354,18 +374,16 @@
   document.addEventListener('DOMContentLoaded', function () {
     var wrapper = document.getElementById('about-intro-video-wrapper');
     var video = document.getElementById('about-intro-video');
-    var cover = document.getElementById('about-intro-cover');
-    if (!video || !cover || !wrapper) return;
-
-    cover.addEventListener('click', function () {
-      video.play();
-      wrapper.classList.add('is-playing');
-    });
+    if (!video || !wrapper) return;
 
     wrapper.addEventListener('click', function (e) {
-      if (!wrapper.classList.contains('is-playing')) return;
-      video.pause();
-      wrapper.classList.remove('is-playing');
+      if (e.target.closest('.about-intro__play-btn')) {
+        video.play();
+        wrapper.classList.add('is-playing');
+      } else if (wrapper.classList.contains('is-playing')) {
+        video.pause();
+        wrapper.classList.remove('is-playing');
+      }
     });
   });
 </script>
