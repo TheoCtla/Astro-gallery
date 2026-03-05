@@ -29,6 +29,66 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  .about-intro__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .about-intro__cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-intro__image-wrapper.is-playing .about-intro__cover {
+    display: none;
+  }
+
+  .about-intro__play-btn {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    z-index: 3;
+    width: 68px;
+    height: 68px;
+    border: 1px solid #DFBE71;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  .about-intro__play-btn:hover {
+    transform: scale(1.08);
+  }
+
+  .about-intro__image-wrapper.is-playing .about-intro__play-btn {
+    display: none;
+  }
+
+  .about-intro__image-wrapper.is-playing {
+    cursor: pointer;
+  }
+
+  .about-intro__play-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
   }
 
   .about-intro__placeholder {
@@ -219,16 +279,32 @@
   <div class="about-intro__grid">
     <!-- Left: Image / Video -->
     <div class="about-intro__media">
-      <div class="about-intro__image-wrapper">
+      <div class="about-intro__image-wrapper" id="about-intro-video-wrapper">
         {% if section.settings.video != blank %}
           {{ section.settings.video | video_tag:
             class: 'about-intro__video',
-            autoplay: true,
+            autoplay: false,
             loop: true,
             muted: true,
             playsinline: true,
-            controls: false
+            controls: false,
+            preload: 'auto',
+            id: 'about-intro-video'
           }}
+          <div class="about-intro__cover" id="about-intro-cover">
+            {% if section.settings.cover_image != blank %}
+              {{ section.settings.cover_image | image_url: width: 800 | image_tag:
+                class: 'about-intro__cover-img',
+                loading: 'eager',
+                alt: 'Vidéo fondatrice'
+              }}
+            {% endif %}
+            <button class="about-intro__play-btn" aria-label="Lire la vidéo">
+              <svg viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="0,0 20,11 0,22" fill="#DFBE71"/>
+              </svg>
+            </button>
+          </div>
         {% else %}
           {{ 'image' | placeholder_svg_tag: 'about-intro__placeholder' }}
         {% endif %}
@@ -274,6 +350,26 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var wrapper = document.getElementById('about-intro-video-wrapper');
+    var video = document.getElementById('about-intro-video');
+    var cover = document.getElementById('about-intro-cover');
+    if (!video || !cover || !wrapper) return;
+
+    cover.addEventListener('click', function () {
+      video.play();
+      wrapper.classList.add('is-playing');
+    });
+
+    wrapper.addEventListener('click', function (e) {
+      if (!wrapper.classList.contains('is-playing')) return;
+      video.pause();
+      wrapper.classList.remove('is-playing');
+    });
+  });
+</script>
+
 {% schema %}
 {
   "name": "A propos - Intro",
@@ -284,6 +380,11 @@
       "type": "video",
       "id": "video",
       "label": "Vidéo fondatrice"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Image de couverture vidéo"
     },
     {
       "type": "text",
