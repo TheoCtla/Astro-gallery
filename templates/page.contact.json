@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "contact_content": {
@@ -6,6 +15,7 @@
         "breadcrumb_label": "Contact",
         "title": "UNE QUESTION, UN CONSEIL, UN ACCOMPAGNEMENT ?",
         "subtitle": "<p>Notre équipe vous répond sous 24h, avec attention et précision.</p>",
+        "image": "shopify://shop_images/9d6a234f3d517b3c9de5fa41fc0071ec0210ad70.png",
         "label_nom": "Nom",
         "label_prenom": "Prénom",
         "label_email": "E-mail",
@@ -17,5 +27,7 @@
       }
     }
   },
-  "order": ["contact_content"]
+  "order": [
+    "contact_content"
+  ]
 }

@@ -16,7 +16,7 @@
           "type": "question",
           "settings": {
             "question": "QU'EST-CE QU'UNE ŒUVRE ASTRALE ?",
-            "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.<br>Chaque pièce est numérotée, nominative et accompagnée d'un livret de 110 pages pour comprendre les énergies qui vous composent.</p>"
+            "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.<br/>Chaque pièce est numérotée, nominative et accompagnée d'un livret de 110 pages pour comprendre les énergies qui vous composent.</p>"
           }
         },
         "q2": {
@@ -55,7 +55,14 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
       "settings": {
         "breadcrumb_label": "FAQ",
         "title": "FAQ",
@@ -64,5 +71,7 @@
       }
     }
   },
-  "order": ["faq_content"]
+  "order": [
+    "faq_content"
+  ]
 }
