@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "journal_content": {
+      "type": "journal-astral-content",
+      "settings": {
+        "breadcrumb_label": "Journal astral",
+        "title": "JOURNAL ASTRAL",
+        "subtitle": "Un espace pour apprendre, comprendre et s'émerveiller.",
+        "intro_heading": "LE JOURNAL ASTRAL EST LE LIEU OÙ ASTROGALLERY PARTAGE SA VISION, SES DÉCOUVERTES ET SES INSPIRATIONS.",
+        "blog": "infos",
+        "articles_title": "TOUS NOS ARTICLES"
+      }
+    }
+  },
+  "order": [
+    "journal_content"
+  ]
+}
