@@ -1,17 +1,12 @@
 <style>
-  .about-cta-banner-section {
+  .about-cta-banner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem 2rem;
-  }
-
-  .about-cta-banner {
     padding: 2rem 1.5rem;
-    background-color: #1D1D1B;
+    background-color: #F1EEE5;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 12px;
     overflow: hidden;
     position: relative;
   }
@@ -29,9 +24,9 @@
     font-family: 'Lemon Milk', sans-serif;
     font-weight: 400;
     font-size: 13px;
-    letter-spacing: 0.05em;
+    letter-spacing: -0.5px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #1D1D1B;
     line-height: 1.7;
     margin: 0;
   }
@@ -44,12 +39,13 @@
   }
 
   .about-cta-banner__text {
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     font-size: 13px;
-    color: #DFBE71;
+    color: #1D1D1B;
     line-height: 1.6;
     margin: 0;
+    text-align: center;
   }
 
   .about-cta-banner__btn {
@@ -119,10 +115,6 @@
 
   /* Tablet */
   @media (min-width: 750px) {
-    .about-cta-banner-section {
-      padding: 0 2rem 2.5rem;
-    }
-
     .about-cta-banner {
       padding: 3rem 3rem;
     }
@@ -140,7 +132,7 @@
 
     .about-cta-banner__right {
       flex: 1;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .about-cta-banner__heading {
@@ -157,14 +149,30 @@
     }
   }
 
+  .about-cta-banner__text-line1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1D1D1B;
+    line-height: 1.6;
+  }
+
+  .about-cta-banner__text-line2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1D1D1B;
+    line-height: 1.6;
+  }
+
   /* Desktop */
   @media (min-width: 990px) {
-    .about-cta-banner-section {
-      padding: 0 1.5rem 3rem;
-    }
-
     .about-cta-banner {
-      padding: 3.5rem 4rem;
+      min-height: 277px;
+      padding: 0 4rem;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
     }
 
     .about-cta-banner__container {
@@ -172,11 +180,16 @@
     }
 
     .about-cta-banner__heading {
-      font-size: 15px;
+      font-size: 22px;
+      line-height: 150%;
     }
 
-    .about-cta-banner__text {
-      font-size: 15px;
+    .about-cta-banner__text-line1 {
+      font-size: 16px;
+    }
+
+    .about-cta-banner__text-line2 {
+      font-size: 16px;
     }
 
     .about-cta-banner__btn {
@@ -199,9 +212,14 @@
     </div>
 
     <div class="about-cta-banner__right">
-      {% if section.settings.text != blank %}
-        <p class="about-cta-banner__text">{{ section.settings.text }}</p>
-      {% endif %}
+      <p class="about-cta-banner__text">
+        {% if section.settings.text_line1 != blank %}
+          <span class="about-cta-banner__text-line1">{{ section.settings.text_line1 }}</span><br>
+        {% endif %}
+        {% if section.settings.text_line2 != blank %}
+          <span class="about-cta-banner__text-line2">{{ section.settings.text_line2 }}</span>
+        {% endif %}
+      </p>
 
       {% if section.settings.button_label != blank %}
         <a href="{{ section.settings.button_link }}" class="about-cta-banner__btn">
@@ -231,9 +249,15 @@
     },
     {
       "type": "text",
-      "id": "text",
-      "label": "Texte (droite, italique doré)",
-      "default": "Créez dès maintenant la vôtre et donnez vie à votre thème natal."
+      "id": "text_line1",
+      "label": "Texte droite - ligne 1 (petite)",
+      "default": "Créez dès maintenant la vôtre"
+    },
+    {
+      "type": "text",
+      "id": "text_line2",
+      "label": "Texte droite - ligne 2 (grande)",
+      "default": "et donnez vie à votre thème natal."
     },
     {
       "type": "text",
