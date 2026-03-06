@@ -4,7 +4,10 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "footer_menu_left": "main-menu",
+        "footer_menu_right": "menu-droite"
+      }
     }
   },
   "order": [
