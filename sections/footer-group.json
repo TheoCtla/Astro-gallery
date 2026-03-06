@@ -1,10 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Footer Group",
   "type": "footer",
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "color_scheme": "inverse",
+        "footer_logo": "shopify://shop_images/Logo-complet.svg",
+        "footer_tagline_1": "De votre ciel de naissance",
+        "footer_tagline_2": "à votre œuvre astrale.",
+        "footer_sections_title": "SECTIONS",
+        "footer_menu_left": "main-menu",
+        "footer_menu_right": "menu-droite",
+        "footer_social_title": "SOCIAL MEDIA",
+        "footer_payment_title": "MOYENS DE PAIEMENT",
+        "payment_icon_1": "shopify://shop_images/Item_Img_5.svg",
+        "payment_icon_2": "shopify://shop_images/Item_Img_4.svg",
+        "payment_icon_3": "shopify://shop_images/Item_Img_3.svg",
+        "payment_icon_4": "shopify://shop_images/Item_Img_1.svg",
+        "payment_icon_5": "shopify://shop_images/Item_Img.svg"
+      }
     }
   },
   "order": [
