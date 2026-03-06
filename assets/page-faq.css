@@ -96,6 +96,15 @@ body[class*="page-faq"] nav.breadcrumb:not(.faq-breadcrumb) {
   padding: 0 2rem;
 }
 
+.faq-section__accordion-title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: #1D1D1B;
+  margin-bottom: 2rem;
+}
+
 .faq-accordion {
   display: flex;
   flex-direction: column;
@@ -104,9 +113,19 @@ body[class*="page-faq"] nav.breadcrumb:not(.faq-breadcrumb) {
 
 /* Item FAQ */
 .faq-item {
-  border-left: 3px solid #DFBE71;
+  position: relative;
   border-bottom: 1px solid #e5e5e5;
   background-color: #fff;
+}
+
+.faq-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 3px;
+  background-color: #DFBE71;
 }
 
 .faq-item:last-child {
@@ -179,10 +198,22 @@ body[class*="page-faq"] nav.breadcrumb:not(.faq-breadcrumb) {
 }
 
 .faq-item__answer {
+  position: relative;
   padding: 0 clamp(1rem, 2vw, 1.5rem) clamp(1.2rem, 2vw, 1.8rem);
   padding-left: calc(35px + clamp(1rem, 2vw, 1.5rem) + clamp(0.8rem, 1.5vw, 1.2rem));
+  padding-top: clamp(1rem, 1.5vw, 1.5rem);
   opacity: 0;
   transform: translateY(-10px);
+}
+
+.faq-item__answer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(35px + clamp(1rem, 2vw, 1.5rem) + clamp(0.8rem, 1.5vw, 1.2rem));
+  right: clamp(1rem, 2vw, 1.5rem);
+  height: 1px;
+  background-color: #F8EDD2;
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, 
               transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }

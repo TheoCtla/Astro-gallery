@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq_content": {
+      "type": "faq-content",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "QU'EST-CE QU'UNE ŒUVRE ASTRALE ?",
+            "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.<br>Chaque pièce est numérotée, nominative et accompagnée d'un livret de 110 pages pour comprendre les énergies qui vous composent.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "QUELLES INFORMATIONS SONT NÉCESSAIRES ?",
+            "answer": "<p>Nom complet, date, heure et lieu de naissance.<br>Ces données permettent de calculer précisément votre thème sidéral ; elles restent strictement confidentielles.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "QUE CONTIENT LE LIVRET ?",
+            "answer": "<p>Un ouvrage de <strong>110 pages</strong>, dont <strong>40 personnalisées</strong> à votre ciel : lecture planétaire, mantras, phrase centrale « Cœur de votre Ciel ».<br>Les pages générales offrent une introduction claire à l'astrologie.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "QUELS SONT LES DÉLAIS ?",
+            "answer": "<p>Création, impression et expédition : <strong>3 à 4 semaines</strong>.<br>Chaque œuvre est fabriquée à la commande dans nos ateliers français.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "PEUT-ON OFFRIR UNE ŒUVRE ASTRALE ?",
+            "answer": "<p>Oui. Vous pouvez offrir directement une œuvre (avec les données de naissance).</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "L'ŒUVRE EST ELLE PRÊTE À ÊTRE ACCROCHÉE",
+            "answer": "<p>Oui. L'œuvre est livrée encadrée avec son système d'accroche intégré. Vous n'avez rien à prévoir. Il vous suffit de choisir l'emplacement idéal et de l'installer.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "settings": {
+        "breadcrumb_label": "FAQ",
+        "title": "FAQ",
+        "subtitle": "Un espace pour apprendre, comprendre et s'émerveiller.",
+        "accordion_title": "DÉCOUVREZ NOS QUESTIONS LES PLUS FRÉQUENTES"
+      }
+    }
+  },
+  "order": ["faq_content"]
+}
