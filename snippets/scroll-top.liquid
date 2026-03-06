@@ -1,5 +1,61 @@
-<button class="scroll-top" aria-label="{{ 'accessibility.scroll_up' | t }}">
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-		<path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"/>
-	</svg>
+<style>
+  .scroll-top {
+    display: block !important;
+    position: fixed !important;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    border: none;
+    background: none !important;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .scroll-top__img {
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
+  @media (min-width: 750px) {
+    .scroll-top {
+      bottom: auto;
+      top: 75%;
+      right: 3rem;
+      transform: translateY(-50%);
+    }
+
+    .scroll-top__img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    .scroll-top {
+      right: calc((100vw - 1200px) / 4);
+    }
+
+    .scroll-top__img {
+      width: 56px;
+      height: 56px;
+    }
+  }
+</style>
+
+<button class="scroll-top" aria-label="Retour en haut">
+  <img src="{{ 'iconTop.png' | asset_url }}" alt="Retour en haut" class="scroll-top__img" loading="lazy">
 </button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.scroll-top');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>

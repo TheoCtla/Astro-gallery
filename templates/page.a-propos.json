@@ -1,0 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_hero_title": {
+      "type": "about-hero-title",
+      "settings": {
+        "breadcrumb_label": "À propos",
+        "page_title": "À PROPOS D'ASTROGALLERY"
+      }
+    },
+    "about_intro": {
+      "type": "about-intro",
+      "blocks": {
+        "paragraph_1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Astrogallery est né de ma volonté de révéler la beauté intérieure de chacun à travers les étoiles. Je crois profondément que chaque personne porte en elle une esthétique unique que sa carte du ciel dessine comme une signature intime.</p>"
+          }
+        },
+        "paragraph_2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Mon rôle est de traduire cette histoire céleste en une création qui touche, qui inspire et qui éclaire.<br>Je mêle intuition, lecture astrologique et sens artistique pour donner vie à des œuvres qui parlent à la fois au cœur et à l'esprit.</p>"
+          }
+        },
+        "paragraph_3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Astrogallery est pour moi une invitation à explorer son identité autrement, avec douceur, profondeur et poésie.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_1",
+        "paragraph_2",
+        "paragraph_3"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/Réel 3 Interviews Caroline .mov",
+        "cover_image": "shopify://shop_images/Property_1_Variant2.png",
+        "heading": "ASTROGALLERY EST NÉ D'UN DÉSIR PROFOND DE RÉUNIR DEUX UNIVERS QUI PARLENT À L'ÂME L'ART ET L'ASTROLOGIE.",
+        "italic_text": "Chaque être possède une carte du ciel unique, porteuse de sens et de symboles.",
+        "intro_text": "<p>Notre mission est de transformer cette signature céleste en une œuvre que l'on peut contempler, comprendre et ressentir.<br/>Ici, les étoiles deviennent langage, inspiration et révélation.</p>",
+        "origin_title": "À L'ORIGINE D'ASTROGALLERY",
+        "signature_name": "Caroline Robin",
+        "signature_role": "Fondatrice d'AstroGallery"
+      }
+    },
+    "about_demarche": {
+      "type": "about-demarche",
+      "settings": {
+        "title": "MA DÉMARCHE ASTROLOGIQUE ET ARTISTIQUE",
+        "text_1": "<p>Je crois que l'astrologie peut devenir une expérience esthétique, intuitive et profonde. Mon approche s'appuie sur l'astrologie sidérale, une lecture qui révèle souvent des facettes insoupçonnées de la personnalité. Elle apporte une compréhension plus authentique de soi et éclaire des nuances que l'astrologie tropicale ne montre pas toujours.</p>",
+        "text_2": "<p>Lorsque je crée une œuvre, je commence par une analyse attentive de votre carte du ciel. J'en extrais des messages, des mantras qui traduisent votre essence. Je transforme ensuite cette lecture en une composition visuelle unique, pensée pour guider, inspirer et accompagner chacun sur son chemin intérieur.</p>",
+        "image": "shopify://shop_images/732eed00b9528212617586bae1e3387b023af1fe.png",
+        "image_alt": "Démarche astrologique et artistique"
+      }
+    },
+    "about_cta_banner": {
+      "type": "about-cta-banner",
+      "settings": {
+        "background_image": "shopify://shop_images/f3e4fe034e57e11d7779a8d4e6d65f8ea7fca910.png",
+        "heading": "OFFREZ À VOTRE INTÉRIEUR UNE ŒUVRE PERSONNELLE, NUMÉROTÉE ET CERTIFIÉE ORIGINALE.",
+        "text": "Créez dès maintenant la vôtre et donnez vie à votre thème natal.",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    }
+  },
+  "order": [
+    "about_hero_title",
+    "about_intro",
+    "about_demarche",
+    "about_cta_banner"
+  ]
+}
