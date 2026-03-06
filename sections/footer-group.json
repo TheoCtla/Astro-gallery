@@ -19,8 +19,8 @@
         "footer_tagline_1": "De votre ciel de naissance",
         "footer_tagline_2": "à votre œuvre astrale.",
         "footer_sections_title": "SECTIONS",
-        "footer_menu_left": "",
-        "footer_menu_right": "",
+        "footer_menu_left": "main-menu",
+        "footer_menu_right": "menu-droite",
         "footer_social_title": "SOCIAL MEDIA",
         "footer_payment_title": "PAYMENT METHODS"
       }
