@@ -1,0 +1,225 @@
+{{ 'page-journal-astral.css' | asset_url | stylesheet_tag }}
+
+<div class="journal-astral-page">
+  <!-- Breadcrumb -->
+  <nav class="journal-breadcrumb">
+    <a href="/" class="journal-breadcrumb__link">Home</a>
+    <span class="journal-breadcrumb__separator">›</span>
+    <span class="journal-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
+  </nav>
+
+  <!-- Header -->
+  <header class="journal-header">
+    <h1 class="journal-header__title">{{ section.settings.title }}</h1>
+    <p class="journal-header__subtitle">{{ section.settings.subtitle }}</p>
+  </header>
+
+  <!-- Section intro -->
+  <section class="journal-intro">
+    <div class="journal-intro__container">
+      <div class="journal-intro__image">
+        {%- if section.settings.intro_image != blank -%}
+          <img
+            src="{{ section.settings.intro_image | image_url: width: 300 }}"
+            alt="{{ section.settings.intro_image.alt | default: 'Illustration' | escape }}"
+            loading="lazy"
+            width="300"
+            height="{{ 300 | divided_by: section.settings.intro_image.aspect_ratio | round }}"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+      <div class="journal-intro__content">
+        <h2 class="journal-intro__heading">{{ section.settings.intro_heading }}</h2>
+        <div class="journal-intro__text">{{ section.settings.intro_text_1 }}</div>
+        <div class="journal-intro__text">{{ section.settings.intro_text_2 }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separator -->
+  <div class="journal-separator"></div>
+
+  <!-- Articles Carousel -->
+  {%- assign blog = blogs[section.settings.blog] -%}
+  {%- if blog != blank and blog.articles_count > 0 -%}
+    <section class="journal-articles">
+      <h2 class="journal-articles__title">{{ section.settings.articles_title }}</h2>
+
+      <div class="journal-carousel" data-articles-per-page="7">
+        <div class="journal-carousel__track">
+          {%- assign page_index = 0 -%}
+          {%- assign article_in_page = 0 -%}
+
+          {%- for article in blog.articles limit: 28 -%}
+            {%- if article_in_page == 0 -%}
+              <div class="journal-carousel__page{% if page_index == 0 %} journal-carousel__page--active{% endif %}" data-page="{{ page_index }}">
+                <div class="journal-carousel__grid">
+            {%- endif -%}
+
+                  <a href="{{ article.url }}" class="journal-carousel__item{% if article_in_page == 0 %} journal-carousel__item--featured{% endif %}">
+                    <div class="journal-carousel__img-wrapper">
+                      {%- if article.image -%}
+                        <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.image.alt | default: article.title | escape }}" loading="lazy">
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag }}
+                      {%- endif -%}
+                      {%- if article_in_page == 0 -%}
+                        <div class="journal-carousel__overlay">
+                          <span class="journal-carousel__item-title journal-carousel__item-title--overlay">{{ article.title }}</span>
+                          <span class="journal-carousel__item-date journal-carousel__item-date--overlay">{{ article.published_at | date: "%B %Y" }}</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                    {%- if article_in_page != 0 -%}
+                      <span class="journal-carousel__item-title">{{ article.title }}</span>
+                      <span class="journal-carousel__item-date">{{ article.published_at | date: "%B %Y" }}</span>
+                    {%- endif -%}
+                  </a>
+
+            {%- assign article_in_page = article_in_page | plus: 1 -%}
+
+            {%- if article_in_page == 7 or forloop.last -%}
+                </div>
+              </div>
+              {%- assign page_index = page_index | plus: 1 -%}
+              {%- assign article_in_page = 0 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if page_index > 1 -%}
+          <div class="journal-carousel__nav">
+            <button class="journal-carousel__arrow journal-carousel__arrow--prev" aria-label="Page précédente" disabled>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="journal-carousel__indicator">
+              <span class="journal-carousel__current-page">1</span>/<span class="journal-carousel__total-pages">{{ page_index }}</span>
+            </span>
+            <button class="journal-carousel__arrow journal-carousel__arrow--next" aria-label="Page suivante">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- else -%}
+    <section class="journal-articles">
+      <p class="journal-articles__empty">Aucun article pour le moment.</p>
+    </section>
+  {%- endif -%}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var carousel = document.querySelector('.journal-carousel');
+  if (!carousel) return;
+
+  var pages = carousel.querySelectorAll('.journal-carousel__page');
+  var prevBtn = carousel.querySelector('.journal-carousel__arrow--prev');
+  var nextBtn = carousel.querySelector('.journal-carousel__arrow--next');
+  var currentPageEl = carousel.querySelector('.journal-carousel__current-page');
+  var totalPages = pages.length;
+  var currentPage = 0;
+
+  if (!prevBtn || !nextBtn || totalPages <= 1) return;
+
+  function showPage(index) {
+    pages.forEach(function(page, i) {
+      page.classList.toggle('journal-carousel__page--active', i === index);
+    });
+    currentPage = index;
+    currentPageEl.textContent = currentPage + 1;
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === totalPages - 1;
+  }
+
+  prevBtn.addEventListener('click', function() {
+    if (currentPage > 0) showPage(currentPage - 1);
+  });
+
+  nextBtn.addEventListener('click', function() {
+    if (currentPage < totalPages - 1) showPage(currentPage + 1);
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Journal Astral",
+  "tag": "section",
+  "class": "journal-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "En-tête"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "default": "Journal astral",
+      "label": "Breadcrumb label"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "JOURNAL ASTRAL",
+      "label": "Titre principal"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Un espace pour apprendre, comprendre et s'émerveiller.",
+      "label": "Sous-titre"
+    },
+    {
+      "type": "header",
+      "content": "Introduction"
+    },
+    {
+      "type": "image_picker",
+      "id": "intro_image",
+      "label": "Image d'introduction"
+    },
+    {
+      "type": "text",
+      "id": "intro_heading",
+      "default": "LE JOURNAL ASTRAL EST LE LIEU OÙ ASTROGALLERY PARTAGE SA VISION, SES DÉCOUVERTES ET SES INSPIRATIONS.",
+      "label": "Titre d'introduction"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text_1",
+      "default": "<p>Vous y trouverez des articles clairs, esthétiques et accessibles à tous qu'il s'agisse de comprendre les bases de l'astrologie, de découvrir la différence entre le tropicale et le sidéral, ou d'explorer le sens caché de votre thème astral.</p>",
+      "label": "Paragraphe 1"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text_2",
+      "default": "<p>Un contenu à la fois pédagogique et poétique, pensé pour éveiller la curiosité et nourrir la réflexion intérieure.</p>",
+      "label": "Paragraphe 2"
+    },
+    {
+      "type": "header",
+      "content": "Articles"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog à afficher"
+    },
+    {
+      "type": "text",
+      "id": "articles_title",
+      "default": "TOUS NOS ARTICLES",
+      "label": "Titre section articles"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journal Astral"
+    }
+  ]
+}
+{% endschema %}

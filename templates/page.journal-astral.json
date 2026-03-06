@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "journal_content": {
+      "type": "journal-astral-content",
+      "settings": {
+        "breadcrumb_label": "Journal astral",
+        "title": "JOURNAL ASTRAL",
+        "subtitle": "Un espace pour apprendre, comprendre et s'émerveiller.",
+        "intro_image": "shopify://shop_images/23c73d29f6297619691566538c7de8b20d0c46e5.png",
+        "intro_heading": "LE JOURNAL ASTRAL EST LE LIEU OÙ ASTROGALLERY PARTAGE SA VISION, SES DÉCOUVERTES ET SES INSPIRATIONS.",
+        "intro_text_1": "<p>Vous y trouverez des articles clairs, esthétiques et accessibles à tous qu'il s'agisse de comprendre les bases de l'astrologie, de découvrir la différence entre le tropicale et le sidéral, ou d'explorer le sens caché de votre thème astral.</p>",
+        "intro_text_2": "<p>Un contenu à la fois pédagogique et poétique, pensé pour éveiller la curiosité et nourrir la réflexion intérieure.</p>",
+        "blog": "infos",
+        "articles_title": "TOUS NOS ARTICLES"
+      }
+    }
+  },
+  "order": [
+    "journal_content"
+  ]
+}
