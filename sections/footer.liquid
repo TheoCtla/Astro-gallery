@@ -119,8 +119,18 @@
       <div class="footer__payment-section">
         <h3 class="footer__payment-title">{{ section.settings.footer_payment_title }}</h3>
         <div class="footer__payment-icons">
-          {%- for type in shop.enabled_payment_types -%}
-            {{ type | payment_type_svg_tag: class: 'footer__payment-icon' }}
+          {%- for i in (1..6) -%}
+            {%- assign icon_id = 'payment_icon_' | append: i -%}
+            {%- assign icon = section.settings[icon_id] -%}
+            {%- if icon != blank -%}
+              <img
+                src="{{ icon | image_url: height: 40 }}"
+                alt="{{ icon.alt | default: 'Moyen de paiement' | escape }}"
+                class="footer__payment-icon"
+                height="40"
+                loading="lazy"
+              >
+            {%- endif -%}
           {%- endfor -%}
         </div>
       </div>
@@ -210,8 +220,38 @@
     {
       "type": "text",
       "id": "footer_payment_title",
-      "default": "PAYMENT METHODS",
+      "default": "MOYENS DE PAIEMENT",
       "label": "Titre section paiement"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_1",
+      "label": "Icône paiement 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_2",
+      "label": "Icône paiement 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_3",
+      "label": "Icône paiement 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_4",
+      "label": "Icône paiement 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_5",
+      "label": "Icône paiement 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_6",
+      "label": "Icône paiement 6"
     }
   ]
 }
