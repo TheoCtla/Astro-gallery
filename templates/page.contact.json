@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "contact_content": {
+      "type": "contact-content",
+      "settings": {
+        "breadcrumb_label": "Contact",
+        "title": "UNE QUESTION, UN CONSEIL, UN ACCOMPAGNEMENT ?",
+        "subtitle": "<p>Notre équipe vous répond sous 24h, avec attention et précision.</p>",
+        "label_nom": "Nom",
+        "label_prenom": "Prénom",
+        "label_email": "E-mail",
+        "label_phone": "Numéro de téléphone",
+        "label_message": "Votre message",
+        "button_text": "• ENVOYER VOTRE MESSAGE •",
+        "success_message": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
+        "error_message": "Une erreur est survenue. Veuillez réessayer."
+      }
+    }
+  },
+  "order": ["contact_content"]
+}
