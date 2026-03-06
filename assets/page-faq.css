@@ -96,6 +96,15 @@ body[class*="page-faq"] nav.breadcrumb:not(.faq-breadcrumb) {
   padding: 0 2rem;
 }
 
+.faq-section__accordion-title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: #1D1D1B;
+  margin-bottom: 2rem;
+}
+
 .faq-accordion {
   display: flex;
   flex-direction: column;

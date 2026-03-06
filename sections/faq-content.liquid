@@ -1,0 +1,120 @@
+{{ 'page-faq.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-page">
+  <!-- Breadcrumb -->
+  <nav class="faq-breadcrumb">
+    <a href="/" class="faq-breadcrumb__link">Home</a>
+    <span class="faq-breadcrumb__separator">›</span>
+    <span class="faq-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
+  </nav>
+
+  <!-- Section FAQ -->
+  <div class="faq-section">
+    <div class="faq-section__header">
+      <h2 class="faq-section__title">{{ section.settings.title }}</h2>
+      <p class="faq-section__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="faq-section__container">
+      <h3 class="faq-section__accordion-title">{{ section.settings.accordion_title }}</h3>
+      <div class="faq-accordion">
+        {%- for block in section.blocks -%}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button class="faq-item__header" aria-expanded="false">
+              <span class="faq-item__number">{{ forloop.index | prepend: '00' | slice: -2, 2 }}.</span>
+              <span class="faq-item__question">{{ block.settings.question }}</span>
+              <span class="faq-item__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M18 15l-6-6-6 6"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-item__content">
+              <div class="faq-item__answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faqItems = document.querySelectorAll('.faq-item__header');
+
+  faqItems.forEach(function(header) {
+    header.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('faq-item--open');
+
+      if (isOpen) {
+        item.classList.remove('faq-item--open');
+        this.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('faq-item--open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "faq-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "default": "FAQ",
+      "label": "Breadcrumb label"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "FAQ",
+      "label": "Titre principal"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Un espace pour apprendre, comprendre et s'émerveiller.",
+      "label": "Sous-titre"
+    },
+    {
+      "type": "text",
+      "id": "accordion_title",
+      "default": "DÉCOUVREZ NOS QUESTIONS LES PLUS FRÉQUENTES",
+      "label": "Titre de l'accordéon"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ"
+    }
+  ]
+}
+{% endschema %}
