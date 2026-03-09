@@ -65,30 +65,40 @@
         "slide-2": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_title": "Un achat mémorable pour nos 30 ans de vie commune.",
-            "slide_text": "Le rendu est superbe, les finitions sont impeccables, et l'effet visuel dépasse nos attentes. C'est une pièce qui attire tous les regards.",
+            "slide_title": "",
+            "slide_text": "Je ne m'attendais pas à un tel niveau de détail. Le cadre est élégant, les contrastes sont superbes et l'ensemble apporte une vraie présence à la pièce.",
             "slide_avatar": "shopify://shop_images/Ellipse_1_2.png",
-            "slide_name": "Frédéric R.",
+            "slide_name": "Émilie S.",
             "slide_country": ""
           }
         },
         "slide-3": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_title": "Nous avons été pleinement séduits par l'expérience.",
-            "slide_text": "Le thème astral de couple que nous avons reçu est vraiment superbe. Le livret qui l'accompagne a été un vrai plus.",
+            "slide_title": "",
+            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
             "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
-            "slide_name": "Amélie V. et Vincent L.",
+            "slide_name": "Marc R.",
             "slide_country": ""
           }
         },
         "slide-4": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_title": "Un immense merci pour ce magnifique travail !",
-            "slide_text": "L'analyse du thème astral de mes enfants mêle à la fois la compréhension de leur personnalité et la mise en valeur de leur univers.",
+            "slide_title": "",
+            "slide_text": "Honnêtement je ne pensais pas être aussi ému en la découvrant. Il ya quelque chose de très personnel dans cette œuvre. Elle a trouvé sa place immédiatement chez moi.",
             "slide_avatar": "shopify://shop_images/Ellipse_1_4.png",
             "slide_name": "Virginie H.",
+            "slide_country": ""
+          }
+        },
+        "testimonials_slide_WiBfam": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Ce que j'aime le plus, c'est que ce n'est pas juste joli. Ça me ressemble. Mes amis me posent toujours des questions dessus, et je suis fière d'expliquer ce que c'est.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_5.png",
+            "slide_name": "Nicolas B",
             "slide_country": ""
           }
         }
@@ -97,7 +107,8 @@
         "slide-1",
         "slide-2",
         "slide-3",
-        "slide-4"
+        "slide-4",
+        "testimonials_slide_WiBfam"
       ],
       "settings": {
         "star_icon": "shopify://shop_images/Calque_1.svg",
