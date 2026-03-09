@@ -1,1 +1,43 @@
-{"sections":{"main":{"type":"main-article","blocks":{"title":{"type":"article-header","settings":{"blog_show_date":false,"blog_show_author":false,"image_height":"adapt","show_share_facebook":false,"show_share_twitter":false,"show_share_pinterest":false,"show_share_copy":false}},"content":{"type":"content","settings":{}},"custom_liquid_jj3eW6":{"type":"custom_liquid","settings":{"custom_liquid":"<div class=\"astrogallery-cta-section\">\n  <h3>Envie de transformer votre univers intérieur en une œuvre unique&nbsp;?<\/h3>\n  <p>Découvrez nos créations Solo et Duo, entièrement personnalisées à partir de votre thème astral.<\/p>\n\n  <div class=\"astrogallery-cta-buttons\">\n    <a href=\"\/pages\/solo\" class=\"astrogallery-btn\">Explorer les œuvres Solo<\/a>\n    <a href=\"\/pages\/duo\" class=\"astrogallery-btn\">Explorer les œuvres Duo<\/a>\n  <\/div>\n<\/div>"}},"ff6b0553-86e9-4a37-a52e-ab8ca9b2f0e0":{"type":"article-footer","settings":{"blog_show_date":true,"blog_show_author":false,"show_share_facebook":true,"show_share_twitter":false,"show_share_pinterest":false,"show_share_copy":true}}},"block_order":["title","content","custom_liquid_jj3eW6","ff6b0553-86e9-4a37-a52e-ab8ca9b2f0e0"],"settings":{"header_variant":"column"}},"newsletter":{"type":"newsletter","disabled":true,"settings":{"color_scheme":"background-2","heading":"Subscribe to Our Newsletter","newsletter_text":"<p>By pressing the button “Subscribe”, you confirm that you have read and are agreeing to our <a href=\"\/collections\/all\" title=\"All products\">Terms of Use<\/a> regarding the storage of the data submitted through this form.<\/p>","full_width":true}}},"order":["main","newsletter"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "header": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {
+            "show_share_facebook": true,
+            "show_share_copy": true
+          }
+        },
+        "footer": {
+          "type": "article-footer",
+          "settings": {}
+        }
+      },
+      "block_order": ["header", "content", "footer"],
+      "settings": {
+        "author_name": "Caroline Robin",
+        "author_role": "Fondatrice d'AstroGallery"
+      }
+    },
+    "cta-banner": {
+      "type": "about-cta-banner",
+      "settings": {
+        "heading": "ENVIE DE TRANSFORMER VOTRE UNIVERS INTÉRIEUR EN UNE ŒUVRE UNIQUE ?",
+        "text_line1": "Découvrez nos créations entièrement personnalisées",
+        "text_line2": "à partir de votre thème astral.",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    }
+  },
+  "order": ["main", "cta-banner"]
+}
