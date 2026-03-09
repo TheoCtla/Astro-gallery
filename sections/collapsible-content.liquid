@@ -1,7 +1,7 @@
 {{ 'section-collapsible-content.css' | asset_url | stylesheet_tag }}
 
 <div class="how-it-works">
-	<div class="how-it-works__container" style="text-transform: none !important;">
+	<div class="how-it-works__container">
 		{%- if section.settings.heading != blank -%}
 			<h2 class="how-it-works__heading">
 				{{ section.settings.heading }}
@@ -14,26 +14,22 @@
 			</p>
 		{%- endif -%}
 
-		<div class="how-it-works__columns" style="text-transform: none !important;">
+		<div class="how-it-works__columns">
 			{%- for block in section.blocks -%}
-				<div class="how-it-works__column" style="text-transform: none !important;">
+				<div class="how-it-works__column" {{ block.shopify_attributes }}>
 					<div class="how-it-works__column-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}.</div>
-				<div class="how-it-works__column-icon">
-					{%- assign icon_index = forloop.index -%}
-					<img src="{{ 'ciel' | append: icon_index | append: '.svg' | asset_url }}" alt="" class="how-it-works__icon-image">
-				</div>
+					<div class="how-it-works__column-icon">
+						{%- assign icon_index = forloop.index -%}
+						<img src="{{ 'ciel' | append: icon_index | append: '.svg' | asset_url }}" alt="" class="how-it-works__icon-image">
+					</div>
 					{%- if block.settings.title != blank -%}
 						<h3 class="how-it-works__column-title">{{ block.settings.title | escape }}</h3>
 					{%- endif -%}
-					<div class="how-it-works__column-description" style="text-transform: none !important;">
-						{%- if forloop.index == 1 -%}
-							<p style="text-transform: none !important;">partagez vos informations de naissance : Prénom, nom, date, heure et lieu.<br>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>
-						{%- elsif forloop.index == 2 -%}
-							<p style="text-transform: none !important;">à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence.<br>Cette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>
-						{%- elsif forloop.index == 3 -%}
-							<p style="text-transform: none !important;">votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>
-						{%- endif -%}
-					</div>
+					{%- if block.settings.description != blank -%}
+						<div class="how-it-works__column-description">
+							{{ block.settings.description }}
+						</div>
+					{%- endif -%}
 				</div>
 			{%- endfor -%}
 		</div>
@@ -48,12 +44,8 @@
 					<span class="button__text">{{ section.settings.button_label_1 | escape }}</span>
 				</a>
 			{%- endif -%}
-			{%- if section.settings.button_link_2 != blank -%}
+			{%- if section.settings.button_label_2 != blank and section.settings.button_link_2 != blank -%}
 				<a href="{{ section.settings.button_link_2 }}" class="button how-it-works__button how-it-works__button--right how-it-works__button--beige btn-gold">
-					<span class="button__text">{{ section.settings.button_label_2 | escape }}</span>
-				</a>
-			{%- else -%}
-				<a href="#" class="button how-it-works__button how-it-works__button--right how-it-works__button--beige btn-gold" aria-disabled="true">
 					<span class="button__text">{{ section.settings.button_label_2 | escape }}</span>
 				</a>
 			{%- endif -%}
