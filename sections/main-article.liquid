@@ -15,72 +15,74 @@
         {% endif %}
 
         <header class="article-hero" {{ block.shopify_attributes }}>
-          {%- if article.image -%}
-            <div class="article-hero__image">
-              <img
-                srcset="
-                  {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
-                  {% if article.image.width >= 700 %}{{ article.image | image_url: width: 700 }} 700w,{% endif %}
-                  {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
-                "
-                sizes="(min-width: 990px) 400px, (min-width: 750px) 300px, 100vw"
-                src="{{ article.image | image_url: width: 700 }}"
-                loading="eager"
-                width="{{ article.image.width }}"
-                height="{{ article.image.height }}"
-                alt="{{ article.image.alt | escape }}"
-                itemprop="image"
-              >
+          <div class="article-hero__top">
+            {%- if article.image -%}
+              <div class="article-hero__image">
+                <img
+                  srcset="
+                    {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+                    {% if article.image.width >= 700 %}{{ article.image | image_url: width: 700 }} 700w,{% endif %}
+                    {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
+                  "
+                  sizes="(min-width: 990px) 260px, (min-width: 750px) 220px, 280px"
+                  src="{{ article.image | image_url: width: 700 }}"
+                  loading="eager"
+                  width="{{ article.image.width }}"
+                  height="{{ article.image.height }}"
+                  alt="{{ article.image.alt | escape }}"
+                  itemprop="image"
+                >
+              </div>
+            {%- endif -%}
+
+            <div class="article-hero__content">
+              <h1 class="article-hero__title" itemprop="headline">{{ article.title | escape }}</h1>
+
+              {%- if article.excerpt != blank -%}
+                <div class="article-hero__excerpt" itemprop="description">
+                  {{ article.excerpt }}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.blog_show_date -%}
+                <div class="article-hero__dates">
+                  <span itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">
+                    Publié le {{ article.published_at | time_tag: format: 'date' }}
+                  </span>
+                  <span> &bull; </span>
+                  <span itemprop="dateModified" content="{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">
+                    Mis à jour le {{ article.updated_at | time_tag: format: 'date' }}
+                  </span>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- if block.settings.blog_show_author -%}
+            <div class="article-hero__author">
+              {%- if section.settings.author_image != blank -%}
+                <div class="article-hero__author-avatar">
+                  <img
+                    src="{{ section.settings.author_image | image_url: width: 80 }}"
+                    alt="{{ section.settings.author_name | escape }}"
+                    width="40"
+                    height="40"
+                    loading="eager"
+                  >
+                </div>
+              {%- endif -%}
+              <div class="article-hero__author-info">
+                {%- if section.settings.author_name != blank -%}
+                  <span class="article-hero__author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name">{{ section.settings.author_name }}</span>
+                  </span>
+                {%- endif -%}
+                {%- if section.settings.author_role != blank -%}
+                  <span class="article-hero__author-role">{{ section.settings.author_role }}</span>
+                {%- endif -%}
+              </div>
             </div>
           {%- endif -%}
-
-          <div class="article-hero__content">
-            <h1 class="article-hero__title" itemprop="headline">{{ article.title | escape }}</h1>
-
-            {%- if article.excerpt != blank -%}
-              <div class="article-hero__excerpt" itemprop="description">
-                {{ article.excerpt }}
-              </div>
-            {%- endif -%}
-
-            {%- if block.settings.blog_show_date -%}
-              <div class="article-hero__dates">
-                <span itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">
-                  Publié le {{ article.published_at | time_tag: format: 'date' }}
-                </span>
-                <span> &bull; </span>
-                <span itemprop="dateModified" content="{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">
-                  Mis à jour le {{ article.updated_at | time_tag: format: 'date' }}
-                </span>
-              </div>
-            {%- endif -%}
-
-            {%- if block.settings.blog_show_author -%}
-              <div class="article-hero__author">
-                {%- if section.settings.author_image != blank -%}
-                  <div class="article-hero__author-avatar">
-                    <img
-                      src="{{ section.settings.author_image | image_url: width: 80 }}"
-                      alt="{{ section.settings.author_name | escape }}"
-                      width="40"
-                      height="40"
-                      loading="eager"
-                    >
-                  </div>
-                {%- endif -%}
-                <div class="article-hero__author-info">
-                  {%- if section.settings.author_name != blank -%}
-                    <span class="article-hero__author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                      <span itemprop="name">{{ section.settings.author_name }}</span>
-                    </span>
-                  {%- endif -%}
-                  {%- if section.settings.author_role != blank -%}
-                    <span class="article-hero__author-role">{{ section.settings.author_role }}</span>
-                  {%- endif -%}
-                </div>
-              </div>
-            {%- endif -%}
-          </div>
         </header>
 
       {%- when 'content' -%}

@@ -40,18 +40,25 @@
    ============================================= */
 
 .article-hero {
-  display: flex;
-  flex-direction: column;
   background-color: #1D1D1B;
   max-width: 1200px;
   margin: 0 auto 3rem auto;
   overflow: hidden;
+  padding: 2rem 1.5rem;
+}
+
+.article-hero__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .article-hero__image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
+  width: 60%;
+  max-width: 280px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .article-hero__image img {
@@ -62,10 +69,10 @@
 }
 
 .article-hero__content {
-  padding: 2rem 1.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
 .article-hero__title {
@@ -115,7 +122,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 11px;
   color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 .article-hero__dates time {
@@ -126,6 +133,7 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  margin-top: 2.5rem;
 }
 
 .article-hero__author-avatar {
@@ -151,14 +159,16 @@
 .article-hero__author-name {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  font-style: italic;
   font-size: 13px;
   color: #DFBE71;
 }
 
 .article-hero__author-role {
   font-family: 'Poppins', sans-serif;
+  font-style: italic;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #DFBE71;
 }
 
 /* =============================================
@@ -187,7 +197,6 @@
 .article-content__body,
 .article-content__body p,
 .article-content__body li,
-.article-content__body span,
 .article-content__body blockquote {
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
@@ -199,16 +208,21 @@
   margin-top: 0;
 }
 
-.article-content__body h2 {
+.article-template .article-content__body h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 600;
   color: #1D1D1B;
   margin: 3rem 0 1.5rem;
   padding-top: 2rem;
-  border-top: 1px solid #E5E5E5;
+  border-top: 1px solid #DFBE71;
   text-transform: uppercase;
   scroll-margin-top: 100px;
+  line-height: 1.4;
+  letter-spacing: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .article-content__body > h2:first-child {
@@ -301,7 +315,7 @@
 .article-sidebar__share {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #E5E5E5;
+  border-top: 1px solid #DFBE71;
 }
 
 .article-sidebar__share-label {
@@ -451,18 +465,26 @@
   }
 
   .article-hero {
+    padding: 2.5rem 3rem;
+  }
+
+  .article-hero__top {
     flex-direction: row;
+    align-items: stretch;
+    gap: 3rem;
   }
 
   .article-hero__image {
-    width: 38%;
-    flex-shrink: 0;
-    aspect-ratio: auto;
+    width: 220px;
+    max-width: 220px;
   }
 
   .article-hero__content {
-    padding: 2.5rem 3rem;
     flex: 1;
+  }
+
+  .article-hero__author {
+    margin-left: calc(220px + 3rem);
   }
 
   .article-hero__title {
@@ -506,12 +528,21 @@
     margin-bottom: 4rem;
   }
 
-  .article-hero__image {
-    width: 35%;
+  .article-hero {
+    padding: 3.5rem 5rem;
   }
 
-  .article-hero__content {
-    padding: 3.5rem 5rem;
+  .article-hero__top {
+    gap: 4rem;
+  }
+
+  .article-hero__image {
+    width: 260px;
+    max-width: 260px;
+  }
+
+  .article-hero__author {
+    margin-left: calc(260px + 4rem);
   }
 
   .article-hero__title {
@@ -549,14 +580,13 @@
     min-width: 0;
   }
 
-  .article-content__body h2 {
-    font-size: 28px;
+  .article-template .article-content__body h2 {
+    font-size: 21px;
   }
 
   .article-content__body,
   .article-content__body p,
-  .article-content__body li,
-  .article-content__body span {
+  .article-content__body li {
     font-size: 15px;
   }
 
