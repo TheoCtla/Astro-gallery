@@ -613,11 +613,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var amount = card.getAttribute('data-amount');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (amount) {
+      var found = false;
       amountButtons.forEach(function(btn) {
-        if (btn.textContent.trim().includes(amount + '€') || btn.textContent.trim().includes(amount + ' €')) {
+        if (found) return;
+        var btnNumbers = btn.textContent.replace(/[^\d]/g, '').replace(/00$/, '');
+        if (btnNumbers === amount) {
           amountButtons.forEach(function(b) { b.classList.remove('gc-hero__amount-btn--active'); });
           btn.classList.add('gc-hero__amount-btn--active');
           if (variantInput) variantInput.value = btn.getAttribute('data-variant-id');
+          found = true;
         }
       });
     }
