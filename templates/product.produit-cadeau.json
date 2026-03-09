@@ -55,7 +55,7 @@
         "slide-1": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_title": "Une œuvre magnifique et profondément personnelle.",
+            "slide_title": "",
             "slide_text": "Une œuvre magnifique et profondément personnelle. La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
             "slide_avatar": "shopify://shop_images/Ellipse_1_1.png",
             "slide_name": "Carole P.",
