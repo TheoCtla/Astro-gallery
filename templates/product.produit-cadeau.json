@@ -122,24 +122,28 @@
         "photo-1": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/Frame_1000004447.png",
             "label": ""
           }
         },
         "photo-2": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/0e3bf1c78417d8dfdc28bcc881b2c1d0541e850f.jpg",
             "label": ""
           }
         },
         "photo-3": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/d228d82c53ea280ed1e4996da7142d15c128839d.png",
             "label": ""
           }
         },
         "photo-4": {
           "type": "photo",
           "settings": {
+            "image": "shopify://shop_images/Frame_1000004449.png",
             "label": ""
           }
         }
