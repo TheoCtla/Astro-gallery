@@ -15,49 +15,54 @@
         "feature-1": {
           "type": "feature",
           "settings": {
-                        "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
+            "icon": "shopify://shop_images/Calque_5.svg",
+            "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
           }
         },
         "feature-2": {
           "type": "feature",
           "settings": {
-                        "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
+            "icon": "shopify://shop_images/Calque_1_1.svg",
+            "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
           }
         },
         "feature-3": {
           "type": "feature",
           "settings": {
-                        "text": "Elle est livrée prête à être accrochée."
+            "icon": "shopify://shop_images/Icones-Micro-Set.svg",
+            "text": "Elle est livrée prête à être accrochée."
           }
         },
         "feature-4": {
           "type": "feature",
           "settings": {
-                        "text": "Elle est accompagnée de son livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
+            "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
+            "text": "Elle est accompagnée de son livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
           }
         },
         "feature-5": {
           "type": "feature",
           "settings": {
-                        "text": "Fabriquée en France"
+            "icon": "shopify://shop_images/Frame_1000004468.png",
+            "text": "Fabriquée en France"
           }
         },
         "badge-1": {
           "type": "badge",
           "settings": {
-                        "text": "Livraison gratuite en 3 à 4 semaines"
+            "text": "Livraison gratuite en 3 à 4 semaines"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
-                        "text": "Fabrication à la commande"
+            "text": "Fabrication à la commande"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
-                        "text": "Certificat d'authenticité inclus"
+            "text": "Certificat d'authenticité inclus"
           }
         }
       },
@@ -73,6 +78,10 @@
       ],
       "settings": {
         "breadcrumb_label": "L'Œuvre Astrale",
+        "gallery_image_1": "shopify://shop_images/c6aad20d8e34135cc6ff2af66346cfcc7037486d.png",
+        "gallery_image_2": "shopify://shop_images/0688b7e193443638f15e017107d1d659e5cfa32c.jpg",
+        "gallery_image_3": "shopify://shop_images/b0e52f0ebeb0ad434f99cb1e7ceb768bc238f328.png",
+        "gallery_image_4": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac_1.jpg",
         "title": "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY.",
         "subtitle": "Une composition artistique astrale unique et son livre personnalisé de 110 pages.",
         "description_1": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>",
@@ -90,7 +99,8 @@
         "testimonials_slide_wcRBPL": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_text": "\u201cJ\u2019ai reçu mon thème astral personnalisé et je suis émerveillée ! C\u2019est une œuvre d\u2019art unique qui capture mon essence. Le livret inclus est une mine d\u2019informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !\u201d",
+            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
+            "slide_text": "“J’ai reçu mon thème astral personnalisé et je suis émerveillée ! C’est une œuvre d’art unique qui capture mon essence. Le livret inclus est une mine d’informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !”",
             "slide_name": "Fabienne D.",
             "slide_country": "Marseille"
           }
@@ -98,7 +108,8 @@
         "testimonials_slide_49UR3M": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_text": "\u201cJe viens de recevoir mon thème astral personnalisé et je suis impressionné ! L\u2019impression est magnifique et le livret est très bien fait. Je recommande vivement ASTROGALLERY à tous ceux qui s\u2019intéressent à l\u2019astrologie!\u201d",
+            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
+            "slide_text": "“Je viens de recevoir mon thème astral personnalisé et je suis impressionné ! L’impression est magnifique et le livret est très bien fait. Je recommande vivement ASTROGALLERY à tous ceux qui s’intéressent à l’astrologie!”",
             "slide_name": "Amélie S.",
             "slide_country": "Lyon"
           }
@@ -106,7 +117,8 @@
         "testimonials_slide_BXP3nW": {
           "type": "testimonials_slide",
           "settings": {
-            "slide_text": "Une expérience magique ! Mon tableau de thème astral est sublime, les couleurs et les symboles résonnent parfaitement avec ma personnalité. On sent que chaque détail a été pensé avec soin. Merci ASTROGALLERY pour cette création pleine d\u2019âme.",
+            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
+            "slide_text": "Une expérience magique ! Mon tableau de thème astral est sublime, les couleurs et les symboles résonnent parfaitement avec ma personnalité. On sent que chaque détail a été pensé avec soin. Merci ASTROGALLERY pour cette création pleine d’âme.",
             "slide_name": "Anna S.",
             "slide_country": "Paris"
           }
@@ -114,6 +126,7 @@
         "testimonials_slide_TcH6Cc": {
           "type": "testimonials_slide",
           "settings": {
+            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
             "slide_text": "Le concept est génial : allier art et astrologie pour créer une œuvre qui me ressemble. Le service client est attentionné, la qualité exceptionnelle. Mon tableau trône fièrement dans mon salon — il attire tous les regards !",
             "slide_name": "Max S.",
             "slide_country": "Bordeaux"
