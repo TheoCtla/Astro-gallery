@@ -70,7 +70,7 @@
 								<div class="gallery-with-text__text">{{- block.settings.text -}}</div>
 							{% endif %}
 
-							<a {% if block.settings.link != blank %} href="{{ block.settings.link }}"{% endif %} class="gallery-with-text__button button button--oeuvres color-background-1" {% if block.settings.link  == blank %} aria-disabled="true"{% endif %}>
+							<a {% if block.settings.link != blank %} href="{{ block.settings.link }}"{% endif %} class="gallery-with-text__button button btn-gold color-background-1" {% if block.settings.link  == blank %} aria-disabled="true"{% endif %}>
 								<span class="button__text">{{ block.settings.button_label | escape }}</span>
 							</a>
 							
