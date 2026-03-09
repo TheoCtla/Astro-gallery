@@ -1,10 +1,15 @@
 <style>
+  .giftcard-cards-section {
+    background-color: #fff;
+    padding-bottom: 5rem;
+  }
+
   .giftcard-cards {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 1.5rem 4rem;
+    padding: 3rem 2rem;
     text-align: center;
-    border: 1px solid #E5E5E5;
+    background-color: #F1EEE5;
   }
 
   .giftcard-cards__heading {
@@ -29,13 +34,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
   .giftcard-cards__card {
     display: block;
     overflow: hidden;
+    border-radius: 8px;
     transition: transform 0.3s ease;
     cursor: pointer;
     text-decoration: none;
@@ -49,11 +55,12 @@
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 8px;
   }
 
   @media (min-width: 750px) {
     .giftcard-cards {
-      padding: 4rem 3rem 5rem;
+      padding: 4rem 2rem;
     }
 
     .giftcard-cards__heading {
@@ -66,7 +73,7 @@
 
     .giftcard-cards__grid {
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
   }
 

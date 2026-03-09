@@ -86,7 +86,7 @@
   text-transform: uppercase;
   letter-spacing: -0.5px;
   line-height: 150%;
-  max-width: 225px;
+  max-width: 100%;
 }
 
 .how-it-works__column-description {
@@ -194,6 +194,7 @@
 
   .how-it-works__column-title {
     font-size: 18px;
+    max-width: 225px;
   }
 
   .how-it-works__column-description,
