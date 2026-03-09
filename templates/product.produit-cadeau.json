@@ -236,36 +236,40 @@
     "cards": {
       "type": "giftcard-cards",
       "blocks": {
-        "card-50": {
-          "type": "card",
-          "settings": {
-            "amount": "50"
-          }
-        },
         "card-100": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/carte_cadeau_50_1.png",
             "amount": "100"
           }
         },
         "card-150": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/carte_cadeau_100.png",
             "amount": "150"
           }
         },
         "card-200": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/carte_cadeau_150.png",
             "amount": "200"
+          }
+        },
+        "card_dWzPYf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/carte_cadeau_200.png",
+            "amount": "50"
           }
         }
       },
       "block_order": [
-        "card-50",
         "card-100",
         "card-150",
-        "card-200"
+        "card-200",
+        "card_dWzPYf"
       ],
       "settings": {
         "heading": "OFFREZ UNE CARTE CADEAU",
