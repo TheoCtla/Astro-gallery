@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -22,8 +31,14 @@
           "settings": {}
         }
       },
-      "block_order": ["header", "content", "footer"],
+      "block_order": [
+        "header",
+        "content",
+        "footer"
+      ],
       "settings": {
+        "journal_url": "",
+        "journal_label": "Journal astral",
         "author_name": "Caroline Robin",
         "author_role": "Fondatrice d'AstroGallery"
       }
@@ -31,6 +46,7 @@
     "cta-banner": {
       "type": "about-cta-banner",
       "settings": {
+        "background_image": "shopify://shop_images/f3e4fe034e57e11d7779a8d4e6d65f8ea7fca910.png",
         "heading": "ENVIE DE TRANSFORMER VOTRE UNIVERS INTÉRIEUR EN UNE ŒUVRE UNIQUE ?",
         "text_line1": "Découvrez nos créations entièrement personnalisées",
         "text_line2": "à partir de votre thème astral.",
@@ -39,5 +55,8 @@
       }
     }
   },
-  "order": ["main", "cta-banner"]
+  "order": [
+    "main",
+    "cta-banner"
+  ]
 }
