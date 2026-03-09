@@ -1,146 +1,472 @@
-{{ 'produit-cadeau.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<style>
+  /* Layout */
+  .gc-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .gc-hero__row {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .gc-hero__media,
+  .gc-hero__info {
+    width: 100%;
+  }
+
+  /* Breadcrumb */
+  .gc-hero__breadcrumb {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #888;
+  }
+
+  .gc-hero__breadcrumb a {
+    color: #888;
+    text-decoration: none;
+  }
+
+  .gc-hero__breadcrumb a:hover {
+    color: #1D1D1B;
+  }
+
+  /* Image */
+  .gc-hero__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    cursor: zoom-in;
+  }
+
+  /* Vendor */
+  .gc-hero__vendor {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Title */
+  .gc-hero__title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Bold', sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.2;
+    color: #1D1D1B;
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+  }
+
+  .gc-hero__title-gold {
+    color: #DFBE71;
+  }
+
+  /* Subtitle (italic) */
+  .gc-hero__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.3vw, 18px);
+    color: #1D1D1B;
+    line-height: 1.6;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .gc-hero__subtitle p {
+    margin: 0 0 0.5rem 0;
+  }
+
+  /* Description */
+  .gc-hero__description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1D1D1B;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+  }
+
+  .gc-hero__description p {
+    margin: 0 0 0.8rem 0;
+  }
+
+  /* Highlight text */
+  .gc-hero__highlight {
+    color: #DFBE71;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin: 1.5rem 0 0 0;
+  }
+
+  /* Amount selector */
+  .gc-hero__amount {
+    margin: 2rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid #E5E5E5;
+  }
+
+  .gc-hero__amount-label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1D1D1B;
+    margin-bottom: 1rem;
+  }
+
+  .gc-hero__amount-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .gc-hero__amount-option {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gc-hero__amount-btn {
+    padding: 1rem 2rem;
+    border: 1px solid #E5E5E5;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 400;
+    color: #1D1D1B;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .gc-hero__amount-btn:hover {
+    border-color: #DFBE71;
+  }
+
+  .gc-hero__amount-btn--active {
+    border-color: #DFBE71;
+    border-width: 2px;
+  }
+
+  .gc-hero__amount-btn--full {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .gc-hero__amount-sub {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    color: #DFBE71;
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* Add to cart button */
+  .gc-hero__add-btn {
+    width: 100%;
+    background-color: #DFBE71;
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(13px, 1.1vw, 15px);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    min-height: 50px;
+    margin-top: 1rem;
+  }
+
+  .gc-hero__add-btn:hover {
+    background-color: #D4B265;
+  }
+
+  .gc-hero__add-btn[aria-disabled="true"] {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  /* Badges */
+  .gc-hero__badges {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .gc-hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #888;
+  }
+
+  .gc-hero__badge-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  /* Lightbox */
+  .gc-hero__lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gc-hero__lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+  }
+
+  .gc-hero__lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 1;
+  }
+
+  .gc-hero__lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .gc-hero__lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .gc-hero__lightbox-close:hover {
+    opacity: 0.7;
+  }
+
+  /* Mobile small */
+  @media (max-width: 600px) {
+    .gc-hero__amount-options {
+      gap: 0.5rem;
+    }
+
+    .gc-hero__amount-btn {
+      padding: 0.8rem 1.2rem;
+      font-size: 16px;
+      flex: 1;
+      min-width: 70px;
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 750px) {
+    .gc-hero {
+      padding: 0 2rem 4rem;
+    }
+
+    .gc-hero__breadcrumb {
+      padding: 0 2rem;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 990px) {
+    .gc-hero__row {
+      flex-direction: row;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .gc-hero__media {
+      width: 50%;
+      flex-shrink: 0;
+    }
+
+    .gc-hero__info {
+      width: 50%;
+      position: sticky;
+      top: 3rem;
+    }
+  }
+</style>
 
 {% if settings.show_breadcrumbs %}
-  <nav class="breadcrumb breadcrumb--article" role="navigation" aria-label="breadcrumbs" style="max-width:1200px;margin:2rem auto;padding:0 1.5rem;">
-    <a href="{{ routes.root_url }}" title="Home">Home</a>{% render 'icon-breadcrumb' -%}
+  <nav class="gc-hero__breadcrumb" role="navigation" aria-label="breadcrumbs">
+    <a href="{{ routes.root_url }}" title="Home">Home</a>
+    {% render 'icon-breadcrumb' %}
     <span>{{ section.settings.breadcrumb_label | default: 'Offrir' }}</span>
   </nav>
 {% endif %}
 
-<section class="container product-solo-section">
-  <div class="product row gallery-left gallery-before">
+<div class="gc-hero">
+  <div class="gc-hero__row">
 
-    <!-- Colonne Galerie Média -->
-    <div class="product__media-wrapper col-lg-6">
-      <div class="product__media-list-wrapper">
-        <div class="product__media-list list-unstyled" role="list">
-          <div class="product__media-item slider__slide">
-            <a href="#" class="product__image-lightbox-trigger" data-image-src="{{ product.featured_image | image_url: width: 1200 }}">
-              <img
-                src="{{ product.featured_image | image_url: width: 700 }}"
-                srcset="
-                  {{ product.featured_image | image_url: width: 350 }} 350w,
-                  {{ product.featured_image | image_url: width: 700 }} 700w,
-                  {{ product.featured_image | image_url: width: 1100 }} 1100w
-                "
-                sizes="(min-width: 990px) 50vw, 100vw"
-                alt="{{ product.title | escape }}"
-                class="product__main-image"
-                id="main-product-image-cadeau"
-                loading="eager"
-                style="cursor: zoom-in;"
-              >
-            </a>
-          </div>
-        </div>
-      </div>
+    <!-- Image produit -->
+    <div class="gc-hero__media">
+      {%- assign hero_image = section.settings.image | default: product.featured_image -%}
+      {%- if hero_image != blank -%}
+        <a href="#" class="gc-hero__image-trigger" data-image-src="{{ hero_image | image_url: width: 1200 }}">
+          <img
+            src="{{ hero_image | image_url: width: 700 }}"
+            srcset="
+              {{ hero_image | image_url: width: 350 }} 350w,
+              {{ hero_image | image_url: width: 700 }} 700w,
+              {{ hero_image | image_url: width: 1100 }} 1100w
+            "
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ product.title | escape }}"
+            class="gc-hero__image"
+            loading="eager"
+          >
+        </a>
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag }}
+      {%- endif -%}
 
-      <!-- Lightbox Modal -->
-      <div id="image-lightbox-cadeau" class="image-lightbox" style="display: none;">
-        <div class="image-lightbox__overlay"></div>
-        <div class="image-lightbox__content">
-          <button class="image-lightbox__close" aria-label="Fermer">&times;</button>
-          <img src="" alt="Image agrandie" class="image-lightbox__image">
+      <!-- Lightbox -->
+      <div id="gc-hero-lightbox" class="gc-hero__lightbox" style="display: none;">
+        <div class="gc-hero__lightbox-overlay"></div>
+        <div class="gc-hero__lightbox-content">
+          <button class="gc-hero__lightbox-close" aria-label="Fermer">&times;</button>
+          <img src="" alt="Image agrandie" class="gc-hero__lightbox-image">
         </div>
       </div>
     </div>
 
-    <!-- Colonne Informations Produit -->
-    <div class="product__info-wrapper col-lg-6">
-      <div id="ProductInfo-solo" class="product__info-container product__info-container--sticky">
+    <!-- Informations produit -->
+    <div class="gc-hero__info">
 
-        {%- assign product_form_id = 'product-form-cadeau' -%}
+      <!-- Vendor -->
+      <p class="gc-hero__vendor">{{ product.vendor }}</p>
 
-        <!-- Vendor -->
-        <p class="product__text subtitle">{{ product.vendor }}</p>
+      <!-- Titre -->
+      <h1 class="gc-hero__title">
+        {{ section.settings.title_line1 | default: 'CARTE CADEAU' }}<br>
+        <span class="gc-hero__title-gold">{{ section.settings.title_line2 | default: 'ASTROGALLERY' }}</span>
+      </h1>
 
-        <!-- Titre -->
-        <div class="product__title__wrapper">
-          <h1 class="product__title h2">
-            {{ section.settings.title_line1 | default: 'CARTE CADEAU' }}<br>
-            <span class="gold">{{ section.settings.title_line2 | default: 'ASTROGALLERY' }}</span>
-          </h1>
+      <!-- Sous-titre -->
+      {%- if section.settings.subtitle != blank -%}
+        <div class="gc-hero__subtitle">
+          {{ section.settings.subtitle }}
         </div>
+      {%- endif -%}
 
-        <!-- Sous-titres -->
-        {%- if section.settings.subtitle != blank -%}
-          <div class="product__subtitle product__subtitle--italic">
-            {{ section.settings.subtitle }}
-          </div>
-        {%- endif -%}
+      <!-- Description -->
+      {%- if section.settings.description != blank -%}
+        <div class="gc-hero__description">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
 
-        <!-- Description -->
-        {%- if section.settings.description != blank -%}
-          <div class="product__description rte">
-            {{ section.settings.description }}
-          </div>
-        {%- endif -%}
+      <!-- Texte mis en avant -->
+      {%- if section.settings.highlight_text != blank -%}
+        <p class="gc-hero__highlight"><strong>{{ section.settings.highlight_text }}</strong></p>
+      {%- endif -%}
 
-        <!-- Texte mis en avant -->
-        {%- if section.settings.highlight_text != blank -%}
-          <p class="product__description--highlight"><strong>{{ section.settings.highlight_text }}</strong></p>
-        {%- endif -%}
-
-        <!-- Sélecteur de montant -->
-        <div class="gift-card-amount">
-          <label class="gift-card-amount__label">{{ section.settings.amount_label | default: 'Sélectionner le montant souhaité' }}</label>
-          <div class="gift-card-amount__options">
-            {%- for variant in product.variants -%}
-              <div class="gift-card-amount__option">
+      <!-- Sélecteur de montant -->
+      <div class="gc-hero__amount">
+        <label class="gc-hero__amount-label">{{ section.settings.amount_label | default: 'Sélectionner le montant souhaité' }}</label>
+        {%- assign allowed_prices = '5000,10000,15000,20000,25000,30000,34900' | split: ',' -%}
+        <div class="gc-hero__amount-options">
+          {%- assign btn_index = 0 -%}
+          {%- for variant in product.variants -%}
+            {%- assign variant_price_str = variant.price | append: '' -%}
+            {%- if allowed_prices contains variant_price_str -%}
+              {%- assign btn_index = btn_index | plus: 1 -%}
+              {%- assign price_check = variant.price | times: 1 -%}
+              {%- assign is_full_artwork = false -%}
+              {%- if price_check == 34900 or variant.title contains '349' -%}
+                {%- assign is_full_artwork = true -%}
+              {%- endif -%}
+              <div class="gc-hero__amount-option">
                 <button type="button"
-                  class="gift-card-amount__btn {% if forloop.index == 2 %}gift-card-amount__btn--active{% endif %}"
+                  class="gc-hero__amount-btn {% if is_full_artwork %}gc-hero__amount-btn--full{% endif %} {% if btn_index == 2 %}gc-hero__amount-btn--active{% endif %}"
                   data-variant-id="{{ variant.id }}"
                   data-variant-price="{{ variant.price | money }}">
                   {{ variant.title }}
-                </button>
-                {%- if variant.price == 34900 -%}
-                  <span class="gift-card-amount__label-below">{{ section.settings.full_artwork_label | default: 'œuvre complète' }}</span>
-                {%- endif -%}
-              </div>
-            {%- endfor -%}
-          </div>
-        </div>
-
-        <!-- Bouton d'achat -->
-        <div>
-          <div class="product-form__buttons product-form__buttons--custom product-form__buttons--centered">
-            <button
-              type="button"
-              id="giftcard-add-to-cart"
-              class="product-form__submit button button--primary-size button--gold"
-            >
-              {{ section.settings.add_to_cart_label | default: '• AJOUTER AU PANIER •' }}
-            </button>
-          </div>
-          <input type="hidden" id="gift-card-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
-
-          <!-- Badges -->
-          <div class="product-info-badges">
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'badge' -%}
-                <div class="product-info-badge" {{ block.shopify_attributes }}>
-                  {%- if block.settings.icon != blank -%}
-                    <img
-                      class="product-info-badge__icon"
-                      src="{{ block.settings.icon | image_url: width: 40 }}"
-                      alt="{{ block.settings.text | escape }}"
-                      width="20"
-                      height="20"
-                      loading="lazy"
-                    >
+                  {%- if is_full_artwork -%}
+                    <span class="gc-hero__amount-sub">{{ section.settings.full_artwork_label | default: 'Œuvre complète' }}</span>
                   {%- endif -%}
-                  <span class="product-info-badge__text">{{ block.settings.text }}</span>
-                </div>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
+                </button>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
-
       </div>
+
+      <!-- Bouton d'achat -->
+      <button
+        type="button"
+        id="gc-hero-add-to-cart"
+        class="gc-hero__add-btn"
+      >
+        {{ section.settings.add_to_cart_label | default: '• AJOUTER AU PANIER •' }}
+      </button>
+      <input type="hidden" id="gc-hero-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+
+      <!-- Badges -->
+      <div class="gc-hero__badges">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'badge' -%}
+            <div class="gc-hero__badge" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <img
+                  class="gc-hero__badge-icon"
+                  src="{{ block.settings.icon | image_url: width: 40 }}"
+                  alt="{{ block.settings.text | escape }}"
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              <span>{{ block.settings.text }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
     </div>
   </div>
-</section>
+</div>
 
 <!-- SEO Schema -->
 <script type="application/ld+json">
@@ -170,13 +496,13 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var amountButtons = document.querySelectorAll('.gift-card-amount__btn');
-  var variantInput = document.getElementById('gift-card-variant-id');
+  var amountButtons = document.querySelectorAll('.gc-hero__amount-btn');
+  var variantInput = document.getElementById('gc-hero-variant-id');
 
   amountButtons.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      amountButtons.forEach(function(b) { b.classList.remove('gift-card-amount__btn--active'); });
-      this.classList.add('gift-card-amount__btn--active');
+      amountButtons.forEach(function(b) { b.classList.remove('gc-hero__amount-btn--active'); });
+      this.classList.add('gc-hero__amount-btn--active');
       if (variantInput) variantInput.value = this.getAttribute('data-variant-id');
     });
   });
@@ -198,13 +524,13 @@ document.addEventListener('DOMContentLoaded', function() {
   else if (!selectedBtn && amountButtons.length > 0) selectedBtn = amountButtons[0];
 
   if (selectedBtn) {
-    amountButtons.forEach(function(b) { b.classList.remove('gift-card-amount__btn--active'); });
-    selectedBtn.classList.add('gift-card-amount__btn--active');
+    amountButtons.forEach(function(b) { b.classList.remove('gc-hero__amount-btn--active'); });
+    selectedBtn.classList.add('gc-hero__amount-btn--active');
     if (variantInput) variantInput.value = selectedBtn.getAttribute('data-variant-id');
   }
 
   // Add to cart
-  var addBtn = document.getElementById('giftcard-add-to-cart');
+  var addBtn = document.getElementById('gc-hero-add-to-cart');
   if (addBtn) {
     addBtn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -253,12 +579,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Lightbox
-  var trigger = document.querySelector('.product__image-lightbox-trigger');
-  var lightbox = document.getElementById('image-lightbox-cadeau');
+  var trigger = document.querySelector('.gc-hero__image-trigger');
+  var lightbox = document.getElementById('gc-hero-lightbox');
   if (trigger && lightbox) {
-    var overlay = lightbox.querySelector('.image-lightbox__overlay');
-    var closeBtn = lightbox.querySelector('.image-lightbox__close');
-    var lbImage = lightbox.querySelector('.image-lightbox__image');
+    var overlay = lightbox.querySelector('.gc-hero__lightbox-overlay');
+    var closeBtn = lightbox.querySelector('.gc-hero__lightbox-close');
+    var lbImage = lightbox.querySelector('.gc-hero__lightbox-image');
 
     trigger.addEventListener('click', function(e) {
       e.preventDefault();
@@ -273,38 +599,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Gift card links (scroll to top + select amount)
-  var giftCardLinks = document.querySelectorAll('.giftcard-cards__card');
-  giftCardLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      var amount = this.getAttribute('data-amount');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (amount) {
-        amountButtons.forEach(function(btn) {
-          if (btn.textContent.trim().includes(amount + '€') || btn.textContent.trim().includes(amount + ' €')) {
-            amountButtons.forEach(function(b) { b.classList.remove('gift-card-amount__btn--active'); });
-            btn.classList.add('gift-card-amount__btn--active');
-            if (variantInput) variantInput.value = btn.getAttribute('data-variant-id');
-          }
-        });
-      }
-    });
+  // Gift card links from cards section (scroll to top + select amount)
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.giftcard-cards__card');
+    if (!card) return;
+    e.preventDefault();
+    var amount = card.getAttribute('data-amount');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (amount) {
+      amountButtons.forEach(function(btn) {
+        if (btn.textContent.trim().includes(amount + '€') || btn.textContent.trim().includes(amount + ' €')) {
+          amountButtons.forEach(function(b) { b.classList.remove('gc-hero__amount-btn--active'); });
+          btn.classList.add('gc-hero__amount-btn--active');
+          if (variantInput) variantInput.value = btn.getAttribute('data-variant-id');
+        }
+      });
+    }
   });
 });
 </script>
-
-<style>
-  .image-lightbox { position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;align-items:center;justify-content:center; }
-  .image-lightbox__overlay { position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);cursor:pointer; }
-  .image-lightbox__content { position:relative;max-width:90vw;max-height:90vh;z-index:1; }
-  .image-lightbox__image { max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px; }
-  .image-lightbox__close { position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;padding:0;line-height:1; }
-  .image-lightbox__close:hover { opacity:0.7; }
-
-  .gift-card-amount__option { display:inline-flex;flex-direction:column;align-items:center;gap:0.3rem; }
-  .gift-card-amount__label-below { font-family:'Poppins',sans-serif;font-size:10px;color:#DFBE71;font-style:italic;text-align:center; }
-</style>
 
 {% schema %}
 {
@@ -312,6 +625,11 @@ document.addEventListener('DOMContentLoaded', function() {
   "tag": "section",
   "class": "giftcard-hero-section",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image produit"
+    },
     {
       "type": "text",
       "id": "breadcrumb_label",
@@ -370,7 +688,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "full_artwork_label",
       "label": "Label sous le prix max (349€)",
-      "default": "œuvre complète"
+      "default": "Œuvre complète"
     },
     {
       "type": "text",
