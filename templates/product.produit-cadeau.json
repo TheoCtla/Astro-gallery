@@ -186,6 +186,7 @@
         "block-2"
       ],
       "settings": {
+        "background_image": "shopify://shop_images/Section-4_1.png",
         "heading": "UN LIVRE PERSONNALISÉ INCLUS AVEC VOTRE ŒUVRE.",
         "intro": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel.",
         "cta_label": "OFFRIR UNE ŒUVRE",
