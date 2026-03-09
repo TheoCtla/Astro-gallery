@@ -57,6 +57,7 @@
           "settings": {
             "slide_title": "Une œuvre magnifique et profondément personnelle.",
             "slide_text": "La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_1.png",
             "slide_name": "Carole P.",
             "slide_country": "Marseille"
           }
@@ -96,6 +97,7 @@
         "slide-4"
       ],
       "settings": {
+        "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
       }
