@@ -9,11 +9,12 @@
   border: none !important;
   padding: clamp(1rem, 1.2vw, 1.2rem) clamp(2rem, 3vw, 3rem);
   text-decoration: none;
-  font-family: 'Lemon Milk', sans-serif;
-  font-weight: 200;
-  font-size: clamp(10px, 1.5vw, 12px);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 1.5vw, 1.5px);
+  letter-spacing: 0.15em;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
