@@ -58,6 +58,16 @@
 									<p class='testimonials__slide-text'>{{ block.settings.slide_text | escape }}</p>
 								{%- endif -%}
 								<div class='testimonials__slide-meta'>
+									{%- if block.settings.slide_avatar != blank -%}
+										<img
+											class='testimonials__slide-avatar'
+											src='{{ block.settings.slide_avatar | image_url: width: 80 }}'
+											alt='{{ block.settings.slide_name | escape }}'
+											width='40'
+											height='40'
+											loading='lazy'
+										>
+									{%- endif -%}
 									<div class='testimonials__slide-info'>
 										<div class='testimonials__slide-name'>
 											{{- block.settings.slide_name | escape -}}
@@ -68,21 +78,15 @@
 											</div>
 										{%- endif -%}
 										<div class='testimonials__slide-stars'>
-											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
-												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
-											</svg>
-											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
-												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
-											</svg>
-											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
-												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
-											</svg>
-											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
-												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
-											</svg>
-											<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
-												<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
-											</svg>
+											{%- for i in (1..5) -%}
+												{%- if section.settings.star_icon != blank -%}
+													<img src="{{ section.settings.star_icon | image_url: width: 34 }}" alt="" width="17" height="16" loading="lazy" class="icon icon-star">
+												{%- else -%}
+													<svg viewBox="0 0 17 16" fill="none" role="presentation" class="icon icon-star" aria-hidden="true" focusable="false">
+														<path d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z" fill="#D1A85D"/>
+													</svg>
+												{%- endif -%}
+											{%- endfor -%}
 										</div>
 									</div>
 								</div>
@@ -104,6 +108,11 @@
 		"templates": ["*"]
 	},
 	"settings": [
+		{
+			"type": "image_picker",
+			"id": "star_icon",
+			"label": "Icône étoile (remplace l'étoile par défaut)"
+		},
 		{
 			"type": "checkbox",
 			"id": "border_top",

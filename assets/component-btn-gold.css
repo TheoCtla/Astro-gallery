@@ -1,0 +1,131 @@
+/* =============================================
+   Bouton doré global — .btn-gold
+   ============================================= */
+
+.btn-gold {
+  position: relative;
+  background-color: #DFBE71 !important;
+  color: #1D1D1B !important;
+  border: none !important;
+  padding: clamp(1rem, 1.2vw, 1.2rem) clamp(2rem, 3vw, 3rem);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  --color-button: 223, 190, 113 !important;
+  --color-button-text: 29, 29, 27 !important;
+  --alpha-button-background: 1 !important;
+  --alpha-button-border: 0 !important;
+}
+
+.btn-gold .btn-gold__text,
+.btn-gold .button__text {
+  transform: translateX(0);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(0.5rem, 0.8vw, 0.8rem);
+}
+
+/* Point gauche */
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  left: clamp(1rem, 1.2vw, 1.2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(4px, 0.5vw, 5px);
+  height: clamp(4px, 0.5vw, 5px);
+  background-color: #1D1D1B;
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Point droit */
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  right: clamp(1rem, 1.2vw, 1.2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(4px, 0.5vw, 5px);
+  height: clamp(4px, 0.5vw, 5px);
+  background-color: #1D1D1B;
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover — flèche fluide */
+@media (hover: hover) and (pointer: fine) {
+  .btn-gold:hover {
+    background-color: #DFBE71 !important;
+    color: #1D1D1B !important;
+    border: none !important;
+    padding-left: clamp(2rem, 3vw, 3rem);
+    padding-right: clamp(2.5rem, 3.5vw, 3.5rem);
+    box-shadow: none !important;
+  }
+
+  .btn-gold:hover .btn-gold__text,
+  .btn-gold:hover .button__text {
+    transform: translateX(0);
+  }
+
+  .btn-gold:hover::before {
+    transform: translateY(-50%);
+    left: clamp(1rem, 1.2vw, 1.2rem);
+  }
+
+  .btn-gold:hover::after {
+    content: '→';
+    width: auto;
+    height: auto;
+    background: transparent;
+    border-radius: 0;
+    font-size: clamp(12px, 1.82vw, 14px);
+    line-height: 1;
+    color: #1D1D1B;
+    opacity: 1;
+    right: clamp(1rem, 1.2vw, 1.2rem);
+    animation: btnGoldArrow 0.3s ease forwards;
+  }
+
+  @keyframes btnGoldArrow {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 750px) {
+  .btn-gold {
+    padding: clamp(0.8rem, 1vw, 1rem) clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(10px, 1.5vw, 12px);
+    letter-spacing: clamp(0.8px, 1vw, 1px);
+  }
+
+  .btn-gold::before {
+    left: clamp(1rem, 1.2vw, 1.2rem);
+    width: clamp(4px, 0.5vw, 5px);
+    height: clamp(4px, 0.5vw, 5px);
+  }
+
+  .btn-gold::after {
+    right: clamp(1rem, 1.2vw, 1.2rem);
+    font-size: clamp(12px, 1.82vw, 14px);
+  }
+}
