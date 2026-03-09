@@ -1,19 +1,36 @@
 <style>
   .giftcard-book {
     background-color: #1D1D1B;
-    padding: 4rem 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem 1.5rem;
     overflow: hidden;
   }
 
   .giftcard-book__container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Header: logo + titre/intro à gauche, image à droite */
+  .giftcard-book__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .giftcard-book__header-content {
+    display: flex;
+    flex-direction: column;
   }
 
   .giftcard-book__logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 2rem;
+    width: 55px;
+    height: 55px;
+    margin-bottom: 0.8rem;
   }
 
   .giftcard-book__logo-svg {
@@ -27,52 +44,64 @@
     to { transform: rotate(360deg); }
   }
 
-  .giftcard-book__logo-text {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
   .giftcard-book__heading {
-    font-family: 'Lemon Milk', 'LEMONMILK-Bold', sans-serif;
-    font-weight: 700;
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
+    font-weight: 400;
     font-size: 18px;
     text-transform: uppercase;
     color: #FFFFFF;
-    line-height: 1.4;
-    margin: 0 0 1rem 0;
+    line-height: 1.3;
+    margin: 0 0 0.6rem 0;
   }
 
   .giftcard-book__intro {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: 14px;
-    color: #DFBE71;
-    line-height: 1.7;
-    margin: 0 0 3rem 0;
+    font-size: 12px;
+    color: #FFFFFF;
+    line-height: 1.5;
+    margin: 0;
     max-width: 500px;
   }
 
-  /* Block rows */
+  .giftcard-book__header-image {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 300px;
+  }
+
+  .giftcard-book__header-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Blocks image + texte */
   .giftcard-book__block {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .giftcard-book__block--reverse {
-    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .giftcard-book__block-image {
     width: 100%;
     overflow: hidden;
+    position: relative;
+    min-height: 250px;
   }
 
   .giftcard-book__block-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -86,39 +115,40 @@
   .giftcard-book__block-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     color: #FFFFFF;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.5rem 0;
   }
 
   .giftcard-book__block-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 11px;
     color: rgba(255, 255, 255, 0.8);
-    line-height: 1.7;
+    line-height: 1.5;
     margin: 0;
   }
 
   .giftcard-book__block-text p {
-    margin: 0 0 0.8rem 0;
+    margin: 0 0 0.5rem 0;
     color: rgba(255, 255, 255, 0.8);
   }
 
   .giftcard-book__block-text ul,
   .giftcard-book__block-text li {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 11px;
+    line-height: 1.5;
   }
 
   .giftcard-book__block-text ul {
     padding-left: 1.2rem;
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
   }
 
+  /* CTA */
   .giftcard-book__cta {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
 
   .giftcard-book__cta-sub {
@@ -129,9 +159,27 @@
     margin-top: 0.8rem;
   }
 
+  /* Tablet */
   @media (min-width: 750px) {
     .giftcard-book {
-      padding: 5rem 2rem;
+      padding: 3rem 2rem;
+    }
+
+    .giftcard-book__header {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .giftcard-book__header-content {
+      flex: 1;
+    }
+
+    .giftcard-book__header-image {
+      width: 40%;
+      flex-shrink: 0;
+      min-height: 0;
     }
 
     .giftcard-book__heading {
@@ -139,13 +187,14 @@
     }
 
     .giftcard-book__intro {
-      font-size: 15px;
+      font-size: 13px;
     }
 
     .giftcard-book__block {
       flex-direction: row;
-      gap: 3rem;
-      align-items: center;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-bottom: 1rem;
     }
 
     .giftcard-book__block--reverse {
@@ -153,18 +202,35 @@
     }
 
     .giftcard-book__block-image {
-      width: 45%;
+      width: 35%;
       flex-shrink: 0;
+      min-height: 0;
     }
 
     .giftcard-book__block-content {
       flex: 1;
     }
+
+    .giftcard-book__block-title {
+      font-size: 13px;
+    }
+
+    .giftcard-book__block-text,
+    .giftcard-book__block-text p,
+    .giftcard-book__block-text li {
+      font-size: 12px;
+      line-height: 1.6;
+    }
   }
 
+  /* Desktop */
   @media (min-width: 990px) {
     .giftcard-book {
-      padding: 6rem 2rem;
+      padding: 4rem 3rem;
+    }
+
+    .giftcard-book__header {
+      gap: 4rem;
     }
 
     .giftcard-book__heading {
@@ -172,72 +238,121 @@
     }
 
     .giftcard-book__logo {
-      width: 100px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
+    }
+
+    .giftcard-book__intro {
+      font-size: 14px;
+    }
+
+    .giftcard-book__block {
+      gap: 3rem;
     }
 
     .giftcard-book__block-title {
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .giftcard-book__block-text,
     .giftcard-book__block-text p,
     .giftcard-book__block-text li {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 </style>
 
-<div class="giftcard-book">
+<div class="giftcard-book"
+  {%- if section.settings.background_image != blank %}
+    style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
+  {%- endif %}>
   <div class="giftcard-book__container">
 
-    <!-- Logo rotatif -->
-    <div class="giftcard-book__logo">
-      <svg class="giftcard-book__logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <path id="giftcard-circle-path" d="M 100, 100 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" fill="none"/>
-        </defs>
-        <text fill="#DFBE71" font-family="Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="3">
-          <textPath xlink:href="#giftcard-circle-path" startOffset="0%">
-            ASTROGALLERY • ASTROGALLERY • ASTROGALLERY •
-          </textPath>
-        </text>
-      </svg>
-    </div>
+    <!-- Header : logo + titre/intro à gauche, première image à droite -->
+    <div class="giftcard-book__header">
+      <div class="giftcard-book__header-content">
+        <!-- Logo rotatif -->
+        <div class="giftcard-book__logo">
+          <svg class="giftcard-book__logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <path id="giftcard-circle-path" d="M 100, 100 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" fill="none"/>
+            </defs>
+            <text fill="#DFBE71" font-family="Arial, sans-serif" font-weight="400" font-size="14.5" letter-spacing="5.5">
+              <textPath xlink:href="#giftcard-circle-path" startOffset="0%">
+                ASTROGALLERY • ASTROGALLERY • ASTROGALLERY •
+              </textPath>
+            </text>
+          </svg>
+        </div>
 
-    {%- if section.settings.heading != blank -%}
-      <h2 class="giftcard-book__heading">{{ section.settings.heading }}</h2>
-    {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="giftcard-book__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
 
-    {%- if section.settings.intro != blank -%}
-      <p class="giftcard-book__intro">{{ section.settings.intro }}</p>
-    {%- endif -%}
+        {%- if section.settings.intro != blank -%}
+          <p class="giftcard-book__intro">{{ section.settings.intro }}</p>
+        {%- endif -%}
 
-    {%- for block in section.blocks -%}
-      <div class="giftcard-book__block {% if forloop.index0 == 1 %}giftcard-book__block--reverse{% endif %}" {{ block.shopify_attributes }}>
-        {%- if block.settings.image != blank -%}
-          <div class="giftcard-book__block-image">
-            <img
-              src="{{ block.settings.image | image_url: width: 800 }}"
-              srcset="
-                {{ block.settings.image | image_url: width: 400 }} 400w,
-                {{ block.settings.image | image_url: width: 800 }} 800w
-              "
-              sizes="(min-width: 750px) 45vw, 100vw"
-              alt="{{ block.settings.title | escape }}"
-              loading="lazy"
-            >
+        <!-- Premier bloc texte sous le titre -->
+        {%- assign first_block = section.blocks | first -%}
+        {%- if first_block -%}
+          <div class="giftcard-book__block-content" style="margin-top: 1rem;" {{ first_block.shopify_attributes }}>
+            {%- if first_block.settings.title != blank -%}
+              <h3 class="giftcard-book__block-title">{{ first_block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if first_block.settings.text != blank -%}
+              <div class="giftcard-book__block-text">{{ first_block.settings.text }}</div>
+            {%- endif -%}
           </div>
         {%- endif -%}
-        <div class="giftcard-book__block-content">
-          {%- if block.settings.title != blank -%}
-            <h3 class="giftcard-book__block-title">{{ block.settings.title }}</h3>
-          {%- endif -%}
-          {%- if block.settings.text != blank -%}
-            <div class="giftcard-book__block-text">{{ block.settings.text }}</div>
-          {%- endif -%}
-        </div>
       </div>
+
+      <!-- Première image à droite -->
+      {%- if first_block and first_block.settings.image != blank -%}
+        <div class="giftcard-book__header-image">
+          <img
+            src="{{ first_block.settings.image | image_url: width: 800 }}"
+            srcset="
+              {{ first_block.settings.image | image_url: width: 400 }} 400w,
+              {{ first_block.settings.image | image_url: width: 800 }} 800w
+            "
+            sizes="(min-width: 750px) 45vw, 100vw"
+            alt="{{ first_block.settings.title | escape }}"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Blocs suivants : alternance image/texte -->
+    {%- for block in section.blocks -%}
+      {%- if forloop.index0 > 0 -%}
+        {%- assign block_mod = forloop.index0 | modulo: 2 -%}
+        <div class="giftcard-book__block {% if block_mod == 0 %}giftcard-book__block--reverse{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="giftcard-book__block-image">
+              <img
+                src="{{ block.settings.image | image_url: width: 800 }}"
+                srcset="
+                  {{ block.settings.image | image_url: width: 400 }} 400w,
+                  {{ block.settings.image | image_url: width: 800 }} 800w
+                "
+                sizes="(min-width: 750px) 45vw, 100vw"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+              >
+            </div>
+          {%- endif -%}
+          <div class="giftcard-book__block-content">
+            {%- if block.settings.title != blank -%}
+              <h3 class="giftcard-book__block-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="giftcard-book__block-text">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
     {%- endfor -%}
 
     {%- if section.settings.cta_label != blank -%}
@@ -260,6 +375,11 @@
   "tag": "section",
   "class": "giftcard-book-section",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Image de fond"
+    },
     {
       "type": "text",
       "id": "heading",
