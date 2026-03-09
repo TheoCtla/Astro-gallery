@@ -39,6 +39,7 @@
       "settings": {
         "journal_url": "",
         "journal_label": "Journal astral",
+        "author_image": "shopify://shop_images/Ellipse-1.jpg",
         "author_name": "Caroline Robin",
         "author_role": "Fondatrice d'AstroGallery"
       }
