@@ -8,7 +8,7 @@
         {% if settings.show_breadcrumbs %}
           <nav class="breadcrumb breadcrumb--article" role="navigation" aria-label="breadcrumbs">
             <a href="{{ routes.root_url }}" title="Home">Home</a>{% render 'icon-breadcrumb' -%}
-            {{- blog.title | link_to: blog.url }}
+            <a href="{{ section.settings.journal_url | default: '/pages/journal-astral' }}">{{ section.settings.journal_label | default: 'Journal astral' }}</a>
             {% render 'icon-breadcrumb' %}
             <span>{{ article.title }}</span>
           </nav>
@@ -118,12 +118,12 @@
 
       {%- when 'article-footer' -%}
         <div class="article-footer">
-          <a href="{{ blog.url }}" class="article-footer__back-link">
+          <a href="{{ section.settings.journal_url | default: '/pages/journal-astral' }}" class="article-footer__back-link">
             <span class="icon-wrap">
               {% render 'icon-arrow' %}
               {% render 'icon-arrow' %}
             </span>
-            <span>{{ 'blogs.article.back_to_blog' | t: title: blog.title }}</span>
+            <span>Retour au {{ section.settings.journal_label | default: 'Journal astral' }}</span>
           </a>
         </div>
 
@@ -284,6 +284,16 @@
 
     headings.forEach(function(heading) { observer.observe(heading); });
 
+    tocList.addEventListener('click', function(e) {
+      var link = e.target.closest('.article-toc__link');
+      if (!link) return;
+      e.preventDefault();
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
     var copyBtn = document.querySelector('.article-share-copy-btn');
     if (copyBtn) {
       copyBtn.addEventListener('click', function(e) {
@@ -341,6 +351,21 @@
   "tag": "section",
   "class": "section-main-article",
   "settings": [
+    {
+      "type": "header",
+      "content": "Lien retour"
+    },
+    {
+      "type": "url",
+      "id": "journal_url",
+      "label": "URL de la page Journal"
+    },
+    {
+      "type": "text",
+      "id": "journal_label",
+      "label": "Libellé du lien retour",
+      "default": "Journal astral"
+    },
     {
       "type": "header",
       "content": "Auteur"
