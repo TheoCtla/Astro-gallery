@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -22,13 +31,18 @@
           }
         }
       },
-      "block_order": ["badge-1", "badge-2", "badge-3"],
+      "block_order": [
+        "badge-1",
+        "badge-2",
+        "badge-3"
+      ],
       "settings": {
+        "image": "shopify://shop_images/1ff161781c7d5cc0fb626d6dffa6e90ee4e9be60.png",
         "breadcrumb_label": "Offrir",
         "title_line1": "CARTE CADEAU",
         "title_line2": "ASTROGALLERY",
-        "subtitle": "<p><em>Offrir une carte cadeau Astro Gallery, c'est offrir bien plus qu'un simple présent.<\/em><\/p><p><em>C'est permettre à une personne de transformer son thème natal en une œuvre astrale élégante et personnelle, reflet intime de son identité.<\/em><\/p>",
-        "description": "<p>La carte cadeau donne accès à la création d'une œuvre numérotée et nominative, accompagnée d'un livret de 110 pages dont 40 personnalisées à son ciel. Une expérience complète qui invite à la contemplation et à la découverte de soi.<\/p><p>La personne à qui vous l'offrez choisit elle même son format, son design et confirme ses informations de naissance. Nous réalisons ensuite sa création dans notre atelier en France.<\/p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.<\/p>",
+        "subtitle": "<p><em>Offrir une carte cadeau Astro Gallery, c'est offrir bien plus qu'un simple présent.</em></p><p><em>C'est permettre à une personne de transformer son thème natal en une œuvre astrale élégante et personnelle, reflet intime de son identité.</em></p>",
+        "description": "<p>La carte cadeau donne accès à la création d'une œuvre numérotée et nominative, accompagnée d'un livret de 110 pages dont 40 personnalisées à son ciel. Une expérience complète qui invite à la contemplation et à la découverte de soi.</p><p>La personne à qui vous l'offrez choisit elle même son format, son design et confirme ses informations de naissance. Nous réalisons ensuite sa création dans notre atelier en France.</p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.</p>",
         "highlight_text": "Création et livraison en 3 à 4 semaines après activation de la carte.",
         "amount_label": "Sélectionner le montant souhaité",
         "full_artwork_label": "œuvre complète",
@@ -43,7 +57,8 @@
           "settings": {
             "slide_title": "Une œuvre magnifique et profondément personnelle.",
             "slide_text": "La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
-            "slide_name": "Carole P."
+            "slide_name": "Carole P.",
+            "slide_country": "Marseille"
           }
         },
         "slide-2": {
@@ -51,7 +66,8 @@
           "settings": {
             "slide_title": "Un achat mémorable pour nos 30 ans de vie commune.",
             "slide_text": "Le rendu est superbe, les finitions sont impeccables, et l'effet visuel dépasse nos attentes. C'est une pièce qui attire tous les regards.",
-            "slide_name": "Frédéric R."
+            "slide_name": "Frédéric R.",
+            "slide_country": "Marseille"
           }
         },
         "slide-3": {
@@ -59,7 +75,8 @@
           "settings": {
             "slide_title": "Nous avons été pleinement séduits par l'expérience.",
             "slide_text": "Le thème astral de couple que nous avons reçu est vraiment superbe. Le livret qui l'accompagne a été un vrai plus.",
-            "slide_name": "Amélie V. et Vincent L."
+            "slide_name": "Amélie V. et Vincent L.",
+            "slide_country": "Marseille"
           }
         },
         "slide-4": {
@@ -67,11 +84,17 @@
           "settings": {
             "slide_title": "Un immense merci pour ce magnifique travail !",
             "slide_text": "L'analyse du thème astral de mes enfants mêle à la fois la compréhension de leur personnalité et la mise en valeur de leur univers.",
-            "slide_name": "Virginie H."
+            "slide_name": "Virginie H.",
+            "slide_country": "Marseille"
           }
         }
       },
-      "block_order": ["slide-1", "slide-2", "slide-3", "slide-4"],
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4"
+      ],
       "settings": {
         "border_top": false,
         "border_bottom": false
@@ -105,7 +128,12 @@
           }
         }
       },
-      "block_order": ["photo-1", "photo-2", "photo-3", "photo-4"],
+      "block_order": [
+        "photo-1",
+        "photo-2",
+        "photo-3",
+        "photo-4"
+      ],
       "settings": {
         "heading": "UNE PIÈCE PENSÉE POUR S'INTÉGRER AVEC ÉLÉGANCE.",
         "subtitle": "Son format carré équilibré et son cadre noir profond en font une œuvre intemporelle.\nMinimaliste mais expressive, elle s'accorde naturellement avec des intérieurs contemporains, classiques ou épurés.\nDans un salon, un bureau ou une chambre, elle devient un point d'ancrage visuel et suscite la conversation",
@@ -131,7 +159,10 @@
           }
         }
       },
-      "block_order": ["block-1", "block-2"],
+      "block_order": [
+        "block-1",
+        "block-2"
+      ],
       "settings": {
         "heading": "UN LIVRE PERSONNALISÉ INCLUS AVEC VOTRE ŒUVRE.",
         "intro": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel.",
@@ -165,7 +196,11 @@
           }
         }
       },
-      "block_order": ["step-1", "step-2", "step-3"],
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3"
+      ],
       "settings": {
         "heading": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE.",
         "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
@@ -203,12 +238,24 @@
           }
         }
       },
-      "block_order": ["card-50", "card-100", "card-150", "card-200"],
+      "block_order": [
+        "card-50",
+        "card-100",
+        "card-150",
+        "card-200"
+      ],
       "settings": {
         "heading": "OFFREZ UNE CARTE CADEAU",
         "subtitle": "Faites plaisir à l'un de vos proches en lui offrant une carte cadeau AstroGallery"
       }
     }
   },
-  "order": ["hero", "testimonials", "interior", "book", "steps", "cards"]
+  "order": [
+    "hero",
+    "testimonials",
+    "interior",
+    "book",
+    "steps",
+    "cards"
+  ]
 }
