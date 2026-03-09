@@ -56,7 +56,7 @@
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "Une œuvre magnifique et profondément personnelle.",
-            "slide_text": "La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
+            "slide_text": "Une œuvre magnifique et profondément personnelle. La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
             "slide_avatar": "shopify://shop_images/Ellipse_1_1.png",
             "slide_name": "Carole P.",
             "slide_country": ""
@@ -67,8 +67,9 @@
           "settings": {
             "slide_title": "Un achat mémorable pour nos 30 ans de vie commune.",
             "slide_text": "Le rendu est superbe, les finitions sont impeccables, et l'effet visuel dépasse nos attentes. C'est une pièce qui attire tous les regards.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_2.png",
             "slide_name": "Frédéric R.",
-            "slide_country": "Marseille"
+            "slide_country": ""
           }
         },
         "slide-3": {
@@ -76,8 +77,9 @@
           "settings": {
             "slide_title": "Nous avons été pleinement séduits par l'expérience.",
             "slide_text": "Le thème astral de couple que nous avons reçu est vraiment superbe. Le livret qui l'accompagne a été un vrai plus.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
             "slide_name": "Amélie V. et Vincent L.",
-            "slide_country": "Marseille"
+            "slide_country": ""
           }
         },
         "slide-4": {
@@ -85,8 +87,9 @@
           "settings": {
             "slide_title": "Un immense merci pour ce magnifique travail !",
             "slide_text": "L'analyse du thème astral de mes enfants mêle à la fois la compréhension de leur personnalité et la mise en valeur de leur univers.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_4.png",
             "slide_name": "Virginie H.",
-            "slide_country": "Marseille"
+            "slide_country": ""
           }
         }
       },
