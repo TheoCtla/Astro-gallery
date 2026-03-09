@@ -15,57 +15,49 @@
         "feature-1": {
           "type": "feature",
           "settings": {
-            "icon": "🖼",
-            "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
+                        "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
           }
         },
         "feature-2": {
           "type": "feature",
           "settings": {
-            "icon": "✨",
-            "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
+                        "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
           }
         },
         "feature-3": {
           "type": "feature",
           "settings": {
-            "icon": "🔨",
-            "text": "Elle est livrée prête à être accrochée."
+                        "text": "Elle est livrée prête à être accrochée."
           }
         },
         "feature-4": {
           "type": "feature",
           "settings": {
-            "icon": "📖",
-            "text": "Elle est accompagnée de son livre d'interprétation personnalisée de 110 pages dont 40 pages sont dédiées à votre ciel de naissance."
+                        "text": "Elle est accompagnée de son livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
           }
         },
         "feature-5": {
           "type": "feature",
           "settings": {
-            "icon": "🇫🇷",
-            "text": "Fabriquée en France"
+                        "text": "Fabriquée en France"
           }
         },
         "badge-1": {
           "type": "badge",
           "settings": {
-            "icon": "📦",
-            "text": "Livraison gratuite en 3 à 4 semaines"
+                        "text": "Livraison gratuite en 3 à 4 semaines"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
-            "icon": "🔧",
-            "text": "Fabrication à la commande"
+                        "text": "Fabrication à la commande"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
-            "icon": "📜",
-            "text": "Certificat d'authenticité inclus"
+                        "text": "Certificat d'authenticité inclus"
           }
         }
       },
@@ -83,8 +75,8 @@
         "breadcrumb_label": "L'Œuvre Astrale",
         "title": "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY.",
         "subtitle": "Une composition artistique astrale unique et son livre personnalisé de 110 pages.",
-        "description_1": "<p>Chaque Œuvre Astrale est une création sur-mesure réalisée à partir de votre thème natal. Elle allie art contemporain et astrologie pour produire un tableau unique qui vous ressemble.</p>",
-        "description_2": "<p>L'œuvre est accompagnée d'un livret personnalisé de 110 pages dont 40 pages d'interprétation de votre ciel de naissance — une véritable plongée dans votre identité astrale.</p>",
+        "description_1": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>",
+        "description_2": "<p>Votre thème natal sidéral est interprété avec précision par nos équipes, puis transformé en oeuvre d'art astrale unique ainsi qu'un livre personnel explicatif de votre oeuvre.</p>",
         "form_title": "Vos informations de naissance",
         "form_info_text": "Les champs marqués d'un astérisque (*) sont obligatoires. Si vous ne connaissez pas certaines informations, cochez « je ne sais pas ».",
         "add_to_cart_label": "• AJOUTER AU PANIER •",
