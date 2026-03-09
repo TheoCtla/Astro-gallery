@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "hero": {
+      "type": "giftcard-hero",
+      "blocks": {
+        "badge-1": {
+          "type": "badge",
+          "settings": {
+            "text": "Livraison gratuite"
+          }
+        },
+        "badge-2": {
+          "type": "badge",
+          "settings": {
+            "text": "Fabrication à la commande"
+          }
+        },
+        "badge-3": {
+          "type": "badge",
+          "settings": {
+            "text": "Certificat d'authenticité inclus"
+          }
+        }
+      },
+      "block_order": ["badge-1", "badge-2", "badge-3"],
+      "settings": {
+        "breadcrumb_label": "Offrir",
+        "title_line1": "CARTE CADEAU",
+        "title_line2": "ASTROGALLERY",
+        "subtitle": "<p><em>Offrir une carte cadeau Astro Gallery, c'est offrir bien plus qu'un simple présent.<\/em><\/p><p><em>C'est permettre à une personne de transformer son thème natal en une œuvre astrale élégante et personnelle, reflet intime de son identité.<\/em><\/p>",
+        "description": "<p>La carte cadeau donne accès à la création d'une œuvre numérotée et nominative, accompagnée d'un livret de 110 pages dont 40 personnalisées à son ciel. Une expérience complète qui invite à la contemplation et à la découverte de soi.<\/p><p>La personne à qui vous l'offrez choisit elle même son format, son design et confirme ses informations de naissance. Nous réalisons ensuite sa création dans notre atelier en France.<\/p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.<\/p>",
+        "highlight_text": "Création et livraison en 3 à 4 semaines après activation de la carte.",
+        "amount_label": "Sélectionner le montant souhaité",
+        "full_artwork_label": "œuvre complète",
+        "add_to_cart_label": "• AJOUTER AU PANIER •"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "slide-1": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Une œuvre magnifique et profondément personnelle.",
+            "slide_text": "La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
+            "slide_name": "Carole P."
+          }
+        },
+        "slide-2": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Un achat mémorable pour nos 30 ans de vie commune.",
+            "slide_text": "Le rendu est superbe, les finitions sont impeccables, et l'effet visuel dépasse nos attentes. C'est une pièce qui attire tous les regards.",
+            "slide_name": "Frédéric R."
+          }
+        },
+        "slide-3": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Nous avons été pleinement séduits par l'expérience.",
+            "slide_text": "Le thème astral de couple que nous avons reçu est vraiment superbe. Le livret qui l'accompagne a été un vrai plus.",
+            "slide_name": "Amélie V. et Vincent L."
+          }
+        },
+        "slide-4": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "Un immense merci pour ce magnifique travail !",
+            "slide_text": "L'analyse du thème astral de mes enfants mêle à la fois la compréhension de leur personnalité et la mise en valeur de leur univers.",
+            "slide_name": "Virginie H."
+          }
+        }
+      },
+      "block_order": ["slide-1", "slide-2", "slide-3", "slide-4"],
+      "settings": {
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "interior": {
+      "type": "giftcard-interior",
+      "blocks": {
+        "photo-1": {
+          "type": "photo",
+          "settings": {
+            "label": "Salon moderne clair"
+          }
+        },
+        "photo-2": {
+          "type": "photo",
+          "settings": {
+            "label": ""
+          }
+        },
+        "photo-3": {
+          "type": "photo",
+          "settings": {
+            "label": ""
+          }
+        },
+        "photo-4": {
+          "type": "photo",
+          "settings": {
+            "label": "Chambre épurée"
+          }
+        }
+      },
+      "block_order": ["photo-1", "photo-2", "photo-3", "photo-4"],
+      "settings": {
+        "heading": "UNE PIÈCE PENSÉE POUR S'INTÉGRER AVEC ÉLÉGANCE.",
+        "subtitle": "Son format carré équilibré et son cadre noir profond en font une œuvre intemporelle.\nMinimaliste mais expressive, elle s'accorde naturellement avec des intérieurs contemporains, classiques ou épurés.\nDans un salon, un bureau ou une chambre, elle devient un point d'ancrage visuel et suscite la conversation",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    },
+    "book": {
+      "type": "giftcard-book",
+      "blocks": {
+        "block-1": {
+          "type": "book_block",
+          "settings": {
+            "title": "40 pages entièrement dédiées à votre analyse.",
+            "text": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.<br>Vous y retrouvez :</p><ul><li>le croquis de votre carte du ciel avec ses aspects</li><li>l'explication précise du placement de vos planètes</li><li>l'analyse des dynamiques importantes de votre thème</li><li>10 mantras rédigés spécialement pour vous</li><li>Un mantra signature qui représente le cœur de votre ciel</li></ul>"
+          }
+        },
+        "block-2": {
+          "type": "book_block",
+          "settings": {
+            "title": "70 pages pour comprendre et lire votre carte.",
+            "text": "<p>La seconde partie est un guide complet et accessible pour apprendre à lire votre carte du ciel.<br>Vous y découvrirez :</p><ul><li>La signification des 12 signes</li><li>Le rôle des planètes et astéroïdes</li><li>Le rôle des maisons en astrologie</li><li>Les liens entre les différentes énergies</li><li>Les bases essentielles pour interpréter une carte astrologique</li></ul>"
+          }
+        }
+      },
+      "block_order": ["block-1", "block-2"],
+      "settings": {
+        "heading": "UN LIVRE PERSONNALISÉ INCLUS AVEC VOTRE ŒUVRE.",
+        "intro": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel.",
+        "cta_label": "OFFRIR UNE ŒUVRE",
+        "cta_link": "/products/solo",
+        "cta_sub": "Livret de 110 pages inclus"
+      }
+    },
+    "steps": {
+      "type": "collapsible-content",
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "VOS INFORMATIONS DE NAISSANCE",
+            "description": "<p>Partagez vos informations de naissance : Prénom, nom, date, heure et lieu. Ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "ANALYSE & INTERPRÉTATION",
+            "description": "<p>À partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence. Cette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>"
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "CRÉATION & LIVRAISON",
+            "description": "<p>Votre œuvre et son livret sont ensuite créés avec soin, en France, et livrés chez vous sous trois à quatre semaines.</p>"
+          }
+        }
+      },
+      "block_order": ["step-1", "step-2", "step-3"],
+      "settings": {
+        "heading": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE.",
+        "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
+        "button_label_1": "CRÉER MON ŒUVRE",
+        "button_link_1": "/products/solo",
+        "button_label_2": "",
+        "button_link_2": ""
+      }
+    },
+    "cards": {
+      "type": "giftcard-cards",
+      "blocks": {
+        "card-50": {
+          "type": "card",
+          "settings": {
+            "amount": "50"
+          }
+        },
+        "card-100": {
+          "type": "card",
+          "settings": {
+            "amount": "100"
+          }
+        },
+        "card-150": {
+          "type": "card",
+          "settings": {
+            "amount": "150"
+          }
+        },
+        "card-200": {
+          "type": "card",
+          "settings": {
+            "amount": "200"
+          }
+        }
+      },
+      "block_order": ["card-50", "card-100", "card-150", "card-200"],
+      "settings": {
+        "heading": "OFFREZ UNE CARTE CADEAU",
+        "subtitle": "Faites plaisir à l'un de vos proches en lui offrant une carte cadeau AstroGallery"
+      }
+    }
+  },
+  "order": ["hero", "testimonials", "interior", "book", "steps", "cards"]
+}

@@ -1,0 +1,402 @@
+{{ 'produit-cadeau.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{% if settings.show_breadcrumbs %}
+  <nav class="breadcrumb breadcrumb--article" role="navigation" aria-label="breadcrumbs" style="max-width:1200px;margin:2rem auto;padding:0 1.5rem;">
+    <a href="{{ routes.root_url }}" title="Home">Home</a>{% render 'icon-breadcrumb' -%}
+    <span>{{ section.settings.breadcrumb_label | default: 'Offrir' }}</span>
+  </nav>
+{% endif %}
+
+<section class="container product-solo-section">
+  <div class="product row gallery-left gallery-before">
+
+    <!-- Colonne Galerie Média -->
+    <div class="product__media-wrapper col-lg-6">
+      <div class="product__media-list-wrapper">
+        <div class="product__media-list list-unstyled" role="list">
+          <div class="product__media-item slider__slide">
+            <a href="#" class="product__image-lightbox-trigger" data-image-src="{{ product.featured_image | image_url: width: 1200 }}">
+              <img
+                src="{{ product.featured_image | image_url: width: 700 }}"
+                srcset="
+                  {{ product.featured_image | image_url: width: 350 }} 350w,
+                  {{ product.featured_image | image_url: width: 700 }} 700w,
+                  {{ product.featured_image | image_url: width: 1100 }} 1100w
+                "
+                sizes="(min-width: 990px) 50vw, 100vw"
+                alt="{{ product.title | escape }}"
+                class="product__main-image"
+                id="main-product-image-cadeau"
+                loading="eager"
+                style="cursor: zoom-in;"
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="image-lightbox-cadeau" class="image-lightbox" style="display: none;">
+        <div class="image-lightbox__overlay"></div>
+        <div class="image-lightbox__content">
+          <button class="image-lightbox__close" aria-label="Fermer">&times;</button>
+          <img src="" alt="Image agrandie" class="image-lightbox__image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne Informations Produit -->
+    <div class="product__info-wrapper col-lg-6">
+      <div id="ProductInfo-solo" class="product__info-container product__info-container--sticky">
+
+        {%- assign product_form_id = 'product-form-cadeau' -%}
+
+        <!-- Vendor -->
+        <p class="product__text subtitle">{{ product.vendor }}</p>
+
+        <!-- Titre -->
+        <div class="product__title__wrapper">
+          <h1 class="product__title h2">
+            {{ section.settings.title_line1 | default: 'CARTE CADEAU' }}<br>
+            <span class="gold">{{ section.settings.title_line2 | default: 'ASTROGALLERY' }}</span>
+          </h1>
+        </div>
+
+        <!-- Sous-titres -->
+        {%- if section.settings.subtitle != blank -%}
+          <div class="product__subtitle product__subtitle--italic">
+            {{ section.settings.subtitle }}
+          </div>
+        {%- endif -%}
+
+        <!-- Description -->
+        {%- if section.settings.description != blank -%}
+          <div class="product__description rte">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+
+        <!-- Texte mis en avant -->
+        {%- if section.settings.highlight_text != blank -%}
+          <p class="product__description--highlight"><strong>{{ section.settings.highlight_text }}</strong></p>
+        {%- endif -%}
+
+        <!-- Sélecteur de montant -->
+        <div class="gift-card-amount">
+          <label class="gift-card-amount__label">{{ section.settings.amount_label | default: 'Sélectionner le montant souhaité' }}</label>
+          <div class="gift-card-amount__options">
+            {%- for variant in product.variants -%}
+              <div class="gift-card-amount__option">
+                <button type="button"
+                  class="gift-card-amount__btn {% if forloop.index == 2 %}gift-card-amount__btn--active{% endif %}"
+                  data-variant-id="{{ variant.id }}"
+                  data-variant-price="{{ variant.price | money }}">
+                  {{ variant.title }}
+                </button>
+                {%- if variant.price == 34900 -%}
+                  <span class="gift-card-amount__label-below">{{ section.settings.full_artwork_label | default: 'œuvre complète' }}</span>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <!-- Bouton d'achat -->
+        <div>
+          <div class="product-form__buttons product-form__buttons--custom product-form__buttons--centered">
+            <button
+              type="button"
+              id="giftcard-add-to-cart"
+              class="product-form__submit button button--primary-size button--gold"
+            >
+              {{ section.settings.add_to_cart_label | default: '• AJOUTER AU PANIER •' }}
+            </button>
+          </div>
+          <input type="hidden" id="gift-card-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <!-- Badges -->
+          <div class="product-info-badges">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'badge' -%}
+                <div class="product-info-badge" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    <img
+                      class="product-info-badge__icon"
+                      src="{{ block.settings.icon | image_url: width: 40 }}"
+                      alt="{{ block.settings.text | escape }}"
+                      width="20"
+                      height="20"
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                  <span class="product-info-badge__text">{{ block.settings.text }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO Schema -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {% if product.featured_image %}
+      "image": [{{ product.featured_image | image_url: width: 1920 | prepend: "https:" | json }}],
+    {% endif %}
+    "description": {{ product.description | strip_html | json }},
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    "offers": [
+      {%- for variant in product.variants -%}
+        {
+          "@type": "Offer",
+          "availability": "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price": {{ variant.price | divided_by: 100.00 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "url": {{ request.origin | append: variant.url | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var amountButtons = document.querySelectorAll('.gift-card-amount__btn');
+  var variantInput = document.getElementById('gift-card-variant-id');
+
+  amountButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      amountButtons.forEach(function(b) { b.classList.remove('gift-card-amount__btn--active'); });
+      this.classList.add('gift-card-amount__btn--active');
+      if (variantInput) variantInput.value = this.getAttribute('data-variant-id');
+    });
+  });
+
+  // Pre-select from URL param
+  var urlParams = new URLSearchParams(window.location.search);
+  var amountParam = urlParams.get('amount');
+  var selectedBtn = null;
+
+  if (amountParam) {
+    amountButtons.forEach(function(btn) {
+      if (btn.textContent.trim().includes(amountParam + '€') || btn.textContent.trim().includes(amountParam + ' €')) {
+        selectedBtn = btn;
+      }
+    });
+  }
+
+  if (!selectedBtn && amountButtons.length > 1) selectedBtn = amountButtons[1];
+  else if (!selectedBtn && amountButtons.length > 0) selectedBtn = amountButtons[0];
+
+  if (selectedBtn) {
+    amountButtons.forEach(function(b) { b.classList.remove('gift-card-amount__btn--active'); });
+    selectedBtn.classList.add('gift-card-amount__btn--active');
+    if (variantInput) variantInput.value = selectedBtn.getAttribute('data-variant-id');
+  }
+
+  // Add to cart
+  var addBtn = document.getElementById('giftcard-add-to-cart');
+  if (addBtn) {
+    addBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var vid = variantInput ? variantInput.value : null;
+      if (!vid) return;
+
+      addBtn.classList.add('loading');
+      addBtn.setAttribute('aria-disabled', 'true');
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(vid), quantity: 1 }] })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() {
+        var cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer) {
+          fetch('/?sections=cart-drawer,cart-icon-bubble')
+            .then(function(res) { return res.json(); })
+            .then(function(sections) {
+              var parser = new DOMParser();
+              var drawerHTML = sections['cart-drawer'];
+              var doc = parser.parseFromString(drawerHTML, 'text/html');
+              var newInner = doc.querySelector('.drawer__inner');
+              var curInner = cartDrawer.querySelector('.drawer__inner');
+              if (newInner && curInner) curInner.innerHTML = newInner.innerHTML;
+
+              var iconHTML = sections['cart-icon-bubble'];
+              var iconDoc = parser.parseFromString(iconHTML, 'text/html');
+              var newIcon = iconDoc.querySelector('.shopify-section');
+              var curIcon = document.getElementById('cart-icon-bubble');
+              if (newIcon && curIcon) curIcon.innerHTML = newIcon.innerHTML;
+
+              cartDrawer.classList.remove('is-empty');
+              if (typeof cartDrawer.open === 'function') cartDrawer.open();
+              else { cartDrawer.classList.add('animate', 'active'); document.body.classList.add('overflow-hidden'); }
+            });
+        } else {
+          window.location.href = '/cart';
+        }
+      })
+      .catch(function() { alert("Erreur lors de l'ajout au panier."); })
+      .finally(function() { addBtn.classList.remove('loading'); addBtn.removeAttribute('aria-disabled'); });
+    });
+  }
+
+  // Lightbox
+  var trigger = document.querySelector('.product__image-lightbox-trigger');
+  var lightbox = document.getElementById('image-lightbox-cadeau');
+  if (trigger && lightbox) {
+    var overlay = lightbox.querySelector('.image-lightbox__overlay');
+    var closeBtn = lightbox.querySelector('.image-lightbox__close');
+    var lbImage = lightbox.querySelector('.image-lightbox__image');
+
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      lbImage.src = this.getAttribute('data-image-src');
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+    closeBtn.addEventListener('click', function() { lightbox.style.display = 'none'; document.body.style.overflow = ''; });
+    overlay.addEventListener('click', function() { lightbox.style.display = 'none'; document.body.style.overflow = ''; });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.style.display === 'flex') { lightbox.style.display = 'none'; document.body.style.overflow = ''; }
+    });
+  }
+
+  // Gift card links (scroll to top + select amount)
+  var giftCardLinks = document.querySelectorAll('.giftcard-cards__card');
+  giftCardLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var amount = this.getAttribute('data-amount');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (amount) {
+        amountButtons.forEach(function(btn) {
+          if (btn.textContent.trim().includes(amount + '€') || btn.textContent.trim().includes(amount + ' €')) {
+            amountButtons.forEach(function(b) { b.classList.remove('gift-card-amount__btn--active'); });
+            btn.classList.add('gift-card-amount__btn--active');
+            if (variantInput) variantInput.value = btn.getAttribute('data-variant-id');
+          }
+        });
+      }
+    });
+  });
+});
+</script>
+
+<style>
+  .image-lightbox { position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;align-items:center;justify-content:center; }
+  .image-lightbox__overlay { position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);cursor:pointer; }
+  .image-lightbox__content { position:relative;max-width:90vw;max-height:90vh;z-index:1; }
+  .image-lightbox__image { max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px; }
+  .image-lightbox__close { position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;padding:0;line-height:1; }
+  .image-lightbox__close:hover { opacity:0.7; }
+
+  .gift-card-amount__option { display:inline-flex;flex-direction:column;align-items:center;gap:0.3rem; }
+  .gift-card-amount__label-below { font-family:'Poppins',sans-serif;font-size:10px;color:#DFBE71;font-style:italic;text-align:center; }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Carte Cadeau",
+  "tag": "section",
+  "class": "giftcard-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "label": "Libellé breadcrumb",
+      "default": "Offrir"
+    },
+    {
+      "type": "header",
+      "content": "Titre"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Titre ligne 1",
+      "default": "CARTE CADEAU"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Titre ligne 2 (doré)",
+      "default": "ASTROGALLERY"
+    },
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Sous-titre (italique)",
+      "default": "<p><em>Offrir une carte cadeau Astro Gallery, c'est offrir bien plus qu'un simple présent.</em></p><p><em>C'est permettre à une personne de transformer son thème natal en une œuvre astrale élégante et personnelle, reflet intime de son identité.</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>La carte cadeau donne accès à la création d'une œuvre numérotée et nominative, accompagnée d'un livret de 110 pages dont 40 personnalisées à son ciel. Une expérience complète qui invite à la contemplation et à la découverte de soi.</p><p>La personne à qui vous l'offrez choisit elle même son format, son design et confirme ses informations de naissance. Nous réalisons ensuite sa création dans notre atelier en France.</p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.</p>"
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Texte mis en avant",
+      "default": "Création et livraison en 3 à 4 semaines après activation de la carte."
+    },
+    {
+      "type": "header",
+      "content": "Sélecteur de montant"
+    },
+    {
+      "type": "text",
+      "id": "amount_label",
+      "label": "Label du sélecteur",
+      "default": "Sélectionner le montant souhaité"
+    },
+    {
+      "type": "text",
+      "id": "full_artwork_label",
+      "label": "Label sous le prix max (349€)",
+      "default": "œuvre complète"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Texte du bouton",
+      "default": "• AJOUTER AU PANIER •"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison gratuite"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

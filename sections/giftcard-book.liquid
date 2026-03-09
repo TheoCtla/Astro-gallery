@@ -1,0 +1,344 @@
+<style>
+  .giftcard-book {
+    background-color: #1D1D1B;
+    padding: 4rem 1.5rem;
+    overflow: hidden;
+  }
+
+  .giftcard-book__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .giftcard-book__logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+  }
+
+  .giftcard-book__logo-svg {
+    width: 100%;
+    height: 100%;
+    animation: giftcard-book-rotate 20s linear infinite;
+  }
+
+  @keyframes giftcard-book-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .giftcard-book__logo-text {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .giftcard-book__heading {
+    font-family: 'Lemon Milk', 'LEMONMILK-Bold', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+  }
+
+  .giftcard-book__intro {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #DFBE71;
+    line-height: 1.7;
+    margin: 0 0 3rem 0;
+    max-width: 500px;
+  }
+
+  /* Block rows */
+  .giftcard-book__block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .giftcard-book__block--reverse {
+    flex-direction: column;
+  }
+
+  .giftcard-book__block-image {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .giftcard-book__block-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .giftcard-book__block-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .giftcard-book__block-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0 0 1rem 0;
+  }
+
+  .giftcard-book__block-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .giftcard-book__block-text p {
+    margin: 0 0 0.8rem 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .giftcard-book__block-text ul,
+  .giftcard-book__block-text li {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .giftcard-book__block-text ul {
+    padding-left: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  .giftcard-book__cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .giftcard-book__cta-sub {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.8rem;
+  }
+
+  @media (min-width: 750px) {
+    .giftcard-book {
+      padding: 5rem 2rem;
+    }
+
+    .giftcard-book__heading {
+      font-size: 22px;
+    }
+
+    .giftcard-book__intro {
+      font-size: 15px;
+    }
+
+    .giftcard-book__block {
+      flex-direction: row;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .giftcard-book__block--reverse {
+      flex-direction: row-reverse;
+    }
+
+    .giftcard-book__block-image {
+      width: 45%;
+      flex-shrink: 0;
+    }
+
+    .giftcard-book__block-content {
+      flex: 1;
+    }
+  }
+
+  @media (min-width: 990px) {
+    .giftcard-book {
+      padding: 6rem 2rem;
+    }
+
+    .giftcard-book__heading {
+      font-size: 26px;
+    }
+
+    .giftcard-book__logo {
+      width: 100px;
+      height: 100px;
+    }
+
+    .giftcard-book__block-title {
+      font-size: 15px;
+    }
+
+    .giftcard-book__block-text,
+    .giftcard-book__block-text p,
+    .giftcard-book__block-text li {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="giftcard-book">
+  <div class="giftcard-book__container">
+
+    <!-- Logo rotatif -->
+    <div class="giftcard-book__logo">
+      <svg class="giftcard-book__logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <path id="giftcard-circle-path" d="M 100, 100 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" fill="none"/>
+        </defs>
+        <text fill="#DFBE71" font-family="Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="3">
+          <textPath xlink:href="#giftcard-circle-path" startOffset="0%">
+            ASTROGALLERY • ASTROGALLERY • ASTROGALLERY •
+          </textPath>
+        </text>
+      </svg>
+    </div>
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="giftcard-book__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.intro != blank -%}
+      <p class="giftcard-book__intro">{{ section.settings.intro }}</p>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      <div class="giftcard-book__block {% if forloop.index0 == 1 %}giftcard-book__block--reverse{% endif %}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="giftcard-book__block-image">
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              srcset="
+                {{ block.settings.image | image_url: width: 400 }} 400w,
+                {{ block.settings.image | image_url: width: 800 }} 800w
+              "
+              sizes="(min-width: 750px) 45vw, 100vw"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+            >
+          </div>
+        {%- endif -%}
+        <div class="giftcard-book__block-content">
+          {%- if block.settings.title != blank -%}
+            <h3 class="giftcard-book__block-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <div class="giftcard-book__block-text">{{ block.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+
+    {%- if section.settings.cta_label != blank -%}
+      <div class="giftcard-book__cta">
+        <a href="{{ section.settings.cta_link }}" class="about-cta-banner__btn">
+          <span class="about-cta-banner__btn-text">{{ section.settings.cta_label }}</span>
+        </a>
+        {%- if section.settings.cta_sub != blank -%}
+          <span class="giftcard-book__cta-sub">{{ section.settings.cta_sub }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Livret personnalisé",
+  "tag": "section",
+  "class": "giftcard-book-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "UN LIVRE PERSONNALISÉ INCLUS AVEC VOTRE ŒUVRE."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction (italique doré)",
+      "default": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel."
+    },
+    {
+      "type": "header",
+      "content": "Bouton CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texte du bouton",
+      "default": "OFFRIR UNE ŒUVRE"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "text",
+      "id": "cta_sub",
+      "label": "Texte sous le bouton",
+      "default": "Livret de 110 pages inclus"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "book_block",
+      "name": "Bloc image + texte",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "40 pages entièrement dédiées à votre analyse."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texte",
+          "default": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Livret personnalisé",
+      "blocks": [
+        {
+          "type": "book_block",
+          "settings": {
+            "title": "40 pages entièrement dédiées à votre analyse.",
+            "text": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.</p>"
+          }
+        },
+        {
+          "type": "book_block",
+          "settings": {
+            "title": "70 pages pour comprendre et lire votre carte.",
+            "text": "<p>La seconde partie est un guide complet et accessible pour apprendre à lire votre carte du ciel.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

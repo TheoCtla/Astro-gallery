@@ -1,0 +1,210 @@
+<style>
+  .giftcard-interior {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .giftcard-interior__heading {
+    font-family: 'Lemon Milk', 'LEMONMILK-Bold', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.02em;
+  }
+
+  .giftcard-interior__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #1D1D1B;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.7;
+  }
+
+  .giftcard-interior__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .giftcard-interior__item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+
+  .giftcard-interior__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .giftcard-interior__item:hover img {
+    transform: scale(1.03);
+  }
+
+  .giftcard-interior__item-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    text-align: center;
+    background: linear-gradient(transparent, rgba(0,0,0,0.5));
+  }
+
+  .giftcard-interior__btn-wrapper {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 750px) {
+    .giftcard-interior {
+      padding: 5rem 2rem;
+    }
+
+    .giftcard-interior__heading {
+      font-size: 22px;
+    }
+
+    .giftcard-interior__subtitle {
+      font-size: 15px;
+    }
+
+    .giftcard-interior__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .giftcard-interior__item-label {
+      font-size: 11px;
+    }
+  }
+
+  @media (min-width: 990px) {
+    .giftcard-interior__heading {
+      font-size: 26px;
+    }
+
+    .giftcard-interior__subtitle {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="giftcard-interior">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="giftcard-interior__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.subtitle != blank -%}
+    <p class="giftcard-interior__subtitle">{{ section.settings.subtitle }}</p>
+  {%- endif -%}
+
+  <div class="giftcard-interior__grid">
+    {%- for block in section.blocks -%}
+      <div class="giftcard-interior__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 600 }}"
+            srcset="
+              {{ block.settings.image | image_url: width: 300 }} 300w,
+              {{ block.settings.image | image_url: width: 600 }} 600w
+            "
+            sizes="(min-width: 750px) 25vw, 50vw"
+            alt="{{ block.settings.label | escape }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+        {%- if block.settings.label != blank -%}
+          <span class="giftcard-interior__item-label">{{ block.settings.label }}</span>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.button_label != blank -%}
+    <div class="giftcard-interior__btn-wrapper">
+      <a href="{{ section.settings.button_link }}" class="about-cta-banner__btn">
+        <span class="about-cta-banner__btn-text">{{ section.settings.button_label }}</span>
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Intérieurs galerie",
+  "tag": "section",
+  "class": "giftcard-interior-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "UNE PIÈCE PENSÉE POUR S'INTÉGRER AVEC ÉLÉGANCE."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Son format carré équilibré et son cadre noir profond en font une œuvre intemporelle. Minimaliste mais expressive, elle s'accorde naturellement avec des intérieurs contemporains, classiques ou épurés."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "CRÉER MON ŒUVRE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo intérieur",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Légende",
+          "default": "Salon moderne clair"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Intérieurs galerie",
+      "blocks": [
+        { "type": "photo", "settings": { "label": "Salon moderne clair" } },
+        { "type": "photo", "settings": { "label": "" } },
+        { "type": "photo", "settings": { "label": "" } },
+        { "type": "photo", "settings": { "label": "Chambre épurée" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
