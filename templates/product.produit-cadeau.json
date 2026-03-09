@@ -167,15 +167,17 @@
         "block-1": {
           "type": "book_block",
           "settings": {
+            "image": "shopify://shop_images/a4bb01bc4e35592b236122d11f15fc596a6b509a.jpg",
             "title": "40 pages entièrement dédiées à votre analyse.",
-            "text": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.<br>Vous y retrouvez :</p><ul><li>le croquis de votre carte du ciel avec ses aspects</li><li>l'explication précise du placement de vos planètes</li><li>l'analyse des dynamiques importantes de votre thème</li><li>10 mantras rédigés spécialement pour vous</li><li>Un mantra signature qui représente le cœur de votre ciel</li></ul>"
+            "text": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.<br/>Vous y retrouvez :</p><ul><li>le croquis de votre carte du ciel avec ses aspects</li><li>l'explication précise du placement de vos planètes</li><li>l'analyse des dynamiques importantes de votre thème</li><li>10 mantras rédigés spécialement pour vous</li><li>Un mantra signature qui représente le cœur de votre ciel</li></ul>"
           }
         },
         "block-2": {
           "type": "book_block",
           "settings": {
+            "image": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac.jpg",
             "title": "70 pages pour comprendre et lire votre carte.",
-            "text": "<p>La seconde partie est un guide complet et accessible pour apprendre à lire votre carte du ciel.<br>Vous y découvrirez :</p><ul><li>La signification des 12 signes</li><li>Le rôle des planètes et astéroïdes</li><li>Le rôle des maisons en astrologie</li><li>Les liens entre les différentes énergies</li><li>Les bases essentielles pour interpréter une carte astrologique</li></ul>"
+            "text": "<p>La seconde partie est un guide complet et accessible pour apprendre à lire votre carte du ciel.<br/>Vous y découvrirez :</p><ul><li>La signification des 12 signes</li><li>Le rôle des planètes et astéroïdes</li><li>Le rôle des maisons en astrologie</li><li>Les liens entre les différentes énergies</li><li>Les bases essentielles pour interpréter une carte astrologique</li></ul>"
           }
         }
       },
