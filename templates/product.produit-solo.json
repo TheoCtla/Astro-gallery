@@ -260,6 +260,8 @@
     "video-cta": {
       "type": "video-cta",
       "settings": {
+        "video": "shopify://files/videos/Process oeuvre Solo .MP4",
+        "cover_image": "shopify://shop_images/Video-signature.png",
         "title": "VOTRE THÈME ASTRAL EST",
         "title_highlight": "UNIQUE.",
         "subtitle": "Nous le transformons en œuvre d'art.",
