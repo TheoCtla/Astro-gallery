@@ -9,6 +9,18 @@
  */
 {
   "sections": {
+    "home-hero": {
+      "type": "home-hero",
+      "settings": {
+        "background_image": "shopify://shop_images/3447d340f6fae6b3f72a531caf3e750fd46ccd44.png",
+        "title": "VOTRE THÈME ASTRAL",
+        "title_line2": "EST",
+        "title_highlight": "UNIQUE",
+        "subtitle": "Nous le transformons en œuvre d'art.",
+        "button_label": "DÉCOUVRIR L'ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    },
     "video": {
       "type": "video",
       "disabled": true,
@@ -395,17 +407,6 @@
       "settings": {
         "border_top": false,
         "border_bottom": false
-      }
-    },
-    "home-hero": {
-      "type": "home-hero",
-      "settings": {
-        "title": "VOTRE THÈME ASTRAL",
-        "title_highlight": "UNIQUE",
-        "subtitle": "Nous le transformons en œuvre d'art.",
-        "button_label": "DÉCOUVRIR L'ŒUVRE",
-        "button_link": "/products/solo",
-        "title_line2": "EST"
       }
     }
   },
