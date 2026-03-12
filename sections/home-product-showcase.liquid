@@ -1,0 +1,852 @@
+<style>
+  .hps {
+    padding: 4rem 1.5rem;
+    background-color: #FFFFFF;
+  }
+
+  .hps__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ===== Header ===== */
+  .hps__title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
+    font-weight: 400;
+    font-size: clamp(20px, 3.5vw, 26px);
+    line-height: 150%;
+    letter-spacing: -0.5px;
+    color: #1D1D1B;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .hps__title-highlight {
+    color: #DFBE71;
+  }
+
+  .hps__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #1D1D1B;
+    line-height: 160%;
+    margin: 0 0 1rem 0;
+  }
+
+  .hps__made-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #1D1D1B;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .hps__flag {
+    width: 20px;
+    height: auto;
+    display: inline-block;
+  }
+
+  /* ===== Tabs (product images) ===== */
+  .hps__tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 0 0;
+    position: relative;
+  }
+
+  .hps__tab {
+    cursor: pointer;
+    position: relative;
+    width: 260px;
+    max-width: 40%;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .hps__tab.is-active {
+    opacity: 1;
+  }
+
+  .hps__tab img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .hps__tab-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid #1D1D1B;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hps__tab-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #1D1D1B;
+    stroke-width: 1.5;
+  }
+
+  .hps__tab:not(.is-active) .hps__tab-icon {
+    display: none;
+  }
+
+  /* ===== Arrow separator ===== */
+  .hps__arrow-separator {
+    position: relative;
+    width: 100%;
+    margin: 1.5rem 0;
+    height: 15px;
+  }
+
+  .hps__arrow-separator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #1D1D1B;
+  }
+
+  .hps__arrow-chevron {
+    position: absolute;
+    top: 0px;
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    line-height: 0;
+  }
+
+  .hps__arrow-chevron svg {
+    width: 22px;
+    height: 12px;
+    display: block;
+  }
+
+  /* ===== Panels ===== */
+  .hps__panels {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hps__panel {
+    display: none;
+    animation: hpsFadeIn 0.4s ease;
+  }
+
+  .hps__panel.is-active {
+    display: block;
+  }
+
+  @keyframes hpsFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* --- Panel: Frame --- */
+  .hps__panel-frame {
+    background-color: #FFFFFF;
+    display: none;
+    text-align: left;
+  }
+
+  .hps__panel-frame.is-active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hps__panel-frame-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hps__panel-frame-text {
+    padding: 2rem 1.5rem 0;
+  }
+
+  .hps__panel-frame-title {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 140%;
+    color: #1D1D1B;
+    margin: 0 0 1rem 0;
+  }
+
+  .hps__panel-frame-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 170%;
+    color: #1D1D1B;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .hps__panel-frame-details {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 170%;
+    color: rgba(29, 29, 27, 0.5);
+    margin: 0 0 1rem 0;
+  }
+
+  .hps__panel-frame-extra {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .hps__panel-frame-secondary {
+    width: 140px;
+    height: 145px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .hps__panel-frame-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hps__panel-frame-stamp {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .hps__panel-frame-stamp svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    fill: #DFBE71;
+    transform-origin: 50% 50%;
+    animation: hpsStampRotate 20s infinite linear;
+  }
+
+  .hps__panel-frame-stamp svg text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  @keyframes hpsStampRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .hps__panel-frame-image {
+    width: 100%;
+    aspect-ratio: 721 / 370;
+    overflow: hidden;
+  }
+
+  .hps__panel-frame-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hps__panel-made-in {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #DFBE71;
+  }
+
+  .hps__panel-made-in .hps__flag {
+    width: 20px;
+  }
+
+  /* --- Panel: Book --- */
+  .hps__panel-book {
+    display: none;
+    text-align: left;
+  }
+
+  .hps__panel-book.is-active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hps__panel-book-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .hps__panel-book-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hps__panel-book-content {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hps__panel-book-title {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 140%;
+    color: #1D1D1B;
+    margin: 0;
+  }
+
+  .hps__panel-book-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 170%;
+    color: #1D1D1B;
+    margin: 0;
+  }
+
+  .hps__panel-book-badge {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hps__panel-book-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ===== CTA ===== */
+  .hps__cta {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  /* ===== Responsive — Tablet (750px) ===== */
+  @media (min-width: 750px) {
+    .hps {
+      padding: 5rem 2rem;
+    }
+
+    .hps__tab {
+      width: 300px;
+    }
+
+    .hps__panel-frame.is-active {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .hps__panel-frame-left {
+      flex: 0.8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hps__panel-frame-text {
+      padding: 2.5rem 2.5rem 0;
+    }
+
+    .hps__panel-frame-extra {
+      padding: 0 2.5rem 2.5rem;
+    }
+
+    .hps__panel-frame-secondary {
+      width: 170px;
+      height: 175px;
+    }
+
+    .hps__panel-frame-stamp {
+      width: 90px;
+      height: 90px;
+    }
+
+    .hps__panel-frame-image {
+      flex: 1.2;
+      aspect-ratio: auto;
+    }
+
+    .hps__panel-book.is-active {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .hps__panel-book-images {
+      flex: 1;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .hps__panel-book-content {
+      flex: 1;
+      padding: 2.5rem;
+    }
+
+    .hps__panel-book-badge {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  /* ===== Responsive — Desktop (990px) ===== */
+  @media (min-width: 990px) {
+    .hps {
+      padding: 5rem 3rem;
+    }
+
+    .hps__tabs {
+      gap: 3rem;
+    }
+
+    .hps__tab {
+      width: 320px;
+    }
+
+    .hps__panel-frame-text {
+      padding: 3rem 3rem 0;
+    }
+
+    .hps__panel-frame-extra {
+      padding: 0 3rem 3rem;
+    }
+
+    .hps__panel-frame-secondary {
+      width: 200px;
+      height: 205px;
+    }
+
+    .hps__panel-frame-stamp {
+      width: 100px;
+      height: 100px;
+    }
+
+    .hps__panel-book-content {
+      padding: 3rem;
+    }
+
+    .hps__panel-book-badge {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>
+
+<section class="hps">
+  <div class="hps__container">
+
+    <!-- Header -->
+    {%- if section.settings.title != blank -%}
+      <h2 class="hps__title">
+        {{ section.settings.title }}
+        {%- if section.settings.title_highlight != blank -%}
+          <span class="hps__title-highlight">{{ section.settings.title_highlight }}</span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="hps__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.made_in_text != blank -%}
+      <p class="hps__made-in">
+        {{ section.settings.made_in_text }}
+        {%- if section.settings.flag_icon_1 != blank -%}
+          <img class="hps__flag" src="{{ section.settings.flag_icon_1 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+        {%- endif -%}
+        {%- if section.settings.flag_icon_2 != blank -%}
+          <img class="hps__flag" src="{{ section.settings.flag_icon_2 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+
+    <!-- Tabs -->
+    <div class="hps__tabs">
+      <button class="hps__tab is-active" data-tab="frame" aria-label="Voir le cadre">
+        {%- if section.settings.tab_frame_image != blank -%}
+          <img src="{{ section.settings.tab_frame_image | image_url: width: 640 }}" alt="Le cadre" loading="lazy">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+        <span class="hps__tab-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          </svg>
+        </span>
+      </button>
+
+      <button class="hps__tab" data-tab="book" aria-label="Voir le livre">
+        {%- if section.settings.tab_book_image != blank -%}
+          <img src="{{ section.settings.tab_book_image | image_url: width: 640 }}" alt="Le livre" loading="lazy">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+        <span class="hps__tab-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <!-- Arrow separator -->
+    <div class="hps__arrow-separator">
+      <div class="hps__arrow-chevron" id="hps-chevron">
+        <svg viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="22" height="2" fill="white"/>
+          <path d="M0 1 L11 13 L22 1" stroke="#1D1D1B" stroke-width="1" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Panels -->
+    <div class="hps__panels">
+
+      <!-- Panel: Frame -->
+      <div class="hps__panel hps__panel-frame is-active" data-panel="frame">
+        <div class="hps__panel-frame-left">
+          <div class="hps__panel-frame-text">
+            {%- if section.settings.frame_title != blank -%}
+              <h3 class="hps__panel-frame-title">{{ section.settings.frame_title }}</h3>
+            {%- endif -%}
+            {%- if section.settings.frame_desc != blank -%}
+              <p class="hps__panel-frame-desc">{{ section.settings.frame_desc }}</p>
+            {%- endif -%}
+            {%- if section.settings.frame_details != blank -%}
+              <p class="hps__panel-frame-details">{{ section.settings.frame_details }}</p>
+            {%- endif -%}
+            {%- if section.settings.frame_made_in != blank -%}
+              <p class="hps__panel-made-in" style="color: #DFBE71;">
+                {{ section.settings.frame_made_in }}
+                {%- if section.settings.flag_icon_1 != blank -%}
+                  <img class="hps__flag" src="{{ section.settings.flag_icon_1 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+                {%- endif -%}
+                {%- if section.settings.flag_icon_2 != blank -%}
+                  <img class="hps__flag" src="{{ section.settings.flag_icon_2 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+          </div>
+          <div class="hps__panel-frame-extra">
+            {%- if section.settings.frame_secondary_image != blank -%}
+              <div class="hps__panel-frame-secondary">
+                <img src="{{ section.settings.frame_secondary_image | image_url: width: 400 }}" alt="Détail œuvre" loading="lazy">
+              </div>
+            {%- endif -%}
+            <div class="hps__panel-frame-stamp">
+              <svg viewBox="0 0 500 500">
+                <defs>
+                  <path id="hps-textcircle" d="M 100,250 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"/>
+                </defs>
+                <text dy="0" dx="0">
+                  <textPath xlink:href="#hps-textcircle">· ASTROGALLERY · ASTROGALLERY · ASTROGALLERY</textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="hps__panel-frame-image">
+          {%- if section.settings.frame_image != blank -%}
+            <img src="{{ section.settings.frame_image | image_url: width: 800 }}" alt="{{ section.settings.frame_title | escape }}" loading="lazy">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Panel: Book -->
+      <div class="hps__panel hps__panel-book" data-panel="book">
+        <div class="hps__panel-book-images">
+          {%- if section.settings.book_image_1 != blank -%}
+            <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag }}
+          {%- endif -%}
+          {%- if section.settings.book_image_2 != blank -%}
+            <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        <div class="hps__panel-book-content">
+          {%- if section.settings.book_title != blank -%}
+            <h3 class="hps__panel-book-title">{{ section.settings.book_title }}</h3>
+          {%- endif -%}
+          {%- if section.settings.book_desc != blank -%}
+            <p class="hps__panel-book-desc">{{ section.settings.book_desc }}</p>
+          {%- endif -%}
+          {%- if section.settings.book_badge != blank -%}
+            <div class="hps__panel-book-badge">
+              <img src="{{ section.settings.book_badge | image_url: width: 240 }}" alt="Badge AstroGallery" loading="lazy">
+            </div>
+          {%- endif -%}
+          {%- if section.settings.book_made_in != blank -%}
+            <p class="hps__panel-made-in" style="color: #1D1D1B;">
+              {{ section.settings.book_made_in }}
+              {%- if section.settings.flag_icon_1 != blank -%}
+                <img class="hps__flag" src="{{ section.settings.flag_icon_1 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.flag_icon_2 != blank -%}
+                <img class="hps__flag" src="{{ section.settings.flag_icon_2 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    {%- if section.settings.button_label != blank -%}
+      <div class="hps__cta">
+        <a href="{{ section.settings.button_link }}" class="btn-gold">
+          <span class="btn-gold__text">{{ section.settings.button_label }}</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var section = document.querySelector('.hps');
+    if (!section) return;
+
+    var tabs = section.querySelectorAll('.hps__tab');
+    var panels = section.querySelectorAll('.hps__panel');
+    var chevron = document.getElementById('hps-chevron');
+
+    function setActive(tabName) {
+      tabs.forEach(function (tab) {
+        tab.classList.toggle('is-active', tab.getAttribute('data-tab') === tabName);
+      });
+      panels.forEach(function (panel) {
+        panel.classList.toggle('is-active', panel.getAttribute('data-panel') === tabName);
+      });
+      moveChevron(tabName);
+    }
+
+    function moveChevron(tabName) {
+      if (!chevron) return;
+      var activeTab = section.querySelector('.hps__tab[data-tab="' + tabName + '"]');
+      if (!activeTab) return;
+      var separator = chevron.parentElement;
+      var separatorRect = separator.getBoundingClientRect();
+      var tabRect = activeTab.getBoundingClientRect();
+      var center = tabRect.left + tabRect.width / 2 - separatorRect.left;
+      var pct = (center / separatorRect.width) * 100;
+      chevron.style.left = pct + '%';
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        setActive(tab.getAttribute('data-tab'));
+      });
+    });
+
+    // Initial position
+    moveChevron('frame');
+
+    // Recalc on resize
+    window.addEventListener('resize', function () {
+      var active = section.querySelector('.hps__tab.is-active');
+      if (active) moveChevron(active.getAttribute('data-tab'));
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Showcase Produit",
+  "tag": "section",
+  "class": "home-product-showcase-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "En-tête"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "CHAQUE ŒUVRE ASTROGALLERY EST UNIQUE."
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Titre en doré",
+      "default": "SON LIVRE AUSSI."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre (italique)",
+      "default": "Format carré. Cadre bois noir. Présence affirmée. 110 pages sur mesure."
+    },
+    {
+      "type": "text",
+      "id": "made_in_text",
+      "label": "Texte « Fabriqué en »",
+      "default": "Fabriquée en France"
+    },
+    {
+      "type": "image_picker",
+      "id": "flag_icon_1",
+      "label": "Icône drapeau 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "flag_icon_2",
+      "label": "Icône drapeau 2"
+    },
+    {
+      "type": "header",
+      "content": "Onglets"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_frame_image",
+      "label": "Image onglet — Cadre"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_book_image",
+      "label": "Image onglet — Livre"
+    },
+    {
+      "type": "header",
+      "content": "Panneau — Cadre"
+    },
+    {
+      "type": "text",
+      "id": "frame_title",
+      "label": "Titre cadre",
+      "default": "L'Œuvre astrale signature AstroGallery."
+    },
+    {
+      "type": "textarea",
+      "id": "frame_desc",
+      "label": "Description cadre",
+      "default": "Une création artistique unique, personnelle et introspective."
+    },
+    {
+      "type": "textarea",
+      "id": "frame_details",
+      "label": "Détails cadre",
+      "default": "Aluminium · Support : Alu Dibond Mat · Cadre : Américaine Bois Noir · Certificat d'authenticité inclus"
+    },
+    {
+      "type": "text",
+      "id": "frame_made_in",
+      "label": "Fabriqué en (cadre)",
+      "default": "Fabriquée en France"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_image",
+      "label": "Photo d'ambiance cadre"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_secondary_image",
+      "label": "Image secondaire (détail cadre)"
+    },
+    {
+      "type": "header",
+      "content": "Panneau — Livre"
+    },
+    {
+      "type": "text",
+      "id": "book_title",
+      "label": "Titre livre",
+      "default": "Livre d'interprétation sur mesure de 110 pages inclus avec l'œuvre."
+    },
+    {
+      "type": "textarea",
+      "id": "book_desc",
+      "label": "Description livre",
+      "default": "40 pages entièrement dédiées à votre analyse\n70 pages pour comprendre et lire votre carte."
+    },
+    {
+      "type": "text",
+      "id": "book_made_in",
+      "label": "Fabriqué en (livre)",
+      "default": "Fabriquée en France"
+    },
+    {
+      "type": "image_picker",
+      "id": "book_image_1",
+      "label": "Image livre 1 (pages ouvertes)"
+    },
+    {
+      "type": "image_picker",
+      "id": "book_image_2",
+      "label": "Image livre 2 (couverture)"
+    },
+    {
+      "type": "image_picker",
+      "id": "book_badge",
+      "label": "Badge circulaire"
+    },
+    {
+      "type": "header",
+      "content": "Bouton"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "CRÉER MON ŒUVRE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Showcase Produit"
+    }
+  ]
+}
+{% endschema %}

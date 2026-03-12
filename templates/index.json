@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "home-hero": {
@@ -408,10 +399,29 @@
         "border_top": false,
         "border_bottom": false
       }
+    },
+    "home-product-showcase": {
+      "type": "home-product-showcase",
+      "settings": {
+        "title": "CHAQUE ŒUVRE ASTROGALLERY EST UNIQUE.",
+        "title_highlight": "SON LIVRE AUSSI.",
+        "subtitle": "Format carré. Cadre bois noir. Présence affirmée. 110 pages sur mesure.",
+        "made_in_text": "Fabriquée en France",
+        "frame_title": "L’Œuvre astrale signature AstroGallery.",
+        "frame_desc": "Une création artistique unique, personnelle et introspective.",
+        "frame_details": "Aluminium · Support : Alu Dibond Mat · Cadre : Américaine Bois Noir · Certificat d’authenticité inclus",
+        "frame_made_in": "Fabriquée en France",
+        "book_title": "Livre d’interprétation sur mesure de 110 pages inclus avec l’œuvre.",
+        "book_desc": "40 pages entièrement dédiées à votre analyse\n70 pages pour comprendre et lire votre carte.",
+        "book_made_in": "Fabriquée en France",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
     }
   },
   "order": [
     "home-hero",
+    "home-product-showcase",
     "video",
     "1643119147249c160b",
     "rich_text_fHUQzJ",
