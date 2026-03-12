@@ -53,11 +53,11 @@
     display: none;
   }
 
-  .about-intro__image-wrapper.is-playing .about-intro__video {
+  .about-intro__image-wrapper.has-started .about-intro__video {
     display: block;
   }
 
-  .about-intro__image-wrapper.is-playing .about-intro__cover {
+  .about-intro__image-wrapper.has-started .about-intro__cover {
     display: none;
   }
 
@@ -88,8 +88,12 @@
     display: none;
   }
 
-  .about-intro__image-wrapper.is-playing {
+  .about-intro__image-wrapper.has-started {
     cursor: pointer;
+  }
+
+  .about-intro__image-wrapper.has-started.is-paused .about-intro__play-btn {
+    display: flex;
   }
 
   .about-intro__play-btn svg {
@@ -224,7 +228,7 @@
       object-fit: cover;
     }
 
-    .about-intro__image-wrapper.is-playing .about-intro__video {
+    .about-intro__image-wrapper.has-started .about-intro__video {
       position: absolute;
       top: 0;
       left: 0;
@@ -378,12 +382,14 @@
     if (!video || !wrapper) return;
 
     wrapper.addEventListener('click', function (e) {
-      if (e.target.closest('.about-intro__play-btn')) {
+      if (!wrapper.classList.contains('has-started') || wrapper.classList.contains('is-paused')) {
         video.play();
-        wrapper.classList.add('is-playing');
+        wrapper.classList.add('has-started', 'is-playing');
+        wrapper.classList.remove('is-paused');
       } else if (wrapper.classList.contains('is-playing')) {
         video.pause();
         wrapper.classList.remove('is-playing');
+        wrapper.classList.add('is-paused');
       }
     });
   });

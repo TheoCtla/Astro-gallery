@@ -50,11 +50,11 @@
     display: none;
   }
 
-  .video-cta__video-wrap.is-playing .video-cta__video {
+  .video-cta__video-wrap.has-started .video-cta__video {
     display: block;
   }
 
-  .video-cta__video-wrap.is-playing .video-cta__cover {
+  .video-cta__video-wrap.has-started .video-cta__cover {
     display: none;
   }
 
@@ -85,8 +85,12 @@
     display: none;
   }
 
-  .video-cta__video-wrap.is-playing {
+  .video-cta__video-wrap.has-started {
     cursor: pointer;
+  }
+
+  .video-cta__video-wrap.has-started.is-paused .video-cta__play-btn {
+    display: flex;
   }
 
   .video-cta__play-btn svg {
@@ -102,7 +106,7 @@
   .video-cta__title {
     font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
     font-weight: 400;
-    font-size: clamp(22px, 3.5vw, 35px);
+    font-size: clamp(20px, 3.5vw, 26px);
     line-height: 150%;
     letter-spacing: -0.5px;
     color: #1D1D1B;
@@ -117,7 +121,7 @@
   .video-cta__subtitle {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: clamp(20px, 3vw, 32px);
+    font-size: clamp(16px, 2.5vw, 22px);
     color: #1D1D1B;
     line-height: 150%;
     letter-spacing: 0;
@@ -144,7 +148,7 @@
     }
 
     .video-cta__content {
-      text-align: left;
+      text-align: center;
     }
   }
 
@@ -228,12 +232,14 @@
     if (!video || !wrapper) return;
 
     wrapper.addEventListener('click', function (e) {
-      if (e.target.closest('.video-cta__play-btn')) {
+      if (!wrapper.classList.contains('has-started') || wrapper.classList.contains('is-paused')) {
         video.play();
-        wrapper.classList.add('is-playing');
+        wrapper.classList.add('has-started', 'is-playing');
+        wrapper.classList.remove('is-paused');
       } else if (wrapper.classList.contains('is-playing')) {
         video.pause();
         wrapper.classList.remove('is-playing');
+        wrapper.classList.add('is-paused');
       }
     });
   });
