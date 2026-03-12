@@ -443,6 +443,19 @@
       display: contents;
     }
 
+    .hps__panel-book-tab-image {
+      order: 0;
+      width: 65%;
+      margin: 0 auto 1rem;
+    }
+
+    .hps__panel-book-tab-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
     .hps__panel-book-img-secondary {
       display: none;
     }
@@ -857,6 +870,11 @@
 
       <!-- Panel: Book -->
       <div class="hps__panel hps__panel-book" data-panel="book">
+        <div class="hps__panel-book-tab-image hps__mobile-only">
+          {%- if section.settings.tab_book_image != blank -%}
+            <img src="{{ section.settings.tab_book_image | image_url: width: 640 }}" alt="Le livre" loading="lazy">
+          {%- endif -%}
+        </div>
         <div class="hps__panel-book-img-main">
           {%- if section.settings.book_image_1 != blank -%}
             <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
