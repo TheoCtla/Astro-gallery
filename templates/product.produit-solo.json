@@ -1,0 +1,281 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "product-hero",
+      "blocks": {
+        "feature-1": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Calque_5.svg",
+            "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
+          }
+        },
+        "feature-2": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Calque_1_1.svg",
+            "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
+          }
+        },
+        "feature-3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Icones-Micro-Set.svg",
+            "text": "Elle est livrée prête à être accrochée."
+          }
+        },
+        "feature-4": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
+            "text": "Elle est accompagnée de son livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
+          }
+        },
+        "feature-5": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1000004468.png",
+            "text": "Fabriquée en France"
+          }
+        },
+        "badge-1": {
+          "type": "badge",
+          "settings": {
+            "icon": "shopify://shop_images/Calque_1_2.svg",
+            "text": "Livraison gratuite en 3 à 4 semaines"
+          }
+        },
+        "badge-2": {
+          "type": "badge",
+          "settings": {
+            "icon": "shopify://shop_images/Icones-Micro-Set_2.svg",
+            "text": "Fabrication à la commande"
+          }
+        },
+        "badge-3": {
+          "type": "badge",
+          "settings": {
+            "icon": "shopify://shop_images/Calque_1_3.svg",
+            "text": "Certificat d'authenticité inclus"
+          }
+        }
+      },
+      "block_order": [
+        "feature-1",
+        "feature-2",
+        "feature-3",
+        "feature-4",
+        "feature-5",
+        "badge-1",
+        "badge-2",
+        "badge-3"
+      ],
+      "settings": {
+        "breadcrumb_label": "L'Œuvre Astrale",
+        "gallery_image_1": "shopify://shop_images/c6aad20d8e34135cc6ff2af66346cfcc7037486d.png",
+        "gallery_image_2": "shopify://shop_images/0688b7e193443638f15e017107d1d659e5cfa32c.jpg",
+        "gallery_image_3": "shopify://shop_images/b0e52f0ebeb0ad434f99cb1e7ceb768bc238f328.png",
+        "gallery_image_4": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac_1.jpg",
+        "title": "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY.",
+        "subtitle": "Une composition artistique astrale unique et son livre personnalisé de 110 pages.",
+        "description_1": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>",
+        "description_2": "<p>Votre thème natal sidéral est interprété avec précision par nos équipes, puis transformé en oeuvre d'art astrale unique ainsi qu'un livre personnel explicatif de votre oeuvre.</p>",
+        "form_title": "Vos informations de naissance",
+        "label_nom": "Nom*",
+        "label_prenom": "Prénom*",
+        "label_email": "Email*",
+        "form_info_text": "Si vous ne connaissez pas encore certaines informations nécessaires, vous pouvez simplement indiquer « Je ne sais pas » et nous transmettre les éléments manquants ultérieurement.",
+        "label_birthdate": "Date de naissance (JJ-MM-AA)*",
+        "label_birthtime": "Heure exacte de naissance",
+        "label_birthplace": "Lieu de naissance (ville+ pays)*",
+        "label_requests": "Demandes particulières (optionnel)",
+        "add_to_cart_label": "AJOUTER AU PANIER",
+        "cta_gift_label": "OFFRIR UNE CARTE CADEAU",
+        "cta_gift_link": "/products/carte-cadeau-astrogallery"
+      }
+    },
+    "interior": {
+      "type": "giftcard-interior",
+      "blocks": {
+        "photo-1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000004447.png",
+            "label": ""
+          }
+        },
+        "photo-2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/0e3bf1c78417d8dfdc28bcc881b2c1d0541e850f.jpg",
+            "label": ""
+          }
+        },
+        "photo-3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/d228d82c53ea280ed1e4996da7142d15c128839d.png",
+            "label": ""
+          }
+        },
+        "photo-4": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000004449.png",
+            "label": ""
+          }
+        }
+      },
+      "block_order": [
+        "photo-1",
+        "photo-2",
+        "photo-3",
+        "photo-4"
+      ],
+      "settings": {
+        "heading": "UNE PIÈCE PENSÉE POUR S'INTÉGRER AVEC ÉLÉGANCE.",
+        "subtitle": "Son format carré équilibré et son cadre noir profond en font une œuvre intemporelle.\nMinimaliste mais expressive, elle s'accorde naturellement avec des intérieurs contemporains, classiques ou épurés.\nDans un salon, un bureau ou une chambre, elle devient un point d'ancrage visuel et suscite la conversation",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    },
+    "book": {
+      "type": "giftcard-book",
+      "blocks": {
+        "block-1": {
+          "type": "book_block",
+          "settings": {
+            "image": "shopify://shop_images/a4bb01bc4e35592b236122d11f15fc596a6b509a.jpg",
+            "title": "40 pages entièrement dédiées à votre analyse.",
+            "text": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.<br/>Vous y retrouvez :</p><ul><li>Le croquis de votre carte du ciel avec ses aspects</li><li>L'explication précise du placement de vos planètes</li><li>L'analyse des dynamiques importantes de votre thème</li><li>10 mantras rédigés spécialement pour vous</li><li>Un mantra signature qui représente le cœur de votre ciel</li></ul><p>Chaque élément est expliqué de manière claire et structurée pour vous permettre de comprendre concrètement ce que révèle votre ciel.</p>"
+          }
+        },
+        "block-2": {
+          "type": "book_block",
+          "settings": {
+            "image": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac.jpg",
+            "title": "70 pages pour comprendre et lire votre carte.",
+            "text": "<p>La seconde partie est un guide complet et accessible pour apprendre à lire votre carte du ciel.<br/>Vous y découvrez :</p><ul><li>La signification des 12 signes</li><li>Le rôle des planètes et astéroïdes</li><li>Le rôle des maisons en astrologie</li><li>Les liens entre les différentes énergies</li><li>Les bases essentielles pour interpréter une carte astrologique</li></ul><p>Même sans connaissance préalable, vous disposez des clés pour comprendre votre thème et y revenir au fil du temps.<br/>Un livre structuré, précis et durable.<br/>Un support que vous pouvez relire, approfondir et conserver.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/Section-4_1.png",
+        "heading": "UN LIVRE PERSONNALISÉ INCLUS AVEC VOTRE ŒUVRE.",
+        "intro": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel.",
+        "cta_label": "CRÉER MON ŒUVRE",
+        "cta_link": "/products/solo",
+        "cta_sub": "Livret de 110 pages inclus"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "slide-1": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Une œuvre magnifique et profondément personnelle. La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_1.png",
+            "slide_name": "Carole P.",
+            "slide_country": ""
+          }
+        },
+        "slide-2": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Je ne m'attendais pas à un tel niveau de détail. Le cadre est élégant, les contrastes sont superbes et l'ensemble apporte une vraie présence à la pièce.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_2.png",
+            "slide_name": "Émilie S.",
+            "slide_country": ""
+          }
+        },
+        "slide-3": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "slide_name": "Marc R.",
+            "slide_country": ""
+          }
+        },
+        "slide-4": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Honnêtement je ne pensais pas être aussi ému en la découvrant. Il ya quelque chose de très personnel dans cette œuvre. Elle a trouvé sa place immédiatement chez moi.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_4.png",
+            "slide_name": "Virginie H.",
+            "slide_country": ""
+          }
+        },
+        "slide-5": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Ce que j'aime le plus, c'est que ce n'est pas juste joli. Ça me ressemble. Mes amis me posent toujours des questions dessus, et je suis fière d'expliquer ce que c'est.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_5.png",
+            "slide_name": "Nicolas B",
+            "slide_country": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4",
+        "slide-5"
+      ],
+      "settings": {
+        "star_icon": "shopify://shop_images/Calque_1.svg",
+        "border_top": false,
+        "border_bottom": false
+      }
+    },
+    "why-sideral": {
+      "type": "why-sideral",
+      "settings": {
+        "background_image": "shopify://shop_images/b0345f45f22ce6fda39eb65eccdececb1028d1d6.png",
+        "title": "POURQUOI L'ASTROLOGIE SIDÉRALE ?",
+        "text_left": "<p>La plupart des lectures astrales sont basées sur l'astrologie tropicale, un système fondé sur les saisons, décalé de 25° par rapport aux étoiles réelles.</p>",
+        "text_right": "<p>ASTROGALLERY travaille exclusivement en astrologie sidérale : la position réelle des constellations dans le ciel au moment de votre naissance.</p><p>Une approche astronomique, précise et karmique ; c'est celle des traditions les plus anciennes.</p><p><strong>Résultat : une lecture qui révèle souvent des facettes insoupçonnées de votre personnalité. Plus authentique, plus proche, plus vous.</strong></p>"
+      }
+    },
+    "video-cta": {
+      "type": "video-cta",
+      "settings": {
+        "video": "shopify://files/videos/Process oeuvre Solo .MP4",
+        "cover_image": "shopify://shop_images/Video-signature.png",
+        "title": "VOTRE THÈME ASTRAL EST",
+        "title_highlight": "UNIQUE.",
+        "subtitle": "Nous le transformons en œuvre d'art.",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "interior",
+    "book",
+    "testimonials",
+    "why-sideral",
+    "video-cta"
+  ]
+}

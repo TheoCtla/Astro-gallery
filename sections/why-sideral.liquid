@@ -1,0 +1,162 @@
+<style>
+  .why-sideral {
+    position: relative;
+    background-color: #D9D9D9;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    padding: 3rem 1.5rem;
+    overflow: hidden;
+  }
+
+  .why-sideral::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+
+  .why-sideral__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .why-sideral__col {
+    flex: 1;
+  }
+
+  .why-sideral__title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
+    font-weight: 400;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height: 150%;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .why-sideral__text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #FFFFFF;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .why-sideral__text p {
+    margin: 0 0 1rem 0;
+  }
+
+  .why-sideral__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .why-sideral__text strong {
+    font-weight: 600;
+  }
+
+  .why-sideral__text em {
+    font-style: italic;
+  }
+
+  /* ===== Responsive — Tablet (750px) ===== */
+  @media (min-width: 750px) {
+    .why-sideral {
+      padding: 4rem 2rem;
+    }
+
+    .why-sideral__container {
+      flex-direction: row;
+      gap: 3rem;
+    }
+  }
+
+  /* ===== Responsive — Desktop (990px) ===== */
+  @media (min-width: 990px) {
+    .why-sideral {
+      padding: 5rem 3rem;
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+    }
+
+    .why-sideral__container {
+      gap: 4rem;
+    }
+
+    .why-sideral__text {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section
+  class="why-sideral"
+  {% if section.settings.background_image != blank %}
+    style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
+  {% endif %}
+>
+  <div class="why-sideral__container">
+    <!-- Colonne 1 : Titre + texte gauche -->
+    <div class="why-sideral__col">
+      {%- if section.settings.title != blank -%}
+        <h2 class="why-sideral__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text_left != blank -%}
+        <div class="why-sideral__text">{{ section.settings.text_left }}</div>
+      {%- endif -%}
+    </div>
+
+    <!-- Colonne 2 : Texte droite -->
+    <div class="why-sideral__col">
+      {%- if section.settings.text_right != blank -%}
+        <div class="why-sideral__text">{{ section.settings.text_right }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Astrologie Sidérale",
+  "tag": "section",
+  "class": "why-sideral-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "POURQUOI L'ASTROLOGIE SIDÉRALE ?"
+    },
+    {
+      "type": "richtext",
+      "id": "text_left",
+      "label": "Texte colonne gauche",
+      "default": "<p>La plupart des lectures astrales sont basées sur l'astrologie tropicale, un système fondé sur les saisons, décalé de 25° par rapport aux étoiles réelles.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text_right",
+      "label": "Texte colonne droite",
+      "default": "<p>ASTROGALLERY travaille exclusivement en astrologie sidérale : la position réelle des constellations dans le ciel au moment de votre naissance.</p><p>Une approche astronomique, précise et karmique ; c'est celle des traditions les plus anciennes.</p><p><strong>Résultat : une lecture qui révèle souvent des facettes insoupçonnées de votre personnalité. Plus authentique, plus proche, plus vous.</strong></p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Astrologie Sidérale"
+    }
+  ]
+}
+{% endschema %}

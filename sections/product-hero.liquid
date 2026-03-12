@@ -1,0 +1,1070 @@
+<style>
+  /* ===== PRODUCT HERO — Layout ===== */
+  .ph-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .ph-hero__row {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .ph-hero__gallery,
+  .ph-hero__info {
+    width: 100%;
+  }
+
+  /* ===== Breadcrumb ===== */
+  .ph-hero__breadcrumb {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #888;
+  }
+
+  .ph-hero__breadcrumb a {
+    color: #888;
+    text-decoration: none;
+  }
+
+  .ph-hero__breadcrumb a:hover {
+    color: #1D1D1B;
+  }
+
+  /* ===== Gallery Grid 2x2 ===== */
+  .ph-hero__gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .ph-hero__gallery-cell {
+    position: relative;
+    overflow: hidden;
+    background: #F1EEE5;
+    aspect-ratio: 1 / 1;
+  }
+
+  .ph-hero__gallery-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ===== Vendor ===== */
+  .ph-hero__vendor {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    margin: 0 0 1rem 0;
+  }
+
+  /* ===== Title ===== */
+  .ph-hero__title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
+    font-weight: 400;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-style: normal;
+    line-height: 150%;
+    letter-spacing: -0.5px;
+    color: #1D1D1B;
+    margin: 0 0 1.25rem 0;
+    text-transform: uppercase;
+  }
+
+  /* ===== Subtitle ===== */
+  .ph-hero__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.3vw, 17px);
+    color: #1D1D1B;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+  }
+
+  /* ===== Description ===== */
+  .ph-hero__description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1D1D1B;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+  }
+
+  .ph-hero__description p {
+    margin: 0 0 0.8rem 0;
+  }
+
+  /* ===== Features list ===== */
+  .ph-hero__features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .ph-hero__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #1D1D1B;
+    line-height: 1.6;
+    margin-bottom: 0.7rem;
+  }
+
+  .ph-hero__feature-icon-img {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  /* ===== Form ===== */
+  .ph-hero__form-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #DFBE71;
+  }
+
+  .ph-hero__form-title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Bold', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .ph-hero__form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .ph-hero__form-group {
+    flex: 1;
+    margin-bottom: 2rem;
+  }
+
+  .ph-hero__form-group--with-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ph-hero__form-group--with-checkbox .ph-hero__form-field {
+    width: 100%;
+  }
+
+  .ph-hero__form-label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1D1D1B;
+    margin-bottom: 0.5rem;
+  }
+
+  .ph-hero__form-label-star {
+    color: #DFBE71;
+  }
+
+  .ph-hero__form-input {
+    width: 100%;
+    border: 1px solid #CDCDCD;
+    border-radius: 0;
+    height: 45px;
+    padding: 0 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #1D1D1B;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+
+  .ph-hero__form-input:focus {
+    border-color: #DFBE71;
+  }
+
+  .ph-hero__form-input::placeholder {
+    color: #BBBBBB;
+    font-style: italic;
+    font-size: 13px;
+  }
+
+  .ph-hero__form-input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .ph-hero__form-textarea {
+    width: 100%;
+    border: 1px solid #CDCDCD;
+    border-radius: 0;
+    padding: 0.7rem 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #1D1D1B;
+    background: #fff;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+
+  .ph-hero__form-textarea:focus {
+    border-color: #DFBE71;
+  }
+
+  .ph-hero__form-textarea::placeholder {
+    color: #BBBBBB;
+    font-style: italic;
+  }
+
+  .ph-hero__form-info {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1.6;
+  }
+
+  .ph-hero__form-checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    padding-bottom: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .ph-hero__form-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 12px;
+    min-width: 12px;
+    height: 12px;
+    min-height: 12px;
+    border: 1.5px solid #CDCDCD;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ph-hero__form-checkbox:checked {
+    border-color: #DFBE71;
+    background-color: #fff;
+  }
+
+  .ph-hero__form-checkbox:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    font-weight: 700;
+    color: #DFBE71;
+    line-height: 1;
+  }
+
+  .ph-hero__form-checkbox-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #888;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .ph-hero__form-error {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #cc3333;
+    margin-top: 0.3rem;
+    display: none;
+  }
+
+  /* ===== Price ===== */
+  .ph-hero__price-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #DFBE71;
+  }
+
+  .ph-hero__price {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 38px);
+    color: #1D1D1B;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .ph-hero__price-suffix {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    color: #1D1D1B;
+    margin-left: 0.3rem;
+  }
+
+  /* ===== Buttons ===== */
+  .ph-hero__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-top: 2px solid #DFBE71;
+    padding-top: 2rem;
+  }
+
+  .ph-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    text-align: center;
+    min-height: 50px;
+    border: none;
+  }
+
+  .ph-hero__btn--light {
+    background-color: #F1EEE5 !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .ph-hero__btn--light:hover {
+      background-color: #E5E1D8 !important;
+    }
+  }
+
+  .ph-hero__btn[aria-disabled="true"] {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  /* ===== Badges ===== */
+  .ph-hero__badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .ph-hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    color: #888;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .ph-hero__badge-icon-img {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  /* ===== Responsive — Tablet (750px) ===== */
+  @media (min-width: 750px) {
+    .ph-hero {
+      padding: 0 2rem 5rem;
+    }
+
+    .ph-hero__breadcrumb {
+      padding: 0 2rem;
+    }
+
+    .ph-hero__form-row {
+      flex-direction: row;
+    }
+
+    .ph-hero__form-group--with-checkbox {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .ph-hero__form-group--with-checkbox .ph-hero__form-field {
+      flex: 0 0 55%;
+      width: auto;
+    }
+
+    .ph-hero__buttons {
+      flex-direction: row;
+    }
+
+    .ph-hero__btn {
+      width: auto;
+      flex: 1;
+    }
+  }
+
+  /* ===== Responsive — Desktop (990px) ===== */
+  @media (min-width: 990px) {
+    .ph-hero__row {
+      flex-direction: row;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .ph-hero__gallery {
+      width: 50%;
+      min-width: 0;
+      flex-shrink: 0;
+      position: sticky;
+      top: 3rem;
+    }
+
+    .ph-hero__info {
+      width: 50%;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .ph-hero__badges {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+  }
+</style>
+
+{% if settings.show_breadcrumbs %}
+  <nav class="ph-hero__breadcrumb" role="navigation" aria-label="breadcrumbs">
+    <a href="{{ routes.root_url }}" title="Home">Home</a>
+    {% render 'icon-breadcrumb' %}
+    <span>{{ section.settings.breadcrumb_label | default: "L'Œuvre Astrale" }}</span>
+  </nav>
+{% endif %}
+
+<div class="ph-hero">
+  <div class="ph-hero__row">
+
+    <!-- ===== LEFT — Image Grid 2x2 ===== -->
+    <div class="ph-hero__gallery">
+      <div class="ph-hero__gallery-grid">
+        {%- for i in (1..4) -%}
+          {%- assign image_key = 'gallery_image_' | append: i -%}
+          <div class="ph-hero__gallery-cell">
+            {%- if section.settings[image_key] != blank -%}
+              <img
+                src="{{ section.settings[image_key] | image_url: width: 600 }}"
+                srcset="
+                  {{ section.settings[image_key] | image_url: width: 300 }} 300w,
+                  {{ section.settings[image_key] | image_url: width: 600 }} 600w
+                "
+                sizes="(min-width: 990px) 25vw, 50vw"
+                alt="{{ section.settings[image_key].alt | default: product.title | escape }}"
+                loading="{% if i == 1 %}eager{% else %}lazy{% endif %}"
+              >
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- ===== RIGHT — Product Info + Form ===== -->
+    <div class="ph-hero__info">
+
+      <!-- Vendor -->
+      <p class="ph-hero__vendor">{{ product.vendor }}</p>
+
+      <!-- Title -->
+      <h1 class="ph-hero__title">
+        {{ section.settings.title | default: "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY." }}
+      </h1>
+
+      <!-- Subtitle -->
+      {%- if section.settings.subtitle != blank -%}
+        <p class="ph-hero__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      <!-- Description 1 -->
+      {%- if section.settings.description_1 != blank -%}
+        <div class="ph-hero__description">
+          {{ section.settings.description_1 }}
+        </div>
+      {%- endif -%}
+
+      <!-- Description 2 -->
+      {%- if section.settings.description_2 != blank -%}
+        <div class="ph-hero__description">
+          {{ section.settings.description_2 }}
+        </div>
+      {%- endif -%}
+
+      <!-- Features (blocks) -->
+      {%- assign feature_blocks = section.blocks | where: "type", "feature" -%}
+      {%- if feature_blocks.size > 0 -%}
+        <ul class="ph-hero__features">
+          {%- for block in feature_blocks -%}
+            <li class="ph-hero__feature" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="" class="ph-hero__feature-icon-img" loading="lazy" width="20" height="20">
+              {%- endif -%}
+              <span>{{ block.settings.text }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <!-- ===== Birth Data Form ===== -->
+      {%- form 'product', product, id: 'ph-product-form', novalidate: 'novalidate' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        <div class="ph-hero__form-section">
+          <p class="ph-hero__form-title">{{ section.settings.form_title }}</p>
+
+          <!-- Nom + Prénom -->
+          <div class="ph-hero__form-row">
+            <div class="ph-hero__form-group">
+              <label class="ph-hero__form-label" for="ph-nom">{{ section.settings.label_nom | replace: '*', '<span class="ph-hero__form-label-star">*</span>' }}</label>
+              <input
+                class="ph-hero__form-input"
+                type="text"
+                id="ph-nom"
+                name="properties[Nom]"
+                placeholder="-"
+                required
+                autocomplete="family-name"
+              >
+              <span class="ph-hero__form-error" id="ph-nom-error">Ce champ est requis</span>
+            </div>
+            <div class="ph-hero__form-group">
+              <label class="ph-hero__form-label" for="ph-prenom">{{ section.settings.label_prenom | replace: '*', '<span class="ph-hero__form-label-star">*</span>' }}</label>
+              <input
+                class="ph-hero__form-input"
+                type="text"
+                id="ph-prenom"
+                name="properties[Prénom]"
+                placeholder="-"
+                required
+                autocomplete="given-name"
+              >
+              <span class="ph-hero__form-error" id="ph-prenom-error">Ce champ est requis</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="ph-hero__form-group">
+            <label class="ph-hero__form-label" for="ph-email">{{ section.settings.label_email | replace: '*', '<span class="ph-hero__form-label-star">*</span>' }}</label>
+            <input
+              class="ph-hero__form-input"
+              type="email"
+              id="ph-email"
+              name="properties[Email]"
+              placeholder="-"
+              required
+              autocomplete="email"
+            >
+            <span class="ph-hero__form-error" id="ph-email-error">Veuillez entrer un email valide</span>
+          </div>
+
+          <!-- Info text -->
+          {%- if section.settings.form_info_text != blank -%}
+            <p class="ph-hero__form-info">{{ section.settings.form_info_text }}</p>
+          {%- endif -%}
+
+          <!-- Date de naissance -->
+          <div class="ph-hero__form-group ph-hero__form-group--with-checkbox">
+            <div class="ph-hero__form-field">
+              <label class="ph-hero__form-label" for="ph-birthdate">{{ section.settings.label_birthdate | replace: '*', '<span class="ph-hero__form-label-star">*</span>' }}</label>
+              <input
+                class="ph-hero__form-input"
+                type="text"
+                id="ph-birthdate"
+                name="properties[Date de naissance]"
+                placeholder="-"
+              >
+            </div>
+            <div class="ph-hero__form-checkbox-wrap">
+              <input type="checkbox" id="ph-birthdate-unknown" class="ph-hero__form-checkbox" data-target="ph-birthdate">
+              <label for="ph-birthdate-unknown" class="ph-hero__form-checkbox-label">Je ne sais pas</label>
+            </div>
+          </div>
+
+          <!-- Heure de naissance -->
+          <div class="ph-hero__form-group ph-hero__form-group--with-checkbox">
+            <div class="ph-hero__form-field">
+              <label class="ph-hero__form-label" for="ph-birthtime">{{ section.settings.label_birthtime }}</label>
+              <input
+                class="ph-hero__form-input"
+                type="text"
+                id="ph-birthtime"
+                name="properties[Heure de naissance]"
+                placeholder="-"
+              >
+            </div>
+            <div class="ph-hero__form-checkbox-wrap">
+              <input type="checkbox" id="ph-birthtime-unknown" class="ph-hero__form-checkbox" data-target="ph-birthtime">
+              <label for="ph-birthtime-unknown" class="ph-hero__form-checkbox-label">Je ne sais pas</label>
+            </div>
+          </div>
+
+          <!-- Lieu de naissance -->
+          <div class="ph-hero__form-group ph-hero__form-group--with-checkbox">
+            <div class="ph-hero__form-field">
+              <label class="ph-hero__form-label" for="ph-birthplace">{{ section.settings.label_birthplace | replace: '*', '<span class="ph-hero__form-label-star">*</span>' }}</label>
+              <input
+                class="ph-hero__form-input"
+                type="text"
+                id="ph-birthplace"
+                name="properties[Lieu de naissance]"
+                placeholder="-"
+              >
+            </div>
+            <div class="ph-hero__form-checkbox-wrap">
+              <input type="checkbox" id="ph-birthplace-unknown" class="ph-hero__form-checkbox" data-target="ph-birthplace">
+              <label for="ph-birthplace-unknown" class="ph-hero__form-checkbox-label">Je ne sais pas</label>
+            </div>
+          </div>
+
+          <!-- Demandes particulières -->
+          <div class="ph-hero__form-group">
+            <label class="ph-hero__form-label" for="ph-requests">{{ section.settings.label_requests }}</label>
+            <textarea
+              class="ph-hero__form-textarea"
+              id="ph-requests"
+              name="properties[Demandes particulières]"
+              placeholder="-"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- ===== Price ===== -->
+        <div class="ph-hero__price-section">
+          <p class="ph-hero__price">
+            {{ product.selected_or_first_available_variant.price | money }}
+            <span class="ph-hero__price-suffix">TTC</span>
+          </p>
+
+          <!-- Buttons -->
+          <div class="ph-hero__buttons">
+            <button
+              type="submit"
+              id="ph-add-to-cart"
+              class="ph-hero__btn btn-gold"
+            >
+              <span class="btn-gold__text">{{ section.settings.add_to_cart_label }}</span>
+            </button>
+
+            {%- if section.settings.cta_gift_link != blank -%}
+              <a
+                href="{{ section.settings.cta_gift_link }}"
+                class="ph-hero__btn btn-gold ph-hero__btn--light"
+              >
+                <span class="btn-gold__text">{{ section.settings.cta_gift_label }}</span>
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endform -%}
+
+      <!-- Badges (blocks) -->
+      {%- assign badge_blocks = section.blocks | where: "type", "badge" -%}
+      {%- if badge_blocks.size > 0 -%}
+        <div class="ph-hero__badges">
+          {%- for block in badge_blocks -%}
+            <div class="ph-hero__badge" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="" class="ph-hero__badge-icon-img" loading="lazy" width="16" height="16">
+              {%- endif -%}
+              <span>{{ block.settings.text }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+<!-- SEO Structured Data -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {% if product.featured_image %}
+      "image": [{{ product.featured_image | image_url: width: 1920 | prepend: "https:" | json }}],
+    {% endif %}
+    "description": {{ product.description | strip_html | json }},
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | json }}
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/{% if product.selected_or_first_available_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+      "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.00 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "url": {{ request.origin | append: product.url | json }}
+    }
+  }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  /* ===== "Je ne sais pas" checkboxes ===== */
+  var unknownCheckboxes = document.querySelectorAll('.ph-hero__form-checkbox[data-target]');
+  unknownCheckboxes.forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      var target = document.getElementById(this.getAttribute('data-target'));
+      if (!target) return;
+      if (this.checked) {
+        target.value = 'Je ne sais pas';
+        target.disabled = true;
+      } else {
+        target.value = '';
+        target.disabled = false;
+        target.focus();
+      }
+    });
+  });
+
+  /* ===== Form validation + Add to cart ===== */
+  var form = document.getElementById('ph-product-form');
+  var addBtn = document.getElementById('ph-add-to-cart');
+
+  if (form && addBtn) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      form.querySelectorAll('.ph-hero__form-error').forEach(function(el) { el.style.display = 'none'; });
+
+      var valid = true;
+      var nom = document.getElementById('ph-nom');
+      var prenom = document.getElementById('ph-prenom');
+      var email = document.getElementById('ph-email');
+
+      if (!nom.value.trim()) {
+        document.getElementById('ph-nom-error').style.display = 'block';
+        valid = false;
+      }
+      if (!prenom.value.trim()) {
+        document.getElementById('ph-prenom-error').style.display = 'block';
+        valid = false;
+      }
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        document.getElementById('ph-email-error').style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      addBtn.setAttribute('aria-disabled', 'true');
+
+      var formData = new FormData(form);
+      var properties = {};
+      var variantId = null;
+
+      for (var pair of formData.entries()) {
+        if (pair[0] === 'id') {
+          variantId = parseInt(pair[1]);
+        } else if (pair[0].startsWith('properties[')) {
+          var key = pair[0].replace('properties[', '').replace(']', '');
+          if (pair[1].trim()) {
+            properties[key] = pair[1].trim();
+          }
+        }
+      }
+
+      unknownCheckboxes.forEach(function(cb) {
+        if (cb.checked) {
+          var targetId = cb.getAttribute('data-target');
+          var targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            var propName = targetEl.name.replace('properties[', '').replace(']', '');
+            properties[propName] = 'Je ne sais pas';
+          }
+        }
+      });
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: [{
+            id: variantId,
+            quantity: 1,
+            properties: properties
+          }]
+        })
+      })
+      .then(function(r) {
+        if (!r.ok) throw new Error('Add to cart failed');
+        return r.json();
+      })
+      .then(function() {
+        var cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer) {
+          fetch('/?sections=cart-drawer,cart-icon-bubble')
+            .then(function(res) { return res.json(); })
+            .then(function(sections) {
+              var parser = new DOMParser();
+
+              var drawerHTML = sections['cart-drawer'];
+              var doc = parser.parseFromString(drawerHTML, 'text/html');
+              var newInner = doc.querySelector('.drawer__inner');
+              var curInner = cartDrawer.querySelector('.drawer__inner');
+              if (newInner && curInner) curInner.innerHTML = newInner.innerHTML;
+
+              var iconHTML = sections['cart-icon-bubble'];
+              var iconDoc = parser.parseFromString(iconHTML, 'text/html');
+              var newIcon = iconDoc.querySelector('.shopify-section');
+              var curIcon = document.getElementById('cart-icon-bubble');
+              if (newIcon && curIcon) curIcon.innerHTML = newIcon.innerHTML;
+
+              cartDrawer.classList.remove('is-empty');
+              if (typeof cartDrawer.open === 'function') {
+                cartDrawer.open();
+              } else {
+                cartDrawer.classList.add('animate', 'active');
+                document.body.classList.add('overflow-hidden');
+              }
+            });
+        } else {
+          window.location.href = '/cart';
+        }
+      })
+      .catch(function(err) {
+        console.error(err);
+        alert("Erreur lors de l'ajout au panier. Veuillez réessayer.");
+      })
+      .finally(function() {
+        addBtn.removeAttribute('aria-disabled');
+      });
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Hero Produit Solo",
+  "tag": "section",
+  "class": "product-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "label": "Libellé breadcrumb",
+      "default": "L'Œuvre Astrale"
+    },
+    {
+      "type": "header",
+      "content": "Galerie d'images"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_1",
+      "label": "Image 1 (haut gauche)"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_2",
+      "label": "Image 2 (haut droite)"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_3",
+      "label": "Image 3 (bas gauche)"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_4",
+      "label": "Image 4 (bas droite)"
+    },
+    {
+      "type": "header",
+      "content": "Titre & sous-titre"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre (italique)",
+      "default": "Une composition artistique astrale unique et son livre personnalisé de 110 pages."
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "description_1",
+      "label": "Description paragraphe 1",
+      "default": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description_2",
+      "label": "Description paragraphe 2",
+      "default": "<p>Votre thème natal sidéral est interprété avec précision par nos équipes, puis transformé en oeuvre d'art astrale unique ainsi qu'un livre personnel explicatif de votre oeuvre.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Formulaire"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Titre du formulaire",
+      "default": "Vos informations de naissance"
+    },
+    {
+      "type": "text",
+      "id": "label_nom",
+      "label": "Label champ Nom",
+      "default": "Nom*"
+    },
+    {
+      "type": "text",
+      "id": "label_prenom",
+      "label": "Label champ Prénom",
+      "default": "Prénom*"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Label champ Email",
+      "default": "Email*"
+    },
+    {
+      "type": "textarea",
+      "id": "form_info_text",
+      "label": "Texte d'information",
+      "default": "Si vous ne connaissez pas encore certaines informations nécessaires, vous pouvez simplement indiquer « Je ne sais pas » et nous transmettre les éléments manquants ultérieurement."
+    },
+    {
+      "type": "text",
+      "id": "label_birthdate",
+      "label": "Label champ Date de naissance",
+      "default": "Date de naissance (JJ-MM-AA)*"
+    },
+    {
+      "type": "text",
+      "id": "label_birthtime",
+      "label": "Label champ Heure de naissance",
+      "default": "Heure exacte de naissance"
+    },
+    {
+      "type": "text",
+      "id": "label_birthplace",
+      "label": "Label champ Lieu de naissance",
+      "default": "Lieu de naissance (ville+ pays)*"
+    },
+    {
+      "type": "text",
+      "id": "label_requests",
+      "label": "Label champ Demandes",
+      "default": "Demandes particulières (optionnel)"
+    },
+    {
+      "type": "header",
+      "content": "Boutons"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Texte bouton ajouter au panier",
+      "default": "AJOUTER AU PANIER"
+    },
+    {
+      "type": "text",
+      "id": "cta_gift_label",
+      "label": "Texte bouton carte cadeau",
+      "default": "OFFRIR UNE CARTE CADEAU"
+    },
+    {
+      "type": "url",
+      "id": "cta_gift_link",
+      "label": "Lien bouton carte cadeau"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Caractéristique",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
+        }
+      ]
+    },
+    {
+      "type": "badge",
+      "name": "Badge info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison gratuite"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Produit Solo"
+    }
+  ]
+}
+{% endschema %}
