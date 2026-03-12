@@ -256,6 +256,16 @@
         "text_left": "<p>La plupart des lectures astrales sont basées sur l'astrologie tropicale, un système fondé sur les saisons, décalé de 25° par rapport aux étoiles réelles.</p>",
         "text_right": "<p>ASTROGALLERY travaille exclusivement en astrologie sidérale : la position réelle des constellations dans le ciel au moment de votre naissance.</p><p>Une approche astronomique, précise et karmique ; c'est celle des traditions les plus anciennes.</p><p><strong>Résultat : une lecture qui révèle souvent des facettes insoupçonnées de votre personnalité. Plus authentique, plus proche, plus vous.</strong></p>"
       }
+    },
+    "video-cta": {
+      "type": "video-cta",
+      "settings": {
+        "title": "VOTRE THÈME ASTRAL EST",
+        "title_highlight": "UNIQUE.",
+        "subtitle": "Nous le transformons en œuvre d'art.",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
     }
   },
   "order": [
@@ -263,6 +273,7 @@
     "interior",
     "book",
     "testimonials",
-    "why-sideral"
+    "why-sideral",
+    "video-cta"
   ]
 }

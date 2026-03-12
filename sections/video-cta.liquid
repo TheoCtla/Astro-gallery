@@ -1,0 +1,294 @@
+<style>
+  .video-cta {
+    padding: 3rem 1.5rem;
+  }
+
+  .video-cta__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .video-cta__video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .video-cta__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  .video-cta__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .video-cta__cover-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    pointer-events: none;
+    filter: brightness(0.55);
+  }
+
+  .video-cta__video {
+    display: none;
+  }
+
+  .video-cta__video-wrap.is-playing .video-cta__video {
+    display: block;
+  }
+
+  .video-cta__video-wrap.is-playing .video-cta__cover {
+    display: none;
+  }
+
+  .video-cta__play-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 3;
+    pointer-events: auto;
+    width: 56px;
+    height: 56px;
+    border: 1px solid #DFBE71;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+  }
+
+  .video-cta__play-btn:hover {
+    transform: scale(1.08);
+  }
+
+  .video-cta__video-wrap.is-playing .video-cta__play-btn {
+    display: none;
+  }
+
+  .video-cta__video-wrap.is-playing {
+    cursor: pointer;
+  }
+
+  .video-cta__play-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
+  }
+
+  .video-cta__content {
+    text-align: center;
+  }
+
+  .video-cta__title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
+    font-weight: 400;
+    font-size: clamp(22px, 3.5vw, 35px);
+    line-height: 150%;
+    letter-spacing: -0.5px;
+    color: #1D1D1B;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .video-cta__title-highlight {
+    color: #DFBE71;
+  }
+
+  .video-cta__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(20px, 3vw, 32px);
+    color: #1D1D1B;
+    line-height: 150%;
+    letter-spacing: 0;
+    margin: 0 0 2rem 0;
+  }
+
+  /* ===== Responsive — Tablet (750px) ===== */
+  @media (min-width: 750px) {
+    .video-cta {
+      padding: 4rem 2rem;
+    }
+
+    .video-cta__container {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .video-cta__video-wrap {
+      flex-shrink: 0;
+      width: 293px;
+      height: 293px;
+    }
+
+    .video-cta__content {
+      text-align: left;
+    }
+  }
+
+  /* ===== Responsive — Desktop (990px) ===== */
+  @media (min-width: 990px) {
+    .video-cta {
+      padding: 5rem 3rem;
+    }
+
+    .video-cta__container {
+      gap: 4rem;
+    }
+  }
+</style>
+
+<section class="video-cta">
+  <div class="video-cta__container">
+
+    <!-- Video -->
+    <div class="video-cta__video-wrap" id="video-cta-wrap">
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag:
+          class: 'video-cta__video',
+          autoplay: false,
+          loop: true,
+          muted: false,
+          playsinline: true,
+          controls: false,
+          preload: 'auto',
+          id: 'video-cta-player'
+        }}
+      {%- endif -%}
+
+      <div class="video-cta__cover" id="video-cta-cover">
+        {%- if section.settings.cover_image != blank -%}
+          {{ section.settings.cover_image | image_url: width: 800 | image_tag:
+            class: 'video-cta__cover-img',
+            loading: 'lazy',
+            alt: 'Vidéo'
+          }}
+        {%- else -%}
+          <div style="width:100%;height:100%;background:#F1EEE5;"></div>
+        {%- endif -%}
+        <button class="video-cta__play-btn" aria-label="Lire la vidéo">
+          <svg viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="0,0 20,11 0,22" fill="#DFBE71"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="video-cta__content">
+      {%- if section.settings.title != blank -%}
+        <h2 class="video-cta__title">
+          {{ section.settings.title }}
+          {%- if section.settings.title_highlight != blank -%}
+            <span class="video-cta__title-highlight">{{ section.settings.title_highlight }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="video-cta__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="btn-gold">
+          <span class="btn-gold__text">{{ section.settings.button_label }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var wrapper = document.getElementById('video-cta-wrap');
+    var video = document.getElementById('video-cta-player');
+    if (!video || !wrapper) return;
+
+    wrapper.addEventListener('click', function (e) {
+      if (e.target.closest('.video-cta__play-btn')) {
+        video.play();
+        wrapper.classList.add('is-playing');
+      } else if (wrapper.classList.contains('is-playing')) {
+        video.pause();
+        wrapper.classList.remove('is-playing');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Vidéo + CTA",
+  "tag": "section",
+  "class": "video-cta-section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Vidéo"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Image de couverture vidéo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "VOTRE THÈME ASTRAL EST"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Mot en doré",
+      "default": "UNIQUE."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre (italique)",
+      "default": "Nous le transformons en œuvre d'art."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "CRÉER MON ŒUVRE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidéo + CTA"
+    }
+  ]
+}
+{% endschema %}
