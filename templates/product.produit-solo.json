@@ -50,18 +50,21 @@
         "badge-1": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Calque_1_2.svg",
             "text": "Livraison gratuite en 3 à 4 semaines"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Icones-Micro-Set_2.svg",
             "text": "Fabrication à la commande"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Calque_1_3.svg",
             "text": "Certificat d'authenticité inclus"
           }
         }
