@@ -103,108 +103,165 @@
         "cta_gift_link": "/products/carte-cadeau-astrogallery"
       }
     },
-    "testimonials": {
-      "type": "testimonials",
+    "interior": {
+      "type": "giftcard-interior",
       "blocks": {
-        "testimonials_slide_wcRBPL": {
-          "type": "testimonials_slide",
+        "photo-1": {
+          "type": "photo",
           "settings": {
-            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
-            "slide_text": "“J’ai reçu mon thème astral personnalisé et je suis émerveillée ! C’est une œuvre d’art unique qui capture mon essence. Le livret inclus est une mine d’informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !”",
-            "slide_name": "Fabienne D.",
-            "slide_country": "Marseille"
+            "image": "shopify://shop_images/Frame_1000004447.png",
+            "label": ""
           }
         },
-        "testimonials_slide_49UR3M": {
-          "type": "testimonials_slide",
+        "photo-2": {
+          "type": "photo",
           "settings": {
-            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
-            "slide_text": "“Je viens de recevoir mon thème astral personnalisé et je suis impressionné ! L’impression est magnifique et le livret est très bien fait. Je recommande vivement ASTROGALLERY à tous ceux qui s’intéressent à l’astrologie!”",
-            "slide_name": "Amélie S.",
-            "slide_country": "Lyon"
+            "image": "shopify://shop_images/0e3bf1c78417d8dfdc28bcc881b2c1d0541e850f.jpg",
+            "label": ""
           }
         },
-        "testimonials_slide_BXP3nW": {
-          "type": "testimonials_slide",
+        "photo-3": {
+          "type": "photo",
           "settings": {
-            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
-            "slide_text": "Une expérience magique ! Mon tableau de thème astral est sublime, les couleurs et les symboles résonnent parfaitement avec ma personnalité. On sent que chaque détail a été pensé avec soin. Merci ASTROGALLERY pour cette création pleine d’âme.",
-            "slide_name": "Anna S.",
-            "slide_country": "Paris"
+            "image": "shopify://shop_images/d228d82c53ea280ed1e4996da7142d15c128839d.png",
+            "label": ""
           }
         },
-        "testimonials_slide_TcH6Cc": {
-          "type": "testimonials_slide",
+        "photo-4": {
+          "type": "photo",
           "settings": {
-            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
-            "slide_text": "Le concept est génial : allier art et astrologie pour créer une œuvre qui me ressemble. Le service client est attentionné, la qualité exceptionnelle. Mon tableau trône fièrement dans mon salon — il attire tous les regards !",
-            "slide_name": "Max S.",
-            "slide_country": "Bordeaux"
+            "image": "shopify://shop_images/Frame_1000004449.png",
+            "label": ""
           }
         }
       },
       "block_order": [
-        "testimonials_slide_wcRBPL",
-        "testimonials_slide_49UR3M",
-        "testimonials_slide_BXP3nW",
-        "testimonials_slide_TcH6Cc"
+        "photo-1",
+        "photo-2",
+        "photo-3",
+        "photo-4"
       ],
       "settings": {
+        "heading": "UNE PIÈCE PENSÉE POUR S'INTÉGRER AVEC ÉLÉGANCE.",
+        "subtitle": "Son format carré équilibré et son cadre noir profond en font une œuvre intemporelle.\nMinimaliste mais expressive, elle s'accorde naturellement avec des intérieurs contemporains, classiques ou épurés.\nDans un salon, un bureau ou une chambre, elle devient un point d'ancrage visuel et suscite la conversation",
+        "button_label": "CRÉER MON ŒUVRE",
+        "button_link": "/products/solo"
+      }
+    },
+    "book": {
+      "type": "giftcard-book",
+      "blocks": {
+        "block-1": {
+          "type": "book_block",
+          "settings": {
+            "image": "shopify://shop_images/a4bb01bc4e35592b236122d11f15fc596a6b509a.jpg",
+            "title": "40 pages entièrement dédiées à votre analyse.",
+            "text": "<p>La première partie est entièrement personnalisée à partir de votre date, heure et lieu de naissance.<br/>Vous y retrouvez :</p><ul><li>Le croquis de votre carte du ciel avec ses aspects</li><li>L'explication précise du placement de vos planètes</li><li>L'analyse des dynamiques importantes de votre thème</li><li>10 mantras rédigés spécialement pour vous</li><li>Un mantra signature qui représente le cœur de votre ciel</li></ul><p>Chaque élément est expliqué de manière claire et structurée pour vous permettre de comprendre concrètement ce que révèle votre ciel.</p>"
+          }
+        },
+        "block-2": {
+          "type": "book_block",
+          "settings": {
+            "image": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac.jpg",
+            "title": "70 pages pour comprendre et lire votre carte.",
+            "text": "<p>La seconde partie est un guide complet et accessible pour apprendre à lire votre carte du ciel.<br/>Vous y découvrez :</p><ul><li>La signification des 12 signes</li><li>Le rôle des planètes et astéroïdes</li><li>Le rôle des maisons en astrologie</li><li>Les liens entre les différentes énergies</li><li>Les bases essentielles pour interpréter une carte astrologique</li></ul><p>Même sans connaissance préalable, vous disposez des clés pour comprendre votre thème et y revenir au fil du temps.<br/>Un livre structuré, précis et durable.<br/>Un support que vous pouvez relire, approfondir et conserver.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/Section-4_1.png",
+        "heading": "UN LIVRE PERSONNALISÉ INCLUS AVEC VOTRE ŒUVRE.",
+        "intro": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel.",
+        "cta_label": "CRÉER MON ŒUVRE",
+        "cta_link": "/products/solo",
+        "cta_sub": "Livret de 110 pages inclus"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "slide-1": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Une œuvre magnifique et profondément personnelle. La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_1.png",
+            "slide_name": "Carole P.",
+            "slide_country": ""
+          }
+        },
+        "slide-2": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Je ne m'attendais pas à un tel niveau de détail. Le cadre est élégant, les contrastes sont superbes et l'ensemble apporte une vraie présence à la pièce.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_2.png",
+            "slide_name": "Émilie S.",
+            "slide_country": ""
+          }
+        },
+        "slide-3": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "slide_name": "Marc R.",
+            "slide_country": ""
+          }
+        },
+        "slide-4": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Honnêtement je ne pensais pas être aussi ému en la découvrant. Il ya quelque chose de très personnel dans cette œuvre. Elle a trouvé sa place immédiatement chez moi.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_4.png",
+            "slide_name": "Virginie H.",
+            "slide_country": ""
+          }
+        },
+        "slide-5": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Ce que j'aime le plus, c'est que ce n'est pas juste joli. Ça me ressemble. Mes amis me posent toujours des questions dessus, et je suis fière d'expliquer ce que c'est.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_5.png",
+            "slide_name": "Nicolas B",
+            "slide_country": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4",
+        "slide-5"
+      ],
+      "settings": {
+        "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
       }
     },
-    "faq": {
-      "type": "collapsible-content",
-      "blocks": {
-        "accordion_mYhd4L": {
-          "type": "accordion",
-          "settings": {
-            "question": "Quels sont les délais de livraison ?",
-            "answer": "<p>Les délais sont de <strong>3 semaines maximum</strong>, création et livraison incluses.</p>"
-          }
-        },
-        "accordion_643NLx": {
-          "type": "accordion",
-          "settings": {
-            "question": "Puis-je voir un aperçu avant impression ?",
-            "answer": "<p>Non. Chaque Œuvre Astrale étant une <strong>création unique et sur-mesure</strong>, aucun aperçu n'est transmis avant impression.</p>"
-          }
-        },
-        "accordion_iCx3cx": {
-          "type": "accordion",
-          "settings": {
-            "question": "Quels moyens de paiement acceptez-vous ?",
-            "answer": "<ul><li><strong>Carte bancaire</strong></li><li><strong>PayPal</strong></li><li><strong>Paiement en 4 fois sans frais</strong></li></ul><p><em>(Les virements bancaires ne sont pas acceptés.)</em></p>"
-          }
-        },
-        "accordion_ynja9F": {
-          "type": "accordion",
-          "settings": {
-            "question": "Puis-je commander depuis l'étranger ?",
-            "answer": "<p>Oui, ASTROGALLERY accepte les commandes internationales. Les frais et délais de livraison peuvent varier selon la destination.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "accordion_mYhd4L",
-        "accordion_643NLx",
-        "accordion_iCx3cx",
-        "accordion_ynja9F"
-      ],
+    "why-sideral": {
+      "type": "why-sideral",
       "settings": {
-        "heading": "Découvrez nos questions les plus fréquentes",
-        "subtitle": "",
-        "button_label_1": "",
-        "button_link_1": "",
-        "button_label_2": "",
-        "button_link_2": ""
+        "title": "POURQUOI L'ASTROLOGIE SIDÉRALE ?",
+        "text_left": "<p>La plupart des lectures astrales sont basées sur l'astrologie tropicale, un système fondé sur les saisons, décalé de 25° par rapport aux étoiles réelles.</p>",
+        "text_right": "<p>ASTROGALLERY travaille exclusivement en astrologie sidérale : la position réelle des constellations dans le ciel au moment de votre naissance.</p><p>Une approche astronomique, précise et karmique ; c'est celle des traditions les plus anciennes.</p><p><strong>Résultat : une lecture qui révèle souvent des facettes insoupçonnées de votre personnalité. Plus authentique, plus proche, plus vous.</strong></p>"
       }
     }
   },
   "order": [
     "hero",
+    "interior",
+    "book",
     "testimonials",
-    "faq"
+    "why-sideral"
   ]
 }
