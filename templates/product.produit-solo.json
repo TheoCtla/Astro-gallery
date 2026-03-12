@@ -87,8 +87,15 @@
         "description_1": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>",
         "description_2": "<p>Votre thème natal sidéral est interprété avec précision par nos équipes, puis transformé en oeuvre d'art astrale unique ainsi qu'un livre personnel explicatif de votre oeuvre.</p>",
         "form_title": "Vos informations de naissance",
-        "form_info_text": "Les champs marqués d'un astérisque (*) sont obligatoires. Si vous ne connaissez pas certaines informations, cochez « je ne sais pas ».",
-        "add_to_cart_label": "• AJOUTER AU PANIER •",
+        "label_nom": "Nom*",
+        "label_prenom": "Prénom*",
+        "label_email": "Email*",
+        "form_info_text": "Si vous ne connaissez pas encore certaines informations nécessaires, vous pouvez simplement indiquer « Je ne sais pas » et nous transmettre les éléments manquants ultérieurement.",
+        "label_birthdate": "Date de naissance (JJ-MM-AA)*",
+        "label_birthtime": "Heure exacte de naissance",
+        "label_birthplace": "Lieu de naissance (ville+ pays)*",
+        "label_requests": "Demandes particulières (optionnel)",
+        "add_to_cart_label": "AJOUTER AU PANIER",
         "cta_gift_label": "OFFRIR UNE CARTE CADEAU",
         "cta_gift_link": "/products/carte-cadeau-astrogallery"
       }
