@@ -14,7 +14,7 @@
   .hps__title {
     font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
     font-weight: 400;
-    font-size: clamp(20px, 3.5vw, 26px);
+    font-size: clamp(24px, 3.5vw, 26px);
     line-height: 150%;
     letter-spacing: -0.5px;
     color: #1D1D1B;
@@ -29,7 +29,7 @@
   .hps__subtitle {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(18px, 2.5vw, 18px);
     color: #1D1D1B;
     line-height: 160%;
     margin: 0 0 1rem 0;
@@ -51,6 +51,15 @@
     width: 30px;
     height: 4px;
     display: inline-block;
+  }
+
+  /* ===== Visibility helpers ===== */
+  .hps__mobile-only {
+    display: block;
+  }
+
+  .hps__desktop-only {
+    display: none;
   }
 
   /* ===== Tabs (product images) ===== */
@@ -197,7 +206,7 @@
 
   .hps__panel-frame-desc {
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 170%;
     color: #1D1D1B;
@@ -206,7 +215,7 @@
 
   .hps__panel-frame-details {
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 400;
     line-height: 170%;
     color: #1D1D1B;
@@ -232,13 +241,13 @@
   .hps__panel-frame-bottom {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 1rem;
+    align-items: stretch;
+    gap: 0;
   }
 
   .hps__panel-frame-secondary {
     overflow: hidden;
-    width: 120%;
+    width: 100%;
   }
 
   .hps__panel-frame-secondary img {
@@ -253,6 +262,7 @@
     position: relative;
     flex-shrink: 0;
     overflow: hidden;
+    display: none;
   }
 
   .hps__panel-frame-stamp svg {
@@ -300,20 +310,26 @@
     flex-direction: column;
   }
 
-  .hps__panel-book-images {
-    display: flex;
-    gap: 0;
-  }
-
-  .hps__panel-book-img {
-    flex: 1;
+  .hps__panel-book-img-main {
     overflow: hidden;
   }
 
-  .hps__panel-book-img img {
+  .hps__panel-book-img-main img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+  }
+
+  .hps__panel-book-img-secondary {
+    overflow: hidden;
+  }
+
+  .hps__panel-book-img-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
     display: block;
   }
 
@@ -324,7 +340,7 @@
   .hps__panel-book-content {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   .hps__panel-book-title {
@@ -345,18 +361,87 @@
     margin: 0;
   }
 
-  .hps__panel-book-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
   /* ===== CTA ===== */
   .hps__cta {
     margin-top: 2.5rem;
     text-align: center;
+  }
+
+  /* ===== Responsive — Mobile (<750px) ===== */
+  @media (max-width: 749px) {
+    .hps__tab[data-tab="book"] {
+      display: none;
+    }
+
+    .hps__tab {
+      width: 65%;
+      max-width: 65%;
+      opacity: 1;
+    }
+
+    .hps__tab-icon {
+      display: none;
+    }
+
+    .hps__arrow-separator {
+      display: none;
+    }
+
+    .hps__panel-frame {
+      display: flex !important;
+      flex-direction: column;
+    }
+
+    .hps__panel-book {
+      display: none !important;
+    }
+
+    .hps__panel-frame.is-active {
+      position: relative;
+    }
+
+    .hps__panel-frame-left {
+      display: contents;
+    }
+
+    .hps__panel-frame-text {
+      order: 1;
+    }
+
+    .hps__panel-frame-bottom {
+      align-items: stretch;
+      gap: 0;
+      display: contents;
+    }
+
+    .hps__panel-frame-image {
+      height: 215px;
+      aspect-ratio: auto;
+      order: 2;
+      margin-bottom: 2rem;
+    }
+
+    .hps__panel-frame-secondary {
+      width: 100%;
+      height: 215px;
+      order: 3;
+    }
+
+    .hps__panel-frame-secondary img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hps__panel-frame-stamp {
+      display: block;
+      position: absolute;
+      bottom: 215px;
+      right: 1rem;
+      transform: translateY(50%);
+      z-index: 2;
+      width: 120px;
+      height: 120px;
+    }
   }
 
   /* ===== Responsive — Tablet (750px) ===== */
@@ -365,8 +450,26 @@
       padding: 5rem 2rem;
     }
 
+    .hps__mobile-only {
+      display: none;
+    }
+
+    .hps__desktop-only {
+      display: block;
+    }
+
     .hps__tab {
-      width: 300px;
+      width: auto;
+    }
+
+    .hps__tab img {
+      height: clamp(120px, 16vw, 200px);
+      width: auto;
+      object-fit: contain;
+    }
+
+    .hps__tab[data-tab="book"] img {
+      height: clamp(150px, 20vw, 250px);
     }
 
     .hps__panel-frame.is-active {
@@ -378,6 +481,19 @@
     .hps__panel-frame-left {
       width: 50%;
       flex-shrink: 0;
+    }
+
+    .hps__panel-frame-stamp {
+      display: block;
+    }
+
+    .hps__panel-frame-bottom {
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .hps__panel-frame-secondary {
+      width: 120%;
     }
 
     .hps__panel-frame-text {
@@ -395,21 +511,59 @@
       display: flex !important;
       flex-direction: row;
       gap: 2rem;
+      max-height: 350px;
     }
 
-    .hps__panel-book-images {
-      width: 50%;
+    .hps__panel-book-img-main {
+      width: 47%;
       flex-shrink: 0;
+      overflow: hidden;
     }
 
     .hps__panel-book-right {
       width: 50%;
       flex-shrink: 0;
-      padding: 1.5rem 0 1.5rem 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 200px auto;
+      gap: 0.5rem;
+    }
+
+    .hps__panel-book-img-secondary {
+      grid-row: 1;
+      grid-column: 1;
+      max-width: 150px;
+      max-height: 200px;
+      overflow: hidden;
+    }
+
+    .hps__panel-book-right .hps__panel-frame-stamp {
+      grid-row: 2;
+      grid-column: 1;
+      width: 120px;
+      height: 120px;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+      justify-self: center;
+    }
+
+    .hps__panel-book-right .hps__panel-frame-stamp svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: #DFBE71;
+      animation: hpsStampRotate 20s infinite linear;
     }
 
     .hps__panel-book-content {
-      padding-right: 4rem;
+      grid-row: 1 / -1;
+      grid-column: 2;
+      padding: 0 0 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
   }
 
@@ -424,7 +578,17 @@
     }
 
     .hps__tab {
-      width: 320px;
+      width: auto;
+    }
+
+    .hps__tab img {
+      height: clamp(150px, 18vw, 230px);
+      width: auto;
+      object-fit: contain;
+    }
+
+    .hps__tab[data-tab="book"] img {
+      height: clamp(180px, 22vw, 290px);
     }
 
     .hps__panel-frame-text {
@@ -432,8 +596,13 @@
       max-width: 33%;
     }
 
+    .hps__panel-book-right .hps__panel-frame-stamp {
+      width: 120px;
+      height: 120px;
+    }
+
     .hps__panel-book-content {
-      padding-right: 2rem;
+      padding: 0 0 0 2rem;
     }
   }
 </style>
@@ -537,8 +706,17 @@
             {%- endif -%}
           </div>
           <div class="hps__panel-frame-bottom">
-            <div class="hps__panel-frame-secondary">
+            <div class="hps__panel-frame-secondary hps__desktop-only">
               {%- if section.settings.frame_secondary_image != blank -%}
+                <img src="{{ section.settings.frame_secondary_image | image_url: width: 400 }}" alt="Détail œuvre" loading="lazy">
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endif -%}
+            </div>
+            <div class="hps__panel-frame-secondary hps__mobile-only">
+              {%- if section.settings.frame_secondary_image_mobile != blank -%}
+                <img src="{{ section.settings.frame_secondary_image_mobile | image_url: width: 600 }}" alt="Détail œuvre" loading="lazy">
+              {%- elsif section.settings.frame_secondary_image != blank -%}
                 <img src="{{ section.settings.frame_secondary_image | image_url: width: 400 }}" alt="Détail œuvre" loading="lazy">
               {%- else -%}
                 {{ 'image' | placeholder_svg_tag }}
@@ -567,23 +745,31 @@
 
       <!-- Panel: Book -->
       <div class="hps__panel hps__panel-book" data-panel="book">
-        <div class="hps__panel-book-images">
-          <div class="hps__panel-book-img">
-            {%- if section.settings.book_image_1 != blank -%}
-              <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
-            {%- else -%}
-              {{ 'image' | placeholder_svg_tag }}
-            {%- endif -%}
-          </div>
-          <div class="hps__panel-book-img">
+        <div class="hps__panel-book-img-main">
+          {%- if section.settings.book_image_1 != blank -%}
+            <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        <div class="hps__panel-book-right">
+          <div class="hps__panel-book-img-secondary">
             {%- if section.settings.book_image_2 != blank -%}
               <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
             {%- else -%}
               {{ 'image' | placeholder_svg_tag }}
             {%- endif -%}
           </div>
-        </div>
-        <div class="hps__panel-book-right">
+          <div class="hps__panel-frame-stamp">
+            <svg viewBox="0 0 500 500">
+              <defs>
+                <path id="hps-textcircle-book" d="M 100,250 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"/>
+              </defs>
+              <text dy="0" dx="0">
+                <textPath xlink:href="#hps-textcircle-book">· ASTROGALLERY · ASTROGALLERY · ASTROGALLERY</textPath>
+              </text>
+            </svg>
+          </div>
           <div class="hps__panel-book-content">
             {%- if section.settings.book_title != blank -%}
               <h3 class="hps__panel-book-title">{{ section.settings.book_title }}</h3>
@@ -591,18 +777,6 @@
             {%- if section.settings.book_desc != blank -%}
               <p class="hps__panel-book-desc">{{ section.settings.book_desc }}</p>
             {%- endif -%}
-          </div>
-          <div class="hps__panel-book-bottom">
-            <div class="hps__panel-frame-stamp">
-              <svg viewBox="0 0 500 500">
-                <defs>
-                  <path id="hps-textcircle-book" d="M 100,250 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"/>
-                </defs>
-                <text dy="0" dx="0">
-                  <textPath xlink:href="#hps-textcircle-book">· ASTROGALLERY · ASTROGALLERY · ASTROGALLERY</textPath>
-                </text>
-              </svg>
-            </div>
             {%- if section.settings.book_made_in != blank -%}
               <p class="hps__panel-made-in">
                 {{ section.settings.book_made_in }}
@@ -775,6 +949,11 @@
       "type": "image_picker",
       "id": "frame_secondary_image",
       "label": "Image secondaire (détail cadre)"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_secondary_image_mobile",
+      "label": "Image secondaire mobile (détail cadre)"
     },
     {
       "type": "header",
