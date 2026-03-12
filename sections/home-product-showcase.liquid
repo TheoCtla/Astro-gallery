@@ -361,6 +361,38 @@
     margin: 0;
   }
 
+  /* ===== Panel separator (mobile) ===== */
+  .hps__panel-separator {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .hps__panel-separator-line {
+    position: absolute;
+    top: 50%;
+    left: -1.5rem;
+    right: -1.5rem;
+    height: 1px;
+    background-color: #D6D1CE;
+  }
+
+  .hps__panel-separator-icon {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    padding: 0 0.5rem;
+  }
+
+  .hps__panel-separator-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+  }
+
   /* ===== CTA ===== */
   .hps__cta {
     margin-top: 2.5rem;
@@ -369,6 +401,15 @@
 
   /* ===== Responsive — Mobile (<750px) ===== */
   @media (max-width: 749px) {
+    .hps__body {
+      border: 1px solid #D6D1CE;
+      padding: 1.5rem;
+    }
+
+    .hps__panels {
+      overflow: visible;
+    }
+
     .hps__tab[data-tab="book"] {
       display: none;
     }
@@ -393,12 +434,70 @@
     }
 
     .hps__panel-book {
-      display: none !important;
+      display: flex !important;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .hps__panel-book-right {
+      display: contents;
+    }
+
+    .hps__panel-book-img-secondary {
+      display: none;
+    }
+
+    .hps__panel-book-img-secondary img {
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .hps__panel-book-content {
+      order: 2;
+      padding: 0 1rem 1rem;
+    }
+
+    .hps__panel-book-img-main {
+      order: 3;
+      width: 100%;
+      height: 215px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .hps__panel-book-img-main img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hps__panel-book-img-bottom {
+      order: 5;
+      width: 100%;
+      height: 215px;
+      overflow: hidden;
+    }
+
+    .hps__panel-book-img-bottom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hps__panel-book-right .hps__panel-frame-stamp {
+      display: block;
+      position: absolute;
+      right: 1rem;
+      z-index: 2;
+      width: 120px;
+      height: 120px;
+      order: 4;
     }
 
     .hps__panel-frame.is-active {
       position: relative;
     }
+
 
     .hps__panel-frame-left {
       display: contents;
@@ -636,6 +735,9 @@
       </p>
     {%- endif -%}
 
+    <!-- Body (tabs + panels + CTA) -->
+    <div class="hps__body">
+
     <!-- Tabs -->
     <div class="hps__tabs">
       <button class="hps__tab is-active" data-tab="frame" aria-label="Voir le cadre">
@@ -743,6 +845,16 @@
         </div>
       </div>
 
+      <!-- Separator between panels (mobile only) -->
+      <div class="hps__panel-separator hps__mobile-only">
+        <div class="hps__panel-separator-line"></div>
+        {%- if section.settings.separator_image != blank -%}
+          <div class="hps__panel-separator-icon">
+            <img src="{{ section.settings.separator_image | image_url: width: 120 }}" alt="" loading="lazy">
+          </div>
+        {%- endif -%}
+      </div>
+
       <!-- Panel: Book -->
       <div class="hps__panel hps__panel-book" data-panel="book">
         <div class="hps__panel-book-img-main">
@@ -790,6 +902,11 @@
             {%- endif -%}
           </div>
         </div>
+        <div class="hps__panel-book-img-bottom hps__mobile-only">
+          {%- if section.settings.book_image_2 != blank -%}
+            <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
+          {%- endif -%}
+        </div>
       </div>
 
     </div>
@@ -803,6 +920,7 @@
       </div>
     {%- endif -%}
 
+    </div><!-- .hps__body -->
   </div>
 </section>
 
@@ -954,6 +1072,15 @@
       "type": "image_picker",
       "id": "frame_secondary_image_mobile",
       "label": "Image secondaire mobile (détail cadre)"
+    },
+    {
+      "type": "header",
+      "content": "Séparateur mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "separator_image",
+      "label": "Icône séparateur (mobile)"
     },
     {
       "type": "header",
