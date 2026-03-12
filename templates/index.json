@@ -50,7 +50,49 @@
     },
     "home-video": {
       "type": "home-video",
-      "settings": {}
+      "settings": {
+        "cover_alt": "Vidéo AstroGallery"
+      }
+    },
+    "collapsible_content_gBGENa": {
+      "type": "collapsible-content",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "VOS INFORMATIONS DE NAISSANCE",
+            "description": "<p>partagez vos informations de naissance : prénom, Nom, lieu, date et heure de naissance..<br/>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "ANALYSE & INTERPRÉTATION",
+            "description": "<p>à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence.\\u003cbr\\u003eCette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "CRÉATION & LIVRAISON",
+            "description": "<p>votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "name": "t:sections.collapsible-content.name",
+      "settings": {
+        "heading": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE",
+        "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
+        "button_label_1": "CRÉER MON ŒUVRE SOLO",
+        "button_link_1": "/products/solo",
+        "button_label_2": "CRÉER MON ŒUVRE DUO",
+        "button_link_2": "/products/oeuvre-astrale-duo"
+      }
     },
     "home_about_intro": {
       "type": "about-intro",
@@ -80,6 +122,7 @@
         "paragraph_3"
       ],
       "settings": {
+        "video": "shopify://files/videos/Réel 3 Interviews Caroline .mov",
         "cover_image": "shopify://shop_images/Property_1_Variant2.png",
         "heading": "UNE FONDATRICE PASSIONNÉE D'ASTROLOGIE SIDÉRALE ET DE DESIGN.",
         "italic_text": "AstroGallery est née de la vision de CAROLINE ROBIN, astrologue et créatrice.",
@@ -181,46 +224,6 @@
       "settings": {
         "color_scheme": "background-1",
         "full_width": true
-      }
-    },
-    "collapsible_content_gBGENa": {
-      "type": "collapsible-content",
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "VOS INFORMATIONS DE NAISSANCE",
-            "description": "<p>partagez vos informations de naissance : prénom, Nom, lieu, date et heure de naissance..<br/>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "ANALYSE & INTERPRÉTATION",
-            "description": "<p>à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence.\\u003cbr\\u003eCette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "CRÉATION & LIVRAISON",
-            "description": "<p>votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ],
-      "name": "t:sections.collapsible-content.name",
-      "settings": {
-        "heading": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE",
-        "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
-        "button_label_1": "CRÉER MON ŒUVRE SOLO",
-        "button_link_1": "/products/solo",
-        "button_label_2": "CRÉER MON ŒUVRE DUO",
-        "button_link_2": "/products/oeuvre-astrale-duo"
       }
     },
     "custom_liquid_4VFpNt": {
