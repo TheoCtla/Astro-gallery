@@ -48,8 +48,8 @@
   }
 
   .hps__flag {
-    width: 20px;
-    height: auto;
+    width: 30px;
+    height: 4px;
     display: inline-block;
   }
 
@@ -160,6 +160,7 @@
     display: block;
   }
 
+
   @keyframes hpsFadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -167,9 +168,9 @@
 
   /* --- Panel: Frame --- */
   .hps__panel-frame {
-    background-color: #FFFFFF;
     display: none;
     text-align: left;
+    position: relative;
   }
 
   .hps__panel-frame.is-active {
@@ -178,13 +179,11 @@
   }
 
   .hps__panel-frame-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: contents;
   }
 
   .hps__panel-frame-text {
-    padding: 2rem 1.5rem 0;
+    padding: 1.5rem;
   }
 
   .hps__panel-frame-title {
@@ -198,8 +197,8 @@
 
   .hps__panel-frame-desc {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 600;
     line-height: 170%;
     color: #1D1D1B;
     margin: 0 0 0.5rem 0;
@@ -207,48 +206,60 @@
 
   .hps__panel-frame-details {
     font-family: 'Poppins', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 400;
     line-height: 170%;
-    color: rgba(29, 29, 27, 0.5);
-    margin: 0 0 1rem 0;
+    color: #1D1D1B;
+    margin: 0 0 0.8rem 0;
   }
 
-  .hps__panel-frame-extra {
+  .hps__panel-made-in {
     display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #1D1D1B;
+    margin: 0;
+  }
+
+  .hps__panel-made-in .hps__flag {
+    width: 30px;
+    height: 4px;
+  }
+
+  .hps__panel-frame-bottom {
+    display: flex;
+    flex-direction: column;
     align-items: flex-end;
     gap: 1rem;
-    padding: 0 1.5rem 1.5rem;
   }
 
   .hps__panel-frame-secondary {
-    width: 140px;
-    height: 145px;
-    flex-shrink: 0;
     overflow: hidden;
+    width: 120%;
   }
 
   .hps__panel-frame-secondary img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
   }
 
   .hps__panel-frame-stamp {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     position: relative;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .hps__panel-frame-stamp svg {
     width: 100%;
     height: 100%;
-    position: absolute;
-    inset: 0;
+    display: block;
     fill: #DFBE71;
-    transform-origin: 50% 50%;
     animation: hpsStampRotate 20s infinite linear;
   }
 
@@ -278,20 +289,6 @@
     display: block;
   }
 
-  .hps__panel-made-in {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: #DFBE71;
-  }
-
-  .hps__panel-made-in .hps__flag {
-    width: 20px;
-  }
-
   /* --- Panel: Book --- */
   .hps__panel-book {
     display: none;
@@ -304,20 +301,27 @@
   }
 
   .hps__panel-book-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 0;
   }
 
-  .hps__panel-book-images img {
+  .hps__panel-book-img {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .hps__panel-book-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
+  .hps__panel-book-right {
+    padding: 1.5rem;
+  }
+
   .hps__panel-book-content {
-    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -341,15 +345,12 @@
     margin: 0;
   }
 
-  .hps__panel-book-badge {
-    width: 80px;
-    height: 80px;
-  }
-
-  .hps__panel-book-badge img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .hps__panel-book-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
 
   /* ===== CTA ===== */
@@ -369,58 +370,46 @@
     }
 
     .hps__panel-frame.is-active {
+      display: flex !important;
       flex-direction: row;
-      align-items: stretch;
+      gap: 2rem;
     }
 
     .hps__panel-frame-left {
-      flex: 0.8;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      width: 50%;
+      flex-shrink: 0;
     }
 
     .hps__panel-frame-text {
-      padding: 2.5rem 2.5rem 0;
-    }
-
-    .hps__panel-frame-extra {
-      padding: 0 2.5rem 2.5rem;
-    }
-
-    .hps__panel-frame-secondary {
-      width: 170px;
-      height: 175px;
-    }
-
-    .hps__panel-frame-stamp {
-      width: 90px;
-      height: 90px;
+      padding: 1.5rem 4rem 1rem 0;
     }
 
     .hps__panel-frame-image {
-      flex: 1.2;
+      width: 50%;
+      flex-shrink: 0;
       aspect-ratio: auto;
+      min-height: 300px;
     }
 
     .hps__panel-book.is-active {
+      display: flex !important;
       flex-direction: row;
-      align-items: center;
+      gap: 2rem;
     }
 
     .hps__panel-book-images {
-      flex: 1;
-      grid-template-columns: 1.2fr 0.8fr;
+      width: 50%;
+      flex-shrink: 0;
+    }
+
+    .hps__panel-book-right {
+      width: 50%;
+      flex-shrink: 0;
+      padding: 1.5rem 0 1.5rem 0;
     }
 
     .hps__panel-book-content {
-      flex: 1;
-      padding: 2.5rem;
-    }
-
-    .hps__panel-book-badge {
-      width: 100px;
-      height: 100px;
+      padding-right: 4rem;
     }
   }
 
@@ -439,30 +428,12 @@
     }
 
     .hps__panel-frame-text {
-      padding: 3rem 3rem 0;
-    }
-
-    .hps__panel-frame-extra {
-      padding: 0 3rem 3rem;
-    }
-
-    .hps__panel-frame-secondary {
-      width: 200px;
-      height: 205px;
-    }
-
-    .hps__panel-frame-stamp {
-      width: 100px;
-      height: 100px;
+      padding: 1.5rem 2rem 1rem 0;
+      max-width: 33%;
     }
 
     .hps__panel-book-content {
-      padding: 3rem;
-    }
-
-    .hps__panel-book-badge {
-      width: 120px;
-      height: 120px;
+      padding-right: 2rem;
     }
   }
 </style>
@@ -554,7 +525,7 @@
               <p class="hps__panel-frame-details">{{ section.settings.frame_details }}</p>
             {%- endif -%}
             {%- if section.settings.frame_made_in != blank -%}
-              <p class="hps__panel-made-in" style="color: #DFBE71;">
+              <p class="hps__panel-made-in">
                 {{ section.settings.frame_made_in }}
                 {%- if section.settings.flag_icon_1 != blank -%}
                   <img class="hps__flag" src="{{ section.settings.flag_icon_1 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
@@ -565,12 +536,14 @@
               </p>
             {%- endif -%}
           </div>
-          <div class="hps__panel-frame-extra">
-            {%- if section.settings.frame_secondary_image != blank -%}
-              <div class="hps__panel-frame-secondary">
+          <div class="hps__panel-frame-bottom">
+            <div class="hps__panel-frame-secondary">
+              {%- if section.settings.frame_secondary_image != blank -%}
                 <img src="{{ section.settings.frame_secondary_image | image_url: width: 400 }}" alt="Détail œuvre" loading="lazy">
-              </div>
-            {%- endif -%}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endif -%}
+            </div>
             <div class="hps__panel-frame-stamp">
               <svg viewBox="0 0 500 500">
                 <defs>
@@ -595,40 +568,53 @@
       <!-- Panel: Book -->
       <div class="hps__panel hps__panel-book" data-panel="book">
         <div class="hps__panel-book-images">
-          {%- if section.settings.book_image_1 != blank -%}
-            <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
-          {%- else -%}
-            {{ 'image' | placeholder_svg_tag }}
-          {%- endif -%}
-          {%- if section.settings.book_image_2 != blank -%}
-            <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
-          {%- else -%}
-            {{ 'image' | placeholder_svg_tag }}
-          {%- endif -%}
+          <div class="hps__panel-book-img">
+            {%- if section.settings.book_image_1 != blank -%}
+              <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag }}
+            {%- endif -%}
+          </div>
+          <div class="hps__panel-book-img">
+            {%- if section.settings.book_image_2 != blank -%}
+              <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag }}
+            {%- endif -%}
+          </div>
         </div>
-        <div class="hps__panel-book-content">
-          {%- if section.settings.book_title != blank -%}
-            <h3 class="hps__panel-book-title">{{ section.settings.book_title }}</h3>
-          {%- endif -%}
-          {%- if section.settings.book_desc != blank -%}
-            <p class="hps__panel-book-desc">{{ section.settings.book_desc }}</p>
-          {%- endif -%}
-          {%- if section.settings.book_badge != blank -%}
-            <div class="hps__panel-book-badge">
-              <img src="{{ section.settings.book_badge | image_url: width: 240 }}" alt="Badge AstroGallery" loading="lazy">
+        <div class="hps__panel-book-right">
+          <div class="hps__panel-book-content">
+            {%- if section.settings.book_title != blank -%}
+              <h3 class="hps__panel-book-title">{{ section.settings.book_title }}</h3>
+            {%- endif -%}
+            {%- if section.settings.book_desc != blank -%}
+              <p class="hps__panel-book-desc">{{ section.settings.book_desc }}</p>
+            {%- endif -%}
+          </div>
+          <div class="hps__panel-book-bottom">
+            <div class="hps__panel-frame-stamp">
+              <svg viewBox="0 0 500 500">
+                <defs>
+                  <path id="hps-textcircle-book" d="M 100,250 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"/>
+                </defs>
+                <text dy="0" dx="0">
+                  <textPath xlink:href="#hps-textcircle-book">· ASTROGALLERY · ASTROGALLERY · ASTROGALLERY</textPath>
+                </text>
+              </svg>
             </div>
-          {%- endif -%}
-          {%- if section.settings.book_made_in != blank -%}
-            <p class="hps__panel-made-in" style="color: #1D1D1B;">
-              {{ section.settings.book_made_in }}
-              {%- if section.settings.flag_icon_1 != blank -%}
-                <img class="hps__flag" src="{{ section.settings.flag_icon_1 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
-              {%- endif -%}
-              {%- if section.settings.flag_icon_2 != blank -%}
-                <img class="hps__flag" src="{{ section.settings.flag_icon_2 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
-              {%- endif -%}
-            </p>
-          {%- endif -%}
+            {%- if section.settings.book_made_in != blank -%}
+              <p class="hps__panel-made-in">
+                {{ section.settings.book_made_in }}
+                {%- if section.settings.flag_icon_1 != blank -%}
+                  <img class="hps__flag" src="{{ section.settings.flag_icon_1 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+                {%- endif -%}
+                {%- if section.settings.flag_icon_2 != blank -%}
+                  <img class="hps__flag" src="{{ section.settings.flag_icon_2 | image_url: width: 40 }}" alt="Drapeau" loading="lazy">
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+          </div>
         </div>
       </div>
 
@@ -772,7 +758,7 @@
       "type": "textarea",
       "id": "frame_details",
       "label": "Détails cadre",
-      "default": "Aluminium · Support : Alu Dibond Mat · Cadre : Américaine Bois Noir · Certificat d'authenticité inclus"
+      "default": "Numérotée · Support Alu Dibond Mat · Caisse Américaine Bois Noir · Certificat d'authenticité inclus"
     },
     {
       "type": "text",
@@ -821,11 +807,6 @@
       "type": "image_picker",
       "id": "book_image_2",
       "label": "Image livre 2 (couverture)"
-    },
-    {
-      "type": "image_picker",
-      "id": "book_badge",
-      "label": "Badge circulaire"
     },
     {
       "type": "header",
