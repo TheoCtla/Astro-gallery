@@ -122,14 +122,15 @@
         "paragraph_3"
       ],
       "settings": {
-        "video": "shopify://files/videos/Réel 3 Interviews Caroline .mov",
         "cover_image": "shopify://shop_images/Property_1_Variant2.png",
         "heading": "UNE FONDATRICE PASSIONNÉE D'ASTROLOGIE SIDÉRALE ET DE DESIGN.",
         "italic_text": "AstroGallery est née de la vision de CAROLINE ROBIN, astrologue et créatrice.",
         "intro_text": "",
         "origin_title": "",
         "signature_name": "",
-        "signature_role": ""
+        "signature_role": "",
+        "button_label": "EN SAVOIR PLUS",
+        "button_link": "/pages/a-propos"
       }
     },
     "video": {
