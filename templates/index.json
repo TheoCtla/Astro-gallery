@@ -9,32 +9,6 @@
  */
 {
   "sections": {
-    "image_banner_x9hiPN": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "title": "<h2>Votre thème astral est unique. </h2><h4>Nous le transformons en œuvre d’art.</h4>",
-        "sub_title": "",
-        "text_information": "",
-        "text_order": "colum",
-        "text_align": "left",
-        "show_view_all": false,
-        "button_label": "En savoir plus",
-        "button_style": "inverse",
-        "button_link": "shopify://products/solo",
-        "image": "shopify://shop_images/c11fec43d680226e2f370835aac81a22adee9cd0.jpg",
-        "image_position": "overlay",
-        "image_ratio": "adapt",
-        "image_link": "",
-        "round_stamp_enable": true,
-        "round_stamp_text": "",
-        "round_stamp_width": 140,
-        "round_stamp_size": 50,
-        "round_stamp_letter_spacing": 8,
-        "border_top": false,
-        "border_bottom": false
-      }
-    },
     "video": {
       "type": "video",
       "disabled": true,
@@ -237,7 +211,7 @@
             "image": "shopify://shop_images/header.jpg",
             "tab_description": "Collection Offrir",
             "title": "Offrez une œuvre unique",
-            "text": "\u003cp\u003e\u003cstrong\u003eUn cadeau intemporel pour des occasions\u003cbr\u003e exceptionnelles : Mariage, Anniversaire,\u003cbr\u003eBaptême, Naissance, ...\u003c/strong\u003e\u003c/p\u003e",
+            "text": "<p><strong>Un cadeau intemporel pour des occasions<br> exceptionnelles : Mariage, Anniversaire,<br>Baptême, Naissance, ...</strong></p>",
             "link": "/pages/offrir",
             "button_label": "Offrir une œuvre astrale",
             "card_active": false
@@ -422,10 +396,21 @@
         "border_top": false,
         "border_bottom": false
       }
+    },
+    "home-hero": {
+      "type": "home-hero",
+      "settings": {
+        "title": "VOTRE THÈME ASTRAL",
+        "title_highlight": "UNIQUE",
+        "subtitle": "Nous le transformons en œuvre d'art.",
+        "button_label": "DÉCOUVRIR L'ŒUVRE",
+        "button_link": "/products/solo",
+        "title_line2": "EST"
+      }
     }
   },
   "order": [
-    "image_banner_x9hiPN",
+    "home-hero",
     "video",
     "1643119147249c160b",
     "rich_text_fHUQzJ",

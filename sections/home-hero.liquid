@@ -1,0 +1,156 @@
+<style>
+  .home-hero {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - var(--header-height, 80px));
+    background-color: #1D1D1B;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+  }
+
+  .home-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .home-hero__title {
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 60px);
+    line-height: 120%;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin: 0 0 0.3rem 0;
+  }
+
+  .home-hero__title-highlight {
+    color: #DFBE71;
+  }
+
+  .home-hero__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 32px);
+    color: #FFFFFF;
+    line-height: 150%;
+    letter-spacing: 0;
+    margin: 0 0 1.5rem 0;
+  }
+
+  /* ===== Responsive — Tablet (750px) ===== */
+  @media (min-width: 750px) {
+    .home-hero__content {
+      padding: 4rem 2rem;
+    }
+  }
+
+  /* ===== Responsive — Desktop (990px) ===== */
+  @media (min-width: 990px) {
+    .home-hero__content {
+      padding: 5rem 3rem;
+    }
+  }
+</style>
+
+<section
+  class="home-hero"
+  {% if section.settings.background_image != blank %}
+    style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
+  {% endif %}
+>
+  <div class="home-hero__content">
+    {%- if section.settings.title != blank -%}
+      <h1 class="home-hero__title">
+        {{ section.settings.title }}<br>
+        {%- if section.settings.title_line2 != blank -%}
+          {{ section.settings.title_line2 }}
+        {%- endif -%}
+        {%- if section.settings.title_highlight != blank -%}
+          <span class="home-hero__title-highlight">{{ section.settings.title_highlight }}</span>
+        {%- endif -%}
+      </h1>
+    {%- endif -%}
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="home-hero__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link }}" class="btn-gold">
+        <span class="btn-gold__text">{{ section.settings.button_label }}</span>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Homepage",
+  "tag": "section",
+  "class": "home-hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (ligne 1)",
+      "default": "VOTRE THÈME ASTRAL"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Titre (ligne 2, avant le mot doré)",
+      "default": "EST"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Mot en doré (ligne 2)",
+      "default": "UNIQUE"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre (italique)",
+      "default": "Nous le transformons en œuvre d'art."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "DÉCOUVRIR L'ŒUVRE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Homepage"
+    }
+  ]
+}
+{% endschema %}
