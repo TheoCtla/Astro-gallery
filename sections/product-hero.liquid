@@ -159,12 +159,12 @@
 
   .ph-hero__form-group--with-checkbox {
     display: flex;
-    align-items: flex-end;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .ph-hero__form-group--with-checkbox .ph-hero__form-field {
-    flex: 0 0 55%;
+    width: 100%;
   }
 
   .ph-hero__form-label {
@@ -379,7 +379,7 @@
   .ph-hero__badges {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 0.5rem 1.5rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
   }
@@ -389,9 +389,10 @@
     align-items: center;
     gap: 0.4rem;
     font-family: 'Poppins', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     color: #888;
     font-style: italic;
+    white-space: nowrap;
   }
 
   .ph-hero__badge-icon-img {
@@ -415,6 +416,17 @@
       flex-direction: row;
     }
 
+    .ph-hero__form-group--with-checkbox {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .ph-hero__form-group--with-checkbox .ph-hero__form-field {
+      flex: 0 0 55%;
+      width: auto;
+    }
+
     .ph-hero__buttons {
       flex-direction: row;
     }
@@ -435,6 +447,7 @@
 
     .ph-hero__gallery {
       width: 50%;
+      min-width: 0;
       flex-shrink: 0;
       position: sticky;
       top: 3rem;
@@ -442,6 +455,13 @@
 
     .ph-hero__info {
       width: 50%;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .ph-hero__badges {
+      justify-content: space-between;
+      flex-wrap: nowrap;
     }
   }
 </style>
