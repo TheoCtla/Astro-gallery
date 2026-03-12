@@ -48,6 +48,47 @@
         "button_link": "/products/solo"
       }
     },
+    "home-video": {
+      "type": "home-video",
+      "settings": {}
+    },
+    "home_about_intro": {
+      "type": "about-intro",
+      "blocks": {
+        "paragraph_1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Après des années de pratique de l'astrologie sidérale, elle constate qu'il manque souvent un support concret et beau pour prolonger la lecture du thème astral.</p>"
+          }
+        },
+        "paragraph_2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>C'est ainsi qu'elle imagine ASTROGALLERY, un projet qui fait dialoguer l'art et les étoiles, pour donner forme et beauté à ce savoir millénaire.</p>"
+          }
+        },
+        "paragraph_3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>À travers ses œuvres, Caroline souhaite rendre l'astrologie authentique, esthétique et émotionnelle en offrant à chacun une création qui lui ressemble vraiment.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_1",
+        "paragraph_2",
+        "paragraph_3"
+      ],
+      "settings": {
+        "cover_image": "shopify://shop_images/Property_1_Variant2.png",
+        "heading": "UNE FONDATRICE PASSIONNÉE D'ASTROLOGIE SIDÉRALE ET DE DESIGN.",
+        "italic_text": "AstroGallery est née de la vision de CAROLINE ROBIN, astrologue et créatrice.",
+        "intro_text": "",
+        "origin_title": "",
+        "signature_name": "",
+        "signature_role": ""
+      }
+    },
     "video": {
       "type": "video",
       "disabled": true,
@@ -440,10 +481,12 @@
   "order": [
     "home-hero",
     "home-product-showcase",
+    "home-video",
+    "collapsible_content_gBGENa",
+    "home_about_intro",
     "video",
     "1643119147249c160b",
     "rich_text_fHUQzJ",
-    "collapsible_content_gBGENa",
     "custom_liquid_4VFpNt",
     "rich_text_gJyQFN",
     "gallery_with_text_g6djTM",
