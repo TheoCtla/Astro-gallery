@@ -212,10 +212,10 @@
         "button_link": "/pages/journal-astral"
       }
     },
-    "1773412344d4086dbf": {
-      "type": "apps",
+    "home_instagram": {
+      "type": "home-instagram",
       "blocks": {
-        "instafeed_app_block_BbDnRa": {
+        "instafeed_app_block_KDCfwF": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "title": "",
@@ -235,10 +235,11 @@
         }
       },
       "block_order": [
-        "instafeed_app_block_BbDnRa"
+        "instafeed_app_block_KDCfwF"
       ],
       "settings": {
-        "include_margins": true
+        "button_label": "VOIR TOUS LES POSTS INSTA",
+        "button_link": "https://www.instagram.com/astro__gallery/"
       }
     }
   },
@@ -250,6 +251,6 @@
     "home_about_intro",
     "1643189486a59c259f",
     "home_articles",
-    "1773412344d4086dbf"
+    "home_instagram"
   ]
 }

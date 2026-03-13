@@ -37,7 +37,7 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
-            "text": "Livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
+            "text": "Elle est accompagnée de son livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
           }
         },
         "feature-5": {
@@ -243,7 +243,6 @@
         "slide-5"
       ],
       "settings": {
-        "trustpilot_link": "",
         "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
