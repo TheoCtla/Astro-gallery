@@ -14,7 +14,7 @@
 
   .video-cta__video-wrap {
     position: relative;
-    width: 100%;
+    width: 200px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
   }
@@ -106,10 +106,12 @@
   .video-cta__title {
     font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
     font-weight: 400;
-    font-size: clamp(20px, 3.5vw, 26px);
+    font-size: 22px;
+    font-style: normal;
     line-height: 150%;
     letter-spacing: -0.5px;
-    color: #1D1D1B;
+    color: var(--Noir-2, #1D1D1B);
+    text-align: center;
     text-transform: uppercase;
     margin: 0 0 0.5rem 0;
   }
@@ -121,17 +123,18 @@
   .video-cta__subtitle {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: clamp(16px, 2.5vw, 22px);
-    color: #1D1D1B;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--Noir-2, #1D1D1B);
+    text-align: center;
     line-height: 150%;
-    letter-spacing: 0;
     margin: 0 0 2rem 0;
   }
 
   /* ===== Responsive — Tablet (750px) ===== */
   @media (min-width: 750px) {
     .video-cta {
-      padding: 4rem 2rem;
+      padding: 80px 2rem;
     }
 
     .video-cta__container {
@@ -150,16 +153,32 @@
     .video-cta__content {
       text-align: center;
     }
+
+    .video-cta__title {
+      font-size: 28px;
+    }
+
+    .video-cta__subtitle {
+      font-size: 26px;
+    }
   }
 
   /* ===== Responsive — Desktop (990px) ===== */
   @media (min-width: 990px) {
     .video-cta {
-      padding: 5rem 3rem;
+      padding: 80px 3rem;
     }
 
     .video-cta__container {
       gap: 4rem;
+    }
+
+    .video-cta__title {
+      font-size: 35px;
+    }
+
+    .video-cta__subtitle {
+      font-size: 32px;
     }
   }
 </style>

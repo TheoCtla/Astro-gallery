@@ -1,6 +1,6 @@
 {% assign template_base = template | split: '.' | first %}
 
-{% unless template == 'index' or template_base == 'article' %}
+{% unless template == 'index' or template_base == 'article' or template_base == 'product' %}
   <div class="container">
     <nav class="breadcrumb{% unless template_base == 'product' %} breadcrumb--center {% endunless %}" role="navigation" aria-label="breadcrumbs">
   <a href="{{ routes.root_url }}" title="Home">Home</a>
