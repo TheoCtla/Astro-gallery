@@ -89,7 +89,7 @@
       "settings": {
         "heading": "DE VOTRE CIEL DE NAISSANCE À VOTRE ŒUVRE ASTRALE",
         "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
-        "button_label_1": "CRÉER MON ŒUVRE SOLO",
+        "button_label_1": "CRÉER MON ŒUVRE",
         "button_link_1": "/products/solo",
         "button_label_2": "",
         "button_link_2": ""
@@ -212,8 +212,8 @@
         "button_link": "/pages/journal-astral"
       }
     },
-    "17733889787661199d": {
-      "type": "apps",
+    "home_instagram": {
+      "type": "home-instagram",
       "blocks": {
         "instafeed_app_block_KDCfwF": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
@@ -238,7 +238,8 @@
         "instafeed_app_block_KDCfwF"
       ],
       "settings": {
-        "include_margins": true
+        "button_label": "VOIR TOUS LES POSTS INSTA",
+        "button_link": "https://www.instagram.com/astro__gallery/"
       }
     }
   },
@@ -250,6 +251,6 @@
     "home_about_intro",
     "1643189486a59c259f",
     "home_articles",
-    "17733889787661199d"
+    "home_instagram"
   ]
 }

@@ -1,0 +1,152 @@
+<style>
+  .home-instagram {
+    position: relative;
+    padding: 0 1rem 3rem;
+    overflow: hidden;
+  }
+
+  .home-instagram__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    object-fit: cover;
+  }
+
+  .home-instagram__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .home-instagram__feed {
+    width: 100%;
+  }
+
+  /* Style the Instafeed app title */
+  .home-instagram__feed h1,
+  .home-instagram__feed h2,
+  .home-instagram__feed [class*="title"] {
+    color: #1D1D1B !important;
+    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    line-height: 150% !important;
+    letter-spacing: -0.5px !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+  }
+
+  /* Contain the feed images */
+  .home-instagram__feed .instafeed-container,
+  .home-instagram__feed [class*="instafeed"] {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .home-instagram__cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  /* Tablet */
+  @media (min-width: 750px) {
+    .home-instagram {
+      padding: 0 2rem 80px;
+    }
+
+    .home-instagram__feed h1,
+    .home-instagram__feed h2,
+    .home-instagram__feed [class*="title"] {
+      font-size: 30px !important;
+    }
+
+    .home-instagram__feed {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 990px) {
+    .home-instagram {
+      padding: 0 3rem 80px;
+    }
+
+    .home-instagram__feed h1,
+    .home-instagram__feed h2,
+    .home-instagram__feed [class*="title"] {
+      font-size: 35px !important;
+    }
+
+    .home-instagram__feed {
+      max-width: 1200px;
+    }
+  }
+</style>
+
+<section class="home-instagram">
+  {% if section.settings.background_image != blank %}
+    <img
+      src="{{ section.settings.background_image | image_url: width: 1920 }}"
+      alt=""
+      class="home-instagram__bg"
+      loading="lazy"
+    >
+  {% endif %}
+
+  <div class="home-instagram__container">
+    <div class="home-instagram__feed">
+      {%- for block in section.blocks -%}
+        {% render block %}
+      {%- endfor -%}
+    </div>
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <div class="home-instagram__cta">
+        <a href="{{ section.settings.button_link }}" class="btn-gold" target="_blank" rel="noopener noreferrer">
+          <span class="btn-gold__text">{{ section.settings.button_label }}</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home - Instagram",
+  "tag": "section",
+  "class": "home-instagram-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "VOIR TOUS LES POSTS INSTA"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home - Instagram"
+    }
+  ]
+}
+{% endschema %}
