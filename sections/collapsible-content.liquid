@@ -35,13 +35,9 @@
 		</div>
 
 		<div class="how-it-works__buttons">
-			{%- if section.settings.button_link_1 != blank -%}
-				<a href="{{ section.settings.button_link_1 }}" class="button how-it-works__button how-it-works__button--left btn-gold">
-					<span class="button__text">{{ section.settings.button_label_1 | escape }}</span>
-				</a>
-			{%- else -%}
-				<a href="#" class="button how-it-works__button how-it-works__button--left btn-gold" aria-disabled="true">
-					<span class="button__text">{{ section.settings.button_label_1 | escape }}</span>
+			{%- if section.settings.button_label_1 != blank -%}
+				<a href="{{ section.settings.button_link_1 | default: '#' }}" class="btn-gold">
+					<span class="btn-gold__text">{{ section.settings.button_label_1 | escape }}</span>
 				</a>
 			{%- endif -%}
 			{%- if section.settings.button_label_2 != blank and section.settings.button_link_2 != blank -%}

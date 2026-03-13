@@ -1,11 +1,22 @@
 /* Section Testimonials - Design Screen2 Pixel Perfect */
 
+.testimonials-section .container {
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
 .testimonials {
   overflow: hidden;
   padding: 3rem 0;
 }
 
 /* Layout 2 colonnes : titre à gauche, slider à droite */
+@media only screen and (min-width: 750px) {
+  .testimonials {
+    padding-bottom: 80px;
+  }
+}
+
 @media only screen and (min-width: 990px) {
   .testimonials {
     display: grid;

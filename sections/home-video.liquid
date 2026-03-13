@@ -1,0 +1,209 @@
+<style>
+  .home-video {
+    background-color: #1a1a1a;
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-video__container {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .home-video__wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 14;
+    border: 1px solid rgba(223, 190, 113, 0.3);
+    overflow: hidden;
+    background: #111;
+  }
+
+  .home-video__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .home-video__wrapper.has-started .home-video__video {
+    display: block;
+  }
+
+  .home-video__wrapper.has-started .home-video__cover {
+    display: none;
+  }
+
+  .home-video__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .home-video__cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.55);
+  }
+
+  .home-video__play-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 68px;
+    height: 68px;
+    border: 1px solid #DFBE71;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+  }
+
+  .home-video__play-btn:hover {
+    transform: translateX(-50%) scale(1.08);
+  }
+
+  .home-video__wrapper.is-playing .home-video__play-btn {
+    display: none;
+  }
+
+  .home-video__wrapper.has-started {
+    cursor: pointer;
+  }
+
+  .home-video__wrapper.has-started.is-paused .home-video__play-btn {
+    display: flex;
+  }
+
+  .home-video__play-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
+  }
+
+  /* Tablet */
+  @media (min-width: 750px) {
+    .home-video {
+      padding: 80px 2rem;
+    }
+
+    .home-video__container {
+      max-width: 900px;
+    }
+
+    .home-video__wrapper {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 990px) {
+    .home-video {
+      padding: 80px 2rem;
+    }
+
+    .home-video__container {
+      max-width: 1200px;
+    }
+  }
+</style>
+
+<div class="home-video">
+  <div class="home-video__container">
+    <div class="home-video__wrapper" id="home-video-wrapper">
+      {% if section.settings.video != blank %}
+        {{ section.settings.video | video_tag:
+          class: 'home-video__video',
+          autoplay: false,
+          loop: true,
+          muted: false,
+          playsinline: true,
+          controls: false,
+          preload: 'auto',
+          id: 'home-video-player'
+        }}
+        <div class="home-video__cover" id="home-video-cover">
+          {% if section.settings.cover_image != blank %}
+            {{ section.settings.cover_image | image_url: width: 1200 | image_tag:
+              class: 'home-video__cover-img',
+              loading: 'lazy',
+              alt: section.settings.cover_alt
+            }}
+          {% endif %}
+          <button class="home-video__play-btn" aria-label="Lire la vidéo">
+            <svg viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="0,0 20,11 0,22" fill="#DFBE71"/>
+            </svg>
+          </button>
+        </div>
+      {% else %}
+        {%- comment -%} Empty frame placeholder when no video is set {%- endcomment -%}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var wrapper = document.getElementById('home-video-wrapper');
+    var video = document.getElementById('home-video-player');
+    if (!video || !wrapper) return;
+
+    wrapper.addEventListener('click', function () {
+      if (!wrapper.classList.contains('has-started') || wrapper.classList.contains('is-paused')) {
+        video.play();
+        wrapper.classList.add('has-started', 'is-playing');
+        wrapper.classList.remove('is-paused');
+      } else if (wrapper.classList.contains('is-playing')) {
+        video.pause();
+        wrapper.classList.remove('is-playing');
+        wrapper.classList.add('is-paused');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Home - Vidéo",
+  "tag": "section",
+  "class": "home-video-section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Vidéo"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Image de couverture"
+    },
+    {
+      "type": "text",
+      "id": "cover_alt",
+      "label": "Texte alternatif image",
+      "default": "Vidéo AstroGallery"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home - Vidéo"
+    }
+  ]
+}
+{% endschema %}

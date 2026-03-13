@@ -351,3 +351,20 @@ sticky-header {
   max-width: 100% !important;
 }
 
+/* Instagram section - remove default spacing */
+.home-instagram-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.home-instagram-section .spaced-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.home-articles-section + .shopify-section,
+.home-articles-section + .home-instagram-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
