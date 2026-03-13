@@ -1,5 +1,13 @@
 {{ 'testimonials.css' | asset_url | stylesheet_tag }}
 
+<style>
+  a.testimonials__slide {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+</style>
+
 <script src='{{ 'testimonials.js' | asset_url }}' defer='defer'></script>
 
 <div class='container'>
@@ -27,7 +35,7 @@
 			<div class='testimonials__slider-wrapper'>
 				<div class='testimonials__slider' dir='ltr'>
 					{%- for block in section.blocks -%}
-						<div
+						<{% if section.settings.trustpilot_link != blank %}a href="{{ section.settings.trustpilot_link }}" target="_blank" rel="noopener noreferrer"{% else %}div{% endif %}
 							class='testimonials__slide'
 							data-slide-index='{{ forloop.index0 }}'
 							{{ block.shopify_attributes }}
@@ -91,7 +99,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</{% if section.settings.trustpilot_link != blank %}a{% else %}div{% endif %}>
 					{%- endfor -%}
 				</div>
 			</div>
@@ -108,6 +116,11 @@
 		"templates": ["*"]
 	},
 	"settings": [
+		{
+			"type": "url",
+			"id": "trustpilot_link",
+			"label": "Lien Trustpilot (rend les avis cliquables)"
+		},
 		{
 			"type": "image_picker",
 			"id": "star_icon",

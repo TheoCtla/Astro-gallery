@@ -90,8 +90,8 @@
         "subtitle": "Trois étapes simples pour transformer votre carte du ciel en œuvre d'art.",
         "button_label_1": "CRÉER MON ŒUVRE SOLO",
         "button_link_1": "/products/solo",
-        "button_label_2": "CRÉER MON ŒUVRE DUO",
-        "button_link_2": "/products/oeuvre-astrale-duo"
+        "button_label_2": "",
+        "button_link_2": ""
       }
     },
     "home_about_intro": {

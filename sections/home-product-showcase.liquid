@@ -1,6 +1,7 @@
 <style>
   .hps {
     padding: 4rem 1.5rem;
+    padding-bottom: 100px;
     background-color: #FFFFFF;
   }
 
@@ -759,12 +760,6 @@
         {%- else -%}
           {{ 'image' | placeholder_svg_tag }}
         {%- endif -%}
-        <span class="hps__tab-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="4"/>
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-          </svg>
-        </span>
       </button>
 
       <button class="hps__tab" data-tab="book" aria-label="Voir le livre">
@@ -773,12 +768,6 @@
         {%- else -%}
           {{ 'image' | placeholder_svg_tag }}
         {%- endif -%}
-        <span class="hps__tab-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <line x1="12" y1="5" x2="12" y2="19"/>
-            <line x1="5" y1="12" x2="19" y2="12"/>
-          </svg>
-        </span>
       </button>
     </div>
 

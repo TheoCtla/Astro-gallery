@@ -12,6 +12,16 @@
     overflow: hidden;
   }
 
+  .home-hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
   .home-hero::before {
     content: '';
     position: absolute;
@@ -71,10 +81,21 @@
 
 <section
   class="home-hero"
-  {% if section.settings.background_image != blank %}
+  {% if section.settings.background_video == blank and section.settings.background_image != blank %}
     style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
   {% endif %}
 >
+  {% if section.settings.background_video != blank %}
+    {{ section.settings.background_video | video_tag:
+      class: 'home-hero__video',
+      autoplay: true,
+      loop: true,
+      muted: true,
+      playsinline: true,
+      controls: false,
+      preload: 'auto'
+    }}
+  {% endif %}
   <div class="home-hero__content">
     {%- if section.settings.title != blank -%}
       <h1 class="home-hero__title">
@@ -107,9 +128,14 @@
   "class": "home-hero-section",
   "settings": [
     {
+      "type": "video",
+      "id": "background_video",
+      "label": "Vidéo de fond (prioritaire sur l'image)"
+    },
+    {
       "type": "image_picker",
       "id": "background_image",
-      "label": "Image de fond"
+      "label": "Image de fond (fallback si pas de vidéo)"
     },
     {
       "type": "text",
