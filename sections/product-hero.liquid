@@ -50,12 +50,69 @@
     aspect-ratio: 1 / 1;
   }
 
+  .ph-hero__gallery-cell {
+    cursor: pointer;
+  }
+
   .ph-hero__gallery-cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
+
+  /* ===== Lightbox ===== */
+  .ph-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .ph-lightbox.is-open {
+    display: flex;
+  }
+
+  .ph-lightbox__img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .ph-lightbox__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.5rem;
+  }
+
+  .ph-lightbox__prev,
+  .ph-lightbox__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 1rem;
+    line-height: 1;
+  }
+
+  .ph-lightbox__prev { left: 1rem; }
+  .ph-lightbox__next { right: 1rem; }
 
   /* ===== Vendor ===== */
   .ph-hero__vendor {
@@ -391,13 +448,17 @@
 
   .ph-hero__badge {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.4rem;
     font-family: 'Poppins', sans-serif;
     font-size: 10px;
+    line-height: 1.4;
     color: #888;
     font-style: italic;
-    white-space: nowrap;
+  }
+
+  .ph-hero__badge-icon-img {
+    margin-top: 1px;
   }
 
   .ph-hero__badge-icon-img {
@@ -464,6 +525,10 @@
       overflow: hidden;
     }
 
+  }
+
+  /* ===== Responsive — Large Desktop (1100px) ===== */
+  @media (min-width: 1100px) {
     .ph-hero__badges {
       justify-content: space-between;
       flex-wrap: nowrap;
@@ -487,7 +552,7 @@
       <div class="ph-hero__gallery-grid">
         {%- for i in (1..4) -%}
           {%- assign image_key = 'gallery_image_' | append: i -%}
-          <div class="ph-hero__gallery-cell">
+          <div class="ph-hero__gallery-cell" data-lightbox-index="{{ forloop.index0 }}">
             {%- if section.settings[image_key] != blank -%}
               <img
                 src="{{ section.settings[image_key] | image_url: width: 600 }}"
@@ -498,6 +563,7 @@
                 sizes="(min-width: 990px) 25vw, 50vw"
                 alt="{{ section.settings[image_key].alt | default: product.title | escape }}"
                 loading="{% if i == 1 %}eager{% else %}lazy{% endif %}"
+                data-full-src="{{ section.settings[image_key] | image_url: width: 1800 }}"
               >
             {%- endif -%}
           </div>
@@ -722,6 +788,81 @@
   </div>
 </div>
 
+<!-- Lightbox -->
+<div class="ph-lightbox" id="ph-lightbox">
+  <button class="ph-lightbox__close" aria-label="Fermer">&times;</button>
+  <button class="ph-lightbox__prev" aria-label="Précédent">&#8249;</button>
+  <img class="ph-lightbox__img" id="ph-lightbox-img" src="" alt="">
+  <button class="ph-lightbox__next" aria-label="Suivant">&#8250;</button>
+</div>
+
+<script>
+  (function() {
+    var lightbox = document.getElementById('ph-lightbox');
+    var lightboxImg = document.getElementById('ph-lightbox-img');
+    var cells = document.querySelectorAll('.ph-hero__gallery-cell[data-lightbox-index]');
+    var sources = [];
+    var current = 0;
+
+    cells.forEach(function(cell) {
+      var img = cell.querySelector('img[data-full-src]');
+      if (img) sources.push(img.getAttribute('data-full-src'));
+    });
+
+    function open(index) {
+      current = index;
+      lightboxImg.src = sources[current];
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function prev() {
+      current = (current - 1 + sources.length) % sources.length;
+      lightboxImg.src = sources[current];
+    }
+
+    function next() {
+      current = (current + 1) % sources.length;
+      lightboxImg.src = sources[current];
+    }
+
+    cells.forEach(function(cell) {
+      cell.addEventListener('click', function() {
+        var idx = parseInt(cell.getAttribute('data-lightbox-index'));
+        open(idx);
+      });
+    });
+
+    lightbox.querySelector('.ph-lightbox__close').addEventListener('click', close);
+    lightbox.querySelector('.ph-lightbox__prev').addEventListener('click', prev);
+    lightbox.querySelector('.ph-lightbox__next').addEventListener('click', next);
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    });
+
+    // Preload full-size images after page load
+    window.addEventListener('load', function() {
+      sources.forEach(function(src) {
+        var img = new Image();
+        img.src = src;
+      });
+    });
+  })();
+</script>
+
 <!-- SEO Structured Data -->
 <script type="application/ld+json">
   {
@@ -876,6 +1017,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return r.json();
       })
       .then(function() {
+        /* ===== Envoi vers Google Sheets ===== */
+        var GOOGLE_SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxeyFuzzUs4jVK6CZoq_AL3UPInDUI728DW6RTHM2kgJ9FkdLD-3qyZXPfhKGnm7w/exec';
+        var sheetData = {
+          email: (document.getElementById('ph-email').value || '').trim(),
+          nomPrenom: ((document.getElementById('ph-prenom').value || '') + ' ' + (document.getElementById('ph-nom').value || '')).trim(),
+          dateNaissance: properties['Date de naissance'] || 'Je ne sais pas',
+          lieuNaissance: properties['Lieu de naissance'] || 'Je ne sais pas',
+          heureNaissance: properties['Heure de naissance'] || 'Je ne sais pas',
+          demandeParticuliere: (document.getElementById('ph-requests').value || '').trim()
+        };
+        fetch(GOOGLE_SHEETS_WEBHOOK, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sheetData)
+        }).catch(function() {});
+
         var cartDrawer = document.querySelector('cart-drawer');
         if (cartDrawer) {
           fetch('/?sections=cart-drawer,cart-icon-bubble')

@@ -37,7 +37,7 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
-            "text": "Elle est accompagnée de son livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
+            "text": "Livre d'interprétation personnalisé de 110 pages. Couverture et contenu entièrement dédiés à votre thème natal."
           }
         },
         "feature-5": {
@@ -81,9 +81,9 @@
       ],
       "settings": {
         "breadcrumb_label": "L'Œuvre Astrale",
-        "gallery_image_1": "shopify://shop_images/c6aad20d8e34135cc6ff2af66346cfcc7037486d.png",
+        "gallery_image_1": "shopify://shop_images/8f0a9d2246ac96d789fac4c692d638eabc78ad96.jpg",
         "gallery_image_2": "shopify://shop_images/0688b7e193443638f15e017107d1d659e5cfa32c.jpg",
-        "gallery_image_3": "shopify://shop_images/b0e52f0ebeb0ad434f99cb1e7ceb768bc238f328.png",
+        "gallery_image_3": "shopify://shop_images/d35946cd9369681210da846dc006700a0f9ad5b5.jpg",
         "gallery_image_4": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac_1.jpg",
         "title": "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY.",
         "subtitle": "Une composition artistique astrale unique et son livre personnalisé de 110 pages.",
@@ -243,6 +243,7 @@
         "slide-5"
       ],
       "settings": {
+        "trustpilot_link": "https://www.trustpilot.com/review/astro-gallery.com#",
         "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
@@ -252,7 +253,7 @@
       "type": "why-sideral",
       "settings": {
         "background_image": "shopify://shop_images/b0345f45f22ce6fda39eb65eccdececb1028d1d6.png",
-        "title": "POURQUOI L'ASTROLOGIE SIDÉRALE ?",
+        "title": "POURQUOI L'ASTROLOGIE SIDÉRALE ?",
         "text_left": "<p>La plupart des lectures astrales sont basées sur l'astrologie tropicale, un système fondé sur les saisons, décalé de 25° par rapport aux étoiles réelles.</p>",
         "text_right": "<p>ASTROGALLERY travaille exclusivement en astrologie sidérale : la position réelle des constellations dans le ciel au moment de votre naissance.</p><p>Une approche astronomique, précise et karmique ; c'est celle des traditions les plus anciennes.</p><p><strong>Résultat : une lecture qui révèle souvent des facettes insoupçonnées de votre personnalité. Plus authentique, plus proche, plus vous.</strong></p>"
       }

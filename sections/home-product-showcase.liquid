@@ -719,7 +719,7 @@
   }
 </style>
 
-<section class="hps">
+<section id="product-showcase" class="hps">
   <div class="hps__container">
 
     <!-- Header -->
@@ -967,8 +967,39 @@
       });
     });
 
-    // Initial position
-    moveChevron('frame');
+    // Initial position — wait for tab images to load so dimensions are correct
+    var tabImages = section.querySelectorAll('.hps__tab img');
+    var loaded = 0;
+    var total = tabImages.length;
+
+    function initialPosition() {
+      moveChevron('frame');
+    }
+
+    if (total === 0) {
+      initialPosition();
+    } else {
+      tabImages.forEach(function (img) {
+        if (img.complete) {
+          loaded++;
+          if (loaded >= total) initialPosition();
+        } else {
+          img.addEventListener('load', function () {
+            loaded++;
+            if (loaded >= total) initialPosition();
+          });
+          img.addEventListener('error', function () {
+            loaded++;
+            if (loaded >= total) initialPosition();
+          });
+        }
+      });
+    }
+
+    // Fallback — recalc after page fully loaded (fonts, images, etc.)
+    window.addEventListener('load', function () {
+      moveChevron('frame');
+    });
 
     // Recalc on resize
     window.addEventListener('resize', function () {

@@ -19,7 +19,7 @@
         "title_highlight": "UNIQUE",
         "subtitle": "Nous le transformons en œuvre d'art.",
         "button_label": "DÉCOUVRIR L'ŒUVRE",
-        "button_link": "/products/solo"
+        "button_link": "#product-showcase"
       }
     },
     "home-product-showcase": {
@@ -30,8 +30,8 @@
         "subtitle": "Format carré. Cadre bois noir. Présence affirmée. 110 pages sur mesure.",
         "made_in_text": "Fabriquée en France",
         "flag_icon_1": "shopify://shop_images/Frame_1000004468_1.png",
-        "tab_frame_image": "shopify://shop_images/ee084b42c9c1b8177f1b771144a80ce2cf88e670.png",
-        "tab_book_image": "shopify://shop_images/2349e482038b238785eff900f114a4c289a74209.png",
+        "tab_frame_image": "shopify://shop_images/8f0a9d2246ac96d789fac4c692d638eabc78ad96_1.jpg",
+        "tab_book_image": "shopify://shop_images/cc6f00d6a0252ef52c7f033cd2fc0ca16f6b5bf8.jpg",
         "frame_title": "L’Œuvre astrale signature AstroGallery.",
         "frame_desc": "Une création artistique unique, personnelle et introspective.",
         "frame_details": "Numérotée · Support Alu Dibond Mat · Caisse Américaine Bois Noir · Certificat             \n  d'authenticité inclus",
@@ -44,7 +44,7 @@
         "book_desc": "40 pages entièrement dédiées à votre analyse\n70 pages pour comprendre et lire votre carte.",
         "book_made_in": "Fabriquée en France",
         "book_image_1": "shopify://shop_images/photo-2.png",
-        "book_image_2": "shopify://shop_images/photo-1_1.png",
+        "book_image_2": "shopify://shop_images/photo-1_2.png",
         "button_label": "CRÉER MON ŒUVRE",
         "button_link": "/products/solo"
       }
