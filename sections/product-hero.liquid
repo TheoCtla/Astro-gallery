@@ -3,7 +3,7 @@
   .ph-hero {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem 3rem;
+    padding: 0 1.5rem 80px;
   }
 
   .ph-hero__row {
@@ -299,10 +299,15 @@
     user-select: none;
   }
 
+  .ph-hero__form-input--error {
+    border-color: #e74c3c !important;
+    background-color: #fdecea !important;
+  }
+
   .ph-hero__form-error {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
-    color: #cc3333;
+    color: #e74c3c;
     margin-top: 0.3rem;
     display: none;
   }
@@ -405,7 +410,7 @@
   /* ===== Responsive — Tablet (750px) ===== */
   @media (min-width: 750px) {
     .ph-hero {
-      padding: 0 2rem 5rem;
+      padding: 0 2rem 80px;
     }
 
     .ph-hero__breadcrumb {
@@ -608,11 +613,11 @@
               <label class="ph-hero__form-label" for="ph-birthdate">{{ section.settings.label_birthdate | replace: '*', '<span class="ph-hero__form-label-star">*</span>' }}</label>
               <input
                 class="ph-hero__form-input"
-                type="text"
+                type="date"
                 id="ph-birthdate"
                 name="properties[Date de naissance]"
-                placeholder="-"
               >
+              <span class="ph-hero__form-error" id="ph-birthdate-error">Veuillez remplir ce champ ou cocher « Je ne sais pas »</span>
             </div>
             <div class="ph-hero__form-checkbox-wrap">
               <input type="checkbox" id="ph-birthdate-unknown" class="ph-hero__form-checkbox" data-target="ph-birthdate">
@@ -626,11 +631,11 @@
               <label class="ph-hero__form-label" for="ph-birthtime">{{ section.settings.label_birthtime }}</label>
               <input
                 class="ph-hero__form-input"
-                type="text"
+                type="time"
                 id="ph-birthtime"
                 name="properties[Heure de naissance]"
-                placeholder="-"
               >
+              <span class="ph-hero__form-error" id="ph-birthtime-error">Veuillez remplir ce champ ou cocher « Je ne sais pas »</span>
             </div>
             <div class="ph-hero__form-checkbox-wrap">
               <input type="checkbox" id="ph-birthtime-unknown" class="ph-hero__form-checkbox" data-target="ph-birthtime">
@@ -649,6 +654,7 @@
                 name="properties[Lieu de naissance]"
                 placeholder="-"
               >
+              <span class="ph-hero__form-error" id="ph-birthplace-error">Veuillez remplir ce champ ou cocher « Je ne sais pas »</span>
             </div>
             <div class="ph-hero__form-checkbox-wrap">
               <input type="checkbox" id="ph-birthplace-unknown" class="ph-hero__form-checkbox" data-target="ph-birthplace">
@@ -760,6 +766,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  /* ===== Clear error on input ===== */
+  document.querySelectorAll('.ph-hero__form-input, .ph-hero__form-textarea').forEach(function(input) {
+    input.addEventListener('input', function() {
+      this.classList.remove('ph-hero__form-input--error');
+      var errorEl = document.getElementById(this.id + '-error');
+      if (errorEl) errorEl.style.display = 'none';
+    });
+  });
+
+  document.querySelectorAll('.ph-hero__form-checkbox[data-target]').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      var target = document.getElementById(this.getAttribute('data-target'));
+      if (target) {
+        target.classList.remove('ph-hero__form-input--error');
+        var errorEl = document.getElementById(target.id + '-error');
+        if (errorEl) errorEl.style.display = 'none';
+      }
+    });
+  });
+
   /* ===== Form validation + Add to cart ===== */
   var form = document.getElementById('ph-product-form');
   var addBtn = document.getElementById('ph-add-to-cart');
@@ -769,24 +795,40 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
 
       form.querySelectorAll('.ph-hero__form-error').forEach(function(el) { el.style.display = 'none'; });
+      form.querySelectorAll('.ph-hero__form-input--error').forEach(function(el) { el.classList.remove('ph-hero__form-input--error'); });
 
       var valid = true;
+
+      function markError(inputId, errorId) {
+        var input = document.getElementById(inputId);
+        var error = document.getElementById(errorId);
+        if (input) input.classList.add('ph-hero__form-input--error');
+        if (error) error.style.display = 'block';
+        valid = false;
+      }
+
       var nom = document.getElementById('ph-nom');
       var prenom = document.getElementById('ph-prenom');
       var email = document.getElementById('ph-email');
 
-      if (!nom.value.trim()) {
-        document.getElementById('ph-nom-error').style.display = 'block';
-        valid = false;
-      }
-      if (!prenom.value.trim()) {
-        document.getElementById('ph-prenom-error').style.display = 'block';
-        valid = false;
-      }
-      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-        document.getElementById('ph-email-error').style.display = 'block';
-        valid = false;
-      }
+      if (!nom.value.trim()) markError('ph-nom', 'ph-nom-error');
+      if (!prenom.value.trim()) markError('ph-prenom', 'ph-prenom-error');
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) markError('ph-email', 'ph-email-error');
+
+      /* Champs avec "Je ne sais pas" : soit rempli, soit coché */
+      var fieldsWithCheckbox = [
+        { input: 'ph-birthdate', checkbox: 'ph-birthdate-unknown', error: 'ph-birthdate-error' },
+        { input: 'ph-birthtime', checkbox: 'ph-birthtime-unknown', error: 'ph-birthtime-error' },
+        { input: 'ph-birthplace', checkbox: 'ph-birthplace-unknown', error: 'ph-birthplace-error' }
+      ];
+
+      fieldsWithCheckbox.forEach(function(f) {
+        var input = document.getElementById(f.input);
+        var cb = document.getElementById(f.checkbox);
+        if (!cb.checked && (!input.value.trim() || input.value.trim() === '-')) {
+          markError(f.input, f.error);
+        }
+      });
 
       if (!valid) return;
 

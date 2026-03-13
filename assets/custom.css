@@ -368,3 +368,8 @@ sticky-header {
   padding-top: 0 !important;
 }
 
+/* Padding top testimonials uniquement sur la page produit */
+.template-product .testimonials {
+  padding-top: 80px;
+}
+
