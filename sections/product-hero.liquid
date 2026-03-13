@@ -876,6 +876,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return r.json();
       })
       .then(function() {
+        /* ===== Envoi vers Google Sheets ===== */
+        var GOOGLE_SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxeyFuzzUs4jVK6CZoq_AL3UPInDUI728DW6RTHM2kgJ9FkdLD-3qyZXPfhKGnm7w/exec';
+        var sheetData = {
+          email: (document.getElementById('ph-email').value || '').trim(),
+          nomPrenom: ((document.getElementById('ph-prenom').value || '') + ' ' + (document.getElementById('ph-nom').value || '')).trim(),
+          dateNaissance: properties['Date de naissance'] || 'Je ne sais pas',
+          lieuNaissance: properties['Lieu de naissance'] || 'Je ne sais pas',
+          heureNaissance: properties['Heure de naissance'] || 'Je ne sais pas',
+          demandeParticuliere: (document.getElementById('ph-requests').value || '').trim()
+        };
+        fetch(GOOGLE_SHEETS_WEBHOOK, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sheetData)
+        }).catch(function() {});
+
         var cartDrawer = document.querySelector('cart-drawer');
         if (cartDrawer) {
           fetch('/?sections=cart-drawer,cart-icon-bubble')
