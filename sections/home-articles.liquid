@@ -1,0 +1,360 @@
+<style>
+  .home-articles {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .home-articles__section {
+    padding-bottom: clamp(2rem, 4vw, 4rem);
+  }
+
+  .home-articles__title {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 2vw, 24px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1D1D1B;
+    margin: 0 0 clamp(1.5rem, 3vw, 2.5rem) 0;
+  }
+
+  .home-articles__empty {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+    font-style: italic;
+  }
+
+  .home-articles__cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  /* Carousel */
+  .home-articles-carousel__track {
+    position: relative;
+  }
+
+  .home-articles-carousel__page {
+    display: none;
+  }
+
+  .home-articles-carousel__page--active {
+    display: block;
+  }
+
+  .home-articles-carousel__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .home-articles-carousel__item--featured {
+    grid-column: span 2;
+  }
+
+  .home-articles-carousel__item {
+    text-decoration: none;
+    color: #1D1D1B;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Images */
+  .home-articles-carousel__img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    aspect-ratio: 3 / 2;
+  }
+
+  .home-articles-carousel__item--featured .home-articles-carousel__img-wrapper {
+    aspect-ratio: 3 / 2;
+  }
+
+  .home-articles-carousel__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Overlay sur le premier article */
+  .home-articles-carousel__item--featured .home-articles-carousel__img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .home-articles-carousel__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    z-index: 2;
+  }
+
+  .home-articles-carousel__overlay .home-articles-carousel__item-title--overlay {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: #FFFFFF;
+    line-height: 150%;
+    letter-spacing: -0.5px;
+  }
+
+  .home-articles-carousel__overlay .home-articles-carousel__item-date--overlay {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #FFFFFF;
+  }
+
+  /* Titres et dates des articles normaux */
+  .home-articles-carousel__item-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 14px);
+    color: #1D1D1B;
+    line-height: 1.5;
+    margin-top: 0.6rem;
+  }
+
+  .home-articles-carousel__item-date {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin-top: 0.2rem;
+  }
+
+  /* Navigation */
+  .home-articles-carousel__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .home-articles-carousel__arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1D1D1B;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-articles-carousel__arrow:hover:not(:disabled) {
+    color: #DFBE71;
+  }
+
+  .home-articles-carousel__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .home-articles-carousel__indicator {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1D1D1B;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 990px) {
+    .home-articles-carousel__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-articles-carousel__item--featured {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .home-articles-carousel__item--featured .home-articles-carousel__img-wrapper {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .home-articles {
+      padding: 0 1rem;
+    }
+
+    .home-articles-carousel__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .home-articles-carousel__item--featured {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .home-articles-carousel__item--featured .home-articles-carousel__img-wrapper {
+      aspect-ratio: 3 / 2;
+    }
+  }
+</style>
+
+<div class="home-articles">
+  {%- assign blog = blogs[section.settings.blog] -%}
+  {%- if blog != blank and blog.articles_count > 0 -%}
+    <section class="home-articles__section">
+      <h2 class="home-articles__title">{{ section.settings.articles_title }}</h2>
+
+      <div class="home-articles-carousel" data-articles-per-page="7">
+        <div class="home-articles-carousel__track">
+          {%- assign page_index = 0 -%}
+          {%- assign article_in_page = 0 -%}
+
+          {%- for article in blog.articles limit: 28 -%}
+            {%- if article_in_page == 0 -%}
+              <div class="home-articles-carousel__page{% if page_index == 0 %} home-articles-carousel__page--active{% endif %}" data-page="{{ page_index }}">
+                <div class="home-articles-carousel__grid">
+            {%- endif -%}
+
+                  <a href="{{ article.url }}" class="home-articles-carousel__item{% if article_in_page == 0 %} home-articles-carousel__item--featured{% endif %}">
+                    <div class="home-articles-carousel__img-wrapper">
+                      {%- if article.image -%}
+                        <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.image.alt | default: article.title | escape }}" loading="lazy">
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag }}
+                      {%- endif -%}
+                      {%- if article_in_page == 0 -%}
+                        <div class="home-articles-carousel__overlay">
+                          <span class="home-articles-carousel__item-title home-articles-carousel__item-title--overlay">{{ article.title }}</span>
+                          <span class="home-articles-carousel__item-date home-articles-carousel__item-date--overlay">{{ article.published_at | date: "%B %Y" }}</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                    {%- if article_in_page != 0 -%}
+                      <span class="home-articles-carousel__item-title">{{ article.title }}</span>
+                      <span class="home-articles-carousel__item-date">{{ article.published_at | date: "%B %Y" }}</span>
+                    {%- endif -%}
+                  </a>
+
+            {%- assign article_in_page = article_in_page | plus: 1 -%}
+
+            {%- if article_in_page == 7 or forloop.last -%}
+                </div>
+              </div>
+              {%- assign page_index = page_index | plus: 1 -%}
+              {%- assign article_in_page = 0 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if page_index > 1 -%}
+          <div class="home-articles-carousel__nav">
+            <button class="home-articles-carousel__arrow home-articles-carousel__arrow--prev" aria-label="Page précédente" disabled>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="home-articles-carousel__indicator">
+              <span class="home-articles-carousel__current-page">1</span>/<span class="home-articles-carousel__total-pages">{{ page_index }}</span>
+            </span>
+            <button class="home-articles-carousel__arrow home-articles-carousel__arrow--next" aria-label="Page suivante">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <div class="home-articles__cta">
+          <a href="{{ section.settings.button_link }}" class="btn-gold">
+            <span class="btn-gold__text">{{ section.settings.button_label }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </section>
+  {%- else -%}
+    <section class="home-articles__section">
+      <p class="home-articles__empty">Aucun article pour le moment.</p>
+    </section>
+  {%- endif -%}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var carousel = document.querySelector('.home-articles-carousel');
+  if (!carousel) return;
+
+  var pages = carousel.querySelectorAll('.home-articles-carousel__page');
+  var prevBtn = carousel.querySelector('.home-articles-carousel__arrow--prev');
+  var nextBtn = carousel.querySelector('.home-articles-carousel__arrow--next');
+  var currentPageEl = carousel.querySelector('.home-articles-carousel__current-page');
+  var totalPages = pages.length;
+  var currentPage = 0;
+
+  if (!prevBtn || !nextBtn || totalPages <= 1) return;
+
+  function showPage(index) {
+    pages.forEach(function(page, i) {
+      page.classList.toggle('home-articles-carousel__page--active', i === index);
+    });
+    currentPage = index;
+    currentPageEl.textContent = currentPage + 1;
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === totalPages - 1;
+  }
+
+  prevBtn.addEventListener('click', function() {
+    if (currentPage > 0) showPage(currentPage - 1);
+  });
+
+  nextBtn.addEventListener('click', function() {
+    if (currentPage < totalPages - 1) showPage(currentPage + 1);
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Home - Articles",
+  "tag": "section",
+  "class": "home-articles-section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog à afficher"
+    },
+    {
+      "type": "text",
+      "id": "articles_title",
+      "default": "TOUS NOS ARTICLES",
+      "label": "Titre section articles"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "TOUS LES ARTICLES DU BLOG",
+      "label": "Texte du bouton"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home - Articles"
+    }
+  ]
+}
+{% endschema %}
