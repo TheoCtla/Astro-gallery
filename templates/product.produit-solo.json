@@ -243,7 +243,7 @@
         "slide-5"
       ],
       "settings": {
-        "trustpilot_link": "",
+        "trustpilot_link": "https://www.trustpilot.com/review/astro-gallery.com#",
         "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
