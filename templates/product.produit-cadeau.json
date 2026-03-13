@@ -15,18 +15,21 @@
         "badge-1": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Calque_1_2.svg",
             "text": "Livraison gratuite"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Icones-Micro-Set_2.svg",
             "text": "Fabrication à la commande"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Calque_1_3.svg",
             "text": "Certificat d'authenticité inclus"
           }
         }
@@ -111,6 +114,7 @@
         "testimonials_slide_WiBfam"
       ],
       "settings": {
+        "trustpilot_link": "",
         "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
