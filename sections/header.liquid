@@ -182,7 +182,7 @@
 												</div>
 												<ul class="menu-drawer__utility-account-body">
 													<li class="menu-drawer__utility-account-cart">
-														<a href="{{ routes.cart_url }}">{{ 'customer.account.shopping_cart' | t }}</a>
+														<a href="{{ routes.cart_url }}" onclick="event.preventDefault(); var cd = document.querySelector('cart-drawer'); if (cd && typeof cd.open === 'function') cd.open(); else if (cd) { cd.classList.add('animate','active'); document.body.classList.add('overflow-hidden'); }">{{ 'customer.account.shopping_cart' | t }}</a>
 														{%- if cart != empty -%}
 															<div class="cart-count-bubble">
 																{%- if cart.item_count < 100 -%}
@@ -659,7 +659,7 @@
 				{%- endif -%}
 
 				{% if settings.show_cart == true %}
-					<a href="{{ routes.cart_url }}" class=" {% if request.page_type != 'cart' %}header__cart{% endif %} header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble">
+					<a href="{{ routes.cart_url }}" class=" {% if request.page_type != 'cart' %}header__cart{% endif %} header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble" onclick="event.preventDefault(); var cd = document.querySelector('cart-drawer'); if (cd && typeof cd.open === 'function') cd.open(); else if (cd) { cd.classList.add('animate','active'); document.body.classList.add('overflow-hidden'); }">
 						{%- liquid
 							render 'icon-cart' -%}
 						<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
