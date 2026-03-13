@@ -12,6 +12,7 @@
     "home-hero": {
       "type": "home-hero",
       "settings": {
+        "background_video": "shopify://files/videos/ls-video-hd.mp4",
         "background_image": "shopify://shop_images/3447d340f6fae6b3f72a531caf3e750fd46ccd44.png",
         "title": "VOTRE THÈME ASTRAL",
         "title_line2": "EST",
@@ -195,6 +196,7 @@
         "slide-5"
       ],
       "settings": {
+        "trustpilot_link": "",
         "star_icon": "shopify://shop_images/Calque_1.svg",
         "border_top": false,
         "border_bottom": false
