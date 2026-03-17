@@ -184,33 +184,13 @@
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "slide-1": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "",
-            "slide_text": "Une œuvre magnifique et profondément personnelle. La qualité et le rendu dans mon salon est incroyable. Tout le monde me demande d'où elle vient.",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_1.png",
-            "slide_name": "Carole P.",
-            "slide_country": ""
-          }
-        },
         "slide-2": {
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "",
-            "slide_text": "Je ne m'attendais pas à un tel niveau de détail. Le cadre est élégant, les contrastes sont superbes et l'ensemble apporte une vraie présence à la pièce.",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_2.png",
-            "slide_name": "Émilie S.",
-            "slide_country": ""
-          }
-        },
-        "slide-3": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "",
-            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
-            "slide_name": "Marc R.",
+            "slide_text": "Un cadeau que j’ai offert à ma sœur et qui l’a profondément touchée. C’est à la fois esthétique et chargé de sens. Une pièce unique qui marque vraiment. Très quali !",
+            "slide_avatar": "shopify://shop_images/Capture_d_ecran_2026-03-17_a_13.48.49.png",
+            "slide_name": "Thibault B.",
             "slide_country": ""
           }
         },
@@ -218,9 +198,29 @@
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "",
-            "slide_text": "Honnêtement je ne pensais pas être aussi ému en la découvrant. Il ya quelque chose de très personnel dans cette œuvre. Elle a trouvé sa place immédiatement chez moi.",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_4.png",
-            "slide_name": "Virginie H.",
+            "slide_text": "Je trouve que ton l'étude de mon theme sidéral est tres révélateur, cela a fait écho à tous les niveaux pour moi. Le design est superbe et le rendu de tres bonne qualité. J'ai apprécié recevoir également le certificat d'authenticité !",
+            "slide_avatar": "shopify://shop_images/73x73_1.png",
+            "slide_name": "Margaux P.",
+            "slide_country": ""
+          }
+        },
+        "slide-1": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Le concept est génial et le service impeccable.\nBravo super cadeau.",
+            "slide_avatar": "shopify://shop_images/73x73_3.png",
+            "slide_name": "Julien M.",
+            "slide_country": ""
+          }
+        },
+        "slide-3": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Une œuvre d'art qui nous ressemble ! La qualité des supports proposés est haut de gamme ! Un objet plein de sens au design soigné.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "slide_name": "Romain G.",
             "slide_country": ""
           }
         },
@@ -228,18 +228,18 @@
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "",
-            "slide_text": "Ce que j'aime le plus, c'est que ce n'est pas juste joli. Ça me ressemble. Mes amis me posent toujours des questions dessus, et je suis fière d'expliquer ce que c'est.",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_5.png",
-            "slide_name": "Nicolas B",
+            "slide_text": "Nous avons offert à une amie une œuvre personnalisée basée sur son thème astral pour ses 40 ans, et le succès a été total ! Elle était absolument ravie de ce cadeau original. Les détails sont magnifiques, très minutieux et on voit vraiment tout le soin apporté à la réalisation",
+            "slide_avatar": "shopify://shop_images/73x73_4.png",
+            "slide_name": "Elodie G.",
             "slide_country": ""
           }
         }
       },
       "block_order": [
-        "slide-1",
         "slide-2",
-        "slide-3",
         "slide-4",
+        "slide-1",
+        "slide-3",
         "slide-5"
       ],
       "settings": {
