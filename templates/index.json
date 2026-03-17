@@ -138,6 +138,26 @@
     "1643189486a59c259f": {
       "type": "testimonials",
       "blocks": {
+        "slide-4": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Une œuvre d'art qui nous ressemble ! La qualité des supports proposés est haut de gamme ! Un objet plein de sens au design soigné.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "slide_name": "Romain G.",
+            "slide_country": ""
+          }
+        },
+        "slide-3": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
+            "slide_avatar": "shopify://shop_images/Capture_d_ecran_2026-03-17_a_13.48.49.png",
+            "slide_name": "Thibault B.",
+            "slide_country": ""
+          }
+        },
         "slide-1": {
           "type": "testimonials_slide",
           "settings": {
@@ -158,26 +178,6 @@
             "slide_country": ""
           }
         },
-        "slide-3": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "",
-            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
-            "slide_avatar": "shopify://shop_images/Capture_d_ecran_2026-03-17_a_13.48.49.png",
-            "slide_name": "Thibault B.",
-            "slide_country": ""
-          }
-        },
-        "slide-4": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "",
-            "slide_text": "Une œuvre d'art qui nous ressemble ! La qualité des supports proposés est haut de gamme ! Un objet plein de sens au design soigné.",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
-            "slide_name": "Romain G.",
-            "slide_country": ""
-          }
-        },
         "slide-5": {
           "type": "testimonials_slide",
           "settings": {
@@ -190,10 +190,10 @@
         }
       },
       "block_order": [
+        "slide-4",
+        "slide-3",
         "slide-1",
         "slide-2",
-        "slide-3",
-        "slide-4",
         "slide-5"
       ],
       "settings": {
