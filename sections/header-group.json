@@ -39,7 +39,7 @@
         "logo_width": 190,
         "logo_position": "top-center",
         "menu": "main-menu",
-        "menu_right": "",
+        "menu_right": "menu-droite",
         "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,
