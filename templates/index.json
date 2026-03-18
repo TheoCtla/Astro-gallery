@@ -12,7 +12,7 @@
     "home-hero": {
       "type": "home-hero",
       "settings": {
-        "background_video": "shopify://files/videos/ls-video-hd.mp4",
+        "background_video": "shopify://files/videos/ASTROGALLERY_V2 (1).mp4",
         "background_image": "shopify://shop_images/3447d340f6fae6b3f72a531caf3e750fd46ccd44.png",
         "title": "VOTRE THÈME ASTRAL",
         "title_line2": "EST",
@@ -138,27 +138,37 @@
     "1643189486a59c259f": {
       "type": "testimonials",
       "blocks": {
-        "slide-1": {
+        "slide-4": {
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "",
-            "slide_text": "Un cadeau que j’ai offert à ma sœur et qui l’a profondément touchée. C’est à la fois esthétique et chargé de sens. Une pièce unique qui marque vraiment. Très quali !",
-            "slide_avatar": "shopify://shop_images/Capture_d_ecran_2026-03-17_a_13.33.19.png",
-            "slide_name": "Thibault B",
-            "slide_country": ""
-          }
-        },
-        "slide-2": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "",
-            "slide_text": "J'adore ce nouveau concept ! Le tableau est vraiment très beau, j'ai commandé mon thème astral en astrologie sidérale et franchement je m'y retrouve totalement! C'est bluffant. Merci je recommande !",
-            "slide_avatar": "shopify://shop_images/73x73.png",
-            "slide_name": "Mélanie G.",
+            "slide_text": "Une œuvre d’art qui nous ressemble ! La qualité des supports proposés est haut de gamme ! Un objet plein de sens au design soigné.",
+            "slide_avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "slide_name": "Romain G.",
             "slide_country": ""
           }
         },
         "slide-3": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Un cadeau que j'ai offert à ma sœur et qui l'a profondément touché. C'est à la foi esthétique et chargé de sens. un pièce unique qui marque vraiment.",
+            "slide_avatar": "shopify://shop_images/Capture_d_ecran_2026-03-17_a_13.48.49.png",
+            "slide_name": "Thibault B.",
+            "slide_country": ""
+          }
+        },
+        "slide-1": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "",
+            "slide_text": "Le concept est génial et le service impeccable.\nBravo super cadeau.",
+            "slide_avatar": "shopify://shop_images/73x73_3.png",
+            "slide_name": "Julien M.",
+            "slide_country": ""
+          }
+        },
+        "slide-2": {
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "",
@@ -168,32 +178,22 @@
             "slide_country": ""
           }
         },
-        "slide-4": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "",
-            "slide_text": "Très bon échange avec Caroline, elle est très a l' écoute et bienveillante.\nLe résultat est sublime.\nC est une magnifique idée cadeau pour sa moitié",
-            "slide_avatar": "shopify://shop_images/Ellipse_1_4.png",
-            "slide_name": "Haley Mg.",
-            "slide_country": ""
-          }
-        },
         "slide-5": {
           "type": "testimonials_slide",
           "settings": {
             "slide_title": "",
-            "slide_text": "Je suis très satisfaite de mon thème astrale. Le rendu est qualitatif et décoratif. Le livret est bien détaillé et agréable à feuilleter.\nMerci à vous !",
-            "slide_avatar": "shopify://shop_images/73x73_2.png",
-            "slide_name": "Claire P.",
+            "slide_text": "Nous avons offert à une amie une œuvre personnalisée basée sur son thème astral pour ses 40 ans, et le succès a été total ! Elle était absolument ravie de ce cadeau original. Les détails sont magnifiques, très minutieux et on voit vraiment tout le soin apporté à la réalisation.",
+            "slide_avatar": "shopify://shop_images/73x73_4.png",
+            "slide_name": "Elodie G.",
             "slide_country": ""
           }
         }
       },
       "block_order": [
+        "slide-4",
+        "slide-3",
         "slide-1",
         "slide-2",
-        "slide-3",
-        "slide-4",
         "slide-5"
       ],
       "settings": {
