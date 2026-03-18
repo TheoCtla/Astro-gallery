@@ -15,56 +15,56 @@
         "feature-1": {
           "type": "feature",
           "settings": {
-            "icon": "🖼",
+            "icon": "",
             "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
           }
         },
         "feature-2": {
           "type": "feature",
           "settings": {
-            "icon": "✨",
+            "icon": "",
             "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
           }
         },
         "feature-3": {
           "type": "feature",
           "settings": {
-            "icon": "🔨",
+            "icon": "",
             "text": "Elle est livrée prête à être accrochée."
           }
         },
         "feature-4": {
           "type": "feature",
           "settings": {
-            "icon": "📖",
+            "icon": "",
             "text": "Elle est accompagnée de son livre d'interprétation personnalisée de 110 pages dont 40 pages sont dédiées à votre ciel de naissance."
           }
         },
         "feature-5": {
           "type": "feature",
           "settings": {
-            "icon": "🇫🇷",
+            "icon": "",
             "text": "Fabriquée en France"
           }
         },
         "badge-1": {
           "type": "badge",
           "settings": {
-            "icon": "📦",
+            "icon": "",
             "text": "Livraison gratuite en 3 à 4 semaines"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
-            "icon": "🔧",
+            "icon": "",
             "text": "Fabrication à la commande"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
-            "icon": "📜",
+            "icon": "",
             "text": "Certificat d'authenticité inclus"
           }
         }
