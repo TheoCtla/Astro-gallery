@@ -423,16 +423,16 @@
       <!-- Sélecteur de montant -->
       <div class="gc-hero__amount">
         <label class="gc-hero__amount-label">{{ section.settings.amount_label | default: 'Sélectionner le montant souhaité' }}</label>
-        {%- assign allowed_prices = '5000,10000,15000,20000,25000,30000,34900' | split: ',' -%}
+        {%- assign allowed_prices = '5000,10000,15000,20000,25000,29000' | split: ',' -%}
         <div class="gc-hero__amount-options">
           {%- assign btn_index = 0 -%}
           {%- for variant in product.variants -%}
             {%- assign variant_price_str = variant.price | append: '' -%}
             {%- if allowed_prices contains variant_price_str -%}
               {%- assign btn_index = btn_index | plus: 1 -%}
-              {%- assign price_check = variant.price | times: 1 -%}
               {%- assign is_full_artwork = false -%}
-              {%- if price_check == 34900 or variant.title contains '349' -%}
+              {%- assign price_cents = variant.price | plus: 0 -%}
+              {%- if price_cents >= 29000 -%}
                 {%- assign is_full_artwork = true -%}
               {%- endif -%}
               <div class="gc-hero__amount-option">
