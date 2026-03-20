@@ -53,6 +53,7 @@
     "home-video": {
       "type": "home-video",
       "settings": {
+        "video": "shopify://files/videos/Astrogallery - Carrousel (1).mp4",
         "cover_alt": "Vidéo AstroGallery"
       }
     },
