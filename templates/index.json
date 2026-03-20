@@ -59,30 +59,6 @@
         "cover_alt": "Vidéo AstroGallery"
       }
     },
-    "video_CRnRnn": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
-      "settings": {
-        "video_fit": "contain",
-        "aspect_ratio": "1/1",
-        "heading": "",
-        "sub_title": "",
-        "cover_image": "shopify://shop_images/Astrogallery_-_Carte_1_Oeuvre_livre.png",
-        "video_url": "https://vimeo.com/1175503839?share=copy&fl=sv&fe=ci",
-        "description": "",
-        "video_autoplay": false,
-        "video_loop": false,
-        "video_muted": false,
-        "video_controls": true,
-        "round_stamp_enable": true,
-        "round_stamp_text": "stockholm ~ stockholm ~",
-        "round_stamp_width": 140,
-        "round_stamp_size": 50,
-        "round_stamp_letter_spacing": 8,
-        "border_top": false,
-        "border_bottom": false
-      }
-    },
     "collapsible_content_gBGENa": {
       "type": "collapsible-content",
       "blocks": {
@@ -275,7 +251,6 @@
     "home-hero",
     "home-product-showcase",
     "home-video",
-    "video_CRnRnn",
     "collapsible_content_gBGENa",
     "home_about_intro",
     "1643189486a59c259f",
