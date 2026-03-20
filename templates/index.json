@@ -52,8 +52,10 @@
     },
     "home-video": {
       "type": "home-video",
+      "disabled": true,
       "settings": {
         "video": "shopify://files/videos/Astrogallery - Carrousel (1).mp4",
+        "cover_image": "shopify://shop_images/Astrogallery_-_Carte_1_Oeuvre_livre.png",
         "cover_alt": "Vidéo AstroGallery"
       }
     },
