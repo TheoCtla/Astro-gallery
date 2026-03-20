@@ -51,14 +51,16 @@
         "intro_text": "<p>Notre mission est de transformer cette signature céleste en une œuvre que l'on peut contempler, comprendre et ressentir.<br/>Ici, les étoiles deviennent langage, inspiration et révélation.</p>",
         "origin_title": "À L'ORIGINE D'ASTROGALLERY",
         "signature_name": "Caroline Robin",
-        "signature_role": "Fondatrice d'AstroGallery"
+        "signature_role": "Fondatrice d'AstroGallery",
+        "button_label": "EN SAVOIR PLUS",
+        "button_link": ""
       }
     },
     "about_demarche": {
       "type": "about-demarche",
       "settings": {
         "title": "MA DÉMARCHE ASTROLOGIQUE ET ARTISTIQUE",
-        "text_1": "<p>Je crois que l'astrologie peut devenir une expérience esthétique, intuitive et profonde. Mon approche s'appuie sur l'astrologie sidérale, une lecture qui révèle souvent des facettes insoupçonnées de la personnalité. Elle apporte une compréhension plus authentique de soi et éclaire des nuances que l'astrologie tropicale ne montre pas toujours.</p>",
+        "text_1": "<p>Je crois que l'astrologie peut devenir une expérience esthétique, intuitive et profonde. Mon approche s'appuie sur l'astrologie, une lecture qui révèle souvent des facettes insoupçonnées de la personnalité. Elle apporte une compréhension plus authentique de soi et éclaire des nuances que l'astrologie tropicale ne montre pas toujours.</p>",
         "text_2": "<p>Lorsque je crée une œuvre, je commence par une analyse attentive de votre carte du ciel. J'en extrais des messages, des mantras qui traduisent votre essence. Je transforme ensuite cette lecture en une composition visuelle unique, pensée pour guider, inspirer et accompagner chacun sur son chemin intérieur.</p>",
         "image": "shopify://shop_images/732eed00b9528212617586bae1e3387b023af1fe.png",
         "image_alt": "Démarche astrologique et artistique"
@@ -69,6 +71,8 @@
       "settings": {
         "background_image": "shopify://shop_images/f3e4fe034e57e11d7779a8d4e6d65f8ea7fca910.png",
         "heading": "OFFREZ À VOTRE INTÉRIEUR UNE ŒUVRE PERSONNELLE, NUMÉROTÉE ET CERTIFIÉE ORIGINALE.",
+        "text_line1": "Créez dès maintenant la vôtre",
+        "text_line2": "et donnez vie à votre thème natal.",
         "button_label": "CRÉER MON ŒUVRE",
         "button_link": "/products/solo"
       }
