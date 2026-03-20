@@ -22,6 +22,23 @@
     z-index: 0;
   }
 
+  .home-hero__video--desktop {
+    display: none;
+  }
+
+  .home-hero__video--mobile {
+    display: block;
+  }
+
+  @media (min-width: 750px) {
+    .home-hero__video--desktop {
+      display: block;
+    }
+    .home-hero__video--mobile {
+      display: none;
+    }
+  }
+
   .home-hero::before {
     content: '';
     position: absolute;
@@ -86,15 +103,36 @@
   {% endif %}
 >
   {% if section.settings.background_video != blank %}
-    {{ section.settings.background_video | video_tag:
-      class: 'home-hero__video',
-      autoplay: true,
-      loop: true,
-      muted: true,
-      playsinline: true,
-      controls: false,
-      preload: 'auto'
-    }}
+    {% if section.settings.background_video_mobile != blank %}
+      {{ section.settings.background_video | video_tag:
+        class: 'home-hero__video home-hero__video--desktop',
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        controls: false,
+        preload: 'auto'
+      }}
+      {{ section.settings.background_video_mobile | video_tag:
+        class: 'home-hero__video home-hero__video--mobile',
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        controls: false,
+        preload: 'auto'
+      }}
+    {% else %}
+      {{ section.settings.background_video | video_tag:
+        class: 'home-hero__video',
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        controls: false,
+        preload: 'auto'
+      }}
+    {% endif %}
   {% endif %}
   <div class="home-hero__content">
     {%- if section.settings.title != blank -%}
@@ -148,7 +186,12 @@
     {
       "type": "video",
       "id": "background_video",
-      "label": "Vidéo de fond (prioritaire sur l'image)"
+      "label": "Vidéo de fond — Desktop / Tablette (horizontale)"
+    },
+    {
+      "type": "video",
+      "id": "background_video_mobile",
+      "label": "Vidéo de fond — Mobile (verticale)"
     },
     {
       "type": "image_picker",
