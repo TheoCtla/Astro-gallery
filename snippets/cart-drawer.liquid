@@ -59,6 +59,7 @@
 										<div class="cart-item__inner-top">
 											{% if item.image %}
 												<div class="cart-item__media">
+													{%- assign cart_image = item.product.images.first | default: item.image -%}
 													<img
 														class="cart-item__image"
 														src="{{ item.image | img_url: '140x' }}"
