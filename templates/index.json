@@ -67,21 +67,21 @@
           "type": "step",
           "settings": {
             "title": "VOS INFORMATIONS DE NAISSANCE",
-            "description": "<p>partagez vos informations de naissance : prénom, Nom, lieu, date et heure de naissance..<br/>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
+            "description": "<p>Partagez vos informations de naissance : prénom, Nom, lieu, date et heure de naissance..<br/>ces données forment la carte de votre ciel, base de toute création ASTROGALLERY.</p>"
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
             "title": "ANALYSE & INTERPRÉTATION",
-            "description": "<p>à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence. Cette lecture devient une œuvre visuelle accompagnée de son livre d'interprétation.</p>"
+            "description": "<p>À partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence. Cette lecture devient une œuvre visuelle accompagnée de son livre d'interprétation.</p>"
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
             "title": "CRÉATION & LIVRAISON",
-            "description": "<p>votre œuvre et son livre sont ensuite créés avec soin, en france,<br/>et livrés chez vous sous trois à quatre semaines.</p>"
+            "description": "<p>Votre œuvre et son livre sont ensuite créés avec soin, en france,<br/>et livrés chez vous sous trois à quatre semaines.</p>"
           }
         }
       },
