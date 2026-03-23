@@ -1,1 +1,15 @@
-{%- render 'cart-drawer' -%}
+{%- render 'cart-drawer', cart_solo_image: section.settings.solo_cart_image -%}
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "solo_cart_image",
+      "label": "Image panier — Œuvre Solo",
+      "info": "Image affichée dans le panier pour le produit Solo"
+    }
+  ]
+}
+{% endschema %}

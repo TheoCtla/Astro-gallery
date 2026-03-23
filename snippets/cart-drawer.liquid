@@ -57,12 +57,16 @@
 										class="cart-item"
 									>
 										<div class="cart-item__inner-top">
-											{% if item.image %}
+											{% assign cart_image = item.image %}
+											{% if item.product.handle == 'solo' and cart_solo_image != blank %}
+												{% assign cart_image = cart_solo_image %}
+											{% endif %}
+											{% if cart_image %}
 												<div class="cart-item__media">
 													<img
 														class="cart-item__image"
-														src="{{ item.image | img_url: '140x' }}"
-														alt="{{ item.image.alt | escape }}"
+														src="{{ cart_image | img_url: '140x' }}"
+														alt="{{ cart_image.alt | escape }}"
 														width="70"
 														height="auto"
 														loading="lazy"
@@ -74,7 +78,11 @@
 													href="{{ item.url }}"
 													class="cart-item__name"
 												>
-													<span>{{ item.product.title | escape }}</span>
+													{% if item.product.handle == 'solo' %}
+														<span>Œuvre Signature</span>
+													{% else %}
+														<span>{{ item.product.title | escape }}</span>
+													{% endif %}
 												</a>
 
 												{%- if item.product.has_only_default_variant == false
