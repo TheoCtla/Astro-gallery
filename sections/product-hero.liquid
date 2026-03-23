@@ -610,7 +610,7 @@
               {%- if block.settings.icon != blank -%}
                 <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="" class="ph-hero__feature-icon-img" loading="lazy" width="20" height="20">
               {%- endif -%}
-              <span>{{ block.settings.text }}</span>
+              <span{% if block.settings.bold %} style="font-weight:700"{% endif %}>{{ block.settings.text }}</span>
             </li>
           {%- endfor -%}
         </ul>
@@ -1240,6 +1240,12 @@ document.addEventListener('DOMContentLoaded', function() {
           "id": "text",
           "label": "Texte",
           "default": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
+        },
+        {
+          "type": "checkbox",
+          "id": "bold",
+          "label": "Texte en gras",
+          "default": false
         }
       ]
     },
