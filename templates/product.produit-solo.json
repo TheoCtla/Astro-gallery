@@ -16,35 +16,40 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Calque_5.svg",
-            "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire."
+            "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire.",
+            "bold": false
           }
         },
         "feature-2": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Calque_1_1.svg",
-            "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité."
+            "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité.",
+            "bold": false
           }
         },
         "feature-3": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Icones-Micro-Set.svg",
-            "text": "Elle est livrée prête à être accrochée."
+            "text": "Elle est livrée prête à être accrochée.",
+            "bold": false
           }
         },
         "feature-4": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
-            "text": "Son livre de 110 pages, dont 40 entièrement dédiées à l'étude de votre thème astral. Couverture et contenu entièrement dédiés à votre thème natal."
+            "text": "Son livre de 110 pages, dont 40 entièrement dédiées à l'étude de votre thème astral. Couverture et contenu entièrement dédiés à votre thème natal.",
+            "bold": false
           }
         },
         "feature-5": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_1000004468.png",
-            "text": "Fabriquée en France"
+            "text": "Fabriquée en France",
+            "bold": true
           }
         },
         "badge-1": {
