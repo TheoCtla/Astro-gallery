@@ -73,14 +73,14 @@
           "type": "step",
           "settings": {
             "title": "ANALYSE & INTERPRÉTATION",
-            "description": "<p>à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence. Cette lecture devient une œuvre visuelle accompagnée de son livret d'interprétation.</p>"
+            "description": "<p>à partir de votre thème natal, notre experte interprète votre empreinte céleste pour en révéler l'essence. Cette lecture devient une œuvre visuelle accompagnée de son livre d'interprétation.</p>"
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
             "title": "CRÉATION & LIVRAISON",
-            "description": "<p>votre œuvre et son livret sont ensuite créés avec soin, en france,<br>et livrés chez vous sous trois à quatre semaines.</p>"
+            "description": "<p>votre œuvre et son livre sont ensuite créés avec soin, en france,<br/>et livrés chez vous sous trois à quatre semaines.</p>"
           }
         }
       },

@@ -51,7 +51,7 @@
           "type": "badge",
           "settings": {
             "icon": "shopify://shop_images/Calque_1_2.svg",
-            "text": "Livraison gratuite en 3 à 4 semaines"
+            "text": "Livraison offerte en 3 à 4 semaines"
           }
         },
         "badge-2": {
@@ -178,7 +178,7 @@
         "intro": "Chaque œuvre ASTROGALLERY est accompagnée de son livre d'interprétation de 110 pages, conçu comme un véritable guide personnel.",
         "cta_label": "CRÉER MON ŒUVRE",
         "cta_link": "/products/solo",
-        "cta_sub": "Livret de 110 pages inclus"
+        "cta_sub": "Livre de 110 pages inclus"
       }
     },
     "testimonials": {
