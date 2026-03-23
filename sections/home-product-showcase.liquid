@@ -556,6 +556,32 @@
     }
   }
 
+  /* ===== Responsive — Images height scaling (350px–749px) ===== */
+  @media (min-width: 350px) and (max-width: 749px) {
+    .hps__panel-book-img-main,
+    .hps__panel-book-img-bottom,
+    .hps__panel-frame-image,
+    .hps__panel-frame-secondary {
+      height: clamp(215px, 45vw, 350px);
+    }
+
+    .hps__panel-book-img-main img {
+      object-position: center 35%;
+    }
+
+    .hps__panel-book-img-bottom img {
+      object-position: center 30%;
+    }
+
+    .hps__panel-frame-image img {
+      object-position: center 40%;
+    }
+
+    .hps__panel-frame-secondary img {
+      object-position: center 30%;
+    }
+  }
+
   /* ===== Responsive — Tablet (750px) ===== */
   @media (min-width: 750px) {
     .hps {
