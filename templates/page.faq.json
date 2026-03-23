@@ -16,21 +16,21 @@
           "type": "question",
           "settings": {
             "question": "QU'EST-CE QU'UNE ŒUVRE ASTRALE ?",
-            "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.<br/>Chaque pièce est numérotée, nominative et accompagnée d'un livret de 110 pages pour comprendre les énergies qui vous composent.</p>"
+            "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.<br/>Chaque pièce est numérotée, nominative et accompagnée d'un livre de 110 pages pour comprendre les énergies qui vous composent.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
             "question": "QUELLES INFORMATIONS SONT NÉCESSAIRES ?",
-            "answer": "<p>Nom complet, date, heure et lieu de naissance.<br>Ces données permettent de calculer précisément votre thème sidéral ; elles restent strictement confidentielles.</p>"
+            "answer": "<p>Nom complet, date, heure et lieu de naissance.<br/>Ces données permettent de calculer précisément votre thème sidéral ; elles restent strictement confidentielles.</p>"
           }
         },
         "q3": {
           "type": "question",
           "settings": {
-            "question": "QUE CONTIENT LE LIVRET ?",
-            "answer": "<p>Un ouvrage de <strong>110 pages</strong>, dont <strong>40 personnalisées</strong> à votre ciel : lecture planétaire, mantras, phrase centrale « Cœur de votre Ciel ».<br>Les pages générales offrent une introduction claire à l'astrologie.</p>"
+            "question": "QUE CONTIENT LE LIVRE ?",
+            "answer": "<p>Un ouvrage de <strong>110 pages</strong>, dont <strong>40 personnalisées</strong> à votre ciel : lecture planétaire, mantras, phrase centrale « Cœur de votre Ciel ».<br/>Les pages générales offrent une introduction claire à l'astrologie.</p>"
           }
         },
         "q4": {
