@@ -865,7 +865,12 @@
         </div>
         <div class="hps__panel-book-img-main">
           {%- if section.settings.book_image_1 != blank -%}
-            <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
+            <picture>
+              {%- if section.settings.book_image_1_mobile != blank -%}
+                <source media="(max-width: 749px)" srcset="{{ section.settings.book_image_1_mobile | image_url: width: 800 }}">
+              {%- endif -%}
+              <img src="{{ section.settings.book_image_1 | image_url: width: 800 }}" alt="Livre ouvert" loading="lazy">
+            </picture>
           {%- else -%}
             {{ 'image' | placeholder_svg_tag }}
           {%- endif -%}
@@ -873,7 +878,12 @@
         <div class="hps__panel-book-right">
           <div class="hps__panel-book-img-secondary">
             {%- if section.settings.book_image_2 != blank -%}
-              <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
+              <picture>
+                {%- if section.settings.book_image_2_mobile != blank -%}
+                  <source media="(max-width: 749px)" srcset="{{ section.settings.book_image_2_mobile | image_url: width: 600 }}">
+                {%- endif -%}
+                <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
+              </picture>
             {%- else -%}
               {{ 'image' | placeholder_svg_tag }}
             {%- endif -%}
@@ -909,7 +919,9 @@
           </div>
         </div>
         <div class="hps__panel-book-img-bottom hps__mobile-only">
-          {%- if section.settings.book_image_2 != blank -%}
+          {%- if section.settings.book_image_2_mobile != blank -%}
+            <img src="{{ section.settings.book_image_2_mobile | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
+          {%- elsif section.settings.book_image_2 != blank -%}
             <img src="{{ section.settings.book_image_2 | image_url: width: 600 }}" alt="Couverture livre" loading="lazy">
           {%- endif -%}
         </div>
@@ -1144,12 +1156,22 @@
     {
       "type": "image_picker",
       "id": "book_image_1",
-      "label": "Image livre 1 (pages ouvertes)"
+      "label": "Image livre 1 — Desktop (pages ouvertes)"
+    },
+    {
+      "type": "image_picker",
+      "id": "book_image_1_mobile",
+      "label": "Image livre 1 — Mobile (pages ouvertes)"
     },
     {
       "type": "image_picker",
       "id": "book_image_2",
-      "label": "Image livre 2 (couverture)"
+      "label": "Image livre 2 — Desktop (couverture)"
+    },
+    {
+      "type": "image_picker",
+      "id": "book_image_2_mobile",
+      "label": "Image livre 2 — Mobile (couverture)"
     },
     {
       "type": "header",
