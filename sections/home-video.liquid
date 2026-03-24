@@ -29,7 +29,8 @@
     display: none;
   }
 
-  .home-video__wrapper.has-started .home-video__video {
+  .home-video__wrapper.has-started .home-video__video,
+  .home-video__wrapper.no-cover .home-video__video {
     display: block;
   }
 
@@ -56,9 +57,9 @@
 
   .home-video__play-btn {
     position: absolute;
-    bottom: 2rem;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 3;
     width: 68px;
     height: 68px;
@@ -74,7 +75,7 @@
   }
 
   .home-video__play-btn:hover {
-    transform: translateX(-50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.08);
   }
 
   .home-video__wrapper.is-playing .home-video__play-btn {
@@ -89,10 +90,29 @@
     display: flex;
   }
 
+  .home-video__wrapper.has-started.is-paused .home-video__video {
+    filter: brightness(0.55);
+  }
+
   .home-video__play-btn svg {
     width: 18px;
     height: 18px;
     margin-left: 3px;
+  }
+
+  /* Small tablet */
+  @media (min-width: 600px) {
+    .home-video {
+      padding: 40px 2rem;
+    }
+
+    .home-video__container {
+      max-width: 700px;
+    }
+
+    .home-video__wrapper {
+      aspect-ratio: 16 / 9;
+    }
   }
 
   /* Tablet */
@@ -124,8 +144,13 @@
 
 <div class="home-video">
   <div class="home-video__container">
-    <div class="home-video__wrapper" id="home-video-wrapper">
+    <div class="home-video__wrapper{% if section.settings.cover_image == blank %} no-cover{% endif %}" id="home-video-wrapper">
       {% if section.settings.video != blank %}
+        {% if section.settings.cover_image != blank %}
+          {% assign poster_url = section.settings.cover_image | image_url: width: 1920 %}
+        {% else %}
+          {% assign poster_url = section.settings.video.preview_image | image_url: width: 1920 %}
+        {% endif %}
         {{ section.settings.video | video_tag:
           class: 'home-video__video',
           autoplay: false,
@@ -134,7 +159,9 @@
           playsinline: true,
           controls: false,
           preload: 'auto',
-          id: 'home-video-player'
+          id: 'home-video-player',
+          image_size: '1920x',
+          poster: poster_url
         }}
         <div class="home-video__cover" id="home-video-cover">
           {% if section.settings.cover_image != blank %}
@@ -144,12 +171,12 @@
               alt: section.settings.cover_alt
             }}
           {% endif %}
-          <button class="home-video__play-btn" aria-label="Lire la vidéo">
-            <svg viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="0,0 20,11 0,22" fill="#DFBE71"/>
-            </svg>
-          </button>
         </div>
+        <button class="home-video__play-btn" aria-label="Lire la vidéo">
+          <svg viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="0,0 20,11 0,22" fill="#DFBE71"/>
+          </svg>
+        </button>
       {% else %}
         {%- comment -%} Empty frame placeholder when no video is set {%- endcomment -%}
       {% endif %}
