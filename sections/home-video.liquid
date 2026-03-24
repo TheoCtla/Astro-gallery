@@ -29,7 +29,8 @@
     display: none;
   }
 
-  .home-video__wrapper.has-started .home-video__video {
+  .home-video__wrapper.has-started .home-video__video,
+  .home-video__wrapper.no-cover .home-video__video {
     display: block;
   }
 
@@ -143,8 +144,13 @@
 
 <div class="home-video">
   <div class="home-video__container">
-    <div class="home-video__wrapper" id="home-video-wrapper">
+    <div class="home-video__wrapper{% if section.settings.cover_image == blank %} no-cover{% endif %}" id="home-video-wrapper">
       {% if section.settings.video != blank %}
+        {% if section.settings.cover_image != blank %}
+          {% assign poster_url = section.settings.cover_image | image_url: width: 1920 %}
+        {% else %}
+          {% assign poster_url = section.settings.video.preview_image | image_url: width: 1920 %}
+        {% endif %}
         {{ section.settings.video | video_tag:
           class: 'home-video__video',
           autoplay: false,
@@ -153,7 +159,9 @@
           playsinline: true,
           controls: false,
           preload: 'auto',
-          id: 'home-video-player'
+          id: 'home-video-player',
+          image_size: '1920x',
+          poster: poster_url
         }}
         <div class="home-video__cover" id="home-video-cover">
           {% if section.settings.cover_image != blank %}
