@@ -55,7 +55,6 @@
       "type": "home-video",
       "settings": {
         "video": "shopify://files/videos/Vidéo signature V3 .mp4",
-        "cover_image": "shopify://shop_images/Astrogallery_-_Carte_1_Oeuvre_livre.png",
         "cover_alt": "Vidéo AstroGallery"
       }
     },
