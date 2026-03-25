@@ -53,11 +53,12 @@
 }
 
 .book-section__logo {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   margin-bottom: 2.5rem;
   position: relative;
   flex-shrink: 0;
+  overflow: visible;
 }
 
 .book-section__logo-svg {
@@ -65,12 +66,15 @@
   height: 100%;
   animation: bookLogoRotate 20s infinite linear;
   transform-origin: center;
+  fill: #DFBE71;
 }
 
-.book-section__logo-text {
-  fill: #DFBE71;
-  font-size: 14px;
-  letter-spacing: 4px;
+.book-section__logo-svg text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
 }
 
 @keyframes bookLogoRotate {
@@ -145,6 +149,8 @@
   }
   
   .book-section__logo {
+    width: 130px;
+    height: 130px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -173,6 +179,11 @@
 }
 
 @media screen and (max-width: 750px) {
+  .book-section__logo {
+    width: 100px;
+    height: 100px;
+  }
+
   .book-section__title {
     font-size: 24px;
   }
