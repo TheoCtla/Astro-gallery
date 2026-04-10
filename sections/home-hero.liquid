@@ -111,7 +111,7 @@
         muted: true,
         playsinline: true,
         controls: false,
-        preload: 'auto'
+        preload: 'metadata'
       }}
       {{ section.settings.background_video_mobile | video_tag:
         class: 'home-hero__video home-hero__video--mobile',
@@ -120,7 +120,7 @@
         muted: true,
         playsinline: true,
         controls: false,
-        preload: 'auto'
+        preload: 'metadata'
       }}
     {% else %}
       {{ section.settings.background_video | video_tag:
@@ -130,7 +130,7 @@
         muted: true,
         playsinline: true,
         controls: false,
-        preload: 'auto'
+        preload: 'metadata'
       }}
     {% endif %}
   {% endif %}
