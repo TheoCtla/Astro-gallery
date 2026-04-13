@@ -415,6 +415,18 @@
     margin-left: 0.3rem;
   }
 
+  /* Mobile-only price shown under "Fabriquée en France" */
+  .ph-hero__price--mobile {
+    margin-top: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 750px) {
+    .ph-hero__price--mobile {
+      display: none;
+    }
+  }
+
   /* ===== Buttons ===== */
   .ph-hero__buttons {
     display: flex;
@@ -636,6 +648,12 @@
         {%- endfor -%}
       </ul>
       {%- endif -%}
+
+      <!-- Mobile-only price (under "Fabriquée en France") -->
+      <p class="ph-hero__price ph-hero__price--mobile">
+        {{ product.selected_or_first_available_variant.price | money }}
+        <span class="ph-hero__price-suffix">TTC</span>
+      </p>
 
       <!-- ===== Birth Data Form ===== -->
       {%- form 'product'
