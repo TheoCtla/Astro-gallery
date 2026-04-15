@@ -1,0 +1,306 @@
+/* =============================================
+   Cacher le breadcrumb Shopify par défaut
+   ============================================= */
+
+body.template-page-payer-en-plusieurs-fois .container > nav.breadcrumb,
+body.template-page-payer-en-plusieurs-fois .breadcrumb:not(.installments-breadcrumb),
+body.template-page-payer-en-plusieurs-fois nav.breadcrumb:not(.installments-breadcrumb),
+body[class*="template-page-payer-en-plusieurs-fois"] .breadcrumb:not(.installments-breadcrumb) {
+  display: none !important;
+}
+
+/* Cacher le titre et contenu par défaut de la page */
+body.template-page-payer-en-plusieurs-fois .main-page-title,
+body.template-page-payer-en-plusieurs-fois .page-header,
+body.template-page-payer-en-plusieurs-fois .rte {
+  display: none !important;
+}
+
+/* =============================================
+   Page Installments - Structure
+   ============================================= */
+
+.installments-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 0;
+}
+
+/* =============================================
+   Breadcrumb
+   ============================================= */
+
+.installments-breadcrumb {
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1rem, 2vw, 1.5rem);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  text-align: left;
+}
+
+.installments-breadcrumb__link {
+  color: #1D1D1B;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.installments-breadcrumb__link:hover {
+  color: #DFBE71;
+}
+
+.installments-breadcrumb__separator {
+  margin: 0 0.5rem;
+  color: #1D1D1B;
+}
+
+.installments-breadcrumb__current {
+  color: #1D1D1B;
+  font-weight: 500;
+}
+
+/* =============================================
+   Header
+   ============================================= */
+
+.installments-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.installments-header__title {
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 400;
+  color: #1D1D1B;
+  margin: 5rem 0 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+.installments-header__subtitle,
+.installments-header__subtitle p {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(15px, 2vw, 22px);
+  color: #1D1D1B;
+  text-align: center;
+  margin: 0;
+  line-height: 150%;
+  letter-spacing: -0.5px;
+}
+
+/* =============================================
+   Content - Layout
+   ============================================= */
+
+.installments-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.installments-content__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.installments-content__image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =============================================
+   Form
+   ============================================= */
+
+.installments-form {
+  width: 100%;
+}
+
+.installments-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.installments-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.installments-form__field--full {
+  margin-bottom: 3rem;
+}
+
+.installments-form__field label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1D1D1B;
+  margin-bottom: 0.5rem;
+}
+
+.installments-form__field input,
+.installments-form__field textarea {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #1D1D1B;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  padding: 1rem;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.installments-form__field input::placeholder,
+.installments-form__field textarea::placeholder {
+  color: #999;
+}
+
+.installments-form__field input:focus,
+.installments-form__field textarea:focus {
+  outline: none;
+  border-color: #DFBE71;
+}
+
+.installments-form__field textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Submit Button */
+.installments-form__submit {
+  margin-top: 4rem;
+  position: relative;
+}
+
+.installments-form__submit::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #DFBE71, #C9A85C);
+}
+
+.installments-form__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #DFBE71, #C9A85C);
+  border: none;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.installments-form__button:hover {
+  background: linear-gradient(135deg, #C9A85C, #DFBE71);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(223, 190, 113, 0.3);
+}
+
+.installments-form__button span {
+  white-space: nowrap;
+}
+
+/* Success/Error Messages */
+.installments-form__success,
+.installments-form__error {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.installments-form__success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.installments-form__error {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media screen and (max-width: 990px) {
+  .installments-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .installments-content__image {
+    order: -1;
+  }
+
+  .installments-content__image img {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .installments-page {
+    padding: 0 1rem 0;
+  }
+
+  .installments-form__row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .installments-header__title {
+    font-size: 20px;
+  }
+
+  .installments-content__image img {
+    max-width: 280px;
+  }
+
+  .installments-form__button {
+    width: 100%;
+  }
+}
+
+/* Astérisque champs obligatoires */
+.installments-form__required {
+  color: #dfbe71;
+}
+
+/* Validation - champs en erreur */
+.installments-form__input--error {
+  border-color: #e74c3c !important;
+  background-color: #fff8f8 !important;
+}
+
+.installments-form__input--error:focus {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.installments-form__error-message {
+  color: #e74c3c;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}

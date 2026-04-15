@@ -433,6 +433,7 @@
   .ph-hero__buttons {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.75rem;
     border-top: 2px solid #DFBE71;
     padding-top: 2rem;
@@ -538,6 +539,11 @@
     .ph-hero__btn {
       width: auto;
       flex: 1;
+    }
+
+    .ph-hero__btn--full {
+      flex: 1 0 100%;
+      width: 100%;
     }
   }
 
@@ -769,6 +775,12 @@
           {%- if section.settings.cta_gift_link != blank -%}
           <a href="{{ section.settings.cta_gift_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light">
             <span class="btn-gold__text">{{ section.settings.cta_gift_label }}</span>
+          </a>
+          {%- endif -%}
+
+          {%- if section.settings.cta_installments_link != blank -%}
+          <a href="{{ section.settings.cta_installments_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light ph-hero__btn--full">
+            <span class="btn-gold__text">{{ section.settings.cta_installments_label }}</span>
           </a>
           {%- endif -%}
         </div>
@@ -1209,6 +1221,15 @@
 "type": "url",
 "id": "cta_gift_link",
 "label": "Lien bouton carte cadeau"
+}, {
+"type": "text",
+"id": "cta_installments_label",
+"label": "Texte bouton paiement plusieurs fois",
+"default": "• PAYER EN PLUSIEURS FOIS •"
+}, {
+"type": "url",
+"id": "cta_installments_link",
+"label": "Lien bouton paiement plusieurs fois"
 }
 ],
 "blocks": [
