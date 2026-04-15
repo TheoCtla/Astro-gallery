@@ -14,8 +14,7 @@
         "label_message": "Des questions sur le paiement en plusieurs fois ?",
         "button_text": "• RECEVOIR MON LIEN DE PAIEMENT •",
         "success_message": "Merci, votre inscription est bien enregistrée. Vous recevrez votre lien de paiement en plusieurs fois dès son ouverture.",
-        "error_message": "Une erreur est survenue. Veuillez réessayer.",
-        "sheet_webhook_url": "https://script.google.com/macros/s/AKfycbxfQsxKh36E5fIUVN2fsaOF9AvQ7CqkoBSyCuLrAXuXryrn1OWbgNejWP0PXhdQ2bbjng/exec"
+        "error_message": "Une erreur est survenue. Veuillez réessayer."
       }
     }
   },

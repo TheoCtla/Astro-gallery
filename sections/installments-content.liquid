@@ -33,42 +33,40 @@
 
     <!-- Form -->
     <div class="installments-content__form">
-      {%- form 'contact', id: 'InstallmentsForm', class: 'installments-form' -%}
-        {%- if form.posted_successfully? -%}
-          <div class="installments-form__success">
-            {{ section.settings.success_message }}
-          </div>
-        {%- elsif form.errors -%}
-          <div class="installments-form__error">
-            {{ section.settings.error_message }}
-          </div>
-        {%- endif -%}
+      <div class="installments-form__success" id="InstallmentsFormSuccess" style="display: none;">
+        {{ section.settings.success_message }}
+      </div>
+
+      <form id="InstallmentsForm" class="installments-form" novalidate>
+        <div class="installments-form__error" id="InstallmentsFormError" style="display: none;">
+          {{ section.settings.error_message }}
+        </div>
 
         <div class="installments-form__row">
           <div class="installments-form__field">
             <label for="InstallmentsForm-nom">{{ section.settings.label_nom }} <span class="installments-form__required">*</span></label>
-            <input type="text" id="InstallmentsForm-nom" name="contact[Nom]" placeholder="..." autocomplete="family-name" required aria-required="true">
+            <input type="text" id="InstallmentsForm-nom" name="nom" placeholder="..." autocomplete="family-name" required aria-required="true">
           </div>
           <div class="installments-form__field">
             <label for="InstallmentsForm-prenom">{{ section.settings.label_prenom }} <span class="installments-form__required">*</span></label>
-            <input type="text" id="InstallmentsForm-prenom" name="contact[Prénom]" placeholder="..." autocomplete="given-name" required aria-required="true">
+            <input type="text" id="InstallmentsForm-prenom" name="prenom" placeholder="..." autocomplete="given-name" required aria-required="true">
           </div>
         </div>
 
         <div class="installments-form__row">
           <div class="installments-form__field">
             <label for="InstallmentsForm-email">{{ section.settings.label_email }} <span class="installments-form__required">*</span></label>
-            <input type="email" id="InstallmentsForm-email" name="contact[email]" placeholder="..." autocomplete="email" required aria-required="true">
+            <input type="email" id="InstallmentsForm-email" name="email" placeholder="..." autocomplete="email" required aria-required="true">
           </div>
           <div class="installments-form__field">
             <label for="InstallmentsForm-phone">{{ section.settings.label_phone }}</label>
-            <input type="tel" id="InstallmentsForm-phone" name="contact[Téléphone]" placeholder="..." autocomplete="tel">
+            <input type="tel" id="InstallmentsForm-phone" name="telephone" placeholder="..." autocomplete="tel">
           </div>
         </div>
 
         <div class="installments-form__field installments-form__field--full">
           <label for="InstallmentsForm-message">{{ section.settings.label_message }} <span class="installments-form__required">*</span></label>
-          <textarea id="InstallmentsForm-message" name="contact[Message]" rows="6" placeholder="..." required aria-required="true"></textarea>
+          <textarea id="InstallmentsForm-message" name="message" rows="6" placeholder="..." required aria-required="true"></textarea>
         </div>
 
         <div class="installments-form__submit">
@@ -76,23 +74,28 @@
             <span>{{ section.settings.button_text }}</span>
           </button>
         </div>
-      {%- endform -%}
+      </form>
     </div>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  var GOOGLE_SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxfQsxKh36E5fIUVN2fsaOF9AvQ7CqkoBSyCuLrAXuXryrn1OWbgNejWP0PXhdQ2bbjng/exec';
+
   const form = document.getElementById('InstallmentsForm');
   if (!form) return;
 
-  form.setAttribute('novalidate', '');
+  const successEl = document.getElementById('InstallmentsFormSuccess');
+  const errorEl = document.getElementById('InstallmentsFormError');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function(e) {
-    if (form.dataset.submitting === 'true') {
-      e.preventDefault();
-      return;
-    }
+    e.preventDefault();
+
+    if (form.dataset.submitting === 'true') return;
+
+    if (errorEl) errorEl.style.display = 'none';
 
     let hasError = false;
 
@@ -117,32 +120,47 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (hasError) {
-      e.preventDefault();
       form.querySelector('.installments-form__input--error').focus();
       return;
     }
 
     form.dataset.submitting = 'true';
-
-    var submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) {
-      setTimeout(function() {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.6';
-        submitBtn.style.cursor = 'wait';
-      }, 0);
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      submitBtn.style.cursor = 'wait';
     }
 
-    var sheetUrl = {{ section.settings.sheet_webhook_url | json }};
-    if (sheetUrl && navigator.sendBeacon) {
-      var payload = new URLSearchParams();
-      payload.append('nom', form.querySelector('[name="contact[Nom]"]').value);
-      payload.append('prenom', form.querySelector('[name="contact[Prénom]"]').value);
-      payload.append('email', form.querySelector('[name="contact[email]"]').value);
-      payload.append('telephone', form.querySelector('[name="contact[Téléphone]"]').value);
-      payload.append('message', form.querySelector('[name="contact[Message]"]').value);
-      navigator.sendBeacon(sheetUrl, payload);
-    }
+    var sheetData = {
+      nom: form.querySelector('[name="nom"]').value.trim(),
+      prenom: form.querySelector('[name="prenom"]').value.trim(),
+      email: form.querySelector('[name="email"]').value.trim(),
+      telephone: form.querySelector('[name="telephone"]').value.trim(),
+      message: form.querySelector('[name="message"]').value.trim()
+    };
+
+    fetch(GOOGLE_SHEETS_WEBHOOK, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sheetData)
+    })
+      .then(function() {
+        form.style.display = 'none';
+        if (successEl) {
+          successEl.style.display = 'block';
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      })
+      .catch(function() {
+        if (errorEl) errorEl.style.display = 'block';
+        form.dataset.submitting = 'false';
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '';
+          submitBtn.style.cursor = '';
+        }
+      });
   });
 
   form.querySelectorAll('[required]').forEach(function(field) {
@@ -252,16 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "error_message",
       "default": "Une erreur est survenue. Veuillez réessayer.",
       "label": "Message d'erreur"
-    },
-    {
-      "type": "header",
-      "content": "Intégration Google Sheet"
-    },
-    {
-      "type": "text",
-      "id": "sheet_webhook_url",
-      "label": "URL du Web App Google Apps Script",
-      "info": "URL /exec du déploiement Apps Script qui écrit dans l'onglet Contact-Paiement et envoie l'email de confirmation"
     }
   ],
   "presets": [
