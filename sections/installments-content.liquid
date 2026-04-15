@@ -1,0 +1,235 @@
+{{ 'page-installments.css' | asset_url | stylesheet_tag }}
+
+<div class="installments-page">
+  <!-- Breadcrumb -->
+  <nav class="installments-breadcrumb">
+    <a href="/" class="installments-breadcrumb__link">Home</a>
+    <span class="installments-breadcrumb__separator">›</span>
+    <span class="installments-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="installments-header">
+    <h1 class="installments-header__title">{{ section.settings.title }}</h1>
+    <div class="installments-header__subtitle">{{ section.settings.subtitle }}</div>
+  </div>
+
+  <!-- Content -->
+  <div class="installments-content">
+    <!-- Image -->
+    <div class="installments-content__image">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 600 }}"
+          alt="{{ section.settings.image.alt | default: 'Illustration' | escape }}"
+          loading="lazy"
+          width="600"
+          height="{{ 600 | divided_by: section.settings.image.aspect_ratio | round }}"
+        >
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag }}
+      {%- endif -%}
+    </div>
+
+    <!-- Form -->
+    <div class="installments-content__form">
+      {%- form 'contact', id: 'InstallmentsForm', class: 'installments-form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="installments-form__success">
+            {{ section.settings.success_message }}
+          </div>
+        {%- elsif form.errors -%}
+          <div class="installments-form__error">
+            {{ section.settings.error_message }}
+          </div>
+        {%- endif -%}
+
+        <div class="installments-form__row">
+          <div class="installments-form__field">
+            <label for="InstallmentsForm-nom">{{ section.settings.label_nom }} <span class="installments-form__required">*</span></label>
+            <input type="text" id="InstallmentsForm-nom" name="contact[Nom]" placeholder="..." autocomplete="family-name" required aria-required="true">
+          </div>
+          <div class="installments-form__field">
+            <label for="InstallmentsForm-prenom">{{ section.settings.label_prenom }} <span class="installments-form__required">*</span></label>
+            <input type="text" id="InstallmentsForm-prenom" name="contact[Prénom]" placeholder="..." autocomplete="given-name" required aria-required="true">
+          </div>
+        </div>
+
+        <div class="installments-form__row">
+          <div class="installments-form__field">
+            <label for="InstallmentsForm-email">{{ section.settings.label_email }} <span class="installments-form__required">*</span></label>
+            <input type="email" id="InstallmentsForm-email" name="contact[email]" placeholder="..." autocomplete="email" required aria-required="true">
+          </div>
+          <div class="installments-form__field">
+            <label for="InstallmentsForm-phone">{{ section.settings.label_phone }}</label>
+            <input type="tel" id="InstallmentsForm-phone" name="contact[Téléphone]" placeholder="..." autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="installments-form__field installments-form__field--full">
+          <label for="InstallmentsForm-message">{{ section.settings.label_message }} <span class="installments-form__required">*</span></label>
+          <textarea id="InstallmentsForm-message" name="contact[Message]" rows="6" placeholder="..." required aria-required="true"></textarea>
+        </div>
+
+        <div class="installments-form__submit">
+          <button type="submit" class="installments-form__button">
+            <span>{{ section.settings.button_text }}</span>
+          </button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('InstallmentsForm');
+  if (!form) return;
+
+  form.setAttribute('novalidate', '');
+
+  form.addEventListener('submit', function(e) {
+    let hasError = false;
+
+    form.querySelectorAll('[required]').forEach(function(field) {
+      const wrapper = field.closest('.installments-form__field');
+      field.classList.remove('installments-form__input--error');
+      if (wrapper) {
+        const msg = wrapper.querySelector('.installments-form__error-message');
+        if (msg) msg.remove();
+      }
+
+      if (!field.value.trim() || (field.type === 'email' && !field.validity.valid)) {
+        hasError = true;
+        field.classList.add('installments-form__input--error');
+        if (wrapper && !wrapper.querySelector('.installments-form__error-message')) {
+          const errorMsg = document.createElement('span');
+          errorMsg.className = 'installments-form__error-message';
+          errorMsg.textContent = field.type === 'email' ? 'Veuillez entrer un e-mail valide.' : 'Ce champ est obligatoire.';
+          wrapper.appendChild(errorMsg);
+        }
+      }
+    });
+
+    if (hasError) {
+      e.preventDefault();
+      form.querySelector('.installments-form__input--error').focus();
+    }
+  });
+
+  form.querySelectorAll('[required]').forEach(function(field) {
+    field.addEventListener('input', function() {
+      if (field.value.trim() && (field.type !== 'email' || field.validity.valid)) {
+        field.classList.remove('installments-form__input--error');
+        const wrapper = field.closest('.installments-form__field');
+        if (wrapper) {
+          const msg = wrapper.querySelector('.installments-form__error-message');
+          if (msg) msg.remove();
+        }
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Paiement plusieurs fois",
+  "tag": "section",
+  "class": "installments-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "En-tête"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_label",
+      "default": "Payer en plusieurs fois",
+      "label": "Breadcrumb label"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "UNE QUESTION, UN CONSEIL, UN ACCOMPAGNEMENT ?",
+      "label": "Titre principal"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "default": "<p>Notre équipe vous répond sous 24h, avec attention et précision.</p>",
+      "label": "Sous-titre"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Illustration"
+    },
+    {
+      "type": "header",
+      "content": "Labels du formulaire"
+    },
+    {
+      "type": "text",
+      "id": "label_nom",
+      "default": "Nom",
+      "label": "Label - Nom"
+    },
+    {
+      "type": "text",
+      "id": "label_prenom",
+      "default": "Prénom",
+      "label": "Label - Prénom"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "default": "E-mail",
+      "label": "Label - Email"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "default": "Numéro de téléphone",
+      "label": "Label - Téléphone"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "default": "Votre message",
+      "label": "Label - Message"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "• ENVOYER VOTRE MESSAGE •",
+      "label": "Texte du bouton"
+    },
+    {
+      "type": "header",
+      "content": "Messages"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "default": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
+      "label": "Message de succès"
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "default": "Une erreur est survenue. Veuillez réessayer.",
+      "label": "Message d'erreur"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Paiement plusieurs fois"
+    }
+  ]
+}
+{% endschema %}
