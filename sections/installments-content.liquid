@@ -1,12 +1,12 @@
 {{ 'page-installments.css' | asset_url | stylesheet_tag }}
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
 
 <div class="installments-page">
-  <!-- Breadcrumb -->
-  <nav class="installments-breadcrumb">
-    <a href="/" class="installments-breadcrumb__link">Home</a>
-    <span class="installments-breadcrumb__separator">›</span>
-    <span class="installments-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
-  </nav>
+  {%- render 'breadcrumb',
+      parent_url: '/products/solo',
+      parent_label: "L'Œuvre Astrale",
+      current: section.settings.breadcrumb_label
+  -%}
 
   <!-- Header -->
   <div class="installments-header">
@@ -114,6 +114,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hasError) {
       e.preventDefault();
       form.querySelector('.installments-form__input--error').focus();
+      return;
+    }
+
+    var sheetUrl = {{ section.settings.sheet_webhook_url | json }};
+    if (sheetUrl && navigator.sendBeacon) {
+      var payload = new URLSearchParams();
+      payload.append('nom', form.querySelector('[name="contact[Nom]"]').value);
+      payload.append('prenom', form.querySelector('[name="contact[Prénom]"]').value);
+      payload.append('email', form.querySelector('[name="contact[email]"]').value);
+      payload.append('telephone', form.querySelector('[name="contact[Téléphone]"]').value);
+      payload.append('message', form.querySelector('[name="contact[Message]"]').value);
+      navigator.sendBeacon(sheetUrl, payload);
     }
   });
 
@@ -151,13 +163,13 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "text",
       "id": "title",
-      "default": "UNE QUESTION, UN CONSEIL, UN ACCOMPAGNEMENT ?",
+      "default": "PAIEMENT EN PLUSIEURS FOIS",
       "label": "Titre principal"
     },
     {
       "type": "richtext",
       "id": "subtitle",
-      "default": "<p>Notre équipe vous répond sous 24h, avec attention et précision.</p>",
+      "default": "<p>Notre solution de paiement en plusieurs fois est en cours d'implémentation, elle sera disponible fin avril.</p><p>Laissez-nous vos coordonnées et nous vous enverrons un lien pour accéder au paiement en plusieurs fois dès son ouverture.</p>",
       "label": "Sous-titre"
     },
     {
@@ -200,13 +212,13 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "text",
       "id": "label_message",
-      "default": "Votre message",
+      "default": "Des questions sur le paiement en plusieurs fois ?",
       "label": "Label - Message"
     },
     {
       "type": "text",
       "id": "button_text",
-      "default": "• ENVOYER VOTRE MESSAGE •",
+      "default": "• RECEVOIR MON LIEN DE PAIEMENT •",
       "label": "Texte du bouton"
     },
     {
@@ -216,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "text",
       "id": "success_message",
-      "default": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
+      "default": "Merci, votre inscription est bien enregistrée. Vous recevrez votre lien de paiement en plusieurs fois dès son ouverture.",
       "label": "Message de succès"
     },
     {
@@ -224,6 +236,16 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "error_message",
       "default": "Une erreur est survenue. Veuillez réessayer.",
       "label": "Message d'erreur"
+    },
+    {
+      "type": "header",
+      "content": "Intégration Google Sheet"
+    },
+    {
+      "type": "text",
+      "id": "sheet_webhook_url",
+      "label": "URL du Web App Google Apps Script",
+      "info": "URL /exec du déploiement Apps Script qui écrit dans l'onglet Contact-Paiement et envoie l'email de confirmation"
     }
   ],
   "presets": [

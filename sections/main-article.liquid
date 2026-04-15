@@ -1,4 +1,5 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
   {%- for block in section.blocks -%}
@@ -6,12 +7,14 @@
 
       {%- when 'article-header' -%}
         {% if settings.show_breadcrumbs %}
-          <nav class="breadcrumb breadcrumb--article" role="navigation" aria-label="breadcrumbs">
-            <a href="{{ routes.root_url }}" title="Home">Home</a>{% render 'icon-breadcrumb' -%}
-            <a href="{{ section.settings.journal_url | default: '/pages/journal-astral' }}">{{ section.settings.journal_label | default: 'Journal astral' }}</a>
-            {% render 'icon-breadcrumb' %}
-            <span>{{ article.title }}</span>
-          </nav>
+          {%- assign journal_breadcrumb_url = section.settings.journal_url | default: '/pages/journal-astral' -%}
+          {%- assign journal_breadcrumb_label = section.settings.journal_label | default: 'Journal astral' -%}
+          {%- render 'breadcrumb',
+              parent_url: journal_breadcrumb_url,
+              parent_label: journal_breadcrumb_label,
+              current: article.title,
+              standalone: true
+          -%}
         {% endif %}
 
         <header class="article-hero" {{ block.shopify_attributes }}>

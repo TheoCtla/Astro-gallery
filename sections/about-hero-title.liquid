@@ -83,12 +83,10 @@
   }
 </style>
 
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
+
 <div class="about-hero-title">
-  <nav class="about-hero-title__breadcrumb">
-    <a href="/" class="about-hero-title__breadcrumb-link">Home</a>
-    <span class="about-hero-title__breadcrumb-separator">›</span>
-    <span class="about-hero-title__breadcrumb-current">{{ section.settings.breadcrumb_label }}</span>
-  </nav>
+  {%- render 'breadcrumb', current: section.settings.breadcrumb_label -%}
 
   <h1 class="about-hero-title__heading">{{ section.settings.page_title }}</h1>
 </div>

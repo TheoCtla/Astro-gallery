@@ -1,12 +1,8 @@
 {{ 'page-journal-astral.css' | asset_url | stylesheet_tag }}
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
 
 <div class="journal-astral-page">
-  <!-- Breadcrumb -->
-  <nav class="journal-breadcrumb">
-    <a href="/" class="journal-breadcrumb__link">Home</a>
-    <span class="journal-breadcrumb__separator">›</span>
-    <span class="journal-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
-  </nav>
+  {%- render 'breadcrumb', current: section.settings.breadcrumb_label -%}
 
   <!-- Header -->
   <header class="journal-header">

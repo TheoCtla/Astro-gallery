@@ -1,12 +1,8 @@
 {{ 'page-faq.css' | asset_url | stylesheet_tag }}
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
 
 <div class="faq-page">
-  <!-- Breadcrumb -->
-  <nav class="faq-breadcrumb">
-    <a href="/" class="faq-breadcrumb__link">Home</a>
-    <span class="faq-breadcrumb__separator">›</span>
-    <span class="faq-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
-  </nav>
+  {%- render 'breadcrumb', current: section.settings.breadcrumb_label, standalone: true -%}
 
   <!-- Section FAQ -->
   <div class="faq-section">
