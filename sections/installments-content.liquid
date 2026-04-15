@@ -10,7 +10,12 @@
 
   <!-- Header -->
   <div class="installments-header">
-    <h1 class="installments-header__title">{{ section.settings.title }}</h1>
+    <h1 class="installments-header__title">
+      {%- assign title_parts = section.settings.title | split: '||' -%}
+      {%- for part in title_parts -%}
+        {{- part | strip -}}{%- unless forloop.last -%}<br class="installments-header__title-break">{%- endunless -%}
+      {%- endfor -%}
+    </h1>
     <div class="installments-header__subtitle">{{ section.settings.subtitle }}</div>
   </div>
 
@@ -64,11 +69,6 @@
           </div>
         </div>
 
-        <div class="installments-form__field installments-form__field--full">
-          <label for="InstallmentsForm-message">{{ section.settings.label_message }} <span class="installments-form__required">*</span></label>
-          <textarea id="InstallmentsForm-message" name="message" rows="6" placeholder="..." required aria-required="true"></textarea>
-        </div>
-
         <div class="installments-form__submit">
           <button type="submit" class="installments-form__button">
             <span>{{ section.settings.button_text }}</span>
@@ -119,6 +119,32 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+    // Phone validation (optional field): if filled, must contain at least 10 digits
+    const phoneField = form.querySelector('[name="telephone"]');
+    if (phoneField) {
+      const phoneWrapper = phoneField.closest('.installments-form__field');
+      phoneField.classList.remove('installments-form__input--error');
+      if (phoneWrapper) {
+        const msg = phoneWrapper.querySelector('.installments-form__error-message');
+        if (msg) msg.remove();
+      }
+
+      const phoneValue = phoneField.value.trim();
+      if (phoneValue) {
+        const phoneDigits = phoneValue.replace(/\D/g, '');
+        if (phoneDigits.length < 10) {
+          hasError = true;
+          phoneField.classList.add('installments-form__input--error');
+          if (phoneWrapper && !phoneWrapper.querySelector('.installments-form__error-message')) {
+            const errorMsg = document.createElement('span');
+            errorMsg.className = 'installments-form__error-message';
+            errorMsg.textContent = 'Veuillez entrer un numéro de téléphone valide.';
+            phoneWrapper.appendChild(errorMsg);
+          }
+        }
+      }
+    }
+
     if (hasError) {
       form.querySelector('.installments-form__input--error').focus();
       return;
@@ -135,8 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
       nom: form.querySelector('[name="nom"]').value.trim(),
       prenom: form.querySelector('[name="prenom"]').value.trim(),
       email: form.querySelector('[name="email"]').value.trim(),
-      telephone: form.querySelector('[name="telephone"]').value.trim(),
-      message: form.querySelector('[name="message"]').value.trim()
+      telephone: form.querySelector('[name="telephone"]').value.trim()
     };
 
     fetch(GOOGLE_SHEETS_WEBHOOK, {
@@ -162,6 +187,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
   });
+
+  const phoneFieldLive = form.querySelector('[name="telephone"]');
+  if (phoneFieldLive) {
+    phoneFieldLive.addEventListener('input', function() {
+      const value = phoneFieldLive.value.trim();
+      const digits = value.replace(/\D/g, '');
+      if (!value || digits.length >= 10) {
+        phoneFieldLive.classList.remove('installments-form__input--error');
+        const wrapper = phoneFieldLive.closest('.installments-form__field');
+        if (wrapper) {
+          const msg = wrapper.querySelector('.installments-form__error-message');
+          if (msg) msg.remove();
+        }
+      }
+    });
+  }
 
   form.querySelectorAll('[required]').forEach(function(field) {
     field.addEventListener('input', function() {
@@ -197,13 +238,14 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "text",
       "id": "title",
-      "default": "Demandez votre Œuvre Astrale en plusieurs fois sans frais",
-      "label": "Titre principal"
+      "default": "Demandez votre Œuvre Astrale||en plusieurs fois sans frais",
+      "label": "Titre principal",
+      "info": "Utilisez || pour marquer un saut de ligne visible uniquement sur desktop"
     },
     {
       "type": "richtext",
       "id": "subtitle",
-      "default": "<p>Le paiement en 4× ou 10× sans frais sera disponible très prochainement. Remplissez ce formulaire pour être contacté(e) en priorité dès son activation et bénéficier de votre œuvre à 72,50 €/mois sur 4 mois ou 29 €/mois sur 10 mois, sans aucun frais supplémentaire.</p>",
+      "default": "<p>Le paiement en 4× ou 10× sans frais sera disponible très prochainement.<br>Remplissez ce formulaire pour être contacté(e) en priorité dès son activation et bénéficier de votre œuvre à<br>72,50 €/mois sur 4 mois ou 29 €/mois sur 10 mois. Votre œuvre au même prix, sans aucun frais supplémentaires.</p>",
       "label": "Sous-titre"
     },
     {
@@ -242,12 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "label_phone",
       "default": "Numéro de téléphone",
       "label": "Label - Téléphone"
-    },
-    {
-      "type": "text",
-      "id": "label_message",
-      "default": "Des questions sur le paiement en plusieurs fois ?",
-      "label": "Label - Message"
     },
     {
       "type": "text",

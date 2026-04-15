@@ -464,14 +464,25 @@
     background-color: #F1EEE5 !important;
   }
 
-  .ph-hero__cta-subtext {
-    width: 100%;
-    margin: 0.5rem 0 0;
+  .ph-hero__btn--full {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .ph-hero__installments-wrap {
+    margin-top: 1.5rem;
+  }
+
+  .ph-hero__btn-subtext {
+    display: block;
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #888;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #1D1D1B;
+    opacity: 0.7;
     text-align: center;
   }
 
@@ -787,15 +798,6 @@
             <span class="btn-gold__text">{{ section.settings.cta_gift_label }}</span>
           </a>
           {%- endif -%}
-
-          {%- if section.settings.cta_installments_link != blank -%}
-          <a href="{{ section.settings.cta_installments_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light ph-hero__btn--full">
-            <span class="btn-gold__text">{{ section.settings.cta_installments_label }}</span>
-          </a>
-          {%- if section.settings.cta_installments_subtext != blank -%}
-          <p class="ph-hero__cta-subtext">{{ section.settings.cta_installments_subtext }}</p>
-          {%- endif -%}
-          {%- endif -%}
         </div>
       </div>
       {%- endform -%}
@@ -813,6 +815,17 @@
           <span>{{ block.settings.text }}</span>
         </div>
         {%- endfor -%}
+      </div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_installments_link != blank -%}
+      <div class="ph-hero__installments-wrap">
+        <a href="{{ section.settings.cta_installments_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light ph-hero__btn--full">
+          <span class="btn-gold__text">{{ section.settings.cta_installments_label }}</span>
+          {%- if section.settings.cta_installments_subtext != blank -%}
+          <span class="ph-hero__btn-subtext">{{ section.settings.cta_installments_subtext }}</span>
+          {%- endif -%}
+        </a>
       </div>
       {%- endif -%}
 
