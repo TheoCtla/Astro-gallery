@@ -78,6 +78,16 @@ body.template-page-payer-en-plusieurs-fois .rte {
   line-height: 1.3;
 }
 
+.installments-header__title-break {
+  display: none;
+}
+
+@media (min-width: 990px) {
+  .installments-header__title-break {
+    display: inline;
+  }
+}
+
 .installments-header__subtitle,
 .installments-header__subtitle p {
   font-family: 'Libre Baskerville', serif;

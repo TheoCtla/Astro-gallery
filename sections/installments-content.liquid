@@ -10,7 +10,12 @@
 
   <!-- Header -->
   <div class="installments-header">
-    <h1 class="installments-header__title">{{ section.settings.title }}</h1>
+    <h1 class="installments-header__title">
+      {%- assign title_parts = section.settings.title | split: '||' -%}
+      {%- for part in title_parts -%}
+        {{- part | strip -}}{%- unless forloop.last -%}<br class="installments-header__title-break">{%- endunless -%}
+      {%- endfor -%}
+    </h1>
     <div class="installments-header__subtitle">{{ section.settings.subtitle }}</div>
   </div>
 
@@ -62,11 +67,6 @@
             <label for="InstallmentsForm-phone">{{ section.settings.label_phone }}</label>
             <input type="tel" id="InstallmentsForm-phone" name="telephone" placeholder="..." autocomplete="tel">
           </div>
-        </div>
-
-        <div class="installments-form__field installments-form__field--full">
-          <label for="InstallmentsForm-message">{{ section.settings.label_message }} <span class="installments-form__required">*</span></label>
-          <textarea id="InstallmentsForm-message" name="message" rows="6" placeholder="..." required aria-required="true"></textarea>
         </div>
 
         <div class="installments-form__submit">
@@ -135,8 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
       nom: form.querySelector('[name="nom"]').value.trim(),
       prenom: form.querySelector('[name="prenom"]').value.trim(),
       email: form.querySelector('[name="email"]').value.trim(),
-      telephone: form.querySelector('[name="telephone"]').value.trim(),
-      message: form.querySelector('[name="message"]').value.trim()
+      telephone: form.querySelector('[name="telephone"]').value.trim()
     };
 
     fetch(GOOGLE_SHEETS_WEBHOOK, {
@@ -197,13 +196,14 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "text",
       "id": "title",
-      "default": "Demandez votre Œuvre Astrale en plusieurs fois sans frais",
-      "label": "Titre principal"
+      "default": "Demandez votre Œuvre Astrale||en plusieurs fois sans frais",
+      "label": "Titre principal",
+      "info": "Utilisez || pour marquer un saut de ligne visible uniquement sur desktop"
     },
     {
       "type": "richtext",
       "id": "subtitle",
-      "default": "<p>Le paiement en 4× ou 10× sans frais sera disponible très prochainement. Remplissez ce formulaire pour être contacté(e) en priorité dès son activation et bénéficier de votre œuvre à 72,50 €/mois sur 4 mois ou 29 €/mois sur 10 mois, sans aucun frais supplémentaire.</p>",
+      "default": "<p>Le paiement en 4× ou 10× sans frais sera disponible très prochainement.<br>Remplissez ce formulaire pour être contacté(e) en priorité dès son activation et bénéficier de votre œuvre à<br>72,50 €/mois sur 4 mois ou 29 €/mois sur 10 mois.<br>Sans aucun frais supplémentaires.</p>",
       "label": "Sous-titre"
     },
     {
@@ -242,12 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "label_phone",
       "default": "Numéro de téléphone",
       "label": "Label - Téléphone"
-    },
-    {
-      "type": "text",
-      "id": "label_message",
-      "default": "Des questions sur le paiement en plusieurs fois ?",
-      "label": "Label - Message"
     },
     {
       "type": "text",

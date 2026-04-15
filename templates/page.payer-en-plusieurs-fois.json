@@ -4,14 +4,13 @@
       "type": "installments-content",
       "settings": {
         "breadcrumb_label": "Payer en plusieurs fois",
-        "title": "Demandez votre Œuvre Astrale en plusieurs fois sans frais",
-        "subtitle": "<p>Le paiement en 4× ou 10× sans frais sera disponible très prochainement. Remplissez ce formulaire pour être contacté(e) en priorité dès son activation et bénéficier de votre œuvre à 72,50 €/mois sur 4 mois ou 29 €/mois sur 10 mois, sans aucun frais supplémentaire.</p>",
+        "title": "Demandez votre Œuvre Astrale||en plusieurs fois sans frais",
+        "subtitle": "<p>Le paiement en 4× ou 10× sans frais sera disponible très prochainement.<br>Remplissez ce formulaire pour être contacté(e) en priorité dès son activation et bénéficier de votre œuvre à<br>72,50 €/mois sur 4 mois ou 29 €/mois sur 10 mois.<br>Sans aucun frais supplémentaires.</p>",
         "image": "shopify://shop_images/9d6a234f3d517b3c9de5fa41fc0071ec0210ad70.png",
         "label_nom": "Nom",
         "label_prenom": "Prénom",
         "label_email": "E-mail",
         "label_phone": "Numéro de téléphone",
-        "label_message": "Des questions sur le paiement en plusieurs fois ?",
         "button_text": "ÊTRE CONTACTÉ(E) EN PRIORITÉ",
         "success_message": "Merci pour votre demande ! Nous vous contacterons en priorité dès l'activation du paiement en plusieurs fois pour finaliser votre commande. À très vite.",
         "error_message": "Une erreur est survenue. Veuillez réessayer."
