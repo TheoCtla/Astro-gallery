@@ -464,6 +464,17 @@
     background-color: #F1EEE5 !important;
   }
 
+  .ph-hero__cta-subtext {
+    width: 100%;
+    margin: 0.5rem 0 0;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #888;
+    text-align: center;
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .ph-hero__btn--light:hover {
       background-color: #E5E1D8 !important;
@@ -781,6 +792,9 @@
           <a href="{{ section.settings.cta_installments_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light ph-hero__btn--full">
             <span class="btn-gold__text">{{ section.settings.cta_installments_label }}</span>
           </a>
+          {%- if section.settings.cta_installments_subtext != blank -%}
+          <p class="ph-hero__cta-subtext">{{ section.settings.cta_installments_subtext }}</p>
+          {%- endif -%}
           {%- endif -%}
         </div>
       </div>
@@ -1224,11 +1238,16 @@
 "type": "text",
 "id": "cta_installments_label",
 "label": "Texte bouton paiement plusieurs fois",
-"default": "• PAYER EN PLUSIEURS FOIS •"
+"default": "PAYER EN 4× OU 10× SANS FRAIS"
 }, {
 "type": "url",
 "id": "cta_installments_link",
 "label": "Lien bouton paiement plusieurs fois"
+}, {
+"type": "text",
+"id": "cta_installments_subtext",
+"label": "Sous-texte sous bouton paiement plusieurs fois",
+"default": "Bientôt disponible · Réservez dès maintenant, sans engagement"
 }
 ],
 "blocks": [

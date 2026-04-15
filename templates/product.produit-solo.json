@@ -106,8 +106,9 @@
         "add_to_cart_label": "AJOUTER AU PANIER",
         "cta_gift_label": "OFFRIR UNE CARTE CADEAU",
         "cta_gift_link": "shopify://products/carte-cadeau-astrogallery",
-        "cta_installments_label": "• PAYER EN PLUSIEURS FOIS •",
-        "cta_installments_link": "shopify://pages/payer-en-plusieurs-fois"
+        "cta_installments_label": "PAYER EN 4× OU 10× SANS FRAIS",
+        "cta_installments_link": "shopify://pages/payer-en-plusieurs-fois",
+        "cta_installments_subtext": "Bientôt disponible · Réservez dès maintenant, sans engagement"
       }
     },
     "interior": {
