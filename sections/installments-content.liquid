@@ -89,6 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
   form.setAttribute('novalidate', '');
 
   form.addEventListener('submit', function(e) {
+    if (form.dataset.submitting === 'true') {
+      e.preventDefault();
+      return;
+    }
+
     let hasError = false;
 
     form.querySelectorAll('[required]').forEach(function(field) {
@@ -115,6 +120,17 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       form.querySelector('.installments-form__input--error').focus();
       return;
+    }
+
+    form.dataset.submitting = 'true';
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      setTimeout(function() {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
+        submitBtn.style.cursor = 'wait';
+      }, 0);
     }
 
     var sheetUrl = {{ section.settings.sheet_webhook_url | json }};
