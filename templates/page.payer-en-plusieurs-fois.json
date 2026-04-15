@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "installments_content": {
@@ -14,12 +5,13 @@
       "settings": {
         "breadcrumb_label": "Payer en plusieurs fois",
         "title": "PAIEMENT EN PLUSIEURS FOIS",
-        "subtitle": "<p>Notre solution de paiement en plusieurs fois est en cours d'implémentation, elle sera disponible fin avril.</p><p>Laissez-nous vos coordonnées et nous vous enverrons votre lien de paiement dès son ouverture.</p>",
+        "subtitle": "<p>Notre solution de paiement en plusieurs fois est en cours d'implémentation, elle sera disponible fin avril.</p><p>Laissez-nous vos coordonnées et nous vous enverrons un lien pour accéder au paiement en plusieurs fois dès son ouverture.</p>",
         "image": "shopify://shop_images/9d6a234f3d517b3c9de5fa41fc0071ec0210ad70.png",
         "label_nom": "Nom",
         "label_prenom": "Prénom",
         "label_email": "E-mail",
         "label_phone": "Numéro de téléphone",
+        "label_message": "Des questions sur le paiement en plusieurs fois ?",
         "button_text": "• RECEVOIR MON LIEN DE PAIEMENT •",
         "success_message": "Merci, votre inscription est bien enregistrée. Vous recevrez votre lien de paiement en plusieurs fois dès son ouverture.",
         "error_message": "Une erreur est survenue. Veuillez réessayer."

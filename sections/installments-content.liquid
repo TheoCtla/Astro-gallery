@@ -66,6 +66,11 @@
           </div>
         </div>
 
+        <div class="installments-form__field installments-form__field--full">
+          <label for="InstallmentsForm-message">{{ section.settings.label_message }} <span class="installments-form__required">*</span></label>
+          <textarea id="InstallmentsForm-message" name="contact[Message]" rows="6" placeholder="..." required aria-required="true"></textarea>
+        </div>
+
         <div class="installments-form__submit">
           <button type="submit" class="installments-form__button">
             <span>{{ section.settings.button_text }}</span>
@@ -152,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "type": "richtext",
       "id": "subtitle",
-      "default": "<p>Notre solution de paiement en plusieurs fois est en cours d'implémentation, elle sera disponible fin avril.</p><p>Laissez-nous vos coordonnées et nous vous enverrons votre lien de paiement dès son ouverture.</p>",
+      "default": "<p>Notre solution de paiement en plusieurs fois est en cours d'implémentation, elle sera disponible fin avril.</p><p>Laissez-nous vos coordonnées et nous vous enverrons un lien pour accéder au paiement en plusieurs fois dès son ouverture.</p>",
       "label": "Sous-titre"
     },
     {
@@ -191,6 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "label_phone",
       "default": "Numéro de téléphone",
       "label": "Label - Téléphone"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "default": "Des questions sur le paiement en plusieurs fois ?",
+      "label": "Label - Message"
     },
     {
       "type": "text",
