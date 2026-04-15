@@ -1,0 +1,27 @@
+{% comment %}
+  Renders a site-wide breadcrumb.
+
+  Accepts:
+  - current (string, required): label of the current page
+  - parent_url (string, optional): URL of an intermediate page
+  - parent_label (string, optional): label of the intermediate page
+  - standalone (boolean, optional): true if the breadcrumb is NOT nested inside
+    a page container — adds max-width + horizontal padding for standalone layout
+
+  Usage:
+    {% render 'breadcrumb', current: 'Contact' %}
+    {% render 'breadcrumb', parent_url: '/products/solo', parent_label: "L'Œuvre Astrale", current: 'Payer en plusieurs fois' %}
+    {% render 'breadcrumb', current: "L'Œuvre Astrale", standalone: true %}
+{% endcomment %}
+
+<nav class="site-breadcrumb{% if standalone %} site-breadcrumb--standalone{% endif %}" role="navigation" aria-label="breadcrumbs">
+  <a href="{{ routes.root_url }}">Home</a>
+  {%- if parent_url != blank and parent_label != blank -%}
+    {% render 'icon-breadcrumb' %}
+    <a href="{{ parent_url }}">{{ parent_label }}</a>
+  {%- endif -%}
+  {%- if current != blank -%}
+    {% render 'icon-breadcrumb' %}
+    <span>{{ current }}</span>
+  {%- endif -%}
+</nav>

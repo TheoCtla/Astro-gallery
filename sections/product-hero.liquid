@@ -580,12 +580,11 @@
   }
 </style>
 
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
+
 {% if settings.show_breadcrumbs %}
-<nav class="ph-hero__breadcrumb" role="navigation" aria-label="breadcrumbs">
-  <a href="{{ routes.root_url }}" title="Home">Home</a>
-  {% render 'icon-breadcrumb' %}
-  <span>{{ section.settings.breadcrumb_label | default: "L'Œuvre Astrale" }}</span>
-</nav>
+  {%- assign product_breadcrumb_current = section.settings.breadcrumb_label | default: "L'Œuvre Astrale" -%}
+  {%- render 'breadcrumb', current: product_breadcrumb_current, standalone: true -%}
 {% endif %}
 
 <div class="ph-hero">

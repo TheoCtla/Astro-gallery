@@ -1,12 +1,8 @@
 {{ 'page-contact.css' | asset_url | stylesheet_tag }}
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
 
 <div class="contact-page">
-  <!-- Breadcrumb -->
-  <nav class="contact-breadcrumb">
-    <a href="/" class="contact-breadcrumb__link">Home</a>
-    <span class="contact-breadcrumb__separator">›</span>
-    <span class="contact-breadcrumb__current">{{ section.settings.breadcrumb_label }}</span>
-  </nav>
+  {%- render 'breadcrumb', current: section.settings.breadcrumb_label -%}
 
   <!-- Header -->
   <div class="contact-header">
