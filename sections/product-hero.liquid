@@ -470,7 +470,15 @@
   }
 
   .ph-hero__installments-wrap {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #DFBE71;
+  }
+
+  .ph-hero__installments-wrap + .ph-hero__buttons {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0.75rem;
   }
 
   .ph-hero__btn-subtext {
@@ -787,6 +795,17 @@
           <span class="ph-hero__price-suffix">TTC</span>
         </p>
 
+        {%- if section.settings.cta_installments_link != blank -%}
+        <div class="ph-hero__installments-wrap">
+          <a href="{{ section.settings.cta_installments_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light ph-hero__btn--full">
+            <span class="btn-gold__text">{{ section.settings.cta_installments_label }}</span>
+            {%- if section.settings.cta_installments_subtext != blank -%}
+            <span class="ph-hero__btn-subtext">{{ section.settings.cta_installments_subtext }}</span>
+            {%- endif -%}
+          </a>
+        </div>
+        {%- endif -%}
+
         <!-- Buttons -->
         <div class="ph-hero__buttons">
           <button type="submit" id="ph-add-to-cart" class="ph-hero__btn btn-gold">
@@ -815,17 +834,6 @@
           <span>{{ block.settings.text }}</span>
         </div>
         {%- endfor -%}
-      </div>
-      {%- endif -%}
-
-      {%- if section.settings.cta_installments_link != blank -%}
-      <div class="ph-hero__installments-wrap">
-        <a href="{{ section.settings.cta_installments_link }}" class="ph-hero__btn btn-gold ph-hero__btn--light ph-hero__btn--full">
-          <span class="btn-gold__text">{{ section.settings.cta_installments_label }}</span>
-          {%- if section.settings.cta_installments_subtext != blank -%}
-          <span class="ph-hero__btn-subtext">{{ section.settings.cta_installments_subtext }}</span>
-          {%- endif -%}
-        </a>
       </div>
       {%- endif -%}
 
