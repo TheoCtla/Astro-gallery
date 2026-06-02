@@ -48,7 +48,9 @@
         "description": "<p>La carte cadeau donne accès à l'une de nos trois œuvres Signature, au choix : <strong>Digitale</strong>, <strong>Mixte</strong> ou <strong>Originale</strong>. Chacune révèle un thème astral unique à travers une œuvre numérotée et nominative, accompagnée de son livret de 110 pages dont 40 personnalisées à son ciel.</p><p>Une expérience complète qui invite à la contemplation et à la découverte de soi.</p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.</p>",
         "highlight_text": "Création et livraison en 3 à 4 semaines après activation de la carte.",
         "amount_label": "Sélectionner le montant souhaité",
-        "full_artwork_label": "œuvre complète",
+        "digital_label": "œuvre digitale",
+        "mixte_label": "œuvre mixte",
+        "full_artwork_label": "œuvre originale",
         "add_to_cart_label": "• AJOUTER AU PANIER •"
       }
     },
