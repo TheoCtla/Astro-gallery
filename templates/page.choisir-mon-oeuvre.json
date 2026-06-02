@@ -18,6 +18,7 @@
             "card_style": "accessible",
             "number": "01.",
             "label": "LA PLUS ACCESSIBLE",
+            "icon": "shopify://shop_images/Calque_5_bdae9a42-2257-4d7f-a4f1-48f9851e2ebe.svg",
             "name_top": "ŒUVRE SIGNATURE",
             "name_variant": "DIGITALE",
             "price": "90€",
@@ -39,6 +40,7 @@
             "card_style": "populaire",
             "number": "02.",
             "label": "LA PLUS POPULAIRE",
+            "icon": "shopify://shop_images/Icons-set.svg",
             "name_top": "ŒUVRE SIGNATURE",
             "name_variant": "MIXTE",
             "price": "150€",
@@ -60,6 +62,7 @@
             "card_style": "recommande",
             "number": "03.",
             "label": "RECOMMANDÉE",
+            "icon": "shopify://shop_images/Icons-set_1.svg",
             "name_top": "ŒUVRE SIGNATURE",
             "name_variant": "ORIGINALE",
             "price": "290€",
@@ -81,7 +84,13 @@
         "mixte",
         "originale"
       ],
-      "settings": {}
+      "settings": {
+        "show_breadcrumb": true,
+        "breadcrumb_home": "Home",
+        "breadcrumb_current": "Choisir mon offre",
+        "title": "3 FORMATS, UNE SEULE ŒUVRE.",
+        "subtitle": "Choisissez le vôtre."
+      }
     }
   },
   "order": [
