@@ -422,26 +422,32 @@
       <!-- Sélecteur de montant -->
       <div class="gc-hero__amount">
         <label class="gc-hero__amount-label">{{ section.settings.amount_label | default: 'Sélectionner le montant souhaité' }}</label>
-        {%- assign allowed_prices = '5000,10000,15000,20000,25000,29000' | split: ',' -%}
+        {%- assign allowed_prices = '9000,5000,10000,15000,20000,25000,29000' | split: ',' -%}
         <div class="gc-hero__amount-options">
           {%- assign btn_index = 0 -%}
           {%- for variant in product.variants -%}
             {%- assign variant_price_str = variant.price | append: '' -%}
             {%- if allowed_prices contains variant_price_str -%}
               {%- assign btn_index = btn_index | plus: 1 -%}
-              {%- assign is_full_artwork = false -%}
+              {%- comment -%} Mention sous le prix selon le montant (aligné sur les 3 œuvres Signature) {%- endcomment -%}
               {%- assign price_cents = variant.price | plus: 0 -%}
-              {%- if price_cents >= 29000 -%}
-                {%- assign is_full_artwork = true -%}
-              {%- endif -%}
+              {%- assign amount_mention = '' -%}
+              {%- case price_cents -%}
+                {%- when 9000 -%}
+                  {%- assign amount_mention = section.settings.digital_label | default: 'œuvre digitale' -%}
+                {%- when 15000 -%}
+                  {%- assign amount_mention = section.settings.mixte_label | default: 'œuvre mixte' -%}
+                {%- when 29000 -%}
+                  {%- assign amount_mention = section.settings.full_artwork_label | default: 'œuvre complète' -%}
+              {%- endcase -%}
               <div class="gc-hero__amount-option">
                 <button type="button"
-                  class="gc-hero__amount-btn {% if is_full_artwork %}gc-hero__amount-btn--full{% endif %} {% if btn_index == 2 %}gc-hero__amount-btn--active{% endif %}"
+                  class="gc-hero__amount-btn {% if amount_mention != blank %}gc-hero__amount-btn--full{% endif %} {% if btn_index == 2 %}gc-hero__amount-btn--active{% endif %}"
                   data-variant-id="{{ variant.id }}"
                   data-variant-price="{{ variant.price | money }}">
                   {{ variant.title }}
-                  {%- if is_full_artwork -%}
-                    <span class="gc-hero__amount-sub">{{ section.settings.full_artwork_label | default: 'Œuvre complète' }}</span>
+                  {%- if amount_mention != blank -%}
+                    <span class="gc-hero__amount-sub">{{ amount_mention }}</span>
                   {%- endif -%}
                 </button>
               </div>
@@ -707,9 +713,21 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     {
       "type": "text",
+      "id": "digital_label",
+      "label": "Mention montant 90€",
+      "default": "œuvre digitale"
+    },
+    {
+      "type": "text",
+      "id": "mixte_label",
+      "label": "Mention montant 150€",
+      "default": "œuvre mixte"
+    },
+    {
+      "type": "text",
       "id": "full_artwork_label",
-      "label": "Label sous le prix max (349€)",
-      "default": "Œuvre complète"
+      "label": "Mention montant 290€",
+      "default": "œuvre complète"
     },
     {
       "type": "text",
