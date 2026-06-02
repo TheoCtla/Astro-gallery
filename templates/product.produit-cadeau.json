@@ -16,7 +16,7 @@
           "type": "badge",
           "settings": {
             "icon": "shopify://shop_images/Calque_1_2.svg",
-            "text": "Livraison offerte en 3 à 4 semaines"
+            "text": "Livraison selon l'œuvre choisie"
           }
         },
         "badge-2": {
@@ -45,7 +45,7 @@
         "title_line1": "CARTE CADEAU",
         "title_line2": "ASTROGALLERY",
         "subtitle": "<p><em>Offrir une carte cadeau Astro Gallery, c'est offrir bien plus qu'un simple présent.</em></p><p><em>C'est permettre à une personne de transformer son thème natal en une œuvre astrale élégante et personnelle, reflet intime de son identité.</em></p>",
-        "description": "<p>La carte cadeau donne accès à la création d'une œuvre numérotée et nominative, accompagnée d'un livre de 110 pages dont 40 personnalisées à son ciel. Une expérience complète qui invite à la contemplation et à la découverte de soi.</p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.</p>",
+        "description": "<p>La carte cadeau donne accès à l'une de nos trois œuvres Signature, au choix : <strong>Digitale</strong>, <strong>Mixte</strong> ou <strong>Originale</strong>. Chacune révèle un thème astral unique à travers une œuvre numérotée et nominative, accompagnée de son livret de 110 pages dont 40 personnalisées à son ciel.</p><p>Une expérience complète qui invite à la contemplation et à la découverte de soi.</p><p>Un cadeau profond, esthétique et mémorable pour célébrer une personne unique.</p>",
         "highlight_text": "Création et livraison en 3 à 4 semaines après activation de la carte.",
         "amount_label": "Sélectionner le montant souhaité",
         "full_artwork_label": "œuvre complète",
@@ -104,6 +104,16 @@
             "slide_name": "Elodie G.",
             "slide_country": ""
           }
+        },
+        "testimonials_slide_YFXpUt": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "J'ai eu la chance de recevoir ce cadeau surprise de la part de mes amis, et je les remercie énormément!!",
+            "slide_text": "C’est un cadeau unique, ultra personnalisé, réalisé avec beaucoup de détails. Je me suis retrouvé dans de nombreux éléments de mon analyse personnelle. Le tableau est magnifique et le livre est passionnant à découvrir.",
+            "slide_avatar": "shopify://shop_images/IS.png",
+            "slide_name": "Ismael",
+            "slide_country": ""
+          }
         }
       },
       "block_order": [
@@ -111,7 +121,8 @@
         "slide-2",
         "slide-3",
         "slide-4",
-        "testimonials_slide_WiBfam"
+        "testimonials_slide_WiBfam",
+        "testimonials_slide_YFXpUt"
       ],
       "settings": {
         "trustpilot_link": "https://www.trustpilot.com/review/astro-gallery.com#",
