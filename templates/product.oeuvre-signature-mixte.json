@@ -89,7 +89,7 @@
         "label_nom": "Nom*",
         "label_prenom": "Prénom*",
         "label_email": "Email*",
-        "form_info_text": "Si vous ne connaissez pas encore certaines informations nécessaires, vous pouvez simplement indiquer « Je ne sais pas » et nous transmettre les éléments manquants ultérieurement.",
+        "form_info_text": "Si vous ne connaissez pas encore certaines informations nécessaires, vous pouvez simplement indiquer « Je ne sais pas » et nous transmettre les éléments manquants ultérieurement. L'œuvre sera créée une fois l'ensemble des informations reçu.",
         "label_birthdate": "Date de naissance (JJ-MM-AA)*",
         "label_birthtime": "Heure exacte de naissance",
         "label_birthplace": "Lieu de naissance (ville+ pays)*",
