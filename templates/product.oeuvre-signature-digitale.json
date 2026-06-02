@@ -242,6 +242,16 @@
             "slide_name": "Elodie G.",
             "slide_country": ""
           }
+        },
+        "testimonials_slide_FeWkNJ": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "J'ai eu la chance de recevoir ce cadeau surprise de la part de mes amis, et je les remercie énormément!!",
+            "slide_text": "C’est un cadeau unique, ultra personnalisé, réalisé avec beaucoup de détails. Je me suis retrouvé dans de nombreux éléments de mon analyse personnelle. Le tableau est magnifique et le livre est passionnant à découvrir.",
+            "slide_avatar": "shopify://shop_images/IS.png",
+            "slide_name": "Ismael",
+            "slide_country": ""
+          }
         }
       },
       "block_order": [
@@ -249,7 +259,8 @@
         "slide-4",
         "slide-1",
         "slide-3",
-        "slide-5"
+        "slide-5",
+        "testimonials_slide_FeWkNJ"
       ],
       "settings": {
         "trustpilot_link": "https://www.trustpilot.com/review/astro-gallery.com#",
