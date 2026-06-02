@@ -1,0 +1,560 @@
+{%- comment -%}
+  sections/choisir-mon-oeuvre.liquid
+  Page intermédiaire "Choisir mon offre" — 3 formats (Digitale / Mixte / Originale).
+  Editable via Theme Editor : titre, sous-titre, breadcrumb + 1 bloc "card" par format.
+  Convention thème Astrogallery : Lemon Milk / Libre Baskerville / Poppins · or #DFBE71 · noir #1D1D1B.
+{%- endcomment -%}
+
+<style>
+  /* Masque le breadcrumb + titre Shopify natif sur ce template (pattern thème, cf. faq/journal) */
+  .template-page-choisir-mon-oeuvre .breadcrumb:not(.choisir-breadcrumb),
+  .template-page-choisir-mon-oeuvre nav.breadcrumb:not(.choisir-breadcrumb),
+  .template-page-choisir-mon-oeuvre .main-page-title,
+  .template-page-choisir-mon-oeuvre .page-header > .rte {
+    display: none !important;
+  }
+
+  .choisir-oeuvre {
+    background-color: #fff;
+    width: 100%;
+    padding: 0 0 clamp(3rem, 5vw, 5rem) 0;
+  }
+
+  .choisir-oeuvre__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 3vw, 2rem);
+  }
+
+  /* ===== Breadcrumb ===== */
+  .choisir-breadcrumb {
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1rem, 2vw, 1.5rem);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    text-align: left;
+  }
+  .choisir-breadcrumb__link { color: #1D1D1B; text-decoration: underline; transition: color .3s ease; }
+  .choisir-breadcrumb__link:hover { color: #DFBE71; }
+  .choisir-breadcrumb__separator { margin: 0 .5rem; color: #1D1D1B; }
+  .choisir-breadcrumb__current { color: #1D1D1B; font-weight: 500; }
+
+  /* ===== Header ===== */
+  .choisir-oeuvre__header { text-align: center; margin: clamp(1.5rem, 3vw, 3rem) 0 clamp(2.5rem, 4vw, 4rem); }
+  .choisir-oeuvre__title {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: clamp(26px, 4vw, 42px);
+    color: #1D1D1B;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+  }
+  .choisir-oeuvre__subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(15px, 2vw, 20px);
+    color: #1D1D1B;
+    margin: 0;
+  }
+
+  /* ===== Grille cards ===== */
+  .choisir-oeuvre__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  /* ===== Card ===== */
+  .choisir-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+  }
+  .choisir-card--populaire { border: 2px solid #1D1D1B; background-color: #fafafa; }
+  .choisir-card--recommande { border: 1px solid #DFBE71; background-color: #FBF6EC; }
+
+  /* Badge (numéro + label) */
+  .choisir-card__badge { display: flex; align-items: baseline; gap: .6rem; margin-bottom: 1.5rem; }
+  .choisir-card__num {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #1D1D1B;
+  }
+  .choisir-card__label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6b6b6b;
+  }
+
+  /* Titre card */
+  .choisir-card__heading { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.5rem; }
+  .choisir-card__icon { width: 46px; height: 46px; flex-shrink: 0; display: flex; align-items: center; }
+  .choisir-card__icon img { width: 100%; height: 100%; object-fit: contain; }
+  .choisir-card__names { display: flex; flex-direction: column; line-height: 1.05; }
+  .choisir-card__name-top {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: #1D1D1B;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .choisir-card__name-variant {
+    font-family: 'Lemon Milk', sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: #DFBE71;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+
+  /* Séparateur */
+  .choisir-card__sep { height: 1px; background-color: #e2e2e2; border: 0; margin: 0; }
+  .choisir-card--recommande .choisir-card__sep { background-color: #e8d9b3; }
+
+  /* Prix */
+  .choisir-card__price { text-align: center; padding: 1.5rem 0; }
+  .choisir-card__price-value {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(34px, 4vw, 42px);
+    color: #1D1D1B;
+  }
+  .choisir-card__price-suffix {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1D1D1B;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: .35rem;
+  }
+
+  /* Description */
+  .choisir-card__desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #1D1D1B;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+  }
+
+  /* Blocs Délai / Inclus */
+  .choisir-card__block { margin-bottom: 1.25rem; }
+  .choisir-card__block-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1D1D1B;
+    margin: 0 0 .5rem 0;
+  }
+  .choisir-card__block-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #6b6b6b;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Liste Inclus (checkmarks or) */
+  .choisir-card__list { list-style: none; margin: 0; padding: 0; }
+  .choisir-card__list li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: .55rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1D1D1B;
+    line-height: 1.45;
+  }
+  .choisir-card__list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #DFBE71;
+    font-weight: 700;
+  }
+
+  /* CTA */
+  .choisir-card__cta-wrap { margin-top: auto; padding-top: 1.5rem; }
+  .choisir-card__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background-color: #DFBE71;
+    color: #1D1D1B;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: background-color .3s ease;
+  }
+  .choisir-card__cta::before { content: '\2022'; margin-right: .6rem; }
+  .choisir-card__cta::after { content: '\2022'; margin-left: .6rem; }
+  .choisir-card__cta:hover { background-color: #c4a45f; }
+
+  /* CTA noir pour le format "populaire" (Mixte) */
+  .choisir-card--populaire .choisir-card__cta { background-color: #1D1D1B; color: #DFBE71; }
+  .choisir-card--populaire .choisir-card__cta:hover { background-color: #000; }
+
+  /* ===== Desktop : 3 colonnes ===== */
+  @media (min-width: 990px) {
+    .choisir-oeuvre__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    /* Cards collées : on évite le double bord entre 1 et 2 */
+    .choisir-oeuvre__grid > .choisir-card + .choisir-card { margin-left: -1px; }
+    .choisir-card--populaire { z-index: 2; }
+    .choisir-card--recommande { z-index: 1; }
+  }
+</style>
+
+<section class="choisir-oeuvre" {{ section.shopify_attributes }}>
+  <div class="choisir-oeuvre__inner">
+
+    {%- if section.settings.show_breadcrumb -%}
+      <nav class="choisir-breadcrumb" aria-label="Fil d'ariane">
+        <a href="{{ routes.root_url }}" class="choisir-breadcrumb__link">{{ section.settings.breadcrumb_home }}</a>
+        <span class="choisir-breadcrumb__separator">&rsaquo;</span>
+        <span class="choisir-breadcrumb__current">{{ section.settings.breadcrumb_current }}</span>
+      </nav>
+    {%- endif -%}
+
+    <div class="choisir-oeuvre__header">
+      {%- if section.settings.title != blank -%}
+        <h1 class="choisir-oeuvre__title">{{ section.settings.title }}</h1>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="choisir-oeuvre__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="choisir-oeuvre__grid">
+      {%- for block in section.blocks -%}
+        {%- assign style_class = 'choisir-card--' | append: block.settings.card_style -%}
+        <article class="choisir-card {{ style_class }}" {{ block.shopify_attributes }}>
+
+          <div class="choisir-card__badge">
+            {%- if block.settings.number != blank -%}
+              <span class="choisir-card__num">{{ block.settings.number }}</span>
+            {%- endif -%}
+            {%- if block.settings.label != blank -%}
+              <span class="choisir-card__label">{{ block.settings.label }}</span>
+            {%- endif -%}
+          </div>
+
+          <div class="choisir-card__heading">
+            {%- if block.settings.icon != blank -%}
+              <span class="choisir-card__icon">
+                <img src="{{ block.settings.icon | image_url: width: 92 }}" alt="" width="46" height="46" loading="lazy">
+              </span>
+            {%- endif -%}
+            <span class="choisir-card__names">
+              <span class="choisir-card__name-top">{{ block.settings.name_top }}</span>
+              <span class="choisir-card__name-variant">{{ block.settings.name_variant }}</span>
+            </span>
+          </div>
+
+          <hr class="choisir-card__sep">
+
+          <div class="choisir-card__price">
+            <span class="choisir-card__price-value">{{ block.settings.price }}</span>
+            <span class="choisir-card__price-suffix">{{ block.settings.price_suffix }}</span>
+          </div>
+
+          <hr class="choisir-card__sep">
+
+          {%- if block.settings.description != blank -%}
+            <p class="choisir-card__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.delai_text != blank -%}
+            <div class="choisir-card__block">
+              <p class="choisir-card__block-title">{{ block.settings.delai_label }}</p>
+              <p class="choisir-card__block-text">{{ block.settings.delai_text }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.inclus_list != blank -%}
+            <div class="choisir-card__block">
+              <p class="choisir-card__block-title">{{ block.settings.inclus_label }}</p>
+              {%- assign inclus_items = block.settings.inclus_list | newline_to_br | split: '<br />' -%}
+              <ul class="choisir-card__list">
+                {%- for item in inclus_items -%}
+                  {%- assign clean = item | strip -%}
+                  {%- if clean != blank -%}
+                    <li>{{ clean }}</li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          <div class="choisir-card__cta-wrap">
+            <a
+              href="{{ block.settings.button_link }}"
+              class="choisir-card__cta js-choisir-cta"
+              data-item-id="{{ block.settings.tracking_id }}"
+              data-item-name="{{ block.settings.name_top }} {{ block.settings.name_variant }}"
+              data-item-price="{{ block.settings.tracking_price }}"
+            >{{ block.settings.button_label }}</a>
+          </div>
+
+        </article>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{%- comment -%}
+  Tracking GTM : push d'un event "select_item" au clic CTA (datalayer existant du thème).
+  Retirer ce <script> si non souhaité — aucun impact sur le rendu.
+{%- endcomment -%}
+<script>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    document.querySelectorAll('.js-choisir-cta').forEach(function (el) {
+      el.addEventListener('click', function () {
+        window.dataLayer.push({
+          event: 'select_item',
+          item_list_name: 'choisir-mon-oeuvre',
+          item_id: el.getAttribute('data-item-id') || '',
+          item_name: (el.getAttribute('data-item-name') || '').trim(),
+          price: parseFloat(el.getAttribute('data-item-price')) || 0
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Choisir mon œuvre",
+  "tag": "section",
+  "class": "choisir-mon-oeuvre-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Afficher le fil d'ariane",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_home",
+      "label": "Fil d'ariane — accueil",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_current",
+      "label": "Fil d'ariane — page actuelle",
+      "default": "Choisir mon offre"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "3 FORMATS, UNE SEULE ŒUVRE."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Choisissez le vôtre."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Format (card)",
+      "settings": [
+        {
+          "type": "select",
+          "id": "card_style",
+          "label": "Style de la card",
+          "options": [
+            { "value": "accessible", "label": "Standard (bord gris, CTA or)" },
+            { "value": "populaire", "label": "Mis en avant (bord noir, CTA noir)" },
+            { "value": "recommande", "label": "Recommandé (fond crème, bord or)" }
+          ],
+          "default": "accessible"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Numéro",
+          "default": "01."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label badge",
+          "default": "LA PLUS ACCESSIBLE"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône (laisser vide si non disponible)"
+        },
+        {
+          "type": "text",
+          "id": "name_top",
+          "label": "Nom — ligne 1",
+          "default": "ŒUVRE SIGNATURE"
+        },
+        {
+          "type": "text",
+          "id": "name_variant",
+          "label": "Nom — variante (or)",
+          "default": "DIGITALE"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Prix",
+          "default": "90€"
+        },
+        {
+          "type": "text",
+          "id": "price_suffix",
+          "label": "Suffixe prix",
+          "default": "TTC"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Votre thème astral et son livret, en version numérique."
+        },
+        {
+          "type": "text",
+          "id": "delai_label",
+          "label": "Libellé délai",
+          "default": "Délai :"
+        },
+        {
+          "type": "text",
+          "id": "delai_text",
+          "label": "Texte délai",
+          "default": "Livraison sous 1 semaine"
+        },
+        {
+          "type": "text",
+          "id": "inclus_label",
+          "label": "Libellé inclus",
+          "default": "Inclus :"
+        },
+        {
+          "type": "textarea",
+          "id": "inclus_list",
+          "label": "Liste « Inclus » (1 ligne = 1 puce)",
+          "default": "Œuvre astrale unique basse définition (format digital)\nLivret personnalisé de 110 pages (PDF)\nNuméroté et nominatif\nSavoir-faire français"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texte du bouton",
+          "default": "CHOISIR LE FORMAT DIGITAL"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Lien du bouton"
+        },
+        {
+          "type": "header",
+          "content": "Tracking (GTM select_item)"
+        },
+        {
+          "type": "text",
+          "id": "tracking_id",
+          "label": "ID produit (handle)",
+          "default": "oeuvre-signature-digitale"
+        },
+        {
+          "type": "text",
+          "id": "tracking_price",
+          "label": "Prix (nombre, pour le tracking)",
+          "default": "90"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Choisir mon œuvre",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "card_style": "accessible",
+            "number": "01.",
+            "label": "LA PLUS ACCESSIBLE",
+            "name_top": "ŒUVRE SIGNATURE",
+            "name_variant": "DIGITALE",
+            "price": "90€",
+            "description": "Votre thème astral et son livret, en version numérique.",
+            "delai_text": "Livraison sous 1 semaine",
+            "inclus_list": "Œuvre astrale unique basse définition (format digital)\nLivret personnalisé de 110 pages (PDF)\nNuméroté et nominatif\nSavoir-faire français",
+            "button_label": "CHOISIR LE FORMAT DIGITAL",
+            "tracking_id": "oeuvre-signature-digitale",
+            "tracking_price": "90"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_style": "populaire",
+            "number": "02.",
+            "label": "LA PLUS POPULAIRE",
+            "name_top": "ŒUVRE SIGNATURE",
+            "name_variant": "MIXTE",
+            "price": "150€",
+            "description": "L'œuvre digitale, le livret entre vos mains.",
+            "delai_text": "Livraison sous 2 à 3 semaines",
+            "inclus_list": "Œuvre astrale unique basse définition (format digital)\nLivret personnalisé de 110 pages imprimé\nNuméroté et nominatif\nFabriqué en France",
+            "button_label": "CHOISIR LE FORMAT MIXTE",
+            "tracking_id": "oeuvre-signature-mixte",
+            "tracking_price": "150"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_style": "recommande",
+            "number": "03.",
+            "label": "RECOMMANDÉE",
+            "name_top": "ŒUVRE SIGNATURE",
+            "name_variant": "ORIGINALE",
+            "price": "290€",
+            "description": "Une composition artistique astrale unique.",
+            "delai_text": "Livraison sous 3 à 4 semaines",
+            "inclus_list": "Œuvre format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire\nLivret personnalisé 110 pages imprimé\nNuméroté et nominatif\nFabriqué en France",
+            "button_label": "CHOISIR LE FORMAT ORIGINALE",
+            "tracking_id": "solo",
+            "tracking_price": "290"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
