@@ -170,15 +170,6 @@
             "slide_country": ""
           }
         },
-        "testimonials_slide_FXByKy": {
-          "type": "testimonials_slide",
-          "settings": {
-            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
-            "slide_text": "C'est une œuvre d'art unique qui capture mon essence. Le livret inclus est une mine d'informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !",
-            "slide_name": "Fabienne D.",
-            "slide_country": "Marseille"
-          }
-        },
         "slide-2": {
           "type": "testimonials_slide",
           "settings": {
@@ -214,7 +205,6 @@
         "slide-4",
         "slide-3",
         "slide-1",
-        "testimonials_slide_FXByKy",
         "slide-2",
         "slide-5",
         "testimonials_slide_c7g96V"
