@@ -47,7 +47,7 @@
         "book_image_2": "shopify://shop_images/photo-1_3.png",
         "book_image_2_mobile": "shopify://shop_images/279f9a426807fd60b1540b42a288b507f4d63c27.jpg",
         "button_label": "CRÉER MON ŒUVRE",
-        "button_link": "/products/solo"
+        "button_link": "shopify://pages/choisir-mon-oeuvre"
       }
     },
     "home-video": {
