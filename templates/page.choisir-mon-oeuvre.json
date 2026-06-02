@@ -10,104 +10,81 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
+      "type": "choisir-mon-oeuvre",
+      "blocks": {
+        "digitale": {
+          "type": "card",
+          "settings": {
+            "card_style": "accessible",
+            "number": "01.",
+            "label": "LA PLUS ACCESSIBLE",
+            "name_top": "ŒUVRE SIGNATURE",
+            "name_variant": "DIGITALE",
+            "price": "90€",
+            "price_suffix": "TTC",
+            "description": "Votre thème astral et son livret, en version numérique.",
+            "delai_label": "Délai :",
+            "delai_text": "Livraison sous 1 semaine",
+            "inclus_label": "Inclus :",
+            "inclus_list": "Œuvre astrale unique basse définition (format digital)\nLivret personnalisé de 110 pages (PDF)\nNuméroté et nominatif\nSavoir-faire français",
+            "button_label": "CHOISIR LE FORMAT DIGITAL",
+            "button_link": "/products/oeuvre-signature-digitale",
+            "tracking_id": "oeuvre-signature-digitale",
+            "tracking_price": "90"
+          }
+        },
+        "mixte": {
+          "type": "card",
+          "settings": {
+            "card_style": "populaire",
+            "number": "02.",
+            "label": "LA PLUS POPULAIRE",
+            "name_top": "ŒUVRE SIGNATURE",
+            "name_variant": "MIXTE",
+            "price": "150€",
+            "price_suffix": "TTC",
+            "description": "L'œuvre digitale, le livret entre vos mains.",
+            "delai_label": "Délai :",
+            "delai_text": "Livraison sous 2 à 3 semaines",
+            "inclus_label": "Inclus :",
+            "inclus_list": "Œuvre astrale unique basse définition (format digital)\nLivret personnalisé de 110 pages imprimé\nNuméroté et nominatif\nFabriqué en France",
+            "button_label": "CHOISIR LE FORMAT MIXTE",
+            "button_link": "/products/oeuvre-signature-mixte",
+            "tracking_id": "oeuvre-signature-mixte",
+            "tracking_price": "150"
+          }
+        },
+        "originale": {
+          "type": "card",
+          "settings": {
+            "card_style": "recommande",
+            "number": "03.",
+            "label": "RECOMMANDÉE",
+            "name_top": "ŒUVRE SIGNATURE",
+            "name_variant": "ORIGINALE",
+            "price": "290€",
+            "price_suffix": "TTC",
+            "description": "Une composition artistique astrale unique.",
+            "delai_label": "Délai :",
+            "delai_text": "Livraison sous 3 à 4 semaines",
+            "inclus_label": "Inclus :",
+            "inclus_list": "Œuvre format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire\nLivret personnalisé 110 pages imprimé\nNuméroté et nominatif\nFabriqué en France",
+            "button_label": "CHOISIR LE FORMAT ORIGINALE",
+            "button_link": "/products/solo",
+            "tracking_id": "solo",
+            "tracking_price": "290"
+          }
+        }
+      },
+      "block_order": [
+        "digitale",
+        "mixte",
+        "originale"
+      ],
       "settings": {}
-    },
-    "rich_text_FzYWbC": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_Rxh83b": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "medium"
-          }
-        },
-        "text_y8KNRh": {
-          "type": "text",
-          "settings": {
-            "text": "<p>ASTROGALLERY est né d’une passion profonde pour l’astrologie, les symboles et la quête de sens. Ici, chaque carte, chaque planète, chaque image devient une porte ouverte vers la compréhension de soi et du monde.</p><p>À travers mes explorations et mes créations, je souhaite offrir un espace unique où l’art rencontre l’astrologie : une galerie vivante où se croisent savoir ancestral, intuition et regard moderne.</p>"
-          }
-        },
-        "button_bwhNj6": {
-          "type": "button",
-          "settings": {
-            "button_label": "Découvrir nos œuvres",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_Rxh83b",
-        "text_y8KNRh",
-        "button_bwhNj6"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "color_scheme": "background-1",
-        "full_width": true
-      }
-    },
-    "image_with_text_8tGkMc": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_nMHXAV": {
-          "type": "heading",
-          "settings": {
-            "heading": "ASTROGALLERY, c’est :",
-            "sub_title": "Image content introduction"
-          }
-        },
-        "text_HiiETi": {
-          "type": "text",
-          "settings": {
-            "text": "<ul><li>Une invitation à voyager dans l’univers des astres et des archétypes.</li><li>Un lieu pour découvrir des lectures et interprétations riches de sens.</li><li>Un pont entre le visible et l’invisible, entre la connaissance et l’inspiration.</li></ul><p>Je pratique à la fois l’astrologie tropicale et sidérale, avec la conviction que cette dernière révèle des profondeurs souvent insoupçonnées. Le sidéral étonne par sa justesse dans l’interprétation des personnalités : il arrive qu’une personne ( comme ma sœur par exemple) découvre qu’elle est finalement Vierge ascendant Verseau alors qu’en tropical elle est Balance ascendant Poissons, et l’expérience est souvent bluffante par sa pertinence.</p><p>Mon ambition est de partager ces œuvres astrales qui éveillent la conscience, stimulent l’imaginaire et accompagnent chacun sur son chemin personnel.</p><p>Bienvenue dans cet univers où l’astrologie devient art, langage et révélation. 🌙</p>"
-          }
-        },
-        "button_8tmgaE": {
-          "type": "button",
-          "settings": {
-            "button_label": "Découvrir nos œuvres",
-            "button_type": "secondary",
-            "button_link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "heading_nMHXAV",
-        "text_HiiETi",
-        "button_8tmgaE"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/a61c34f66fa7a6ab35f1a63b1235271423f11e58.jpg",
-        "height": "adapt",
-        "layout": "image_last",
-        "mobile_layout": "bottom",
-        "round_stamp_enable": true,
-        "round_stamp_text": "ASTROGALLERY ~ ASTROGALLERY ~",
-        "round_stamp_width": 140,
-        "round_stamp_size": 43,
-        "round_stamp_letter_spacing": 8,
-        "border_top": false,
-        "border_bottom": false
-      }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "color_scheme": "background-2",
-        "heading": "Rejoignez l’univers d’ASTROGALLERY",
-        "newsletter_text": "<p>Découvrez nos nouvelles créations, réflexions cosmiques et offres exclusives autour de l’astrologie et du design astral.</p>",
-        "full_width": true
-      }
     }
   },
   "order": [
-    "main",
-    "rich_text_FzYWbC",
-    "image_with_text_8tGkMc",
-    "newsletter"
+    "main"
   ]
 }
