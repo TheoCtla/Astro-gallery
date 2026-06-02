@@ -170,6 +170,15 @@
             "slide_country": ""
           }
         },
+        "testimonials_slide_FXByKy": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "J'ai reçu mon thème astral personnalisé et je suis émerveillée !",
+            "slide_text": "C'est une œuvre d'art unique qui capture mon essence. Le livret inclus est une mine d'informations. Merci, ASTROGALLERY, pour cette expérience enrichissante !",
+            "slide_name": "Fabienne D.",
+            "slide_country": "Marseille"
+          }
+        },
         "slide-2": {
           "type": "testimonials_slide",
           "settings": {
@@ -189,14 +198,26 @@
             "slide_name": "Elodie G.",
             "slide_country": ""
           }
+        },
+        "testimonials_slide_c7g96V": {
+          "type": "testimonials_slide",
+          "settings": {
+            "slide_title": "J'ai eu la chance de recevoir ce cadeau surprise de la part de mes amis, et je les remercie énormément!!",
+            "slide_text": "C’est un cadeau unique, ultra personnalisé, réalisé avec beaucoup de détails. Je me suis retrouvé dans de nombreux éléments de mon analyse personnelle. Le tableau est magnifique et le livre est passionnant à découvrir.",
+            "slide_avatar": "shopify://shop_images/IS.png",
+            "slide_name": "Ismael",
+            "slide_country": ""
+          }
         }
       },
       "block_order": [
         "slide-4",
         "slide-3",
         "slide-1",
+        "testimonials_slide_FXByKy",
         "slide-2",
-        "slide-5"
+        "slide-5",
+        "testimonials_slide_c7g96V"
       ],
       "settings": {
         "trustpilot_link": "https://www.trustpilot.com/review/astro-gallery.com#",
