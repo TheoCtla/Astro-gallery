@@ -16,7 +16,7 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Calque_5.svg",
-            "text": "Format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire.",
+            "text": "Œuvre carré en format PNG basse définition",
             "bold": false
           }
         },
@@ -24,23 +24,23 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Calque_1_1.svg",
-            "text": "Chaque œuvre est nominative, numérotée et accompagnée d'un certificat d'authenticité.",
+            "text": "Œuvre nominative, calculée sur-mesure à partir de votre thème astral unique.",
             "bold": false
           }
         },
         "feature-3": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Icones-Micro-Set.svg",
-            "text": "Elle est livrée prête à être accrochée.",
+            "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
+            "text": "Son livre de 110 pages, dont 40 entièrement dédiées à l'étude de votre thème astral.  Envoyé en format PDF",
             "bold": false
           }
         },
         "feature-4": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
-            "text": "Son livre de 110 pages, dont 40 entièrement dédiées à l'étude de votre thème astral. Couverture et contenu entièrement dédiés à votre thème natal.",
+            "icon": "shopify://shop_images/Icones-Micro-Set_ce205c57-52bf-4325-80f4-9e11e5ebe40c.svg",
+            "text": "Envoyée par mail sous 7 jours.",
             "bold": false
           }
         },
@@ -48,7 +48,7 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_1000004468.png",
-            "text": "Fabriquée en France",
+            "text": "Savoir-faire français",
             "bold": true
           }
         },
@@ -56,7 +56,7 @@
           "type": "badge",
           "settings": {
             "icon": "shopify://shop_images/Calque_1_2.svg",
-            "text": "Livraison offerte en 3 à 4 semaines"
+            "text": "Livraison sous 1 semaine"
           }
         },
         "badge-2": {
@@ -86,11 +86,11 @@
       ],
       "settings": {
         "breadcrumb_label": "L'Œuvre Astrale",
-        "gallery_image_1": "shopify://shop_images/ASTROGALLERY-TableauEtLivre-RVB-Web.jpg",
-        "gallery_image_2": "shopify://shop_images/Image-astrogallery-encadrement.jpg",
-        "gallery_image_3": "shopify://shop_images/d35946cd9369681210da846dc006700a0f9ad5b5.jpg",
-        "gallery_image_4": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac_1.jpg",
-        "title": "CRÉER VOTRE ŒUVRE SIGNATURE ASTROGALLERY.",
+        "gallery_image_1": "shopify://shop_images/Frame_1000004494.png",
+        "gallery_image_2": "shopify://shop_images/Rectangle_11.png",
+        "gallery_image_3": "shopify://shop_images/Rectangle_10_c626c31c-0c2f-477c-98f6-7f0da4f4951d.png",
+        "gallery_image_4": "shopify://shop_images/Frame_1000004492.png",
+        "title": "CRÉER VOTRE ŒUVRE SIGNATURE DIGITALE",
         "subtitle": "Une composition artistique astrale unique et son livre personnalisé de 110 pages.",
         "description_1": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>",
         "description_2": "<p>Votre thème natal sidéral est interprété avec précision par nos équipes, puis transformé en oeuvre d'art astrale unique ainsi qu'un livre personnel explicatif de votre oeuvre.</p>",
@@ -149,6 +149,7 @@
         "photo-3",
         "photo-4"
       ],
+      "disabled": true,
       "settings": {
         "heading": "UNE PIÈCE PENSÉE POUR S'INTÉGRER AVEC ÉLÉGANCE.",
         "subtitle": "Son format carré équilibré et son cadre noir profond en font une œuvre intemporelle.\nMinimaliste mais expressive, elle s'accorde naturellement avec des intérieurs contemporains, classiques ou épurés.\nDans un salon, un bureau ou une chambre, elle devient un point d'ancrage visuel et suscite la conversation",

@@ -32,15 +32,7 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Icones-Micro-Set_1.svg",
-            "text": "Son livre de 110 pages, dont 40 entièrement dédiées à l'étude de votre thème astral.  Envoyé en format PDF",
-            "bold": false
-          }
-        },
-        "feature-4": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Icones-Micro-Set_ce205c57-52bf-4325-80f4-9e11e5ebe40c.svg",
-            "text": "Envoyée par mail sous 7 jours.",
+            "text": "Son livre de 110 pages, dont 40 entièrement dédiées à l'étude de votre thème astral. Couverture et contenu entièrement dédiés à votre thème natal.",
             "bold": false
           }
         },
@@ -48,7 +40,7 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_1000004468.png",
-            "text": "Savoir-faire français",
+            "text": "Fabriqué en France",
             "bold": true
           }
         },
@@ -56,7 +48,7 @@
           "type": "badge",
           "settings": {
             "icon": "shopify://shop_images/Calque_1_2.svg",
-            "text": "Livraison sous 1 semaine"
+            "text": "Livraison sous 2 à 3 semaines"
           }
         },
         "badge-2": {
@@ -78,7 +70,6 @@
         "feature-1",
         "feature-2",
         "feature-3",
-        "feature-4",
         "feature-5",
         "badge-1",
         "badge-2",
@@ -88,9 +79,9 @@
         "breadcrumb_label": "L'Œuvre Astrale",
         "gallery_image_1": "shopify://shop_images/Frame_1000004494.png",
         "gallery_image_2": "shopify://shop_images/Rectangle_11.png",
-        "gallery_image_3": "shopify://shop_images/Rectangle_10_c626c31c-0c2f-477c-98f6-7f0da4f4951d.png",
-        "gallery_image_4": "shopify://shop_images/Frame_1000004492.png",
-        "title": "CRÉER VOTRE ŒUVRE SIGNATURE DIGITALE",
+        "gallery_image_3": "shopify://shop_images/cc6f00d6a0252ef52c7f033cd2fc0ca16f6b5bf8.jpg",
+        "gallery_image_4": "shopify://shop_images/e99e86ae24aeb5ba357c14fe4c5b4997f6f0d9ac_3.jpg",
+        "title": "CRÉER VOTRE ŒUVRE SIGNATURE MIXTE",
         "subtitle": "Une composition artistique astrale unique et son livre personnalisé de 110 pages.",
         "description_1": "<p><strong>En commandant l'Œuvre Signature ASTROGALLERY, vous acquérez deux créations uniques et indissociables réalisées à partir de vos données de naissance.</strong></p>",
         "description_2": "<p>Votre thème natal sidéral est interprété avec précision par nos équipes, puis transformé en oeuvre d'art astrale unique ainsi qu'un livre personnel explicatif de votre oeuvre.</p>",

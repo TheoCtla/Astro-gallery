@@ -19,6 +19,13 @@
             "answer": "<p>Une création artistique et astrologique unique, conçue à partir de votre thème natal.<br/>Chaque pièce est numérotée, nominative et accompagnée d'un livre de 110 pages pour comprendre les énergies qui vous composent.</p>"
           }
         },
+        "question_MjbB74": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle est la différence entre les trois œuvres ?",
+            "answer": "<p>Les trois œuvres reposent sur le même calcul astral personnalisé et le même livret d'interprétation de 110 pages. Ce qui change, c'est le support :</p><p>• <strong>L'Œuvre Signature Digitale (90€)</strong> vous est livrée entièrement par mail : l'œuvre en basse définition et le livre en PDF. </p><p>• <strong>L'Œuvre Signature Mixte  (150€)</strong> ajoute le livre d'interprétation imprimé en France, livré dans son écrin. L'œuvre reste numérique.</p><p>• <strong>L'Œuvre Signature (290€)</strong> est l'expérience complète : votre œuvre format carré 40 × 40 cm, encadrée d'une caisse américaine en bois naturel teinte noire., numérotée et accompagnée de son certificat d'authenticité, livrée avec le livre imprimé.</p>"
+          }
+        },
         "q2": {
           "type": "question",
           "settings": {
@@ -50,13 +57,14 @@
         "q6": {
           "type": "question",
           "settings": {
-            "question": "L'ŒUVRE EST ELLE PRÊTE À ÊTRE ACCROCHÉE",
-            "answer": "<p>Oui. L'œuvre est livrée encadrée avec son système d'accroche intégré. Vous n'avez rien à prévoir. Il vous suffit de choisir l'emplacement idéal et de l'installer.</p>"
+            "question": "L'ŒUVRE EST ELLE PRÊTE À ÊTRE ACCROCHÉE ?",
+            "answer": "<p>Oui. L’œuvre Signature est livrée encadrée avec son système d’accroche intégré. Vous n’avez rien à prévoir. Il vous suffit de choisir l’emplacement idéal et de l’installer.</p>"
           }
         }
       },
       "block_order": [
         "q1",
+        "question_MjbB74",
         "q2",
         "q3",
         "q4",
