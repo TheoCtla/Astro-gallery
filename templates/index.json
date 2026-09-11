@@ -14,6 +14,8 @@
       "settings": {
         "background_video": "shopify://files/videos/ASTROGALLERY_FINAL SANS LOGO (1).mp4",
         "background_video_mobile": "shopify://files/videos/ASTROGALLERY_MOBILE_9_16.mp4",
+        "optimized_video_desktop": "https://cdn.shopify.com/videos/c/o/v/80380e1bea3b4e4cab24974cfed01b48.mp4",
+        "optimized_video_mobile": "https://cdn.shopify.com/videos/c/o/v/ea0a565c0de34be28c78d61472e1f32f.mp4",
         "title": "VOTRE THÈME ASTRAL",
         "title_line2": "EST",
         "title_highlight": "UNIQUE",
