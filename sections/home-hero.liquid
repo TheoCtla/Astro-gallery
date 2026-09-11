@@ -33,7 +33,7 @@
     {%- if section.settings.title != blank -%}
       <h1 class="home-hero__title">{{ section.settings.title }}<br>
         {%- if section.settings.title_line2 != blank -%}{{ section.settings.title_line2 }}{%- endif -%}
-        {%- if section.settings.title_highlight != blank -%}<span class="home-hero__title-highlight">{{ section.settings.title_highlight }}</span>{%- endif -%}
+        {%- if section.settings.title_highlight != blank -%}<span class="home-hero__title-highlight">&nbsp;{{ section.settings.title_highlight }}</span>{%- endif -%}
       </h1>
     {%- endif -%}
     {%- if section.settings.subtitle != blank -%}<p class="home-hero__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
