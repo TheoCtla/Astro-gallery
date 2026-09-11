@@ -485,6 +485,43 @@ customElements.define('menu-drawer', MenuDrawer)
 class HeaderDrawer extends MenuDrawer {
 	constructor() {
 		super()
+		this.resetNavigationMenu = this.resetNavigationMenu.bind(this)
+		this.addEventListener('click', this.onNavigationClick.bind(this))
+	}
+
+	connectedCallback() {
+		window.addEventListener('pagehide', this.resetNavigationMenu)
+		window.addEventListener('pageshow', this.resetNavigationMenu)
+	}
+
+	disconnectedCallback() {
+		window.removeEventListener('pagehide', this.resetNavigationMenu)
+		window.removeEventListener('pageshow', this.resetNavigationMenu)
+	}
+
+	onNavigationClick(event) {
+		const link = event.target.closest('a[href]')
+		if (!link || event.defaultPrevented || event.button !== 0 ||
+			event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+		if (link.hasAttribute('download') || (link.target && link.target !== '_self')) return
+		const href = link.getAttribute('href').trim()
+		if (!href || href === '#' || href.toLowerCase().startsWith('javascript:')) return
+		this.resetNavigationMenu()
+	}
+
+	resetNavigationMenu() {
+		const details = this.mainDetailsToggle
+		if (!details.open && !details.classList.contains('menu-opening')) return
+		// Close synchronously so a history snapshot cannot retain an open drawer.
+		this.querySelectorAll('details').forEach((item) => {
+			item.removeAttribute('open')
+			item.classList.remove('menu-opening', 'submenu-open')
+		})
+		this.querySelectorAll('summary').forEach((summary) => {
+			summary.setAttribute('aria-expanded', 'false')
+		})
+		document.body.classList.remove('overflow-hidden-' + this.dataset.breakpoint)
+		removeTrapFocus()
 	}
 
 	openMenuDrawer(summaryElement) {
@@ -500,6 +537,7 @@ class HeaderDrawer extends MenuDrawer {
 		)
 
 		setTimeout(() => {
+			if (!this.mainDetailsToggle.open) return
 			this.mainDetailsToggle.classList.add('menu-opening');
 			this.header.classList.remove('shopify-section-header-hidden');
 			this.header.classList.remove('animate');
