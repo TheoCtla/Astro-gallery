@@ -1,243 +1,120 @@
 <style>
-  .home-hero {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - var(--header-height, 80px));
-    background-color: #1D1D1B;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .home-hero__video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-  }
-
-  .home-hero__video--desktop {
-    display: none;
-  }
-
-  .home-hero__video--mobile {
-    display: block;
-  }
-
-  @media (min-width: 750px) {
-    .home-hero__video--desktop {
-      display: block;
-    }
-    .home-hero__video--mobile {
-      display: none;
-    }
-  }
-
-  .home-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.35);
-    z-index: 1;
-  }
-
-  .home-hero__content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
-  }
-
-  .home-hero__title {
-    font-family: 'Lemon Milk', 'LEMONMILK-Regular', sans-serif;
-    font-weight: 400;
-    font-size: clamp(28px, 5vw, 60px);
-    line-height: 120%;
-    letter-spacing: 0;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    margin: 0 0 0.3rem 0;
-  }
-
-  .home-hero__title-highlight {
-    color: #DFBE71;
-  }
-
-  .home-hero__subtitle {
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
-    font-size: clamp(18px, 3vw, 32px);
-    color: #FFFFFF;
-    line-height: 150%;
-    letter-spacing: 0;
-    margin: 0 0 1.5rem 0;
-  }
-
-  /* ===== Responsive — Tablet (750px) ===== */
-  @media (min-width: 750px) {
-    .home-hero__content {
-      padding: 4rem 2rem;
-    }
-  }
-
-  /* ===== Responsive — Desktop (990px) ===== */
-  @media (min-width: 990px) {
-    .home-hero__content {
-      padding: 5rem 3rem;
-    }
-  }
+.home-hero{position:relative;width:100%;height:calc(100vh - var(--header-height,80px));background:#1D1D1B;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;align-items:center;overflow:hidden}
+.home-hero__video,.home-hero__poster,.home-hero__poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.home-hero::before{content:'';position:absolute;inset:0;background-color:rgba(0,0,0,.35);z-index:1}
+.home-hero__content{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto;padding:3rem 1.5rem}
+.home-hero__title{font-family:'Lemon Milk','LEMONMILK-Regular',sans-serif;font-weight:400;font-size:clamp(28px,5vw,60px);line-height:120%;letter-spacing:0;color:#FFF;text-transform:uppercase;margin:0 0 .3rem}
+.home-hero__title-highlight{color:#DFBE71}
+.home-hero__subtitle{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(18px,3vw,32px);color:#FFF;line-height:150%;letter-spacing:0;margin:0 0 1.5rem}
+@media(min-width:750px){.home-hero__content{padding:4rem 2rem}}
+@media(min-width:990px){.home-hero__content{padding:5rem 3rem}}
 </style>
-
-<section
-  class="home-hero"
+<section id="Hero-{{ section.id }}" class="home-hero"
   {% if section.settings.background_video == blank and section.settings.background_image != blank %}
-    style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
-  {% endif %}
->
+    style="background-image:url('{{ section.settings.background_image | image_url: width: 1920 }}');"
+  {% endif %}>
   {% if section.settings.background_video != blank %}
-    {% if section.settings.background_video_mobile != blank %}
-      {{ section.settings.background_video | video_tag:
-        class: 'home-hero__video home-hero__video--desktop',
-        autoplay: true,
-        loop: true,
-        muted: true,
-        playsinline: true,
-        controls: false,
-        preload: 'metadata'
-      }}
-      {{ section.settings.background_video_mobile | video_tag:
-        class: 'home-hero__video home-hero__video--mobile',
-        autoplay: true,
-        loop: true,
-        muted: true,
-        playsinline: true,
-        controls: false,
-        preload: 'metadata'
-      }}
-    {% else %}
-      {{ section.settings.background_video | video_tag:
-        class: 'home-hero__video',
-        autoplay: true,
-        loop: true,
-        muted: true,
-        playsinline: true,
-        controls: false,
-        preload: 'metadata'
-      }}
-    {% endif %}
+    {% liquid
+      assign desktop_video = section.settings.background_video
+      assign mobile_video = section.settings.background_video_mobile | default: desktop_video
+      assign desktop_source = desktop_video.sources | where: 'format', 'mp4' | first
+      assign mobile_source = mobile_video.sources | where: 'format', 'mp4' | first
+      assign desktop_url = section.settings.optimized_video_desktop | default: desktop_source.url
+      assign mobile_url = section.settings.optimized_video_mobile | default: mobile_source.url
+    %}
+    <picture class="home-hero__poster" aria-hidden="true">
+      <source media="(max-width:749px)" srcset="{{ mobile_video.preview_image | image_url: width: 640 }}">
+      <img src="{{ desktop_video.preview_image | image_url: width: 1280 }}" width="1280" height="720" alt="" loading="eager" fetchpriority="high">
+    </picture>
+    <video class="home-hero__video" muted loop playsinline preload="none" aria-hidden="true"
+      data-desktop-src="{{ desktop_url | escape }}" data-mobile-src="{{ mobile_url | escape }}"></video>
   {% endif %}
   <div class="home-hero__content">
     {%- if section.settings.title != blank -%}
-      <h1 class="home-hero__title">
-        {{ section.settings.title }}<br>
-        {%- if section.settings.title_line2 != blank -%}
-          {{ section.settings.title_line2 }}
-        {%- endif -%}
-        {%- if section.settings.title_highlight != blank -%}
-          <span class="home-hero__title-highlight">{{ section.settings.title_highlight }}</span>
-        {%- endif -%}
+      <h1 class="home-hero__title">{{ section.settings.title }}<br>
+        {%- if section.settings.title_line2 != blank -%}{{ section.settings.title_line2 }}{%- endif -%}
+        {%- if section.settings.title_highlight != blank -%}<span class="home-hero__title-highlight">{{ section.settings.title_highlight }}</span>{%- endif -%}
       </h1>
     {%- endif -%}
-
-    {%- if section.settings.subtitle != blank -%}
-      <p class="home-hero__subtitle">{{ section.settings.subtitle }}</p>
-    {%- endif -%}
-
+    {%- if section.settings.subtitle != blank -%}<p class="home-hero__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
     {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link }}" class="btn-gold home-hero__cta">
-        <span class="btn-gold__text">{{ section.settings.button_label }}</span>
-      </a>
+      <a href="{{ section.settings.button_link }}" class="btn-gold home-hero__cta"><span class="btn-gold__text">{{ section.settings.button_label }}</span></a>
     {%- endif -%}
   </div>
 </section>
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var cta = document.querySelector('.home-hero__cta');
-    if (cta) {
-      var href = cta.getAttribute('href');
-      if (href && href.indexOf('#') === 0) {
-        cta.addEventListener('click', function(e) {
-          var target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
+(function () {
+  var hero = document.getElementById('Hero-{{ section.id }}');
+  if (!hero) return;
+  var video = hero.querySelector('video');
+  var image = hero.querySelector('.home-hero__poster img');
+  var desktop = window.matchMedia('(min-width:750px)');
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion:reduce)');
+  function updateVideo() {
+    if (!video) return;
+    if (reducedMotion.matches || (navigator.connection && navigator.connection.saveData)) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      return;
     }
-  });
+    var src = desktop.matches ? video.dataset.desktopSrc : video.dataset.mobileSrc;
+    if (src && video.getAttribute('src') !== src) {
+      video.muted = true;
+      video.src = src;
+      video.load();
+      var playing = video.play();
+      if (playing) playing.catch(function () { /* Keep the poster if autoplay is blocked. */ });
+    }
+  }
+  // Load one video only, after the lightweight poster.
+  if (image && !image.complete) {
+    image.addEventListener('load', updateVideo, {once:true});
+    image.addEventListener('error', updateVideo, {once:true});
+  } else { updateVideo(); }
+  desktop.addEventListener('change', updateVideo);
+  reducedMotion.addEventListener('change', updateVideo);
+  function cleanup(event) {
+    if (event.detail.sectionId !== '{{ section.id }}') return;
+    desktop.removeEventListener('change', updateVideo);
+    reducedMotion.removeEventListener('change', updateVideo);
+    if (video) video.pause();
+    document.removeEventListener('shopify:section:unload', cleanup);
+  }
+  document.addEventListener('shopify:section:unload', cleanup);
+  var cta = hero.querySelector('.home-hero__cta');
+  if (cta) {
+    var href = cta.getAttribute('href');
+    if (href && href.length > 1 && href.indexOf('#') === 0) {
+      cta.addEventListener('click', function (event) {
+        var target = document.getElementById(href.slice(1));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({behavior:reducedMotion.matches ? 'auto' : 'smooth'});
+        }
+      });
+    }
+  }
+})();
 </script>
-
 {% schema %}
 {
-  "name": "Hero Homepage",
-  "tag": "section",
-  "class": "home-hero-section",
-  "settings": [
-    {
-      "type": "video",
-      "id": "background_video",
-      "label": "Vidéo de fond — Desktop / Tablette (horizontale)"
-    },
-    {
-      "type": "video",
-      "id": "background_video_mobile",
-      "label": "Vidéo de fond — Mobile (verticale)"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Image de fond (fallback si pas de vidéo)"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre (ligne 1)",
-      "default": "VOTRE THÈME ASTRAL"
-    },
-    {
-      "type": "text",
-      "id": "title_line2",
-      "label": "Titre (ligne 2, avant le mot doré)",
-      "default": "EST"
-    },
-    {
-      "type": "text",
-      "id": "title_highlight",
-      "label": "Mot en doré (ligne 2)",
-      "default": "UNIQUE"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Sous-titre (italique)",
-      "default": "Nous le transformons en œuvre d'art."
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Texte du bouton",
-      "default": "DÉCOUVRIR L'ŒUVRE"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Lien du bouton"
-    }
+  "name":"Hero Homepage",
+  "tag":"section",
+  "class":"home-hero-section",
+  "settings":[
+    {"type":"video","id":"background_video","label":"Vidéo de fond — Desktop / Tablette (horizontale)"},
+    {"type":"video","id":"background_video_mobile","label":"Vidéo de fond — Mobile (verticale)"},
+    {"type":"url","id":"optimized_video_desktop","label":"MP4 allégé — Ordinateur","info":"Lien direct vers la version compressée de la vidéo choisie ci-dessus."},
+    {"type":"url","id":"optimized_video_mobile","label":"MP4 allégé — Mobile","info":"À actualiser également si vous changez la vidéo de fond."},
+    {"type":"image_picker","id":"background_image","label":"Image de fond (fallback si pas de vidéo)"},
+    {"type":"text","id":"title","label":"Titre (ligne 1)","default":"VOTRE THÈME ASTRAL"},
+    {"type":"text","id":"title_line2","label":"Titre (ligne 2, avant le mot doré)","default":"EST"},
+    {"type":"text","id":"title_highlight","label":"Mot en doré (ligne 2)","default":"UNIQUE"},
+    {"type":"text","id":"subtitle","label":"Sous-titre (italique)","default":"Nous le transformons en œuvre d'art."},
+    {"type":"text","id":"button_label","label":"Texte du bouton","default":"DÉCOUVRIR L'ŒUVRE"},
+    {"type":"url","id":"button_link","label":"Lien du bouton"}
   ],
-  "presets": [
-    {
-      "name": "Hero Homepage"
-    }
-  ]
+  "presets":[{"name":"Hero Homepage"}]
 }
 {% endschema %}
