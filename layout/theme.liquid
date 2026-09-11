@@ -26,11 +26,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;500;600&display=swap"
       rel="stylesheet"
     >
     <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
-    <link href="https://fonts.cdnfonts.com/css/lemon-milk" rel="stylesheet">
+    <style>
+@font-face{font-family:'LEMON MILK';font-style:normal;font-weight:400;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkRegular-X3XE2.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:italic;font-weight:400;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkRegularItalic-L3AEy.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:normal;font-weight:300;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkLight-owxMq.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:italic;font-weight:300;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkLightItalic-7BjPE.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:normal;font-weight:500;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkMedium-mLZYV.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:italic;font-weight:500;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkMediumItalic-d95nl.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:normal;font-weight:700;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkBold-gx2B3.woff') format('woff')}
+@font-face{font-family:'LEMON MILK';font-style:italic;font-weight:700;font-display:swap;src:local('LEMON MILK'),url('https://fonts.cdnfonts.com/s/35897/LemonMilkBoldItalic-PKZ3P.woff') format('woff')}
+</style>
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
@@ -53,6 +62,11 @@
 
     {% render 'meta-tags' %}
 
+    {% if request.page_type == 'index' %}
+      <script src="{{ 'jquery-3.6.0.js' | asset_url }}" defer></script>
+      <script src="{{ 'jquery.fancybox.js' | asset_url }}" defer></script>
+      <script src="{{ 'slick.js' | asset_url }}" defer></script>
+    {% endif %}
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
@@ -268,11 +282,16 @@
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
     </ul>
 
+    {% if request.page_type == 'index' %}
+      <script src="{{ 'quickview.js' | asset_url }}" defer></script>
+      <script src="{{ 'popup.js' | asset_url }}" defer></script>
+    {% else %}
     {{ 'jquery-3.6.0.js' | asset_url | script_tag }}
     {{ 'jquery.fancybox.js' | asset_url | script_tag }}
     {{ 'slick.js' | asset_url | script_tag }}
     {{ 'quickview.js' | asset_url | script_tag }}
     {{ 'popup.js' | asset_url | script_tag }}
+    {% endif %}
     {% if settings.show_back_to_top %}
       <script src="{{ 'scroll-top.js' | asset_url }}" defer="defer"></script>
     {% endif %}
